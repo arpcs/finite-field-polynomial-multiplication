@@ -1,0 +1,724 @@
+\section{Finite ternary phase router and a positive binary $H_2$ word}
+\label{app:finite-phase}
+
+The scalar bank-exchange and frame-label architecture follows the
+finite-network method of~\cite{swap}; its characteristic-two and
+ternary-phase adaptation is made explicit below. These finite-network
+antecedents are credited independently of the present tape-time claim.
+
+This appendix records the finite algebraic and rank-saving part of the
+binary $H_2$ supplier. It distinguishes three coefficient/address domains:
+the address-frame geometry is over $\mathbb F_3$, the phase kernel and
+dirty-selector payload arithmetic are over $\mathbb F_4$, and the fixed
+positive word is over its codec field $\mathbb F_{16}$. The tape costs for
+the equal-chunk interchange and weighted native mask are separate machine
+suppliers; no field element in these algebraic arguments is treated as a
+unit-cost operation on a growing coefficient word.
+
+\subsection{The ternary phase kernel}
+
+Let $\eta\in\mathbb F_4$ satisfy $\eta^2+\eta+1=0$. On $\mathbb F_4^3$ put
+\[
+ C=\eta I_3+\eta^2J_3
+ =\begin{pmatrix}1&\eta^2&\eta^2\\
+ \eta^2&1&\eta^2\\\eta^2&\eta^2&1\end{pmatrix}.
+\]
+Then $C^3=I$. Let $\chi(a)=\eta^a$ for $a\in\mathbb F_3$, and let
+\[
+ (\mathcal F_3)_{x,z}=\chi(xz),\qquad x,z\in\mathbb F_3.
+\]
+Since $1+\eta^a+\eta^{2a}=0$ for nonzero $a\in\mathbb F_3$,
+$\mathcal F_3^2$ is the coordinate-negation permutation. Thus
+$\mathcal F_3^4=I$ and $\mathcal F_3^{-1}=\mathcal F_3^3$ (equivalently,
+$(\mathcal F_3^{-1})_{x,z}=\eta^{-xz}$).
+Direct multiplication gives
+\[
+ C=\mathcal F_3\,\operatorname{diag}(1,\eta,\eta)\,\mathcal F_3^{-1}.
+\]
+Thus the eigenphase of $C$ at frequency $z$ is $\eta^{z^2}$. The inverse
+is $C^2$ and has eigenphase $\eta^{-z^2}$.
+
+For an address space with a nondegenerate symmetric form over $\mathbb F_3$,
+write $T_v f(x)=f(x+v)$. If $v$ has norm $\nu=\langle v,v\rangle\in
+\{1,2\}$, define
+\[
+ K_v=I+\eta^{-\nu}(T_v+T_{-v}).                         \tag{A.1}
+\]
+On a Fourier character of frequency $z$, the two translations have
+eigenvalues $\eta^{\langle v,z\rangle}$ and
+$\eta^{-\langle v,z\rangle}$. For $a=\langle v,z\rangle\in\mathbb F_3$,
+\[
+ 1+\eta^{-\nu}(\eta^a+\eta^{-a})=\eta^{a^2/\nu}.     \tag{A.2}
+\]
+Indeed both sides are $1$ for $a=0$; for $a=\pm1$, checking
+$(\nu,a^2)=(1,1)$ and $(2,1)$ gives $\eta$ and $\eta^2$ respectively.
+Consequently $K_v$ is precisely the one-direction quadratic phase for
+the line $\langle v\rangle$. Orthogonal directions commute, and an
+orthogonal direct sum of directions has the product of their phases.
+Replacing $v$ by $-v$ does not change the line; norm $2$ replaces $C$ by
+$C^{-1}$.
+
+For a nondegenerate subspace $U$ with an orthogonal basis
+$v_1,\ldots,v_r$, define $C_U=\prod_jK_{v_j}$. In Fourier coordinates
+this is the multiplier
+\[
+ (\mathcal F C_U\mathcal F^{-1})_{z,z}
+   =\eta^{\sum_j\langle v_j,z\rangle^2/\langle v_j,v_j\rangle}.
+                                                               \tag{A.3a}
+\]
+Thus orthogonal direct sums multiply their $C_U$ operators. If
+$U\subseteq V$ and $V=U\perp W$, then $C_V=C_UC_W$; a rank-$r$
+edge between such frames needs exactly $r$ one-direction children.
+The phase frame on a role is a proof invariant: the same $\mathbb F_4$-linear
+phase operator is applied to aligned wire arrays, so it commutes with
+pointwise XOR/addition. It is a linear operator on payload arrays, not an
+address relabeling; this is distinct from the address permutations used
+in the SWAP supplier.
+At completion the role permutation pairs each input frame with its
+specified output frame. Choosing the X-source inverse line frame makes
+the endpoint product the full phase, while its first edge has difference
+$P_U-(-P_U)=2P_U$ and therefore one rank-one child. This is the source
+correction counted below.
+
+\subsection{The $48$-triple frame over $\mathbb F_3$}
+
+Fix $H=48$, let $\mathcal T=\binom{[H]}3$, and join distinct $S,T$ when
+$|S\cap T|=1$. Put
+\[
+ v=\binom{48}{3}=17296,\quad
+ z=3\binom{45}{2}=2970,\quad N=v^3,\quad I=3v^2.
+\]
+The factor space is $F=\mathbb F_3^{49}$ with form
+\[
+ B=\operatorname{diag}(-I_{48},1).
+\]
+For $S\in\mathcal T$ use $t_S=(1_S,1)$. Then
+\[
+ \langle t_S,t_S\rangle=-3+1=-2=1\pmod 3,
+ \qquad \langle t_S,t_T\rangle=1-|S\cap T|.
+\]
+Thus the line $L_S=\langle t_S\rangle$ is unit norm and adjacent triples
+give orthogonal lines. The form is nondegenerate. To identify it with
+standard dot-product coordinates, split the first $48$ coordinates into
+$24$ disjoint pairs, and on each pair use
+\[
+ (a,b)\longmapsto(2a+2b,\,2a+b).
+\]
+The two output vectors for the basis inputs are $(2,2)$ and $(2,1)$;
+their norms are $2$ and $2$, and their dot product is $2\cdot2+2\cdot1
+=0$ in $\mathbb F_3$. The map is invertible (determinant $1$ in $\mathbb F_3$), so this is
+an isometry from $\operatorname{diag}(-1,-1)$ to the standard dot
+product. The last coordinate already has norm one.
+
+For a stage prefix tensor space $A=F^{\otimes(j-1)}$, let $P$ be its
+prefix line, $B_0=P^\perp$, and let $L_t$ denote the current triple line.
+Since $P$ and $L_t$ are nondegenerate,
+\[
+ A=B_0\perp P,\qquad F=L_t\perp L_t^\perp,
+\]
+and
+\[
+ (P\otimes L_t)^\perp
+   =(B_0\otimes F)\perp(P\otimes L_t^\perp).        \tag{A.3}
+\]
+The neighbor condition supplies $L_s\perp L_t$ whenever a side role
+contains the ordered neighbor $(s,t)$. These decompositions prove the
+following eight gate labels are nested/comparable exactly where their
+wire edges require:
+\[
+\begin{array}{c|l}
+ t_0& B_0\otimes L_t\\
+ t_1& B_0\otimes F\\
+ t_2& (B_0\otimes F)\perp(P\otimes L_t)\\
+ t_3& A\otimes F\\
+ t_4& B_0\otimes F\\
+ t_5& (B_0\otimes F)\perp(P\otimes L_t^\perp)\\
+ t_6& A\otimes F\\
+ t_7& A\otimes F.
+\end{array}                                                   \tag{A.4}
+\]
+In stage two the physical wire order is the inverse of the forward row
+schedule with logical source and target exchanged; this keeps the same
+physical X/Y label convention in (A.4). In particular, its incoming
+physical X label is $(A\otimes L_t)\otimes Q$ and its outgoing label
+$(A\otimes F)\otimes Q$; its incoming physical Y label is
+$(B_0\otimes L_t)\otimes Q$ and outgoing label
+$(P\otimes L_t)^\perp\otimes Q$. The latter is (A.3) for the next
+stage, with the suffix tensor line $Q$ restored. This checks the
+interstage edges as well as the within-invocation inclusions.
+
+Here is the wire-level interpretation of the table. A stage fixes the
+other two triple indices of a data role in $\mathcal T^3$; all displayed
+labels are tensored with its fixed suffix line $Q$. Name an ordered
+neighbor pair by its physical Y and physical X triple indices in
+that stage, renaming the ordered pairs in the inverse second stage.
+The side wire
+$a_{(S,T)}$ meets, in order, the Y-side gate for $S$, the X-side
+gate for $T$, the Y-side gate for $S$, and the X-side gate for $T$.
+Their labels are rows $t_0,t_2,t_5,t_7$. Its middle inclusion is
+precisely $L_T\subset L_S^\perp$, supplied by the neighbor condition.
+Each center wire meets $t_1,t_3,t_4,t_6$, whose labels alternate
+$B_0\otimes F$, $A\otimes F$, $B_0\otimes F$, $A\otimes F$.
+Data X wires meet $t_2,t_3,t_6,t_7$ and data Y wires meet
+$t_0,t_1,t_4,t_5$. These descriptions check every gate incidence;
+multi-input sums can be decomposed into the same common-label XOR
+gates without adding frame edges of nonzero rank.
+Side and center scratch wires have identity input phase and full-space
+output phase, connecting their first/last displayed labels to zero/full
+labels. Initial Y data have identity phase. Final X data have full-space
+phase and final Y data have the complement of their triple tensor line.
+The initial X inverse line is the sole exceptional source frame.
+The physical scratch rows also require the full phase: they were
+arbitrary rows of the original array. It is their logical scalar
+scratch values that the routing motif restores before the frame is
+interpreted at the output.
+
+For a fixed eligible mask sector, let $P$ be this scalar role permutation
+acting on aligned arrays, and let $D_{\rm in},D_{\rm out}$ be the
+block-diagonal input/output phase frames. A frame change on an edge
+from $F$ to $G$ applies $GF^{-1}$. Common-label XOR gates commute with
+their shared phase, so the entire framed program telescopes to
+$D_{\rm out}P D_{\rm in}^{-1}$. If input role $r$ is sent to $P(r)$,
+the endpoint operator there is
+$C_{{\rm out},P(r)}C_{{\rm in},r}^{-1}=C_{\rm full}$ for data
+\emph{and} scratch roles. Consequently
+\[
+ D_{\rm out}P D_{\rm in}^{-1}
+     =P(I_W\otimes C_{\rm full}).                       \tag{A.4a}
+ \label{eq:full-role-phase}
+\]
+The inverse role merge removes $P$, leaving the full phase on every
+arbitrary input role array. Eligibility is the same mask-only predicate
+on every row role; in an ineligible sector every frame is identity,
+so the scalar $P$ is likewise canceled by that merge. No scratch
+payload is initialized to zero in this identity.
+
+\subsection{Arbitrary-scratch scalar routing and the finite rank sum}
+
+For one invocation over $\mathbb F_2$, let $x$ be its data source, $y$
+its target, $a$ its side scratch vector and $c$ its center scratch vector.
+Let $V,J,G,R$ be the incidence maps in the companion scalar-motif
+certificate. The chronological eight rows are
+\[
+\begin{aligned}
+ y&\gets y-Ja, & y&\gets y-Rc,\\
+ a&\gets a+Vx, & c&\gets c+Gx,\\
+ y&\gets y+Rc, & y&\gets y+Ja,\\
+ c&\gets c-Gx, & a&\gets a-Vx.
+\end{aligned}
+\]
+where in the first two rows $a,c$ are their entry values. In
+characteristic two subtraction equals addition, but the signs make the
+scratch cancellation visible. The final two rows restore the center and
+side scratch. Equivalently,
+for arbitrary initial scratch $(a_0,c_0)$ the total target increment is
+\[
+ -Ja_0-Rc_0+R(c_0+Gx)+J(a_0+Vx)=(RG+JV)x.             \tag{A.5}
+\]
+For triples, $G_i,T=1_{i\in T}$, $R_{S,i}=1_{i\in S}$,
+$V_{(S,T),T'}=1_{T=T'}1_{|S\cap T|=1}$ and
+$J_{S,(S,T)}=1_{|S\cap T|=1}$. If $S=T$, $RG=3=1$ in $\mathbb F_2$
+and $JV=0$. If $S\ne T$ with intersection one, both terms are one
+and cancel; for intersections zero or two both vanish. Hence
+$RG+JV=I$. Formula (A.5) proves exact addition and restoration for every
+scratch assignment.
+
+Run the forward schedule X-to-Y, its inverse schedule Y-to-X, then the
+forward schedule again. On arbitrary banks
+\[
+ (x,y)\mapsto(x,y+x)\mapsto(-y,y+x)\mapsto(-y,x),
+                                                               \tag{A.6}
+\]
+so in characteristic two this exchanges the banks. Every invocation has
+disjoint scratch roles; all are fixed by the completed role permutation.
+There are $v$ roles per bank, $vz$ ordered side roles and $H$ center
+roles per invocation, hence
+\[
+ W=2N+I(vz+48).                                           \tag{A.7}
+\]
+
+For a label of dimension $r$ over $\mathbb F_3$, a wire operation on
+that label uses its quadratic phase and a source/target frame change of
+rank equal to the relevant dimension difference. The only downward
+label transitions in (A.4) are the $t_3\to t_4$ center transitions.
+Each loses $F=49$ dimensions and there are $48$ center coordinates in
+each of $I$ invocations. Their total downward loss is
+\[
+ L=I\cdot48\cdot49.                                    \tag{A.8}
+\]
+The signed dimension telescope over all routed wire endpoints is
+$WM-2N$, where $M=49^3=117649$: the two banks contribute the two $N$
+endpoint deficits. Turning signed variation into absolute variation
+adds twice every downward loss, so before the source correction the sum
+of edge ranks is $WM-2N+2L$.
+
+This count can also be read from the complete physical wire paths.
+Put $d=49$ and $a=d^{j-1}$ at stage $j$. With the suffix line
+suppressed, the side and center dimensions are respectively
+\[
+ 0,\ a-1,\ d(a-1)+1,\ da-1,\ da,\ M,
+ \qquad
+ 0,\ d(a-1),\ da,\ d(a-1),\ da,\ M .
+\]
+The side inclusions follow from $L_T\subset L_S^\perp$, with
+nondegenerate rank-$(d-2)$ residual. The center loses exactly
+$d$ dimensions at $t_3\to t_4$ and otherwise increases.
+Physical X enters the next stage as $A\otimes L_T\subset t_2(T)$;
+physical Y enters as $B_0\otimes L_S=t_0(S)$.
+Their complete ordinary paths have no decreases and have total
+rank $M-1$ each, using a formal positive X input line for this count.
+The inverse middle stage retains this physical order: its inverse
+logical rows $7,\ldots,0$, after bank exchange, have the same physical
+incidences as chronological rows $0,\ldots,7$. The label table itself
+is not reversed. Consequently the total ordinary rank is
+\[
+ 2N(M-1)+(W-2N)M+2I\cdot48d=WM-2N+2L.
+\]
+
+Choose the X-source phase frame to be the inverse line phase on $U_a$;
+all other source frames are identity and gate/sink frames are the
+positive phases of (A.4). The endpoint identity on each X-to-Y route is
+$C_{U_a^\perp}C_{U_a}=C_{F^{\otimes3}}$. On each of the $N$ first X
+edges, the source label is $-P_{U_a}$ while the first gate label is
+$+P_{U_a}$, so their difference is $2P_{U_a}$. This has rank one and
+its phase is $C_{U_a}^{-1}$, since scaling the quadratic form by
+$2=-1$ in $\mathbb F_3$ inverts its phase. These are $N$ genuine extra
+children, not a rank-zero equal-dimension edge. Therefore
+\[
+ s=WM-2N+2L+N=WM-N+2L.                                \tag{A.9}
+\]
+
+At $H=48$ direct cancellation gives
+\[
+ \frac WN=\frac{9633881}{1081},\qquad
+ \frac LN=\frac{441}{1081},\qquad
+ 1-\frac{s}{WM}=\frac{199}{9633881\cdot117649}.
+                                                               \tag{A.10}
+\]
+The integer comparison
+\[
+ 199\,2^{36}>12\cdot9633881\cdot117649
+\]
+and $\log_2 M<17$, $\ln2<7/10$ imply $\ln M<12$ and
+\[
+ \frac{199}{9633881\cdot117649}>12\,2^{-36}
+   >1-M^{-2^{-36}}.
+\]
+Thus $s/W<M^{1-2^{-36}}$. This is the explicit strict role saving used
+below; no numerical matrix-rank test is involved.
+
+\subsection{From the role word to all active sectors}
+
+An $A$-digit has states $0,1,2$ active and state $3$ idle. Represent
+$d_i=2X_i+Y_i$. For any active mask $S$, $A^{\otimes h}$ restricts to
+$C^{\otimes |S|}$ on the active coordinates and identity on idle
+coordinates. All $4^h$ addresses remain in the stream; no sector is
+gathered out.
+
+The mask-routing identities use dirty address fields. Let $T_Z$ apply
+one fixed transposition of active symbols where dirty selector bit
+$Z_i=1$. It preserves the active mask $S$, but arbitrary dirty $Z$
+can make it change paired sources as well as targets. Source-value
+predicates are recomputed only after the completed $T_{J\wedge Q}$
+word below, which changes matched targets only. For a mask-only selector
+$J(S)$ the chronological word
+\[
+ Z\mathrel{\oplus}=J(S),\quad T_Z,\quad
+ Z\mathrel{\oplus}=J(S),\quad T_Z                         \tag{A.11}
+\]
+restores arbitrary initial $Z$ and equals $T_J$. With a second dirty
+field $Q$, use $J(S)\wedge Q$ in (A.11). If $F_a(d)_i$ says the paired
+source of target $i$ currently has trit $a$, then the completed
+$T_{J\wedge Q}$ changes targets only and preserves all paired sources.
+Consequently
+\[
+ Q\mathrel{\oplus}=F_a(d),\quad T_{J\wedge Q},\quad
+ Q\mathrel{\oplus}=F_a(d),\quad T_{J\wedge Q}              \tag{A.12}
+\]
+restores arbitrary $Q,Z$ and implements the target transposition
+conditioned on source value $a$. The source/target matching must be
+disjoint; this is what makes the second $F_a$ equal to the first at the
+completed inner-operation boundary. A third dirty field is reserved for
+the weighted tile auxiliary. The supplied weighted-mask lemma implements
+each frozen XOR in (A.11)--(A.12) with its separate auxiliary restored;
+its exact sparse boundary repair and interchange cost are not reproved
+here.
+
+The two active transpositions have explicit bit circuits
+\[
+ (0\ 1):\ Y\mathrel{\oplus}=Z\wedge\neg X,
+ \qquad
+ (1\ 2):\ X\mathrel{\oplus}=Z\wedge Y;\quad
+ Y\mathrel{\oplus}=Z\wedge X;\quad
+ X\mathrel{\oplus}=Z\wedge Y.                           \tag{A.13}
+\]
+They are constant sequences of frozen-control XOR shears. Applying the
+two transpositions in chronological order $(1\ 2)$ then $(0\ 1)$ adds
+one to an active trit; reverse order subtracts one. Conditioning on
+source trit and composing these shears realizes a matching SUM
+\[
+ \text{target}_i\gets\text{target}_i+\text{source}_i\pmod3.
+                                                               \tag{A.14}
+\]
+Three SUMs plus a negation implement a coordinate swap. All dirty
+selectors and the tile auxiliary return to their arbitrary incoming
+values after each completed operation.
+
+For a node acting on the first $e$ active ranks, restrict controls and
+endpoints to the first
+\[
+ u=\min\{h,\lceil C_0(e+\log(L+2))\rceil\}
+\]
+physical positions, where $L\ge h$ is the ambient address-width bound
+in the native implementation. If fewer than $e$ active positions occur there,
+define the operation to be identity; otherwise all required ranks are
+present. Restrict every raw $T_Z$ transposition and both selector-bank
+toggles to this prefix, not just the completed selector $J$. Insert
+inherited eligibility into $J(S)$; it is not a frozen control on an
+inner bit shear whose target can change $S$ temporarily. Individual
+inner shears still read only the other bit plane and the selector bank.
+Their completed transposition preserves $S$. The comparison with the
+full intended route is made only after a \emph{complete logical}
+mask-selected transposition, source-conditioned operation (A.12), SUM
+or recursive basis placement on the first $e$ active ranks, with all
+its dirty selectors restored. Write this
+prefix implementation as $P_u$ and its intended permutation as $T$.
+On a good eligible prefix all intended endpoints are inside it, so
+$P_u=T$. On a bad or ineligible prefix the selector $J$ is zero:
+the two raw transpositions in (A.11) cancel, each inner operation is
+identity, and the two source-predicate toggles in (A.12) cancel too.
+Thus the completed $P_u$ is identity there. These statements do not
+require raw dirty $T_Z$ to preserve paired sources.
+
+One must not repair an internal truncated $T_Z$ to its full-$h$
+version: with $h=2,u=e=1$, $d=(0,0)$ and $Z=(0,1)$, the prefix is
+good but full $T_Z$ for $(0\ 1)$ changes the second digit and truncated
+$T_Z$ does not. This toy example embeds for any actual $u<h$ by
+putting the dirty selector immediately after the prefix and
+using active digits throughout the prefix.
+That off-prefix action is intended to cancel in the
+outer word. Nor is the prefix bad set invariant after an inner bit
+shear: the first shear of $(1\ 2)$ sends idle $(X,Y)=(1,1)$ to active
+$(0,1)$. Its tile repair uses a different invariant, as specified in
+the native appendix.
+The separate top-level digit-group placement can reach ranks beyond
+$e$; it retains its full-$h$ root-level charge and is not justified
+by this width-$e$ prefix argument.
+In the uniform $[4]^h$
+address space the prefix active count is
+binomial with mean $3u/4$. For $u\ge2e$ and $u<h$, a Chernoff bound gives
+\[
+ \Pr\{B_u<e\}\le e^{-u/24}.                            \tag{A.15}
+\]
+For $u=h$, eligibility $|S|\ge e$ leaves no exceptional eligible mask.
+Both $T$ and the completed logical $P_u$ preserve $S$, so the
+exceptional set
+$E_{\rm inherited}(S)\wedge[|S|\ge e]\wedge[B_u<e]$ is invariant.
+Its whole-universe fraction is bounded by the unconditional binomial
+estimate; no conditional distribution given eligibility is assumed.
+At that completed boundary, sorting the exceptional records by
+$T(P_u^{-1}(y))$ and refilling their slots repairs it exactly;
+the maps agree everywhere else. No sector is dropped. The full role recursion always
+stores the complete $[4]^h$ address universe, and its row split depends
+only on the independent role field, never on $S$. Thus every child
+retains the same mask distribution and off-eligibility maps are identity.
+Consequently, on every sector $S$, the role program applies
+$C^{\otimes |S|}$ to its active digits and identity to its idle digits;
+the direct sum over all masks is exactly $A^{\otimes h}$.
+
+The prefix correction above belongs to the completed logical routing
+permutation, including $T$ and $T^{-1}$ below, after all its source
+conditioning and before a linear combination forms a phase. An
+internal $T_{J\wedge Q}$ is not separately corrected when its surrounding
+source predicate was prefix-truncated too. It never sorts the output
+of the non-permutation matrix $C$.
+
+At selected width one, let $T$ cyclically permute that eligible active
+trit and be identity on ineligible masks. The mask-only transpositions
+above implement $T$ and $T^{-1}$. Three temporary array copies and a
+pointwise linear combination compute
+$I+\eta^2(T+T^{-1})$, which is $C$ on the selected trit. Off eligibility
+the two identical terms cancel, leaving the identity. The copies,
+returns and cleanup add $O(V)$ at this base call. Norm two uses its
+inverse via the fixed coefficient wrapper described below.
+
+The $M=49^3$-slot basis changes in the finite frame program decompose
+into a fixed number of row-addition matching batches on the first $e$
+selected ranks. Nondegenerate residual spaces over $\mathbb F_3$ have
+orthogonal bases: repeatedly split a nonisotropic line; its orthogonal
+complement remains nondegenerate. The sign of the directed frame
+difference must also be retained.
+
+\begin{lemma}[Signed direction and one-child implementation]
+\label{lem:signed-phase-edge}
+Let $v$ be one such direction in standard-dot coordinates, with
+$\nu=\langle v,v\rangle\in\{1,2\}$, and let
+$\varepsilon\in\{1,2\}$ specify the positive or negative directed
+phase. The effective child coefficient is
+\[
+             \lambda=\varepsilon/\nu\quad\hbox{in }\F_3.
+\]
+For the block direction $\langle v\rangle\otimes\F_3^f$, use one
+ordinary width-$f$ child if $\lambda=1$, and one conjugated inverse
+child if $\lambda=2$. Both cases retain exactly the same child volume.
+\end{lemma}
+\begin{proof}
+Choose $A\in\operatorname{SL}_M(\F_3)$ with $Av=e_1$.
+Extend $v$ to a basis and adjust the sign of another column to obtain
+determinant one; $M\ge2$. A fixed elementary row-addition word realizes
+$A$. Define the address pushforward by
+$(Q_Af)(y)=f(A^{-1}y)$. Its translation conjugacy is
+$Q_A^{-1}T_wQ_A=T_{A^{-1}w}$.
+Chronologically place the addresses by $A\otimes I_f$, apply the
+first-block child $(C^{\otimes f})^\lambda$, and undo the placement.
+The resulting operator is
+\[
+ Q_{A\otimes I_f}^{-1}(C^{\otimes f})^\lambda Q_{A\otimes I_f}.
+\]
+Its Fourier multiplier is
+\[
+ \eta^{\lambda\sum_{\ell=1}^f\langle v,z^{(\ell)}\rangle^2}.
+\]
+The desired directed line phase has exponent
+\[
+ \varepsilon\sum_\ell\langle v,z^{(\ell)}\rangle^2/\nu,
+\]
+so the stated $\lambda$ is exact. The placement need not preserve the
+quadratic form: $\nu$ is computed before placement, in the original
+form. Replacing $v$ by $-v$ leaves these squares unchanged.
+
+For $\lambda=2$, wrap the \emph{same forward child} with the
+coefficientwise $\F_4$ Frobenius on both existing codec planes,
+as in (A.17). This gives $(C^{\otimes f})^{-1}$ on arbitrary codec
+values. The wrapper is $\F_2$-linear; its completed conjugate is
+linear over the codec field. It adds two linear child-stream scans,
+and no second recursive call or new coordinate. If eligibility is
+false, the child is identity and the two involutions cancel there.
+\end{proof}
+
+Explicitly, the forward/inverse cases are
+\[
+\begin{array}{c|c|c|c}
+ \varepsilon&\nu&\lambda&\hbox{child}\\ \hline
+ 1&1&1&\hbox{forward}\\
+ 1&2&2&\hbox{inverse}\\
+ 2&1&2&\hbox{inverse}\\
+ 2&2&1&\hbox{forward}
+\end{array}
+\]
+An upward nested-frame edge has $\varepsilon=1$; a downward edge,
+including $t_3\to t_4$, has $\varepsilon=2$ on its residual subspace.
+The exceptional source difference splits as a positive residual
+projection plus $2P_{U_a}$, so its extra unit-line child in (A.9)
+also has $\lambda=2$. This flag selects an operator, not an extra
+child; the rank sum $s$ is unchanged.
+
+At selected width $e=Mf$, each rank-$a$ edge uses exactly $a$ width-$f$
+children, one for each orthogonal basis direction. With $s$ the total
+child count (A.9), and $W$ roles, normalized time obeys
+\[
+ F(e;h)\le (s/W)F(e/M;h)
+       +O\!\left(\operatorname{polylog}(L+2)
+          (e^\tau+\operatorname{polylog}(L+2))\right).       \tag{A.16}
+\]
+The additive term includes dirty-selector shears, prefix exception
+repairs, basis placements and current-parent tape parking. Put
+$\sigma=\log_M(s/W)$. Exact unrolling gives
+\[
+ O(e^{\max\{\sigma,\tau\}}\operatorname{polylog}(L+2)).
+\]
+Equality $\sigma=\tau$ adds only $\log e=O(\log L)$. Here the
+reconstructed interchange permits $\tau=1-2^{-36}$ and $\sigma<\tau$,
+so the ratio $(s/W)/M^\tau$ is strictly below one and the bound is
+\[
+ O(e^\tau\operatorname{polylog}(L+2)).
+\]
+No additional exponent
+slack is required at this step.
+Arbitrary active counts are
+partitioned into base-$M$ power-width groups; digit-conditioned groups
+partition each mask's active ranks, and each top-level placement is
+performed once per group, not again in every child. Hence the complete
+$A^{\otimes h}$ tensor has a strict exponent in $h$, relative to the
+stated interchange and weighted-mask suppliers.
+
+\subsection{Codec field and explicit positive word for $H_2\otimes H_2$}
+
+The address field $\mathbb F_3$ above is not the phase field. For the
+constant word use
+\[
+ E=\mathbb F_2[t]/(t^4+t+1),\qquad \eta=t^5=t^2+t.
+\]
+The quartic has no root in $\mathbb F_2$ and remainder $1$ modulo the
+only irreducible quadratic $t^2+t+1$, so it is irreducible. Thus
+$E=\mathbb F_{16}$, it contains $\mathbb F_4=\mathbb F_2(\eta)$, and
+$\eta^2+\eta+1=0$. The four-state phase letter is
+\[
+ A=(\eta I_3+\eta^2J_3)\oplus[1]=C\oplus[1].
+\]
+It acts separately on the two $\mathbb F_4$ coefficient planes in
+$E=\mathbb F_4\oplus t\mathbb F_4$. Its inverse is $A^2$.
+The inverse-phase wrapper on these planes is
+\[
+ \widehat\sigma(a+tb)=a^2+t b^2\quad(a,b\in\mathbb F_4),       \tag{A.17}
+\]
+which applies the $\mathbb F_4$ Frobenius to each plane and fixes the
+codec basis element $t$. It is $\mathbb F_2$-linear and is not ordinary
+$\mathbb F_{16}$ squaring.
+In the polynomial basis $(1,t,t^2,t^3)$ it is the explicit map
+\[
+ (c_0,c_1,c_2,c_3)\longmapsto
+ (c_0+c_2+c_3,\ c_1+c_3,\ c_2,\ c_3).
+\]
+Indeed $a_0=c_0$, $a_1=c_2+c_3$, $b_0=c_1+c_2+c_3$ and
+$b_1=c_3$ in $a=a_0+a_1\eta$, $b=b_0+b_1\eta$.
+Three in-place XORs implement it, and repeating them gives the identity.
+For $\lambda\in\F_4$,
+$\widehat\sigma(\lambda z)=\lambda^2\widehat\sigma(z)$.
+Consequently coefficientwise conjugation gives
+\[
+ \widehat\sigma C\widehat\sigma
+   =\eta^2I_3+\eta J_3=C^2=C^{-1},
+ \qquad
+ \widehat\sigma(C^{\otimes f})\widehat\sigma
+   =(C^{-1})^{\otimes f}.
+\]
+This holds on arbitrary $E$-valued inputs. The two passes cancel on
+idle or ineligible coordinates; either pass alone can change their
+coefficient values. Both passes act within the existing four-bit lanes,
+in $O(V)$ time around one child. Ordinary $E$ squaring used on both
+sides would fail even on an idle value $t$, sending it to
+$t^4=t+1$ instead of $t$. The semilinearity assertion is only for
+$\F_4$ scalars, not arbitrary $E$ scalars.
+
+Here is the explicit word construction. Put $a=\eta^2$ and $b=\eta$;
+use column vectors and rightmost-first composition. Then
+\[
+ A^3=I,\quad A^{-1}=A^2,\quad
+ u=(1,a,a,0)^T,\quad v=(1,b,b,0)^T,\quad
+ P=AE_{11}A^{-1}=uv^T,
+\]
+with $v^Tu=1$, hence $P^2=P$. Let
+\[
+ D=\operatorname{diag}(t,1,t+1,1),\quad Q=DPD^{-1}=x_0y_0^T,
+\]
+where $x_0=(t,a,a(t+1),0)^T$ and
+$y_0=(t^{-1},b,b/(t+1),0)^T$. Direct products give
+\[
+ v^Tx_0=0,\qquad y_0^Tu=\kappa
+ =\frac{t^2+t+1}{t(t+1)}\ne0,
+ \qquad PQ=0,\quad QP=\kappa x_0v^T.                 \tag{A.18}
+\]
+For idempotents $P,Q$ with $PQ=0$,
+\[
+ [I+cP,I+dQ]=I+\frac{cd}{1+c}QP.                    \tag{A.19}
+\]
+This follows by using $(I+cP)^{-1}=I+c(1+c)^{-1}P$ and
+$QPQ=0$. With $c=d=\eta^2$, $cd/(1+c)=1$. Thus
+\[
+\begin{aligned}
+ G&=A\operatorname{diag}(\eta,1,1,1)A^{-1}=I+\eta^2P,\\
+ H&=DGD^{-1}=I+\eta^2Q,\\
+ T_0&=GHG^{-1}H^{-1}=I+\kappa x_0v^T.
+\end{aligned}\tag{A.20}
+\]
+Each of $G,H,G^{-1},H^{-1}$ uses three forward $A$ letters after
+replacing inverse $A$ by $A^2$, so $T_0$ uses 12.
+
+The remaining conjugations isolate an elementary matrix. Set
+\[
+ B=\operatorname{diag}(1,\eta,\eta,1),\quad
+ x=(t,1,t+1,0)^T,\quad w=(1,1,1,0)^T.
+\]
+Then $T_1=BT_0B^{-1}=I+\kappa xw^T$ (12 $A$ letters). Let $P_{12}$
+swap coordinates 1 and 2. Since $w$ is fixed and $w^TP_{12}x=0$,
+\[
+ T_2=T_1P_{12}T_1P_{12}^{-1}
+   =I+\kappa(t+1)(e_1+e_2)w^T                       \tag{A.21}
+\]
+uses 24 $A$ letters. With $D_3=\operatorname{diag}(1,1,\eta,1)$,
+\[
+ T_3=T_2D_3T_2D_3^{-1}
+   =I+\kappa(t+1)\eta(e_1+e_2)e_3^T                \tag{A.22}
+\]
+uses 48; the two cross pairings vanish and the row sum is
+$(1+\eta^{-1})e_3^T=\eta e_3^T$. With
+$D_1=\operatorname{diag}(\eta,1,1,1)$,
+\[
+ T_4=T_3D_1T_3D_1^{-1}
+   =I+\kappa(t+1)E_{13}                             \tag{A.23}
+\]
+uses 96; the cross pairings vanish and the column factor is
+$1+\eta=\eta^2$. Put $\mu=\kappa(t+1)\ne0$; then
+\[
+ T_5=\operatorname{diag}(\mu^{-1},1,1,1)
+       T_4\operatorname{diag}(\mu,1,1,1)=I+E_{13}.  \tag{A.24}
+\]
+All conjugating factors are invertible monomial matrices. Coordinate
+permutations produce every $U_{ij}=I+E_{ij}$ with the same 96 forward
+$A$ letters. This is an explicit formula, not an uncomputed word search.
+
+Finally write $H_2=US$, with $U=I+E_{12}$ and $S$ the two-coordinate
+swap. In ordered coordinates $(00,01,10,11)$, put
+\[
+ P_{\rm first}=(1\ 3)(2\ 4),\qquad
+ P_{\rm second}=(1\ 2)(3\ 4).
+\]
+Then, using the four explicit elementary-matrix words,
+\[
+ H_2\otimes H_2
+ =U_{13}U_{24}P_{\rm first}U_{12}U_{34}P_{\rm second}.       \tag{A.25}
+\]
+There are four $U_{ij}$ factors, hence $4\cdot96=384$ forward $A$
+letters; the remaining factors expand to 392 invertible monomial
+letters, for 776 total. The completed matrix has entries in $\mathbb F_2$.
+As an $\mathbb F_2$-linear map on the four binary coordinates of an
+$E$-symbol, it applies $H_2\otimes H_2$ independently to each coordinate
+plane. Thus a binary $0/1$ embedding returns to $0/1$, and any zero lane
+used for padding returns to zero at the completed word. An arbitrary
+$E$-valued input need not return to the scalar subfield. Intermediate
+$E$ lanes must not be cropped.
+When four arbitrary payload bits are packed into one $E$ symbol,
+all four coefficient planes remain data; only extra zero bits from
+the final partial group are removed. No projection $E\to\F_2$
+is applied to such a packed symbol.
+
+Pairing $2h$ identical native endpoint axes and tensoring this fixed word
+reduces their algebraic action to $A^{\otimes h}$ letters and fixed
+monomial letters. The permutation part of each monomial is in
+$\mathrm{AGL}(2,\mathbb F_2)=S_4$: its NOT/CNOT address shears and the
+product of its $h$ diagonal $E$ scalars are charged by the separately
+supplied native mask/routing and record-scan interfaces. The active-sector
+role construction reduces the $A^{\otimes h}$ letters. The native
+large-even-radix endpoint appendix supplies their tape price. No binary
+$2^k$-axis H2 bound is asserted here; that requires a distinct binary
+mask-routing argument and is not needed for the manuscript's native
+endpoint interface.
+For precision, write a monomial as $M_{\pi(d),d}=m_d$, with
+$m_d\in E^*$. Apply the coefficient $\prod_i m_{d_i}$ at its current
+\emph{source} address, then route by $\pi^{\otimes h}$. Equivalently
+an output-address scan would use $\prod_i m_{\pi^{-1}(e_i)}$.
+Using the source-indexed list unchanged after routing is generally
+incorrect. Tensoring the fixed word is letterwise:
+$(L_1\cdots L_{776})^{\otimes h}
+ =L_1^{\otimes h}\cdots L_{776}^{\otimes h}$.
+Thus there are 384 tensor phase calls, not 384 separate calls per axis.
+
+\paragraph{Scope.}
+The mask shears used here are constructed independently in
+Section~\ref{sec:weighted-native-mask}; interchange is proved in
+Appendix~\ref{app:swap}. The mask lemma never calls the later native
+H2 tensor theorem. Conversely the rational interchange proof uses
+only the scalar incidence motif and finite subspace inclusions, not
+this phase recursion. These cross-references follow an acyclic
+dependency order, despite the order in which appendices are printed.
+
+Equations (A.5)--(A.10) give the finite scratch-safe routing and strict
+rank saving; (A.11)--(A.16) give the active/idle and dirty-selector
+interface with inherited mask eligibility; (A.17)--(A.25) give the
+explicit positive word. Their tape implementation is relative to the
+separately proved weighted-native-mask and equal-chunk interchange
+suppliers. The appendix does not reprove those tape suppliers, the ordinary
+polynomial multiplication composition, or external acceptance of the
+claimed asymptotic result.
+

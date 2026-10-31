@@ -1,0 +1,232 @@
+{
+  "revision": "2026-10-31",
+  "scope": "General fixed-field source-inspection/copy audit; original copy stage executed no proofs; later finite-premise replay and final PDF compilation recorded separately",
+  "claimDecision": {
+    "unconditionalBaseline": "O_q(n log(n+2)) follows as a weaker corollary of the all-fields theorem",
+    "oddClaim": "O_{p,e}(n log(n+2)^(9999/10000)) for each fixed odd field, using bundled host transfer/native proof and named Stage2 source",
+    "allFieldsBound": "O_q(n log(n+2)^(1-2^-38)) from controlled-tensor binary theorem, its fixed-extension corollary, and the odd-field proposition"
+  },
+  "originalSources": [
+    {
+      "path": "investigation/fuerer_refinement/odd_cyclotomic_host_transfer.tex",
+      "sha256": "f5d5e43aed3f29515c76a85aa9ba3eb7f85f6f29e1e1c25f48b6802de6fc29ac",
+      "bytes": 8804
+    },
+    {
+      "path": "investigation/fuerer_refinement/odd_grouped_native_transfer.tex",
+      "sha256": "65df48c3a1191a1dde02e331f3a47e287cb80e0d576eb74c13ea09320be9914e",
+      "bytes": 26311
+    },
+    {
+      "path": "investigation/major_odd_phase/paper/main.tex",
+      "sha256": "3ea8ddde648a7cccfa01f25f97c673b3f546ca5d83e98d8f913ed3e93d2c73ee",
+      "bytes": 380818
+    },
+    {
+      "path": "investigation/odd_characteristic/ODD_CYCLOTOMIC_HOST_TRANSFER_20261030.txt",
+      "sha256": "7f192f822c0d54ddd024fa7d58f156366abfc1b4b7c1c1c13af29cc0f9e2d02c",
+      "bytes": 24175
+    },
+    {
+      "path": "investigation/odd_characteristic/ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt",
+      "sha256": "4e31978dd40ac5a83469231059fa3608fc4abd4b51a8dfbb8beb8b9c3eec2d0c",
+      "bytes": 23323
+    },
+    {
+      "path": "investigation/PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt",
+      "sha256": "4aaf169d5d1fdcc4819b2fb218593972f761df910ccf70fda0a982012b2b0549",
+      "bytes": 8935
+    },
+    {
+      "path": "investigation/odd_characteristic/odd_cyclotomic_completion_audit_20261030.json",
+      "sha256": "a658d2a21d701576845e048a280074cc062f030459c83e89e707ccbfaf1b9ad8",
+      "bytes": 4842
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/main.tex",
+      "sha256": "a66ddeec1ba3c362b3b1a80645b8f693c923ab137b8f660bb05c4cf11656607c",
+      "bytes": 3423
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/model.tex",
+      "sha256": "43c6cb572097344205179d5d286ccdb808a982abf9b99d44a5ef409611c41b71",
+      "bytes": 5047
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/tensor.tex",
+      "sha256": "680bcc3e78b6363203bd434d29657e465f805b4ee9b5bccf96ee37ba8083eb2f",
+      "bytes": 32666
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/03-best-binary/main.tex",
+      "sha256": "0613daa098a3abd337aed7a4bf08a667a6c4368f2e8facff76c17a1bb7f341e5",
+      "bytes": 11529
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/03-best-binary/native_transform_and_radix.tex",
+      "sha256": "36bcdb370f347b0e4123ab2592042b712448c6af4946a607e9c19289ccc38f4a",
+      "bytes": 15408
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/03-best-binary/e8_order3_and_orthogonal_trees.tex",
+      "sha256": "0bde02a60aaa296718f9d11470882748c889011ddd9d8a9bcb893fe82b353b3f",
+      "bytes": 56010
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/03-best-binary/LAYER_COMPILER_AUDIT.md",
+      "sha256": "82432c925a91ba50a2be15cd11490e7ef82dce16cd365f6e60f8e3b7bc6d57ce",
+      "bytes": 8679
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/03-best-binary/native_chart_source.md",
+      "sha256": "30d0853351d698fc5a83bc3abbdcc643852d97f3756958354f9cfa10f03b5d50",
+      "bytes": 11848
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/03-best-binary/ORDER3_MOVEMENT_FULL_BIT_CLOSURE.txt",
+      "sha256": "6066e0d95399a433b3ab6bb2a502f339419eb1179f57bd6c9dd6e5dc935ff638",
+      "bytes": 24317
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/03-best-binary/POSITIVE_WORD_AUDIT.md",
+      "sha256": "4343a76ed11a62c0372215a25849f1ead807c3b5568b4cf3d31048d6f8d78090",
+      "bytes": 6615
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/03-best-binary/BALANCED_RADIX_CONSTANT_WORD.txt",
+      "sha256": "5be67501a0622ed009f112a6ade6b3efd076d5944cb8a0dd23f5216357c17c22",
+      "bytes": 14518
+    }
+  ],
+  "copiedSourceRecords": [
+    {
+      "originalWorkspaceRelativePath": "investigation/fuerer_refinement/odd_cyclotomic_host_transfer.tex",
+      "originalSha256": "f5d5e43aed3f29515c76a85aa9ba3eb7f85f6f29e1e1c25f48b6802de6fc29ac",
+      "originalBytes": 8804,
+      "destination": "proofs/odd_cyclotomic_host_transfer.tex",
+      "destinationSha256": "1c6046d44f20d7e5350b87289c89b1ae20f0f8e505d3438a517d45e7ff612828",
+      "destinationBytes": 8819,
+      "editScope": "Copied full local proposition proof; links redirected to included files and prose made independent of omitted preceding theorem."
+    },
+    {
+      "originalWorkspaceRelativePath": "investigation/fuerer_refinement/odd_grouped_native_transfer.tex",
+      "originalSha256": "65df48c3a1191a1dde02e331f3a47e287cb80e0d576eb74c13ea09320be9914e",
+      "originalBytes": 26311,
+      "destination": "proofs/odd_grouped_native_transfer.tex",
+      "destinationSha256": "17adda4e972d04fdcec2efe71fba955b020e63fc5dca16d48fce40e50f27b48c",
+      "destinationBytes": 12116,
+      "editScope": "Copied proof source through end of thm:oddgroupedkernel; omitted later unused power-log section; links redirected to included files."
+    },
+    {
+      "originalWorkspaceRelativePath": "investigation/major_odd_phase/paper/main.tex",
+      "originalSha256": "3ea8ddde648a7cccfa01f25f97c673b3f546ca5d83e98d8f913ed3e93d2c73ee",
+      "originalBytes": 380818,
+      "destination": "proofs/native_odd_source_snapshot.tex.txt",
+      "destinationSha256": "3ea8ddde648a7cccfa01f25f97c673b3f546ca5d83e98d8f913ed3e93d2c73ee",
+      "destinationBytes": 380818,
+      "editScope": "Current monolithic native-source snapshot copied without edits."
+    },
+    {
+      "originalWorkspaceRelativePath": "investigation/odd_characteristic/ODD_CYCLOTOMIC_HOST_TRANSFER_20261030.txt",
+      "originalSha256": "7f192f822c0d54ddd024fa7d58f156366abfc1b4b7c1c1c13af29cc0f9e2d02c",
+      "originalBytes": 24175,
+      "destination": "proofs/ODD_CYCLOTOMIC_HOST_TRANSFER_20261030.txt",
+      "destinationSha256": "cdefd68a1468dec0de41479d79fecee972bd593d1616bac6443665b90ac2e8f5",
+      "destinationBytes": 24117,
+      "editScope": "Source-path references replaced with bundled transfer and native proof filenames; source dependency scope clarified."
+    },
+    {
+      "originalWorkspaceRelativePath": "investigation/odd_characteristic/ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt",
+      "originalSha256": "4e31978dd40ac5a83469231059fa3608fc4abd4b51a8dfbb8beb8b9c3eec2d0c",
+      "originalBytes": 23323,
+      "destination": "proofs/ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt",
+      "destinationSha256": "ac4f78a568a83564bdb0b5ffd995337173a3af9db5500c3d3b2f117eb5b4c7b3",
+      "destinationBytes": 22843,
+      "editScope": "Proof-source list updated to the bundled proof snapshot; older audit is not claimed to bind current bytes."
+    },
+    {
+      "originalWorkspaceRelativePath": "investigation/PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt",
+      "originalSha256": "4aaf169d5d1fdcc4819b2fb218593972f761df910ccf70fda0a982012b2b0549",
+      "originalBytes": 8935,
+      "destination": "proofs/PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt",
+      "destinationSha256": "4a933470c8ec3137e3c0e94dad0227b328e0f43a12188076fdf3ae77485289d5",
+      "destinationBytes": 8812,
+      "editScope": "Removed reference to an unbundled local audit; immutable upstream theorem, commit, adapter details, and hash retained."
+    }
+  ],
+  "externalDependencies": [
+    {
+      "name": "Harvey and van der Hoeven cyclotomic host",
+      "url": "https://www.texmacs.org/joris/cyclomult/cyclomult.pdf",
+      "scope": "Fixed-prime host and root construction"
+    },
+    {
+      "name": "IntegerMultBounds.MathlibTM2.M8.Stage2Machine.Bound.uniform_bound",
+      "url": "https://github.com/platypii/integer-mult-bounds-lean/blob/fefd699f9389af961046997796261333539e5909/IntegerMultBounds/MathlibTM2/M8/Stage2Machine/Bound.lean",
+      "commit": "fefd699f9389af961046997796261333539e5909",
+      "sourceSha256": "97bb4fb5a883e0c90c53173355cf310ac56e2d28860679a13b2854f91cd2ad2a",
+      "scope": "Named fixed-tape ordinary-bit interchange supplier only"
+    }
+  ],
+  "destinationFiles": [
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/01-general/main.tex",
+      "sha256": "53f7081776790aaf99aaaef44a5eb2fa75ec7682b4c77b8ddcc62cdd70685be0",
+      "bytes": 20139
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/01-general/STATUS.md",
+      "sha256": "88996ccb92b82630d577c639af642a04c64cae6d101198203729587fe1069d38",
+      "bytes": 6771
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/01-general/proofs/PROOF_SOURCES.md",
+      "sha256": "5b30718b8553c300c278e691c4e3867215706fea7953b10cdab2bf77aa77ee2f",
+      "bytes": 5165
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/01-general/proofs/odd_cyclotomic_host_transfer.tex",
+      "sha256": "1c6046d44f20d7e5350b87289c89b1ae20f0f8e505d3438a517d45e7ff612828",
+      "bytes": 8819
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/01-general/proofs/odd_grouped_native_transfer.tex",
+      "sha256": "17adda4e972d04fdcec2efe71fba955b020e63fc5dca16d48fce40e50f27b48c",
+      "bytes": 12116
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/01-general/proofs/native_odd_source_snapshot.tex.txt",
+      "sha256": "3ea8ddde648a7cccfa01f25f97c673b3f546ca5d83e98d8f913ed3e93d2c73ee",
+      "bytes": 380818
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/01-general/proofs/ODD_CYCLOTOMIC_HOST_TRANSFER_20261030.txt",
+      "sha256": "cdefd68a1468dec0de41479d79fecee972bd593d1616bac6443665b90ac2e8f5",
+      "bytes": 24117
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/01-general/proofs/ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt",
+      "sha256": "ac4f78a568a83564bdb0b5ffd995337173a3af9db5500c3d3b2f117eb5b4c7b3",
+      "bytes": 22843
+    },
+    {
+      "path": "output/finite-field-polynomial-multiplication-first-release/papers/01-general/proofs/PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt",
+      "sha256": "4a933470c8ec3137e3c0e94dad0227b328e0f43a12188076fdf3ae77485289d5",
+      "bytes": 8812
+    }
+  ],
+  "sourceIntegrityCaveat": "Current native_odd_source_snapshot.tex.txt hash differs from the older completion-audit binding; the current source copy is frozen and the old audit is not presented as hash-matched to the current source.",
+  "hashNote": "audit.json does not include its own hash to avoid self-reference.",
+  "final_packaging": "Author/contact, date/version/Apache-2.0 footer, PDF metadata and theorem-environment typography finalized by root; source claim boundary unchanged. Privacy/claims review: replaced guaranteed Lean delivery with a plan, clarified broader-project partial Lean scope and historical witness availability, and labelled the preprint open for mathematical review; theorem bounds unchanged.",
+  "documentation_review": "2026-10-31: clarified AI-assisted inspection attribution and earlier-copy versus final-PDF scope; mathematical source and PDF bytes unchanged.",
+  "citation_review": "2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
+  "finite_unit_evidence": {
+    "added": "2026-10-31",
+    "artifact_manifest": "papers/01-general/proofs/finite-unit/ARTIFACTS.json",
+    "artifact_manifest_sha256": "c3c0510f1a2e59d0c3668761e32c84d701b626206ed785c8eb53a7eb2324383d",
+    "fresh_replay": "verification/finite-unit-replay.json",
+    "fresh_replay_sha256": "af2be14d99c602a5e744eff1ad280dff334fc3cd1d1c57275e1c71b324608c72",
+    "scope": "Fixed native scalar endpoint, Laurent controller, direct geometry and exact profile/moment checks; not full native frame lowering, asymptotic multiplier or Lean proof",
+    "original_sources_note": "originalSources and copiedSourceRecords retain historical source hashes; destinationFiles and the finite-unit manifest identify the current release copies"
+  }
+}

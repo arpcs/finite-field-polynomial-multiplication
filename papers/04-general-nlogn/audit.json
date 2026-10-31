@@ -1,0 +1,62 @@
+{
+  "revision": "2026-10-31",
+  "version": "0.1.0-preprint",
+  "document_role": "General fixed-field n log n baseline companion; shared proof sources and explicit fixed-basis reduction",
+  "construction_scope": "New expository synthesis and elementary fixed-basis cost proof; component multipliers and their dependencies inherited with attribution",
+  "claim": {
+    "field_quantifiers": "For every individually fixed finite field F_q; machine and constants may depend on q",
+    "bound": "O_q(n log(n+2))",
+    "input_output": "Two ordinary degree-<n coefficient lists to all 2n-1 ordinary coefficients",
+    "model": "Deterministic fixed finite alphabet and fixed finite number of sequential tapes"
+  },
+  "proof_dependencies": [
+    {
+      "path": "papers/02-simple-binary/",
+      "statement": "Ordinary F2 Pascal-transform multiplier stated in the accessible companion",
+      "use": "Prime-field characteristic-two branch",
+      "inherited_dependency": "OpenAI Integer multiplication below n log n, Lemma 12, arbitrary-width equal-chunk interchange"
+    },
+    {
+      "path": "papers/01-general/",
+      "statement": "Proposition 1, odd-field ordinary product, specialized to extension degree one",
+      "use": "Odd-prime exponent 9999/10000 weakened to 1",
+      "scope": "Does not use the combined all-field theorem or controlled-CRT binary result",
+      "inherited_dependency": "Bundled odd native/host proofs and pinned Stage2Machine.Bound.uniform_bound theorem"
+    },
+    {
+      "statement": "Fixed-basis expansion over F_p",
+      "use": "e^2 ordinary component products plus fixed structure constants and O_q(n) sequential encoding, recombination and output",
+      "scope": "e is fixed independently of n"
+    }
+  ],
+  "attribution": "Primary historical finite-field results, relevant 2026 commentary, companion statements, inherited interchange sources and known Codex tool role are cited. No AI coauthor or unsupported model version is assigned.",
+  "source_files": [
+    {
+      "path": "main.tex",
+      "sha256": "9309caf99763428217434e4313b72aefa170addcfecdf58c9b0b52192242cde8",
+      "bytes": 14446,
+      "origin": "New baseline companion synthesis, 2026-10-31"
+    },
+    {
+      "path": "STATUS.md",
+      "sha256": "d0b431d965d6a25e45b9feb0ad7c39ea31e2dff06cd11ccfdcd4937fd2ad9f4b",
+      "bytes": 3394,
+      "origin": "New baseline companion synthesis, 2026-10-31"
+    },
+    {
+      "path": "citation.bib",
+      "sha256": "77dc48883fea0f745793cfc958b161f54b059a8961aa44d6b091aff29bc1a1da",
+      "bytes": 349,
+      "origin": "New baseline companion synthesis, 2026-10-31"
+    }
+  ],
+  "authoring_stage": {
+    "pdf_compiled": false,
+    "lean_run": false,
+    "scientific_computation_run": false,
+    "check": "Textual source/citation closure only; final build and layout receipts are separate",
+    "independent_human_proof_review_confirmed": false
+  },
+  "hash_note": "This audit excludes its own hash to avoid self-reference. Source hashes identify the current new files, not proof correctness.",
+  "final_document_packaging": "Final PDF compiled with the serialized document guard; build, source/PDF and selected-page layout records are maintained under verification/. Compilation does not certify the mathematics."
+}

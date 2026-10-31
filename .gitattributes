@@ -1,0 +1,8 @@
+# Preserve the exact bytes bound by release manifests and source/PDF receipts.
+# Accept CRLF without treating its carriage return as trailing whitespace.
+* -text whitespace=cr-at-eol
+
+# Markdown uses trailing spaces for hard line breaks. Retain historical
+# terminal blank lines in prose/TeX snapshots without rewriting hashed sources.
+*.md whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof
+*.tex whitespace=cr-at-eol,-blank-at-eof

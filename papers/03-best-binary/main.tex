@@ -1,0 +1,1232 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\F}{\mathbb F}
+\newcommand{\cost}{\operatorname{cost}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\polylog}{\operatorname{polylog}}
+\title{Ordinary Binary Polynomial Multiplication below $n\log n$\\
+\large Controlled tensor routing on fixed tapes}
+\author{\'Arp\'ad Csizmadia\\
+\small\href{mailto:arpad.csizmadia.public@gmail.com}{\texttt{arpad.csizmadia.public@gmail.com}}}
+\date{31 October 2026\\ \small Version 0.1.0-preprint. Apache-2.0.}
+\hypersetup{pdfauthor={\'Arp\'ad Csizmadia},pdftitle={Ordinary Binary Polynomial Multiplication below n log n}}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give a transfer from a fast equal-chunk tape interchange
+to ordinary dense multiplication in $\F_2[X]$. The main new interfaces
+are tensors of permutations on unequal even radices and a coupled
+cyclic-index to prime-residue index permutation. A flat perfect shuffle
+differs from its mixed-radix tensor by a low-endpoint cyclic rotation.
+A ragged parity-splitting network keeps the original even dimensions
+throughout its recursion. Controlled versions use completed target-only
+kernels and a temporary control gauge. A balanced CRT tree then needs
+only logarithmically many controlled tensor stages. The cyclotomic
+coefficient word can be enlarged to pay for polynomial-time address
+metadata without changing its small-word arithmetic regime. Together
+with the characteristic-two local Fourier compiler and the explicit
+interchange and endpoint-kernel constructions in the appendices, this gives
+the bound $O(n(\log n)^{1-2^{-38}})$ in the deterministic
+fixed-finite-tape bit model. This is a research preprint open for mathematical review;
+no external verification or priority is claimed.
+\end{abstract}
+
+\paragraph{AI assistance and formal verification.}
+This work was developed with substantial generative AI assistance in
+mathematical exploration, algorithm and proof development, writing,
+coding, and literature review. OpenAI Codex~\cite{CodexTool26}
+assisted release preparation and source inspection. Historical
+model versions were not consistently recorded; no complete
+model-level attribution is claimed. Complete Lean formalization is unfinished
+and planned for a later update. This manuscript is a research
+preprint open for mathematical review.
+
+\paragraph{Status and scope.}
+The input and output are ordinary monomial coefficient lists over
+$\F_2$. The function is ordinary polynomial multiplication. We count
+all address processing, padding, scalar preparation and record movement.
+The finite motif, interchange, endpoint-kernel and ordinary-I/O proofs are
+expanded in this manuscript and the selected proof-support records.
+The whole composition must be read as an actual tape construction.
+Finite checks below corroborate identities; they do not prove asymptotic
+running times. The companion manuscript, \emph{Ordinary Polynomial
+Multiplication over Every Fixed Finite Field}, is provided alongside
+this paper in the review release.
+
+\paragraph{Relationship to the companion papers.}
+The accessible companion, \emph{Exact Binary Polynomial Multiplication
+from Fast Pascal Transforms}, develops binary prefix/Taylor evaluation
+and a trace-pairing residue decoder. The present construction shares
+finite-network and equal-chunk interchange antecedents but uses a
+different outer route: a cyclotomic host, coefficient CRT components,
+a balanced CRT routing tree and ordinary cyclic-product reconstruction.
+It does not invoke the Pascal companion's complete multiplier as a
+subroutine. The general finite-field companion combines the binary
+bound proved here with its odd-characteristic construction. The present
+proof does not depend on that combined consequence, so this relationship
+is not circular.
+
+\paragraph{Prior work.}
+An earlier fixed-prime benchmark is
+\[
+ O_p(n\log n\,8^{\log^* n}),
+\]
+due to Harvey, van der Hoeven and Lecerf~\cite{HVHL17}.
+Harvey and van der Hoeven supply the unconditional cyclotomic host and
+an $O(n\log n\,4^{\log^*n})$ fixed-prime polynomial bound
+\cite{cyclomult}. Their $O(n\log n)$ finite-field theorem treats the uniform-field
+problem under an explicit near-one Linnik hypothesis \cite{ffnlogn}.
+The present fixed-binary-field construction builds on their
+unconditional cyclotomic host and supplies ordinary coefficient
+reconstruction within its stated tape cost.
+Harvey's October 2026 discussion identifies fixed-field polynomial
+multiplication as a separate problem from the new integer claims
+\cite[Section 4]{Harvey26Context}.
+Van der Hoeven and Larrieu exploit Frobenius symmetry in finite-field
+Fourier transforms, with applications to binary polynomial multiplication
+\cite{Frobenius17}. Their extension arithmetic and conversion costs
+are part of that analysis. Our stated all-length bound requires the
+complete ordinary-input/output and routing accounting developed here.
+The 2026 interchange preprint supplies the finite-network tape method
+\cite{swap}; its global integer multiplication theorem is not needed.
+The exact-complex Fourier paper supplies the local Newton/Toeplitz and
+borrowed-coordinate mechanism \cite{local}; its complex scalars and
+unit-cost indexing do not give a finite-field bit theorem directly.
+It also states an explicit exact complex-polynomial multiplication
+corollary in that arithmetic model. The corollary retains its
+specified-root and address-cost assumptions and expressly excludes
+finite fields and bit complexity. Our claimed coefficient field and
+machine model therefore require the separate transfer proved here.
+Cantor--Kaltofen \cite{cantor-kaltofen} give classical formal
+convolution circuits over arbitrary coefficient algebras. We print
+an elementary characteristic-two triadic circuit with looser
+secondary logarithms to make our required generation bound explicit.
+Arbitrary-size permutation networks have substantial prior art,
+including \cite{benes}. We make no novelty claim for their abstract
+existence. Our required statement is a priced tensor execution on
+the existing mixed-radix tape, including controls and dummies.
+Current follow-up work also studies larger integer-multiplication
+exponents \cite{integer-followups}; a separate repository states a
+finite-machine theorem for multiplication of natural numbers
+\cite{integer-lean}. We do not use those claimed end-to-end bounds
+as premises. The cited primary and related sources are listed in the
+bibliography; this is not an exhaustive priority determination.
+
+Together these works provide the host arithmetic, finite-network
+methods and transform mechanisms used in this paper. The specific
+advance claimed here is an ordinary binary polynomial multiplier
+with a fixed positive saving below the logarithmic exponent one,
+obtained by completing the controlled mixed-radix and CRT routing
+transfer. The preceding fixed-field bound and the conditional
+uniform-field theorem explain why that threshold is a meaningful
+target. The tiny saving is a theoretical asymptotic statement;
+the earlier algorithms and their structural contributions remain
+the foundations of this construction.
+
+\section{Model and supplied kernels}
+
+One machine has a fixed finite alphabet and a fixed finite number of
+one-dimensional tapes. Heads move by one cell per step. Shape parameters
+are ordinary binary integers. Arrays occur in lexicographic order.
+A record has $D$ arbitrary bits, and $V$ denotes the entire bit volume.
+Public addresses are positions of records, never payload controls.
+
+We reconstruct the following interchange and endpoint kernels in the
+appendices, with further implementation detail in the companion dossier.
+Their dependency direction is explicit: the rational-frame interchange
+uses the binary scalar motif and ordinary scans; the endpoint kernel
+then uses interchange and the finite ternary-phase word. The
+interchange proof never invokes H2 or a polynomial multiplier.
+
+\begin{proposition}[Interchange and native endpoint kernels]
+\label{prop:suppliers}
+There is a fixed $\tau=1-2^{-36}<1$ such that equal address chunks
+in $[P]\times[2^u]\times[G]\times[2^u]\times[B]$ can be interchanged in
+$O(Vu^\tau)$ bit time, uniformly in positive $P,G,B$.
+Put $\gamma=1/(2-\tau)<1$; aggregate rectangular exchanges have cost
+$O(VL^\gamma)$ for total address width at most $L$.
+
+Let $n_i$ be even native radices, $M=\prod_i n_i$,
+$L=\lceil\log_2(2M)\rceil$, and
+\[
+ L^3\le n_i\le R,\qquad \log R=O((\log L)^c).
+\]
+On each adjacent pair $(2a,2a+1)$ put
+$H=\left(\begin{smallmatrix}1&1\\1&0\end{smallmatrix}\right)$.
+The tensor of these canonical native $H$ maps has cost
+$O(MD L^\gamma\operatorname{polylog}L)$, uniformly for external $D\ge1$.
+All private padding and work-tape returns are included.
+\end{proposition}
+
+Appendix~\ref{app:swap} supplies interchange directly, re-instantiating
+the method of \cite{swap}; Appendices~\ref{app:finite-phase} and
+\ref{app:native-endpoint} prove the endpoint consequence. Thus the fast
+interchange statement is reconstructed here, rather than left as an
+unproved existence premise of the multiplication transfer.
+
+The native kernel uses the quotient labels as carry guards, rather
+than individually padding the native radices. A frozen endpoint mask
+on $u$ digits is a constant word of weighted integer rotations plus
+exact sparse boundary repair. A large untouched suffix supplies a dock
+and exponentially many opaque lanes. Its numerical padding survives
+the complete binary kernel, including every internal $\F_{16}$ letter.
+The supplier proof must retain those lifetimes.
+
+\paragraph{Deriving the aggregate rectangle bound.}
+For completeness, interchange two adjacent binary fields of widths
+$a,b$, with $a+b\le L$. Choose an integer threshold
+$u=\lceil L^{1/(2-\tau)}\rceil$. While both residual fields have
+width at least $u$, use the block-exchange Euclidean algorithm.
+If $a\le b$, split the second field into its first $a$ bits and the
+remaining $b-a$, exchange the two equal $a$-bit fields, and retain
+the already placed prefix. The other case is symmetric. Each step
+removes its shorter width $v$ from the unresolved total. Thus the
+sum of those $v$ is at most $L$, and, since $\tau-1<0$,
+\[
+ \sum_{v\ge u}O(Vv^\tau)
+   \le O(Vu^{\tau-1})\sum v
+   =O(VLu^{\tau-1}).
+\]
+When one residual field has width below $u$, move its bits individually
+through the other field, at $O(V)$ per bit, using streamed two-row
+chunk interleaves. Each suffix block is copied as a block, with
+amortized counters. The last cost is $O(Vu)$.
+Move a right-hand short field's bits first to last to the front of
+the long field; move a left-hand short field's bits last to first
+after it, retaining already placed bits. Both routes preserve the
+short field's internal order.
+Both terms are $O(VL^\gamma)$ for $\gamma=1/(2-\tau)$.
+All calls keep the same full volume $V$ and already placed fields are
+spectators. For rational fixed $\tau$, an integer power comparison
+computes the threshold; its polynomial-in-$L$ setup fits in the
+array volume. To exchange native aggregate ranges, pad each whole
+range once to a binary range (combined factor below four), perform
+this exchange and crop the nested valid rectangle after completion.
+There is no separate pad for each native axis.
+
+\section{A tensor perfect shuffle}
+
+Write $n_i=2k_i$ with the first digit most significant. Define
+\[
+ S_i(k_i h_i+\ell_i)=2\ell_i+h_i,
+ \quad h_i\in\{0,1\},\quad 0\le\ell_i<k_i.
+\]
+Also define $d_M(X)=2X\bmod(M-1)$ for $X<M-1$ and fix $M-1$.
+Splitting the flat stream into its two halves and interleaving records
+implements $d_M$ in $O(V)$ time.
+
+\begin{lemma}[Post-shuffle endpoint correction]
+\label{lem:shuffle}
+The tensor $\bigotimes_i S_i$ and its inverse have cost
+$O(VL^\gamma\polylog L)$ under Proposition~\ref{prop:suppliers}.
+\end{lemma}
+\begin{proof}
+For $x_i=k_i h_i+\ell_i$ and incoming carry $c\in\{0,1\}$,
+\[
+ 2x_i+c=n_i h_i+(2\ell_i+c).
+\]
+The outgoing carry is exactly $h_i$, independent of $c$.
+End-around doubling therefore has output
+$y_i=2\ell_i+h_{i+1}$, cyclically in $i$.
+Consequently
+\[
+ \bigotimes_i S_i=r\circ d_M,\qquad
+ r(y)_i=2\lfloor y_i/2\rfloor+(y_{i-1}\bmod2).
+\]
+This rotates low endpoint bits \emph{after} the flat shuffle; it does
+not require a cheap rotation of the original high-half bits.
+
+Index the axes from zero. Reverse endpoint bits on $[0,t-1)$ and then
+on $[0,t)$. A bit at $i<t-1$ moves first to $t-2-i$ and then to $i+1$;
+the last bit moves to zero. This is precisely $r$. For a reversal
+$[a,b)$, a left-half interval $I=[c,d)$ pairs with
+$J=[a+b-d,a+b-c)$, in reverse local order. Partition the left half
+into such intervals of length $u\le h$, where
+\[
+ \ell_R=\lceil\log_2R\rceil,\qquad
+ h=\min\{\lfloor t/16\rfloor,\lfloor L/(40\ell_R)\rfloor\}.
+\]
+The complement of two selected intervals has at most three linear
+intervals. Since $t\ge16h$, one has at least $u$ axes; choose a
+contiguous $u$-axis tile auxiliary $W$ there.
+
+Place the two selected banks $X,Y$ and $W$ at the front in that order.
+Extract them successively from the remaining axis list: at each step
+exchange the whole preceding aggregate gap with the requested interval.
+At most three adjacent aggregate rectangle exchanges suffice. All
+unselected axes keep their relative order; reverse the same exchanges
+after the batch. Each exchange crops its two aggregate pads before the
+next one and costs $O(VL^\gamma)$. No endpoint gather is performed.
+
+With $\pi(j)=u-1-j$, the chronological endpoint masks
+$Y_{\pi(j)}\mathrel{\oplus}=X_j$,
+$X_j\mathrel{\oplus}=Y_{\pi(j)}$,
+$Y_{\pi(j)}\mathrel{\oplus}=X_j$
+exchange the paired bits. Each reads only the opposite frozen bank
+and uses $W$ as its separate dirty tile auxiliary; its weighted offset
+uses the target bank's own native place values. Every quotient label
+is fixed. The three banks use at most $3L/40$ address bits. After
+padding the one remaining suffix to $2^s$ and borrowing a dock of
+width $c\le L/40+1$, its low index supplies
+$R_{\rm op}=2^{s-c}D\ge2^{9L/10-O(1)}D$ opaque bits per record.
+This pays the weighted-mask metadata and exact boundary repair even
+when $D=1$. There are no phase-role bits in these direct masks.
+The completed masks restore the dock and fix the low suffix index,
+so the suffix pad is cropped before the inverse layout.
+
+Each mask costs $O(V(u\log R)^\tau+V)$.
+Since $\gamma>\tau$ and $h\log R\le L/40$, a batch costs
+$O(VL^\gamma)$. From $L-2<\log_2M\le t\log_2R$,
+$h\ge L/(80\ell_R)$ for sufficiently large admissible $L$.
+Together with $t\le L/(3\log_2L)$ this gives $O(\log R)$ batches.
+Summing proves the bound. Reversing the actual word gives the inverse;
+the bounded remaining range uses a direct finite branch.
+\end{proof}
+
+\section{Permutations on exact even dimensions}
+
+An adjacent pair can select either $I$ or the exchange matrix $J$.
+Over $\F_4$, both have a common word of exactly eight $H$ letters
+interleaved with unit diagonals. Tensoring a slot uses the supplied
+canonical kernel. The diagonal coefficient factors by local axes;
+its lexicographic list is generated by prefix products in $O(M)$
+fixed-field operations. The completed word is binary. Its lane pad
+can be removed only at that completed boundary.
+
+Odd-start adjacent matchings are conjugates by coordinatewise $+1$.
+Explicitly, if $T(x)=x+1\bmod n$, an odd-start pair $(i,i+1)$ is
+$TKT^{-1}$ with $K$ switching $(i-1,i)$. Set $K=I$ on every
+irrelevant pair, in particular $(n-2,n-1)$ whose conjugate would
+wrap to $(n-1,0)$. Thus the completed matching has no cross-boundary
+or wrap switch, even when its temporary $K$ crosses a ragged parent
+boundary.
+At a synchronized odd-start stage, translate every axis in the fixed
+target set, including axes whose matching is identity. Choose $K=I$
+on those axes; conjugation then cancels their translations. Thus the
+translated set, flat offset and source mask are independent of switch
+settings, including any control address in the controlled compiler.
+This selective translation costs $O(V)$: flat rotation by the sum of
+the selected native place values agrees except when a selected digit
+wraps. The exceptional fraction is at most $t/L^3\le L^{-2}$.
+Rotate the good-source mask with the payload. For bad output slots,
+compute $x=P^{-1}(y)$ and the correct destination $T(x)$, sort those
+records by destination, and refill the holes. Since $P=T$ on good
+sources and both are permutations, $P(B)=T(B)$. This does not assume
+that the bad source set is invariant. Keys, record sorting and
+schoolbook decoding cost
+\[
+ O(\delta ML(D+L)+\delta ML^2)=O(V).
+\]
+Here the $L^2$ exception-address bound does not perform $t$ full
+$L^2$ divisions. If $b_i=\lceil\log_2n_i\rceil$, then
+$\sum_i b_i\le2L$. Streaming a current at-most-$L$-bit numerator
+through a $b_i$-bit remainder register divides by $n_i$ in
+$O(Lb_i+L+b_i)$ tape steps. Summing gives $O(L^2)$ for all digits;
+the weighted Horner reconstruction has the same bound.
+
+The source-good mask also has a linear implementation. Starting with
+one bit, append native factors in their physical order. For each bit
+$a$ of the previous mask, print $a$ for the $n_i-1$ nonmaximal values
+and zero at the maximal value if axis $i$ is selected; otherwise
+print $n_i$ copies of $a$. Counter reset work is at most its ensuing
+$n_i$-bit output block. Since the intermediate mask lengths grow by
+factors at least two, their sum is below $2M$. Rotate that mask with
+the flat data permutation, so it marks exactly the output holes $P(B)$.
+Compute and copy a full key only at a bad record. A monotone output
+counter otherwise advances amortized in $O(M)$ total time. Stable
+binary radix sorting in $L$ passes costs
+$O(KL(D+L))$ for $K\le\delta M$ bad records, including the full
+payload and header scans. In each pass stage one fixed-width item,
+remember its selected key bit, and copy the item to the corresponding
+stable zero/one bucket. Concatenate the buckets and rewind; a constant
+number of tapes and $O(K(D+L))$ steps suffice per pass, including
+staging and returns. Binary counters have amortized linear cost over
+each scan; their per-item resets cost at most that item's width.
+Since the sorted destinations are exactly
+$P(B)=T(B)$, refill bad holes in that order; there is no $L$-bit key
+comparison at each good position. This establishes the stated bound
+even for $D=1$. The negative translation uses nonzero-digit source
+masks and the same proof.
+
+\begin{lemma}[Ragged global-shuffle network]
+\label{lem:ragged}
+Every permutation of an original even $n$ has a word of $O(\log n)$
+levels consisting of adjacent switches and the \emph{same} full $S_n$
+and $S_n^{-1}$. No recursive odd-sized child is padded.
+\end{lemma}
+\begin{proof}
+At a level, the residual permutation preserves \emph{each} interval
+setwise in a public ordered partition into contiguous parents.
+Pair positions from each parent's
+start, leaving its last position unmatched if its size is odd.
+Use the same output pairing. The bipartite multigraph has input
+pair/singleton vertices, output pair/singleton vertices, and one edge
+per packet. Even parents give even cycles. An odd parent gives one
+path between its two singleton vertices, plus even cycles. That path
+has an odd number of edges. Its endpoint edge colors can both be
+forced to the global parity of the parent's last position.
+
+Alternating edge colors give input switches $E_{\rm in}$ and output
+switches $E_{\rm out}$ so that the residual has identity
+\[
+ \pi=E_{\rm out}S_n C S_n^{-1}E_{\rm in}.
+\]
+The full inverse shuffle stably splits global even and odd positions.
+For original even $n$, write this split as
+\[
+ p_n(x)=S_n^{-1}(x)=
+ \begin{cases}
+ x/2,&x\text{ even},\\
+ n/2+(x-1)/2,&x\text{ odd}.
+ \end{cases}
+\]
+A parent interval $[a,b)$ therefore has the two image fragments
+\[
+ \left[\left\lceil a/2\right\rceil,\left\lceil b/2\right\rceil\right),
+ \qquad
+ \left[n/2+\left\lfloor a/2\right\rfloor,\,
+       n/2+\left\lfloor b/2\right\rfloor\right).
+\]
+The even fragments concatenate to $[0,n/2)$ and the odd fragments
+to $[n/2,n)$, skipping empty fragments.
+The new contiguous block list is
+\[
+ [\text{all parents' even fragments}]
+ [\text{all parents' odd fragments}].
+\]
+The endpoints depend only on $n$ and the parent partition, independently
+of $\pi$ and its switch colors. The residual $C$ preserves each new
+fragment setwise. The recursive call is on this single $n$-wire
+residual with the whole updated partition. Thus each level adds only
+a fixed number of slot types to one recursive word.
+Track this order; do not gather siblings. Each fragment has size at most
+the ceiling of half its parent. After $\lceil\log_2n\rceil$ levels all
+blocks are singletons. Each adjacent switch stage splits into its
+even-start and odd-start families. Short axes can continue passive
+singleton levels; their remaining shuffles cancel on unwind.
+\end{proof}
+
+Synchronize the networks for all axes to $\lceil\log_2R\rceil$ levels.
+Lemmas~\ref{lem:shuffle}--\ref{lem:ragged} and the adjacent-switch
+words give a generic local-permutation tensor cost
+\begin{equation}
+ \label{eq:generic}
+ O(VL^\gamma\polylog L).
+\end{equation}
+This retains the parameter of the supplied kernels: each adjacent-switch
+word uses a fixed number of native-$H$ calls, each shuffle has the
+same $\gamma$ tariff, and there are $O(\log R)$ levels. Translations
+and fixed-field diagonal scans cost $O(V)$. Thus synchronization adds
+only a fixed power of $\log L$. Public local tables and network
+settings have polynomial-time sequential generation in $R,L$.
+
+\section{Controlled tensors and the control gauge}
+
+Partition axes into targets $T$ and controls $C$. For each control
+address $c$ let $\pi_i(c)$ be a permutation on target axis $i$.
+Controls are address coordinates, not input-dependent payload values.
+
+\begin{lemma}[Controlled compiler]
+\label{lem:controlled}
+Let $G(R,L)\ge1$ bound the time to generate one outer $\F_4$ scalar
+coefficient at a current record address, including address decoding,
+control-gauge inversion, all required local tables and ragged settings.
+Assume this is a fixed polynomial-time sequential procedure with fixed
+tapes. Then the controlled map
+\[
+ (c,x_T)\longmapsto(c,(\pi_i(c)(x_i))_{i\in T})
+\]
+has bit cost
+\[
+ O\bigl((MDL^\gamma+MG(R,L))\polylog L\bigr)
+\]
+with fixed tapes and ordinary order. In particular $G(R,L)=O(D)$
+gives \eqref{eq:generic}. For the explicit CRT families below,
+$G(R,L)=O((R+L+2)^{12})$; thus $D\ge(R+L+2)^{64}$ suffices.
+\end{lemma}
+\begin{proof}
+First construct the completed subset kernel
+$K_T=H_T\otimes I_C$. Use a static common eight-$H$ word for $H$ versus
+$I$, tensoring each inner letter across all axes. The control axes may
+move \emph{inside} this implementation. At its completed boundary,
+$K_T$ fixes them. Insert controlled scalar stages only between completed
+$K_T$ calls. The outer eight-$H$ switch word is then valid on each
+fixed-control fiber. Its coefficient is
+$\kappa(x,c)=\prod_{i\in T}\kappa_i(x_i,c)\in\F_4^*$.
+We do not assume factorization by control axes.
+
+The fragment-endpoint formulas in Lemma~\ref{lem:ragged} make the
+partition and shuffle topology independent of the control address.
+Only the switch settings depend on $c$, so a single fixed slot
+schedule applies to all fibers.
+Use the full tensor shuffle on \emph{all} axes. Give $C$ identity
+switches. At an outer slot their temporary physical value is
+$q_e(c)=S_C^e(c)$, where $e$ is the signed number of completed forward
+minus inverse shuffles. At each scalar stage enumerate the current
+native lexicographic addresses and decode logical
+$c=q_e^{-1}(x_C)$. Generate the target settings for this logical $c$.
+At every odd-start stage use the same translation of all axes in the
+fixed set $T$, with identity $K_i(c)$ on idle axes or fibers. The flat
+approximation can temporarily carry into a control coordinate on bad
+records. Complete its exact repair before reading any control-dependent
+setting. Completed subset kernels and translations then preserve the
+physical controls; a shuffle increments $e$ in its prescribed direction.
+Induction over the word proves the fiber invariant. Descent and unwind
+balance, so $e=0$ at exit and the controls are restored.
+
+For the CRT affine families, one concrete generator decodes addresses
+by schoolbook division, computes the control CRT sums, generates the
+at-most-$R$ local table, and constructs the pair graph by sequential
+scans. All axes, levels, records, and full-list lookups are bounded in
+the companion ledger by $O((R+L+2)^{12})$ time. Fix the dominating
+polynomial $P_1=(R+L+2)^{64}$ before choosing $D$. For each record park
+its $D$ bits locally, generate one coefficient, apply its fixed two-bit
+map, and advance. In general this scalar stage costs $O(M(D+G))$;
+visited work intervals and returns are included in the generator bound.
+There are only $\polylog L$ outer stages, proving the displayed
+general bound. The CRT generator just described has $G=O((R+L+2)^{12})$,
+which the chosen word width dominates, so its scalar stage costs $O(V)$.
+No whole-array scan is nested inside a per-record lookup. This also
+aligns coefficients to the actual post-shuffle stream order.
+\end{proof}
+
+\section{Enlarging the cyclotomic word}
+
+\begin{lemma}[Uniform host initialization]
+\label{lem:host-initialization}
+From the binary input length $n$, for all sufficiently large $n$ a
+deterministic fixed-tape procedure constructs a $2$-admissible tuple
+$(q_0,\ldots,q_e)$, its product $2n<N<4n$, the attached common-multiple
+data, and $\alpha,\Phi_\alpha,\rho$ with $q_0\mid\alpha$ and
+$\rho$ a principal $(N/q_0)$-root. Its bit time is $N^{o(1)}$,
+including writing and verifying the factor and root data.
+\end{lemma}
+\begin{proof}
+Apply \cite[Proposition 3.4]{cyclomult} at $p=2$ and target $2n$;
+its tuple and auxiliary data are part of the constructed admissible
+length. Apply Proposition 3.8 of that source to this tuple. Their
+respective time bounds are
+$2^{O((\log\log n)^2)}$ and $2^{O((\log\log N)^4)}$ at fixed $p=2$.
+Both are $N^{o(1)}$ in the source's deterministic fixed-tape model.
+Write $L_0=\lceil\log_2N\rceil$ and
+$\ell=\lceil\log_2L_0\rceil$; its divisor has
+$\log\alpha=O(\ell^4)$.
+
+Verification uses only polynomial-size setup operations. Trial division
+checks the emitted prime list and its product, since each prime is at
+most $R_0=2^{\ell^2}$; monic polynomial arithmetic checks the generated
+cyclotomic data. Put $K=N/q_0$. Check $\rho^K=1$ and
+\[
+ \gcd(\rho^{K/q_i}-1,\Phi_\alpha)=1\qquad(1\le i\le e).
+\]
+The squarefree quotient is a product of fields. These tests force
+order $K$ in every component, hence principality by the geometric-sum
+identity. Modular powers, gcds and all certificates cost a polynomial
+in $\alpha,R_0,L_0$, which is $2^{O(\ell^4)}=N^{o(1)}$.
+Schoolbook arithmetic suffices in this setup; it uses no call to the
+proposed multiplier.
+\end{proof}
+
+If $n$ is implicit in end-marked coefficient lists, counting and copying
+them costs $O(n)$ by amortized counters. The bounded initial length
+range uses the direct branch; no factorization is supplied as advice.
+
+Use the unconditional host of \cite{cyclomult}. Put
+$L_0=\lceil\log_2N\rceil$, $\ell=\lceil\log_2L_0\rceil$ and
+$R_0=2^{\ell^2}$. Its squarefree $N$ has prime factors in
+$(L_0^3,R_0]$. The constructed divisor $\alpha$ uses $O(\ell^2)$
+factors and satisfies
+\[
+ \log\alpha=O(\ell^4),\qquad
+ -\log\frac{\varphi(\alpha)}\alpha=O(\ell^2/L_0^3).
+\]
+The distinguished prime $q_0$ divides $\alpha$. Proposition 3.8
+constructs $\rho$, a principal $(N/q_0)$-root in
+$\F_2[Y]/\Phi_\alpha(Y)$, as well as this cyclotomic polynomial.
+Then $\omega=\rho^{\alpha/q_0}$ is a principal $m=N/\alpha$ root.
+Indeed for $s=\alpha/q_0$ and $0<j<m$, the old $K=sm$ character sum
+at exponent $sj$ is $s$ copies of the $m$-sum. Odd $s$ is one in
+characteristic two, so that sum vanishes.
+
+Append unused prime factors until $\alpha'=\alpha J$ satisfies
+\[
+ D'=\varphi(\alpha')\ge(R_0+L_0+5)^{64}.
+\]
+Only $O(\ell)$ factors are needed because each multiplies $D$ by more
+than $L_0^2$. There are $\Omega(L_0/\ell^2)$ available factors.
+The first-crossing choice implies
+\[
+ \log\alpha'=O(\ell^4),\qquad
+ \varphi(\alpha')/\alpha'>1-1/L_0,
+ \quad m'D'=\Theta(N),\quad m'=N/\alpha'.
+\]
+We do not claim the enlarged divisor meets the original definition's
+literal numerical upper cutoff; these displayed estimates are sufficient.
+We retain the stronger density estimate as well. The original divisor
+has $O(\ell^2)$ prime factors, and enlargement adds only $O(\ell)$,
+all greater than $L_0^3$. Thus
+\begin{equation}
+ \label{eq:strong-density}
+ \theta:=1-\frac{D'}{\alpha'}
+   =1-\prod_{p\mid\alpha'}(1-p^{-1})
+   \le\sum_{p\mid\alpha'}p^{-1}
+   =O(\ell^2/L_0^3).
+\end{equation}
+This follows from the actual divisor construction in
+\cite[Proposition 3.8, proof]{cyclomult}, rather than just its
+weaker admissible-divisor definition.
+
+The substitution $Y\mapsto U^J$ defines a unital homomorphism
+\[
+ \F_2[Y]/\Phi_\alpha(Y)\longrightarrow
+ S=\F_2[U]/\Phi_{\alpha'}(U),
+\]
+because $\Phi_{\alpha'}(U)$ divides $\Phi_\alpha(U^J)$.
+Write $\iota$ for this homomorphism. It preserves principal-root
+character sums. The required root is
+$\omega'=\iota(\omega)^J$: it satisfies $(\omega')^{m'}=1$.
+For $0<j<m'$, split the old $m=Jm'$ terms into $J$ equal periods
+to obtain
+\[
+ 0=\sum_{a=0}^{m-1}\iota(\omega)^{Jja}
+   =J\sum_{b=0}^{m'-1}(\omega')^{jb}.
+\]
+Odd $J$ is one in characteristic two, proving principality.
+Thus no new root oracle is needed.
+
+Pad the remaining prime axes by $n_i=p_i+1$. Then
+$M/m'=\prod_i(1+1/p_i)=1+O(L_0^{-2})$.
+Since $\alpha'>L_0^{64}$, for sufficiently large $N$,
+$L=\lceil\log_2(2M)\rceil\le L_0$ and $L=\Theta(L_0)$.
+The native radix hypotheses and $D'\ge P_1(R_0+1,L)$ hold together.
+Setup polynomial in $R_0,D',L_0$ is $N^{o(1)}$ and is charged once.
+
+\section{The coupled CRT index permutation}
+
+Write $m'=\prod_{i=1}^t p_i$, with least-significant-first digits
+\[
+ x=a_1+p_1a_2+\cdots+(p_1\cdots p_{t-1})a_t.
+\]
+Its physical lexicographic axis order is $[p_t]\cdots[p_1]$, already
+ordinary integer index order. In one lexicographic scan embed these
+records in the $[p_i+1]$ grid, preserving their order, and zero-fill
+every address containing at least one dummy coordinate.
+
+\begin{lemma}[Parallel CRT tree]
+\label{lem:crt}
+The permutation $a\mapsto(x\bmod p_i)_i$ and its inverse have cost
+$O(m'D'L_0^\gamma\polylog L_0)$.
+\end{lemma}
+\begin{proof}
+For a contiguous block $I=A\cup B$ with $A$ lower significance,
+write $x_I=x_A+P_Ax_B$, $P_A=\prod_{i\in A}p_i$.
+After converting both children to their local residues, the left
+residues are already correct for $x_I$. Each right target becomes
+\[
+ z_i\longmapsto P_Az_i+x_A\pmod{p_i}.
+\]
+This is a permutation because $P_A$ is a unit modulo $p_i$.
+The left residue address determines $x_A\in[0,P_A)$ by ordinary
+integer CRT arithmetic. Fix the target dummy, and use the identity
+when a relevant left control is dummy. This is an explicit bijection
+on every fiber and preserves every dummy-pattern class at completion.
+
+At each level of a balanced tree take the union of all right axes as
+$T$, and all left/passive axes as $C$. The disjoint node merges are
+one controlled tensor from Lemma~\ref{lem:controlled}. There are
+$O(\log(t+1))$ levels. This schedule avoids two separate full-volume
+child executions per node. Reverse the stages and affine maps for
+the inverse.
+\end{proof}
+
+\section{Characteristic-two local Fourier compilation}
+
+For an odd prime $p$, let $u\in S$ be a principal $p$-root. Every field
+component has exact order $p$, so $1-u^j$ is a unit for $0<j<p$.
+Set $H_j=\prod_{a=1}^j(1-u^a)$ and $H_0=1$. The Newton matrix
+\[
+ N_{j,k}=\prod_{a=0}^{k-1}(u^j-u^a),\quad j\ge k,
+\]
+is diagonal--lower-Toeplitz--diagonal, with
+$N_{j,k}=H_jH_{j-k}^{-1}(-1)^k u^{k(k-1)/2}$.
+The symmetric Newton factorization is
+$F_p(u)=N\operatorname{diag}(N_{kk})^{-1}N^T$.
+All pivots remain units over the finite etale algebra.
+
+The explicit formal triadic circuit in
+Lemma~\ref{lem:formal-convolution}, with one operand fixed, supplies a
+linear convolution DAG of size $O(b\log^8b)$ and depth $O(\log^2b)$
+over every commutative $\F_2$-algebra. Bounded-degree copy trees are
+included. The local appendix also gives explicit constant/linear
+gate rules for this formal specialization, with no Boolean
+idempotence identity substituted in the coefficient ring.
+
+The borrowed-coordinate mechanism of \cite{local} restores arbitrary
+dirty workspace by replaying once with the true sources and once with
+the sources suppressed. Its algebra works in characteristic two.
+Inside a width-$v$ Toeplitz recursion, choose chunk size
+$b=c v/\log^8v$, with $c$ a sufficiently small fixed constant. The
+two chunks and all gate coordinates fit within the same $v$ positions.
+There are $O(\log^{16}v)$ source/target chunk pairs, each using
+$O(\log^2v)$ replay rounds. A balanced recursion gives
+$O(\log^{19}p)$ rounds on exactly $p$ coordinates, as proved in
+Lemma~\ref{lem:exact-width-toeplitz}. Its source, target and borrowed
+ports are disjoint; output-copy wires are counted inside the DAG.
+All borrowed values
+return before the next chunk pair. The finite small range is direct.
+
+Work in $B=S\otimes_{\F_2}\F_4$ and take central
+$\eta^2+\eta+1=0$. Every coefficient $\mu\in B$ is the sum of two
+units: let $e$ be one on the components where $\mu=1$ and zero
+elsewhere, and put $d=1+e(\eta+1)$. Then $d$ and $\mu+d$ are units.
+All component degrees equal $r_B=\operatorname{lcm}(\operatorname{ord}_{\alpha'}2,2)$;
+thus $e=1+(\mu+1)^{2^{r_B}-1}$ can be prepared by polynomially many
+small-algebra operations. For unit $t$,
+\[
+ U(t)=\begin{pmatrix}1&t\\0&1\end{pmatrix}
+ =\operatorname{diag}(t,1)HJ\operatorname{diag}(t^{-1},1),
+ \qquad U(\mu)=U(d)U(\mu+d).
+\]
+Here is one uniform slot word for the whole round. Pad each $p$ axis
+by its one dummy and complete a partial shear matching by pairing
+its unused coordinates with coefficient $\mu=0$. Order every used
+pair as (target,source), and send these pairs to canonical adjacent
+pairs by a local permutation. Set $u_0=d$, $u_1=\mu+d$ and
+$D(t)=\operatorname{diag}(t,1)$. In rightmost-first matrix order,
+\[
+ U(\mu)=D(u_0)HJ D(u_0^{-1}u_1)HJ D(u_1^{-1}).
+\]
+All diagonal entries are units. An unused pair has $u_0=u_1=1$,
+so its completed word is $(HJ)^2=I$; it need not be fixed at an
+intermediate letter. Tensoring uses exactly two full canonical $H$
+slots, two full $J$ slots and three axis-factorized diagonal slots.
+The pair relabeling and its inverse each cost one generic tensor
+permutation from \eqref{eq:generic}; charge the two $J$ slots there
+as well. Thus a round has two native-$H$ calls and at most four
+generic permutation calls. No separate selection of $H$ versus $I$
+is needed on this local path. Each completed local axis map is
+$F_{p_i}\oplus[1]$ on its native-valid range $n_i=p_i+1$.
+The tensor preserves each per-axis dummy-pattern subspace; it need
+not fix every full address containing a dummy, since other axes still
+transform. Consequently an initially zero-filled dummy complement
+stays zero at the completed tensor boundary. Keep the full padded
+grid through these operations, including every intermediate letter.
+
+\begin{lemma}[Independent runtime word arithmetic]
+\label{lem:old-word}
+There is a uniform fixed-tape algorithm for ordinary binary polynomial
+products at length $v$ in $O(M_{\rm old}(v))$ time, with bound function
+\[
+ M_{\rm old}(v):=v\log^2(2v)\log\log(4v).
+\]
+It uses classical integer multiplication, independently of the proposed
+main construction and of the formal convolution circuit supplier.
+\end{lemma}
+\begin{proof}
+For $v\ge2$ set $k=\lceil\log_2(v+1)\rceil$ and lift
+$\sum_{i<v}a_iX^i$ to $\sum_{i<v}a_i2^{ki}$, with $a_i\in\{0,1\}$.
+Every integer convolution coefficient is at most $v<2^k$.
+Consequently the product's $k$-bit chunks are the exact integer
+coefficients, without carries between chunks. Their low bits give the
+ordinary $\F_2$ product. The encoding, zero padding, chunk extraction
+and optional bit-order reversals are sequential scans costing $O(vk)$.
+Counter resets are charged to their ensuing chunks. The classical
+integer algorithm of \cite{schonhage-strassen} takes
+$O(B\log(2B)\log\log(4B))$ steps on a fixed multitape machine for
+$B=vk$ bits, proving the bound. Marking visited work-tape intervals
+allows head returns and cleanup within the same order of time.
+Length one is direct. The bound function is stable under fixed-factor
+length changes.
+\end{proof}
+
+Tensor scalar coefficients are prepared by prefix expansion in the
+current native order, as detailed in the local appendix. The total
+number of products is below $2M$, not one product per axis at every
+record. A $B$
+symbol has $2D'$ bits. Each $B$ multiplication or fixed-scalar
+application costs $O(M_{\rm old}(2D'))=O(M_{\rm old}(D'))
+=D'\polylog L_0$ bit steps using Lemma~\ref{lem:old-word} and the
+explicit fixed-modulus reduction in the local appendix.
+In contrast, the routing compiler's $\F_4$
+scalars are fixed two-bit maps costing $O(D')$. These two costs must
+not be conflated. Project back to $S$ only after the complete Fourier
+tensor has returned to that subspace.
+Each synchronized replay round has a fixed number of calls at the
+generic/native $\gamma$ tariff and a fixed number of these scalar
+stages. There are $O(\log^{19} R)=\operatorname{polylog}L_0$ rounds,
+so the local Fourier tensor retains the same $\gamma$ exponent.
+
+\section{Ordinary multiplication and the time ledger}
+
+Use Lemma~\ref{lem:host-initialization} to construct
+$N=\Theta(n)>2n-2$ and its certified factor list, then enlarge the
+divisor as above. Initial input scans cost $O(n)$ and all host
+initialization is included in the $N^{o(1)}$ setup term below.
+The top Agarwal--Cooley isomorphism from \cite[Lemma 2.2]{cyclomult} is
+\[
+ X\longmapsto Y^cZ,\quad c=(m')^{-1}\bmod\alpha',
+\]
+from $\F_2[X]/(X^N-1)$ to
+$\F_2[Y,Z]/(Y^{\alpha'}-1,Z^{m'}-1)$.
+Its coprime factors $\alpha',m'$ both exceed two for sufficiently large
+$n$: $\alpha'$ tends to infinity and $\log\alpha'=o(\log N)$.
+It uses one classical rectangle transpose and cyclic row shifts in
+$O(N\log\alpha')=N\polylog L_0$ bit time, in either direction.
+Explicitly, an exponent $k=r+m'j$ goes to
+$(Z\text{-index},Y\text{-index})=(r,cr+j\bmod\alpha')$;
+this fixes the row-shift convention and its inverse.
+Since $\alpha'$ is odd, $\Phi_{\alpha'}$ is coprime to
+$\psi=(Y^{\alpha'}-1)/\Phi_{\alpha'}$.
+Put $f=\Phi_{\alpha'}$ and $d=\deg\psi=\alpha'-D'$.
+If $d=0$ the coefficient split is the identity. Otherwise use
+Lemma~\ref{lem:fixed-monic-remainder} on each $\alpha'$-bit row
+for both projections, including the possibly much shorter modulus
+$\psi$. The latter's prepared reciprocal has length $\alpha'-d=D'$.
+Choose fixed Bezout polynomials $uf+v\psi=1$, with
+$\deg u<d$ and $\deg v<D'$. The idempotents
+$e_f=v\psi$ and $e_\psi=uf$ have degree $<\alpha'$, and reconstruct
+\[
+ A=(A_f e_f+A_\psi e_\psi)\bmod(Y^{\alpha'}-1).
+\]
+Two padded length-$\alpha'$ word products and a linear cyclic fold
+suffice for this reconstruction. Projections and reconstruction thus
+  cost $O(M_{\rm old}(\alpha'))$ per row, and
+  \[
+    O(m'M_{\rm old}(\alpha'))=N\polylog L_0
+  \]
+  overall. All reciprocals,
+Bezout coefficients and idempotents are public polynomial-$\alpha'$
+setup, charged once. The two projected streams have total length
+$m'(D'+d)=N$ bits.
+
+For the large component let $\omega$ be the principal $m'$ root and
+\[
+ E_i=(m'/p_i)((m'/p_i)^{-1}\bmod p_i),\quad \omega_i=\omega^{E_i}.
+\]
+The CRT idempotents give
+$\omega^{xy}=\prod_i\omega_i^{(x\bmod p_i)(y\bmod p_i)}$.
+Lemma~\ref{lem:crt} and the local Fourier tensor therefore compute
+the true ordinary cyclic DFT. Two forward transforms, point products
+and one inverse compute the product in $S[Z]/(Z^{m'}-1)$.
+Retain the full native grid through these completed operations;
+its dummy complement remains zero at each such boundary and under
+the point product, so it can be cropped after inverse routing.
+The inverse uses inverse roots and reversed index routing; its odd
+normalization is one in characteristic two.
+
+Here the large coefficient ring obtained by projection is
+$\F_2[Y]/\Phi_{\alpha'}(Y)$, identified with $S$ by renaming $Y$ to $U$.
+This identification is distinct from the earlier setup homomorphism
+$Y_{\rm old}\mapsto U^J$ from the smaller ring
+$\F_2[Y_{\rm old}]/\Phi_\alpha(Y_{\rm old})$. That homomorphism constructs
+the root; it is not applied a second time to the new input words.
+In this section $\omega$ denotes the already constructed $\omega'$.
+Indeed if $J>1$, $U^J$ has order $\alpha$, rather than $\alpha'$,
+in every field component of $S$. Hence $\Phi_{\alpha'}(U^J)$ is a
+unit, so that repeated substitution would not even descend from the
+new quotient.
+
+Frequency order needs its own verification. If local roots instead have
+exponents $b_i h_i$, with $b_i=m'/p_i$ and $h_i$ a unit modulo $p_i$,
+an output digit $s_i$ describes frequency residue $b_i h_i s_i$.
+The idempotent choice $h_i=b_i^{-1}$ makes that residue $s_i$.
+For a coordinate permutation $Q$, however, $A=QF$ still satisfies
+$A^{-1}((Aa)\odot(Ab))=F^{-1}((Fa)\odot(Fb))$.
+Thus matching inverse and product checks alone do not certify a
+literal Fourier index convention.
+
+The complement has $d=\deg\psi=\alpha'-D'$ and
+$v=dm'=N\theta=O(N\ell^2/L_0^3)$ by \eqref{eq:strong-density}.
+If $d=0$, omit this component.
+Pack $Y^jZ^i\mapsto T^{2di+j}$ in $\F_2[T]$. There is no overlap
+between coefficient-product slots because $j+j'<2d$.
+Each input has degree at most $2v-d-1$ and the product degree at most
+$4v-2d-2$. Use Lemma~\ref{lem:old-word} at input length $2v$.
+Crop its known zero tail to $2d(2m'-1)$ coefficient slots and unpack
+$2m'-1$ rows of $2d$ bits, each with final bit zero.
+Reduce their degree-$\le2d-2$ polynomials modulo the fixed monic
+$\psi$ using Lemma~\ref{lem:fixed-monic-remainder}, then fold
+$Z^{m'}=1$. All packing, unpacking and folding scans cost $O(v)$;
+when $d=1$ the row remainders are direct.
+The total cost is
+$O(M_{\rm old}(2v)+m'M_{\rm old}(d))
+ =O(M_{\rm old}(v)+m'M_{\rm old}(d))$. Since
+$d\le v\le N$, each logarithmic factor is bounded using $L_0$,
+so the total is
+\[
+ O(vL_0^2\ell)=O(N\ell^3/L_0)=o(N).
+\]
+The scans and all reductions are included. The weaker estimate
+$v<N/L_0$ alone would not pay for this integer-packing fallback;
+the stronger density is essential here. No integer packing of the
+full ordinary input is used.
+
+\begin{lemma}[Typed top-level execution]
+\label{lem:typed-execution}
+The preceding component algorithms compose on a fixed number of streams,
+with ordinary coefficient input and output. Their complete calls use
+the stated tariffs; no coefficient projection or outer native-dummy crop
+occurs inside a Fourier word.
+\end{lemma}
+\begin{proof}
+Use the following order, with $a,b$ denoting the two inputs.
+\begin{enumerate}
+\item Count and copy the coefficient lists, construct the host and all
+length-dependent tables, and zero-fill both lists to $N$ coefficients.
+The live top-level input streams contain $2N$ bits. Their cost is
+$O(n)+N^{o(1)}$ before the linear zero-fill.
+\item Apply the top isomorphism to each list, producing $m'$ consecutive
+$\alpha'$-bit coefficient rows. Project each row to the $f$ and $\psi$
+components. The two large streams contain $m'$ words of $D'$ bits;
+the two small streams contain $m'$ words of $d$ bits. Park the small
+streams on a fixed separate pair of tapes. The maps and projections cost
+$N\polylog L_0$. The large words are identified with $S$ by the variable
+rename just specified.
+\item Embed each large word in $B=S[\eta]/(\eta^2+\eta+1)$ as $a+0\eta$,
+and zero-fill its native dummy grid. Keep these two $M$-word $B$ arrays
+through both forward transforms, their point product and the inverse.
+They occupy $4MD'=O(N)$ bits at these top-level boundaries.
+Transform one while the other waits on its own tape; constant whole-array
+passing and parking scans cost $O(N)$. No callee traverses the parked
+array.
+\item To specify every completed transform, let $E:B^{m'}\to B^M$
+be the zero-fill embedding from integer mixed-radix order. Let $Q$ be
+the completed extended CRT permutation, and put
+\[
+ \mathcal T_{\omega}=\bigotimes_i(F_{p_i}(\omega^{E_i})\oplus[1]),
+ \qquad \mathcal D_{\omega}=Q^{-1}\mathcal T_{\omega}Q.
+\]
+The CRT exponent identity gives
+\begin{equation}
+ \label{eq:typed-dft}
+ \mathcal D_{\omega}E=E F_{m'}(\omega).
+\end{equation}
+Thus the output is again in ordinary integer frequency order, in the
+same native grid. The whole operators $Q$ and $\mathcal T_\omega$
+preserve every dummy-pattern subspace. Their intermediate words may
+mix the auxiliary coefficient lanes or dummy values; only completed
+boundaries are used in this identity. Their valid block has entries
+in $S$, so a complete transform returns $S$-valued words when its
+input was $S$-valued. Keep the unused $\eta$ lane allocated nonetheless.
+\item Replace the first completed transform array by the coordinatewise
+$B$ product of the two arrays, scanning them together, and erase the
+second array. On valid coordinates this is exactly the $S$ product;
+on every dummy coordinate it is zero. Performing all $M$ products,
+without an exceptional-address lookup, costs
+$O(MM_{\rm old}(D'))=N\polylog L_0$. Apply
+$\mathcal D_{\omega^{-1}}$ to the first array. The principal-root
+character sums imply
+$F_{m'}(\omega^{-1})F_{m'}(\omega)=m'I=I$.
+Equation~\eqref{eq:typed-dft} and the convolution identity therefore
+give the cyclic product in $S[Z]/(Z^{m'}-1)$.
+Explicitly, for the projected coefficient vectors $a_f,b_f$ the
+$j$th inverse coefficient is
+\[
+ \sum_{r,s=0}^{m'-1}(a_f)_r(b_f)_s
+       \sum_{k=0}^{m'-1}\omega^{k(r+s-j)}
+   =\sum_{r+s\equiv j\pmod {m'}}(a_f)_r(b_f)_s.
+\]
+The inner character sum is zero off the stated congruence and is
+$m'=1$ on it. Thus the complete retained-grid computation is
+$\mathcal D_{\omega^{-1}}
+ ((\mathcal D_\omega E a_f)\odot(\mathcal D_\omega E b_f))
+ =E(a_f*_{\rm cyc} b_f)$.
+Only now remove the zero $\eta$ lane and crop the zero dummy complement,
+using monotone native-address scans costing $O(N)$. The result is
+$m'$ consecutive $D'$-bit words in ordinary $Z$ order.
+Generate the dummy test once per record using the fixed degree-twelve
+address procedure; its cost is paid by $D'\ge P_1$.
+\item Compute the parked small-component product by the independent
+packing and fixed-monic reductions above, at cost $o(N)$, obtaining
+$m'$ consecutive $d$-bit words, omitting this branch if $d=0$.
+Reconstruct the $\alpha'$-bit rows from
+the two components and apply the inverse top isomorphism at cost
+$N\polylog L_0$. Extract the first $2n-1$ coefficients in a final
+$O(N)$ scan. All other top-level streams are erased and their heads
+returned by scans charged to their lengths.
+\end{enumerate}
+There are three complete transforms, each with a constant number of CRT
+maps and the stated synchronized local rounds. Their total is
+$O(NL_0^\gamma\polylog L_0)$, since their $B$ payload width is $2D'$
+and hence satisfies the same metadata lower bound. The number of
+top-level streams is fixed; setup archives and recursive scratch use
+the separately charged tape families, rather than one fresh tape per
+axis, table or recursion level.
+\end{proof}
+
+The full-volume routing and Fourier arrays have $V=\Theta(N)$ and
+address width $L=\Theta(L_0)$. The smaller complement arrays have
+the separate budget above. The stage counts are fixed powers of $\log L_0$.
+The complete bound furnished by the construction is
+\[
+ O\bigl(NL_0^\gamma(\log L_0)^C\bigr)
+   +N\polylog L_0+N^{o(1)}.
+\]
+With $\epsilon=2^{-36}$, the reconstructed interchange and phase
+certificates give $\tau=1-\epsilon$ and $\sigma<\tau$. Hence
+\[
+ \gamma=\frac1{1+\epsilon},\qquad
+ 1-\gamma=\frac{\epsilon}{1+\epsilon}>2^{-37}.
+\]
+For fixed $C$, all secondary logarithms are therefore absorbed in
+$O(n(\log n)^{1-2^{-38}})$. The same exponent is retained through
+the controlled compiler and CRT tree; their extra work is linear
+metadata and fixed powers of $\log L_0$, not a larger power of $L_0$.
+The effective finite initial range uses a fixed direct branch.
+Reconstruction and inverse top routing return the ordinary cyclic
+$N$ coefficients; degree $2n-2<N$ means the first $2n-1$ coefficients
+are exactly the ordinary dense polynomial product.
+
+\paragraph{Order of choices and one cutoff.}
+The finite motifs, avoiding prime, generator degrees and exponents are
+fixed first. Host construction then fixes $N,L_0,\ell,R_0$ before
+enlargement. The threshold for $D'$ uses $L_0$, and the resulting
+native width satisfies $L\le L_0$; it is not fed back into the host.
+Only $O(\ell)$ extra factors are consumed from
+$\Omega(L_0/\ell^2)$ available factors. All setup degrees and secondary
+logarithmic powers are fixed constants of these algorithms.
+The imported host constants are effective \cite[Section 1]{cyclomult};
+the other constants come from the printed finite generators and
+constructive bounds. One maximum of their finitely many eventual
+thresholds therefore supplies the direct-branch cutoff.
+For explicit final logarithm absorption, write $\delta=2^{-38}$ and
+bound the main term by $ANL_0^\gamma(\ln L_0)^C$ with fixed $A\ge1$.
+For
+\[
+ t=\ln L_0\ge\max\{1,(2C/\delta)^2,2\ln(A)/\delta\},
+\]
+$\ln t\le\sqrt t$ gives $A(\ln L_0)^C\le L_0^\delta$.
+Since $1-\gamma>2\delta$, this fits the stated $1-\delta$ exponent.
+No input-dependent exponent or length advice is selected.
+
+\begin{theorem}[Main theorem]
+\label{thm:main}
+There is one uniform deterministic machine with a fixed finite alphabet
+and a fixed finite number of one-dimensional tapes which multiplies two
+ordinary dense degree-$<n$ polynomials over $\F_2$, for every $n\ge1$,
+and returns their $2n-1$ ordinary coefficients in time
+\[
+ O\!\left(n(\max\{1,\lceil\log_2 n\rceil\})^{1-2^{-38}}\right).
+\]
+Its construction uses no unproved prime-distribution hypothesis.
+\end{theorem}
+\begin{proof}
+Lemma~\ref{lem:host-initialization} supplies the actual admissible length,
+factor list, divisor and root from $n$ in charged $N^{o(1)}$ setup,
+with $N=\Theta(n)>2n-2$. Word enlargement keeps $m'D'=\Theta(N)$ and makes
+all controlled-routing coefficients computable within their word cost.
+The reconstructed interchange, finite phase and native endpoint
+appendices prove Proposition~\ref{prop:suppliers}; the ragged and
+controlled compilers therefore price the actual index permutations.
+Lemma~\ref{lem:crt} supplies the ordinary-to-prime-residue index map.
+The local appendix gives the exact prime Fourier words over the
+specified finite etale algebra, with separately charged classical scalar
+maps. The preceding component calculation computes the large and
+complementary coefficient-ring products, reconstructs the cyclic
+$N$-product, and extracts the ordinary product. The displayed time
+ledger absorbs every fixed secondary logarithm in the stated exponent.
+Lemma~\ref{lem:typed-execution} specifies the actual stream composition,
+root/coefficient types and the single final auxiliary-lane/dummy crop.
+The finite tape and pad composition below applies to these actual
+subroutine calls. A direct finite branch handles the bounded initial
+range, with one enlarged uniform constant.
+\end{proof}
+
+\begin{corollary}[Each fixed finite extension of $\F_2$]
+For every fixed integer $s\ge 1$, multiplication of ordinary dense
+degree-$<n$ polynomials over $\F_{2^s}$ can be performed by one
+deterministic machine with a fixed finite alphabet and fixed finite
+number of tapes, in running time
+\[
+ O_s\!\left(n(\max\{1,\lceil\log_2 n\rceil\})^{1-2^{-38}}\right).
+\]
+This is a derived corollary of Theorem~\ref{thm:main}; its constants and
+machine may depend on $s$.
+\end{corollary}
+\begin{proof}
+Fix a basis of $\F_{2^s}$ over $\F_2$ and write each input coefficient
+in that basis. By bilinearity, each output coordinate of the product is
+a fixed $\F_2$-linear combination of the $s^2$ ordinary binary
+coefficient products of the input coordinate polynomials. Run
+Theorem~\ref{thm:main} on those $s^2$ pairs in sequence, reusing the
+same finite tape family, and combine the resulting coefficient lists
+using the fixed multiplication table of the chosen basis. The $s^2$
+calls cost $O_s(n(\log(n+2))^{1-2^{-38}})$; the coefficientwise
+recombination costs $O_s(n)$. For each fixed $s$ this gives the stated
+bound. No uniformity as $s$ grows with $n$ is asserted.
+\end{proof}
+
+\paragraph{Tape and padding composition.}
+Host I/O, classical integer SS, ring arithmetic, metadata generation, generic routing,
+H2 roles, weighted tiles and SWAP have disjoint fixed tape families.
+Each recursive family reuses its tapes with current-parent stack
+parking. No child traverses parked ancestors. The caller waits while
+a subroutine operates on its actual stream; every passing/return scan
+is included in that subroutine's cost. The native dummy grid is kept
+through complete routing/Fourier operations. Private rectangle, tile,
+role and suffix pads have the precise lifetimes in the machine ledger;
+none is repeatedly multiplied into recursive child mass.
+The complete family call graph, head-return rules and crop table are
+specified in the included machine-composition record
+\path{supporting/STRICT_BINARY_MACHINE_COMPOSITION_ROOT_20261030.txt},
+Sections~III--V.
+
+\paragraph{Verification evidence and remaining review.}
+A previously recorded ragged-network witness checked 42,090 permutations at even
+sizes at most 12. A previously recorded guarded C++ witness checked 768 cases on
+native axes $(4,6,8)$, including all 105 valid CRT addresses for primes
+$(3,5,7)$, inverse maps and exact dummy patterns. Omitting the control
+gauge fails. Both install 64 MiB/10 CPU-second limits before algebra.
+They validate finite identities and conventions only. The bundled
+machine-composition derivation and proof map document the integration
+dependencies; internal audits do not replace external mathematical review
+or establish novelty. These existing witness reports were not rerun for
+this release copy.
+A previously recorded guarded fixed-array C++ witness checked all $65\,536$
+coefficients of the small product algebra
+$(\F_2[Y]/\Phi_{15})\otimes\F_4$ for the selector/unit split and
+the local two-$H$ word, with independent bilinear multiplication checks.
+Previously recorded mixed-radix tensor fixtures checked scalar-prefix expansion,
+arbitrary incoming values and dummy restoration. Wrong middle factors
+and stale scalar alignment are rejected. This remains bounded algebraic
+evidence, not a test of the asymptotic tape bound.
+A previously recorded bounded whole-composition witness used $N=255=17\cdot15$,
+both coefficient CRT components, the affine residue-index tree,
+compiled $3$- and $5$-point Newton words and ordinary reconstruction.
+It checks the literal forward/inverse DFT on all $15$ basis vectors
+and $96$ ordinary binary products through degree bound $n=128$.
+Omitting row shifts, the complement or the required extension lifetime
+is detected. Consistently changing primitive roots preserves its
+roundtrips/products while failing the literal Fourier comparison.
+The witness uses direct finite primitive branches and does not test
+the growing-size running-time theorem.
+A previously recorded guarded C++ witness checked the elementary triadic product
+over $\F_2[\epsilon]/(\epsilon^2)$: $130$ ordinary products through
+length $512$, a detected wrong-overlap control and a nilpotent-law
+check. It uses direct finite DFTs and base cutoff $32$ to exercise
+the quotient-product recursion. The proof's radix-three depth and
+analytic cutoff $6^6$ are separate; this witness establishes neither
+the asymptotic circuit bounds nor the main theorem.
+An expanded source-hashed finite check also verified the 776-letter
+$E$ word, the explicit (A.17) conjugation and monomial scalar ordering.
+Ordinary-squaring and stale-scalar negative controls are detected.
+Its fixed four-by-four field and 16-bit binary maps do not test the
+growing-size native routing or time bound.
+
+\appendix
+\input{finite_phase_appendix}
+\input{native_appendix}
+\input{local_appendix}
+\input{swap_appendix}
+
+\begin{thebibliography}{99}
+\bibitem{cyclomult}
+David Harvey and Joris van der Hoeven.
+\newblock Faster polynomial multiplication over finite fields using cyclotomic coefficient rings.
+\newblock \emph{Journal of Complexity}, 54:Article 101404, 2019.
+\newblock \url{https://doi.org/10.1016/j.jco.2019.03.004}.
+\newblock Author manuscript: \url{https://www.texmacs.org/joris/cyclomult/cyclomult.pdf}.
+
+\bibitem{ffnlogn}
+David Harvey and Joris van der Hoeven.
+\newblock Polynomial multiplication over finite fields in time $O(n\log n)$.
+\newblock \emph{Journal of the ACM}, 69(2), Article 12, 1--40, 2022.
+\newblock Theorem 1.2 assumes the stated Linnik hypothesis.
+\newblock \url{https://doi.org/10.1145/3505584}.
+\newblock Author manuscript: \url{https://www.texmacs.org/joris/ffnlogn/ffnlogn.pdf}.
+
+\bibitem{cantor-kaltofen}
+David G. Cantor and Erich Kaltofen.
+\newblock On fast multiplication of polynomials over arbitrary algebras.
+\newblock \emph{Acta Informatica}, 28(7):693--701, 1991.
+\newblock \url{https://doi.org/10.1007/BF01178683}.
+\newblock Author copy: \url{https://kaltofen.math.ncsu.edu/bibliography/91/CaKa91.pdf}.
+
+\bibitem{schonhage-strassen}
+Arnold Sch\"onhage and Volker Strassen.
+\newblock Schnelle Multiplikation gro{\ss}er Zahlen.
+\newblock \emph{Computing}, 7:281--292, 1971.
+\newblock \url{https://doi.org/10.1007/BF02242355}.
+
+\bibitem{swap}
+OpenAI.
+\newblock \emph{Integer multiplication below $n\log n$}.
+\newblock Research preprint, 23 September 2026, Sections 3--4;
+Lemma 12 supplies the arbitrary-width equal-chunk interchange statement.
+\newblock Citation revision \texttt{4eaee87548250b2682affda7d05d947c05554bae}, inspected 31 October 2026.
+\newblock \url{https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/preprints/Integer-multiplication-below-n-log-n-September-23-2026/build/sections/04-swap.tex}.
+
+\bibitem{local}
+OpenAI.
+\newblock \emph{An explicit power saving for the exact discrete Fourier transform}.
+\newblock Research preprint, 25 September 2026, local Fourier compiler section.
+\newblock Citation revision \texttt{4eaee87548250b2682affda7d05d947c05554bae}, inspected 31 October 2026.
+\newblock \url{https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026/build/sections/local.tex}.
+
+\bibitem{benes}
+Meng Zhang and Yi Zhang.
+\newblock Arbitrary-size permutation networks using arbitrary-radix switches.
+\newblock \emph{Theoretical Computer Science}, 962:113939, 2023.
+\newblock \url{https://doi.org/10.1016/j.tcs.2023.113939}.
+
+\bibitem{integer-followups}
+Douglas Colkitt and the contributors to \texttt{CrocSwap/integer-mult-bounds}.
+\newblock \emph{A sharper exponent for integer multiplication}.
+\newblock Research repository, revision \texttt{2485805a6d47f36ea83ddde6327d453ac82d44dc},
+accessed 31 October 2026. Contributor-level source notices are retained
+in the bundled native derivation. Its selected integer bound retains
+its stated framework assumptions.
+\newblock \url{https://github.com/CrocSwap/integer-mult-bounds/tree/2485805a6d47f36ea83ddde6327d453ac82d44dc}.
+
+\bibitem{integer-lean}
+\texttt{platypii/integer-mult-bounds-lean} contributors.
+\newblock \emph{Integer multiplication in Lean}.
+\newblock Research repository; the stage-two source used by the companion
+odd-field transfer is pinned to \texttt{fefd699f9389af961046997796261333539e5909}.
+The claimed global integer multiplier is not a premise here.
+\newblock \url{https://github.com/platypii/integer-mult-bounds-lean/tree/fefd699f9389af961046997796261333539e5909}.
+
+\bibitem{HVHL17}
+David Harvey, Joris van der Hoeven, and Gr\'egoire Lecerf.
+\newblock Faster polynomial multiplication over finite fields.
+\newblock \emph{Journal of the ACM}, 63(6), Article 52, 2017.
+\newblock \url{https://doi.org/10.1145/3005344}.
+\newblock Author manuscript: \url{https://www.texmacs.org/joris/ffmul/ffmul.pdf}.
+
+\bibitem{Harvey26Context}
+David Harvey.
+\newblock \emph{On the recently proposed $o(n\log n)$ integer multiplication algorithm}.
+\newblock Unpublished discussion note, 20 October 2026, Section 4.
+\newblock \url{https://web.maths.unsw.edu.au/~davidharvey/research/subnlogn.pdf}.
+
+\bibitem{Frobenius17}
+Joris van der Hoeven and Robin Larrieu.
+\newblock The Frobenius FFT.
+\newblock In \emph{Proceedings of ISSAC}, 437--444, 2017.
+\newblock \url{https://doi.org/10.1145/3087604.3087633}.
+\newblock Author manuscript: \url{https://www.texmacs.org/joris/ffft/ffft.pdf}.
+
+\bibitem{CodexTool26}
+Nicolas Bonamy and Derrick Choi.
+\newblock Codex as a platform: build on the open agent harness.
+\newblock OpenAI Developers, 19 August 2026. Official documentation
+reference for the Codex software used in release preparation and source
+inspection; accessed 31 October 2026.
+\newblock \url{https://developers.openai.com/blog/codex-as-a-platform}.
+
+\end{thebibliography}
+\end{document}
+
+
+

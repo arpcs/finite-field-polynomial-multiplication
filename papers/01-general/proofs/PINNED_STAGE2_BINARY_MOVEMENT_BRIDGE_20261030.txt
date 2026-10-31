@@ -1,0 +1,158 @@
+Pinned stage-two supplier -> the complete binary movement interface
+30 October 2026. Named external theorem import and exact format bridge.
+
+RESULT AND DEPENDENCY BOUNDARY
+=============================
+The pinned external theorem below supplies ordinary binary equal-width
+interchange at tau_L=1-123879734039/10^15, after an explicit linear-cost
+whole-range padding and symbol wrapper. There is no additional LOCAL
+unproved movement contract G in this deduction. This is an import of
+that source theorem, not an independent rebuild of its Lean dependency
+closure, an executable benchmark, or our formal proof of the supplier.
+The present work does not claim a new movement theorem or exponent.
+
+We rechecked the actual statement, source representation, descriptor and instance boundary, then fetched the immutable upstream source:
+ repository https://github.com/platypii/integer-mult-bounds-lean
+ commit fefd699f9389af961046997796261333539e5909
+ file IntegerMultBounds/MathlibTM2/M8/Stage2Machine/Bound.lean
+ SHA256 97BB4FB5A883E0C90C53173355CF310AC56E2D28860679A13B2854F91CD2AD2A.
+The newly fetched bytes and the preexisting pinned local copy have the
+same SHA256. Fetches used normal certificate verification, small file
+limits and timeouts. No full repository download or proof build ran.
+
+Primary theorem:
+ https://github.com/platypii/integer-mult-bounds-lean/blob/fefd699f9389af961046997796261333539e5909/IntegerMultBounds/MathlibTM2/M8/Stage2Machine/Bound.lean
+Its name is IntegerMultBounds.MathlibTM2.M8.Stage2Machine.Bound.uniform_bound.
+
+1. WHAT THE STATEMENT ACTUALLY QUANTIFIES OVER
+============================================
+The source uses a fixed prime q=Networks.Shared50ModularControl.prime.
+A descriptor d has six natural-number fields
+ beforeRows, rows, beforeH, width, between, afterD.
+Positive requires all fields EXCEPT width to be positive. Its volume is
+ beforeRows*rows*beforeH*q^width*between*q^width*afterD.
+RecursiveInterchangeLayout.index is the literal mixed-radix row-major
+index of [beforeRows][rows][beforeH][H][between][D][afterD].
+
+uniform_bound supplies C>0 and, for every positive descriptor and every
+bit array x of that exact volume, an actual HoareTime run of the SAME
+Supplier.program. Its source output is
+ sourceWord (Shared50RecursiveNodeRows.transpose (one_dvd d.rows) x).
+The step count is <=C*volume*max(1,d.width)^tau_L.
+
+The six headers must be the canonical binary encodings of the descriptor
+fields, at head 1. The source is at head 0. Choose seven distinct caller
+tapes once (six headers and one source); t=7 is fixed. The program's
+finite private bank count, state count and capacity parameter are fixed
+constants. Its Hoare postcondition is an exact setTape update of the
+source at head 0, preserving all the other caller tapes and heads.
+Its private banks are blank at both boundaries.
+
+The exact coordinate swap is separately proved in the pinned
+Stage2Machine/Transpose.lean: transpose_addr sends (h,d) to (d,h) and
+fixes every prefix, row, middle and suffix coordinate. No row divisor
+other than 1 is required at this public boundary. Consequently external
+row borrowing is NOT needed when this theorem is used directly.
+
+The theorem has no caller-supplied Net or native-run hypothesis in its
+statement. Global/SupplierNet.lean supplies the fixed instance
+ <Global.pr97, Global.runs_pr97.supports>.
+We fetched and read the immutable Global/Instance.lean and Machine/Net.lean.
+Net is a choice of a finite BitNetwork plus Supports, not a data-time
+oracle. pr97 is constructed from fixed role/temporary types, finite
+control, prime, legal edges, scalar XOR gates, node_run and its branching
+certificate. runs_pr97 supplies its support property. No runtime
+choice of geometry/network or size-dependent advice is introduced.
+The finite machine model reads/writes only scanned symbols and moves
+heads by at most one cell per transition. Noncomputable choices in
+constant definitions still select a fixed finite transition table.
+
+This checks the import boundary; it is NOT an audit of every imported
+proof in the closure. No local Lean/lake executable was available and
+no large proof build was attempted. As for the earlier named Lemma-12
+import, downstream mathematical conclusions depend on the external
+machine theorem being valid.
+
+2. SOURCE REPRESENTATION, INCLUDING THE ZERO/BLANK DISTINCTION
+============================================================
+The local alias chain is explicit:
+ sourceWord x = RecursiveShiftRoleBank.source (Shared50RecursiveNodeSemantics.encoded x),
+ encoded x i = SparseRoleCircuit.encode (x i),
+ source a = (FlatRepeatedControlArray.pair a).tape 0,
+ pair a = FlatArrayNormalize.pair
+   (FlatRepeatedControlNormalize.encoded (putWord blank 0 (List.ofFn a)))
+   (FlatRepeatedControlNormalize.encoded blank) 0 0.
+
+FlatRepeatedControlNormalize.encoded applies RadixToBinary.binaryEncoding
+pointwise. That encoding is the initial-segment injection Fin4 -> Fin(q+4)
+and does not move any cell or insert a marker. In BinaryWords.lean:
+ blank has code 0; bitSymbol false has code 1; bitSymbol true has code 2;
+ separator has code 3.
+Thus sourceWord contains ONE symbol 1 or 2 for each bit at positions
+0..volume-1, with blank symbol 0 outside. There is no hidden per-cell
+key or length expansion. Encode/decode ordinary bit symbols by a fixed
+finite table in a linear scan.
+
+Padding ZERO DATA must write bitSymbol false (code 1), NOT blank (0).
+All padded positions belong to the input bit array quantified by the
+theorem. Blank exterior is left blank. This distinction is tested by
+the bounded witness; treating omitted cells as implicit zero is invalid.
+
+3. BINARY SHAPE AND ONE WHOLE-FIELD PAD
+======================================
+The required binary array is
+ [P] x [2^u] x [G] x [2^u] x [B], P,G,B>=1,
+with V=P*G*B*2^(2u) stored bits. Let A=2^u and choose the least s with
+Q=q^s>=A. Fixed q gives A<=Q<qA. Use descriptor
+ beforeRows=P, rows=1, beforeH=1, width=s, between=G, afterD=B.
+Its volume V'=P*Q*G*Q*B is <q^2 V. In particular B=1 is permitted
+by the theorem; no wide-record proviso is added.
+
+First append encoded-zero B-bit records from A through Q-1 on every
+inner D fiber. Then pad the outer H range in every P block. The gap
+stays in its existing numeric radix G; it is not encoded into atom bits
+or transposed out of the way. This is a constant number of sequential
+copy/zero-fill scans of the ACTUAL padded stream. Nested counters use
+amortized ripple increments/decrements. Resetting an L-bit-count loop
+costs O(log L)<=O(L), absorbed by its full fiber scan. The total movement
+is O(V'), without interpreting payload bits or reading an unbounded
+whole address per record.
+
+Build s and Q by repeated multiplication by fixed q until Q>=A, using
+ordinary finite-tape integer arithmetic. Build the six canonical binary
+headers. Their once-only polynomial(log V) cost is O(V) after adjustment
+of the fixed constant. Restore/erase headers and wrapper work tapes
+after return; copy/recode the source in linear volume as needed.
+
+Invoke the external program. Its completed endpoint preserves the
+genuine box h,d<A, since it swaps h,d. Only then crop H and D back to A
+and recode their symbols. Intermediate source maps may mix genuine
+and padded coordinates; no intermediate zero or crop condition is used.
+Prefix, gap and each B-bit payload lane are fixed at the full endpoint.
+
+As q is fixed, s=O(u+1) and
+ O(V' max(1,s)^tau_L+V'+polynomial(log V)) = O(V (u+1)^tau_L).
+For u=0 the desired interchange is identity and is handled directly.
+This is the complete binary arbitrary-prefix/gap/payload contract used
+by the existing packed SUM, full-index layer and Pascal compilers.
+
+4. SOURCE-REUSE CORRECTION
+========================
+The preceding turn's QADIC_TO_BINARY_WHOLE_RANGE_BRIDGE_20261030.txt
+independently derived internal row borrowing and whole-field padding
+from a proposed native atom contract. The public source ALREADY has
+these same basic constructions in notes/three-stage-cover-rows.tex,
+including the same ordinary bit exponent. The derivation here is
+therefore an audit/reuse, not a novelty claim. That conditional route
+retains its original native obligations and is now optional.
+
+The PINNED public supplier gives an alternative: its all-width theorem
+already removes the native atom/stock burden. Only the ordinary range
+and symbol wrapper in Sections 2--3 is required locally. Its saving
+0.000123879734039 is weaker than the conditional q-adic candidate's
+0.0003731649599, but is more than sufficient for the new E8 phase
+recurrence of E8_TERNARY_OWNED_CENTER_CLOSURE_20261030.txt.
+
+The original subnlogn_blackbox_link_sources_20261030 files and another
+chat's canonical proofs were read only. New source copies are in the
+workspace root investigation directory, with the pin and hash above.

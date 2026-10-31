@@ -1,0 +1,6 @@
+PASS:770 exact streamed input columns; all 799 output coefficients checked per column
+scalar_events=19350 frame_events=3453; main shear + 562 independent helper identities; owned output zero
+common charts, strict nested transports, owned lifetimes and main boundary spaces verified
+peak rational state=799; no dense global matrix; per-rational cap=2048 bits
+missing-ADD negative control rejected; 1596648 structural/exact assertions
+Native frame operators/lowerings use the separate mathematical construction.

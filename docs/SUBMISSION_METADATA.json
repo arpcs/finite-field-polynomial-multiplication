@@ -1,0 +1,82 @@
+[
+  {
+    "directory": "papers/04-general-nlogn",
+    "title": "Ordinary Polynomial Multiplication over Fixed Finite Fields in O(n log n) Time",
+    "author": "Árpád Csizmadia",
+    "author_tex": "\\'Arp\\'ad Csizmadia",
+    "email": "arpad.csizmadia.public@gmail.com",
+    "version": "0.1.0-preprint",
+    "status": "research preprint open for mathematical review",
+    "abstract_tex": "For every individually fixed finite field $\\mathbb{F}_q$, we derive ordinary dense polynomial multiplication in $O_q(n\\log(n+2))$ deterministic bit time on a fixed finite-alphabet Turing machine with a fixed finite number of sequential tapes. The characteristic-two branch uses the accompanying Pascal-transform binary multiplier; the odd-prime branch weakens the accompanying exponent $9999/10000$. A fixed-basis expansion reduces a degree-$e$ extension to $e^2$ prime-field products and $O_q(n)$ encoding and recombination work, including ordinary coefficient input/output. This note records a baseline consequence of shared proof sources. Complete Lean formalization is unfinished.",
+    "comments": "Baseline general companion. Uses the accessible binary theorem and the stronger general paper's odd-field proposition; does not invoke the principal binary saving. Substantial generative AI assistance. Full Lean formalization is unfinished and planned for later.",
+    "proposed_primary_category": "cs.CC",
+    "proposed_cross_lists": [
+      "cs.SC"
+    ],
+    "repository_license": "Apache-2.0",
+    "arxiv_license": null,
+    "public_repository_url": null,
+    "arxiv_id": null,
+    "doi": null
+  },
+  {
+    "directory": "papers/01-general",
+    "title": "Ordinary Polynomial Multiplication over Every Fixed Finite Field",
+    "author": "Árpád Csizmadia",
+    "author_tex": "\\'Arp\\'ad Csizmadia",
+    "email": "arpad.csizmadia.public@gmail.com",
+    "version": "0.1.0-preprint",
+    "status": "research preprint open for mathematical review",
+    "abstract_tex": "We combine ordinary polynomial multiplication constructions over individually fixed finite fields. The common deterministic bit-time bound is $O_q(n(\\log(n+2))^{1-2^{-38}})$ on a fixed finite-tape machine. The characteristic-two input is the accompanying controlled-CRT construction, with a fixed-extension reduction. The odd-field cyclotomic-host argument gives the sharper exponent $0.9999$ for each fixed odd field, using named host, native-routing and stage-two interchange results. Field-dependent constants, ordinary coefficient input/output, and all representation and movement costs are explicit. No uniform growing-field or combined workspace claim is made.",
+    "comments": "General companion research preprint. Substantial generative AI assistance. Full Lean formalization is unfinished and planned for later.",
+    "proposed_primary_category": "cs.CC",
+    "proposed_cross_lists": [
+      "cs.SC"
+    ],
+    "repository_license": "Apache-2.0",
+    "arxiv_license": null,
+    "public_repository_url": null,
+    "arxiv_id": null,
+    "doi": null
+  },
+  {
+    "directory": "papers/02-simple-binary",
+    "title": "Exact Binary Polynomial Multiplication from Fast Pascal Transforms",
+    "author": "Árpád Csizmadia",
+    "author_tex": "\\'Arp\\'ad Csizmadia",
+    "email": "arpad.csizmadia.public@gmail.com",
+    "version": "0.1.0-preprint",
+    "status": "research preprint open for mathematical review",
+    "abstract_tex": "We give a written construction for exact ordinary polynomial multiplication over $\\mathbb{F}_2$ in $O(n\\log(n+2))$ deterministic bit time on fixed finite tapes, using a cited arbitrary-width tape-interchange theorem. Explicit cyclotomic fields, prefix Taylor evaluation, subfield scalar costs and a residue decoder account for ordinary coefficient input/output. A finite-field tensor construction supplies the Pascal transforms. The paper includes fixed-operand adjoints and a corollary for each fixed characteristic-two extension. Historical bounded witnesses check finite algebra and indexing only.",
+    "comments": "Substantial generative AI assistance. Full Lean formalization is unfinished and planned for later. Historical finite receipts are not fresh runs for this release.",
+    "proposed_primary_category": "cs.CC",
+    "proposed_cross_lists": [
+      "cs.SC"
+    ],
+    "repository_license": "Apache-2.0",
+    "arxiv_license": null,
+    "public_repository_url": null,
+    "arxiv_id": null,
+    "doi": null
+  },
+  {
+    "directory": "papers/03-best-binary",
+    "title": "Ordinary Binary Polynomial Multiplication below n log n",
+    "author": "Árpád Csizmadia",
+    "author_tex": "\\'Arp\\'ad Csizmadia",
+    "email": "arpad.csizmadia.public@gmail.com",
+    "version": "0.1.0-preprint",
+    "status": "research preprint open for mathematical review",
+    "abstract_tex": "We present a construction for ordinary binary polynomial multiplication in $O(n(\\log(n+2))^{1-2^{-38}})$ deterministic bit time on a fixed finite-alphabet machine with a fixed number of sequential tapes. Controlled tensor routing, ragged parity networks, a balanced coupled CRT tree, a cyclotomic coefficient host and an exact-width Fourier compiler account for ordinary input and all product coefficients. The appendices supply the interchange, finite-phase, native endpoint and local arithmetic arguments. The paper cites the exact prior host, arithmetic and interchange results used. A corollary treats each fixed characteristic-two extension; no growing-field uniformity or practical speedup is claimed.",
+    "comments": "Principal characteristic-two research preprint. Substantial generative AI assistance. Full Lean formalization is unfinished and planned for later.",
+    "proposed_primary_category": "cs.CC",
+    "proposed_cross_lists": [
+      "cs.SC"
+    ],
+    "repository_license": "Apache-2.0",
+    "arxiv_license": null,
+    "public_repository_url": null,
+    "arxiv_id": null,
+    "doi": null
+  }
+]

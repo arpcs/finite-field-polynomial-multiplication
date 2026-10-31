@@ -1,0 +1,66 @@
+[
+  {
+    "paper": "papers/04-general-nlogn",
+    "pages": 4,
+    "rendered_pages": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "pdf_sha256": "15029bdee05cf9695b02633eea290b9f732c1728b9770f918ecb97144aa3f394",
+    "status": "Listed pages visually inspected after final prior-work and citation edits; no clipping or text overlap observed",
+    "overfull_boxes": 0,
+    "undefined_references": 0,
+    "review_scope": "Listed pages only; document and citation checks do not certify mathematics"
+  },
+  {
+    "paper": "papers/01-general",
+    "pages": 5,
+    "rendered_pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "pdf_sha256": "98ea67b81eba969f8df4f18d792518804ad40f755d100169cd501c0593069ba2",
+    "status": "Listed pages visually inspected after final prior-work and citation edits; no clipping or text overlap observed",
+    "overfull_boxes": 0,
+    "undefined_references": 0,
+    "review_scope": "Listed pages only; document and citation checks do not certify mathematics"
+  },
+  {
+    "paper": "papers/02-simple-binary",
+    "pages": 30,
+    "rendered_pages": [
+      1,
+      15,
+      29,
+      30
+    ],
+    "pdf_sha256": "140ed0cf93648890936c05fcdb8e6714548c2f936a14a2e8df51bfbd804a4fe7",
+    "status": "Listed pages visually inspected after the 31 October selector-proof correction and rebuild; no clipping or text overlap observed",
+    "overfull_boxes": 0,
+    "undefined_references": 0,
+    "review_scope": "Listed pages only; document and citation checks do not certify mathematics"
+  },
+  {
+    "paper": "papers/03-best-binary",
+    "pages": 51,
+    "rendered_pages": [
+      1,
+      2,
+      3,
+      16,
+      26,
+      50,
+      51
+    ],
+    "pdf_sha256": "18a5d005ebc072beb932cfaeda8c0122a44a62751505b18de9fadb330f6a15bf",
+    "status": "Listed pages visually inspected after final prior-work and citation edits; no clipping or text overlap observed",
+    "overfull_boxes": 0,
+    "undefined_references": 0,
+    "review_scope": "Listed pages only; document and citation checks do not certify mathematics"
+  }
+]

@@ -1,0 +1,295 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,xurl}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\F}{\mathbb F}
+\title{Ordinary Polynomial Multiplication over Fixed Finite Fields\\
+  in $O(n\log n)$ Time\\
+  \large A baseline companion and fixed-basis reduction}
+\author{\'Arp\'ad Csizmadia\\
+  \small\href{mailto:arpad.csizmadia.public@gmail.com}{\texttt{arpad.csizmadia.public@gmail.com}}}
+\date{31 October 2026\\ \small Version 0.1.0-preprint. Apache-2.0.}
+\hypersetup{pdfauthor={\'Arp\'ad Csizmadia},pdftitle={Ordinary Polynomial Multiplication over Fixed Finite Fields in O(n log n) Time}}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For every individually fixed finite field $\F_q$, we derive ordinary
+dense polynomial multiplication in $O_q(n\log(n+2))$ deterministic bit
+time on a fixed finite-alphabet Turing machine with a fixed finite
+number of sequential tapes. The characteristic-two branch uses the
+accompanying Pascal-transform binary multiplier; the odd-prime branch
+weakens the accompanying exponent $9999/10000$. A fixed-basis expansion
+reduces a degree-$e$ extension to $e^2$ prime-field products and
+$O_q(n)$ encoding and recombination work, including ordinary coefficient
+input/output. This note records a baseline consequence of shared proof
+sources. Complete Lean formalization is unfinished.
+\end{abstract}
+
+\paragraph{AI assistance and review status.}
+This work was developed with substantial generative AI assistance in
+mathematical exploration, proof development, writing, coding and source
+review. OpenAI Codex was used for release preparation and source
+inspection; the platform reference~\cite{CodexPlatform} identifies the
+tool, not a mathematical premise. A complete historical model/version
+log is not available. Full Lean formalization is unfinished and planned
+for a later update, with no completion date promised. This preprint is
+open for mathematical review; independent human proof review is not claimed.
+
+\section{Scope, prior work and the role of this note}
+The question is the bit complexity of multiplying ordinary dense
+univariate polynomials over an individually fixed finite field.
+Harvey, van der Hoeven and Lecerf established a F\"urer-type bound
+with the factor $8^{\log^* n}$ for each fixed prime
+field~\cite{HVHL17}. Harvey and van der Hoeven then obtained the
+unconditional fixed-prime bound
+\[
+ O_p\!\left(n\log n\,4^{\log^* n}\right)
+\]
+in the deterministic multitape Turing model~\cite[Theorem 1.1]{HVH19Cyclo}.
+For a fixed extension degree the same asymptotic form follows by
+coordinate reduction. These are important predecessors for the
+fixed-field comparison in this note.
+
+Their later finite-field theorem gives
+$O(n\log q\log(n\log q))$ uniformly in $q$, under the hypothesis
+that a Linnik constant $L<1+2^{-1162}$ exists
+\cite[Theorem 1.2]{HVH22Finite}. Thus its fixed-$q$ specialization
+is a conditional $O_q(n\log n)$ theorem. Its quantifiers and
+number-theoretic hypothesis should remain explicit. Harvey's
+October 2026 discussion separately identifies fixed-field polynomial
+multiplication as a problem not directly settled by the new integer
+multiplication claim, and records the unconditional cyclotomic
+benchmark~\cite[Section 4, p.~4]{Harvey26}. That discussion supplies
+context, not verification or endorsement of this note.
+
+This history explains the role of the $n\log n$ benchmark: the
+unconditional fixed-field algorithms reached near-linear time,
+while the sharper uniform theorem retained its explicit hypothesis.
+The accompanying new constructions claim to close the remaining
+fixed-field gap. This note makes their shared baseline consequence
+and the elementary extension-field reduction easy to identify.
+
+The present baseline combines two arguments in the accompanying
+preprints. For characteristic two it uses the Pascal-transform route
+of~\cite{SimpleBinary}. For odd characteristic it uses only the
+odd-field proposition of~\cite{GeneralBest}. It does not use that
+paper's stronger combined all-field theorem or the separate
+controlled-CRT binary multiplier. The fixed-basis reduction below
+makes the resulting field quantifiers and ordinary input/output
+boundary explicit. This is a companion consequence of shared proof
+sources, not a separate independent discovery or a practical speed claim.
+
+\section{The fixed-field statement}
+Let $q=p^e$ be fixed, with $p$ prime and $e\ge1$. Choose a fixed
+$\F_p$-basis $b_0,\ldots,b_{e-1}$ of $\F_q$. Represent a field
+element by its $e$ prime-field coordinates, each in a fixed binary
+encoding. The field, basis and structure constants are fixed before
+the input length varies; they are not growing inputs or advice
+depending on $n$.
+
+An input is the two ascending coefficient lists of polynomials
+$A,B\in\F_q[X]$ of degree less than $n$, with $n\ge1$, including
+leading zero coefficients. The required output is the ascending list
+of all $2n-1$ coefficients of $AB$, also retaining leading zero
+coefficients. Input and output have $\Theta_q(n)$ bits. Time includes
+all encoding, setup, movement, component calls, decoding and output.
+
+\begin{theorem}[Ordinary fixed-field baseline]
+\label{thm:baseline}
+For every individually fixed finite field $\F_q$, the proof routes
+in~\cite{SimpleBinary,GeneralBest} give a deterministic algorithm
+for this ordinary product in
+\[
+ O_q\!\left(n\log(n+2)\right)
+\]
+bit steps. The machine has a fixed finite alphabet and a fixed finite
+number of sequential one-dimensional tapes. Its finite control,
+tape count and implied constants may depend on $q$, but not on $n$.
+\end{theorem}
+
+\section{Prime-field inputs and inherited dependencies}
+Write $M_p(n)$ for the cost of an ordinary prime-field multiplier
+with the input/output convention just stated.
+
+For $p=2$, the completed reduction and binary tensor construction
+in~\cite{SimpleBinary} state
+$M_2(n)=O(n\log(n+2))$. That route includes its own evaluation,
+pointwise product and residue decoder. It retains the arbitrary-width
+equal-chunk tape-interchange result from OpenAI's
+preprint~\cite[Lemma 12, Section 4]{OpenAI26}. This note inherits
+that cited theorem dependency; it does not infer a binary polynomial
+multiplier simply from an integer-multiplication bound.
+
+For an odd prime $p$, Proposition~1 of~\cite{GeneralBest}, specialized
+to extension degree one, states
+\[
+ M_p(n)=O_p\!\left(n(\log(n+2))^{9999/10000}\right).
+\]
+Its bundled odd-field proof uses the unconditional cyclotomic host
+of~\cite{HVH19Cyclo}, the accompanying native constructions and a
+named stage-two interchange theorem~\cite{Stage2}. The proof sources
+and exact movement adapter are identified in that companion's
+\path{proofs/PROOF_SOURCES.md}. This odd proposition is proved
+separately from its characteristic-two combination.
+
+Since $\log_2(n+2)>1$ for $n\ge1$ and $9999/10000<1$, weakening
+this bound gives $M_p(n)=O_p(n\log(n+2))$. In particular, the odd
+part of this baseline does not introduce a new Linnik-type
+hypothesis. The present note relies on the written cited arguments;
+it does not independently certify their correctness or formalize
+their full machine constructions.
+
+\section{Fixed-basis reduction and tape costs}
+\begin{lemma}[Constant-degree coordinate reduction]
+\label{lem:extension}
+For a fixed extension $\F_q/\F_p$ of degree $e$, an ordinary
+prime-field multiplier of cost $M_p(n)$ yields an ordinary
+$\F_q$ multiplier of cost
+\[
+ O_q\!\left(e^2 M_p(n)+n\right).
+\]
+Here $e$ is fixed; displaying it records the number of component
+products, not a uniform growing-extension complexity claim.
+\end{lemma}
+\begin{proof}
+Expand the coefficient lists in the fixed basis to write
+\[
+ A=\sum_{i=0}^{e-1} b_i A_i,\qquad
+ B=\sum_{j=0}^{e-1} b_j B_j,
+ \qquad A_i,B_j\in\F_p[X],\quad \deg A_i,\deg B_j<n.
+\]
+Each $A_i$ and $B_j$ is an ordinary coefficient list in ascending
+degree order. Fixed-width coefficient decoding and a fixed number
+of sequential scans write these $2e$ lists in $O_q(n)$ steps.
+An initial length scan and all component-call descriptors have the
+same bound. Any other fixed field-element encoding can be converted
+by fixed finite tables at this cost.
+
+Compute the $e^2$ ordinary products
+\[
+ C_{ij}=A_iB_j\quad(0\le i,j<e)
+\]
+with the prime-field multiplier. Each result has $2n-1$ ordinary
+coefficients. Calls and input copies are sequential, and the fixed
+number of component machines can be incorporated into one finite
+control with a fixed finite set of work tapes. Their total cost,
+including their stated setup and cleanup, is
+$e^2M_p(n)+O_q(n)$.
+
+The fixed structure constants $\mu_{ijr}\in\F_p$ satisfy
+\[
+ b_i b_j=\sum_{r=0}^{e-1}\mu_{ijr}b_r.
+\]
+Consequently, if $D_r=\sum_{i,j}\mu_{ijr}C_{ij}$, then
+$AB=\sum_r b_rD_r$. Recombination uses a fixed number of scans
+over the component lists: the $k$-th output is formed only from
+their $k$-th coefficients. All operations on $\F_p$ and all fixed
+scalar multiplications have constant bit cost depending on $q$.
+At most $O(e^3n)=O_q(n)$ such work is required. A fixed number
+of tapes retains the component streams, so these scans assume no
+unit-cost random access or free global data permutation.
+
+Finally encode $\sum_r b_r(D_r)_k$ and write it for
+$k=0,\ldots,2n-2$. This is precisely the ordinary product list;
+no cyclic wrap, transformed output or missing high coefficients
+remain. Output writing and disposal of temporary streams cost
+$O_q(n)$, proving the stated bound.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:baseline}]
+Section~3 supplies $M_p(n)=O_p(n\log(n+2))$ for each fixed prime
+$p$, with the cited dependency chain appropriate to its characteristic.
+Apply Lemma~\ref{lem:extension}. Since $p,e$ and all field data
+are fixed, $e^2$ is constant and the linear codec/recombination term
+fits the stated bound. The finitely many small lengths can be
+handled by ordinary finite-table arithmetic on the same machine.
+\end{proof}
+
+\section{Verification and relation to stronger claims}
+This note isolates the general $n\log n$ baseline and its fixed-basis
+proof. The stronger general companion~\cite{GeneralBest} states
+a strict logarithmic saving by a different combination of its
+odd-field proposition with the principal binary paper. The baseline
+proved here instead uses the accessible binary companion. The two
+general statements share the odd-field argument and should be
+credited and reviewed with that shared dependency visible.
+
+No new finite experiment or end-to-end Lean verification is offered
+by this reduction note. Compilation and package hashes, when supplied,
+associate the document with its source; they do not certify the
+asymptotic theorem. Full Lean formalization remains unfinished.
+The finite-field quantifiers, ordinary coefficient representation
+and tape costs are part of any future statement-level verification.
+
+\begingroup
+\small
+\raggedright
+\begin{thebibliography}{9}
+\bibitem{HVHL17}
+David Harvey, Joris van der Hoeven and Gr\'egoire Lecerf.
+\newblock Faster polynomial multiplication over finite fields.
+\newblock \emph{Journal of the ACM}, 63(6), Article 52, 2017.
+\newblock \href{https://doi.org/10.1145/3005344}{doi:10.1145/3005344}.
+
+\bibitem{HVH19Cyclo}
+David Harvey and Joris van der Hoeven.
+\newblock Faster polynomial multiplication over finite fields using
+cyclotomic coefficient rings.
+\newblock \emph{Journal of Complexity}, 54, Article 101404, 2019.
+\newblock \href{https://doi.org/10.1016/j.jco.2019.03.004}{doi:10.1016/j.jco.2019.03.004}.
+\newblock \href{https://www.texmacs.org/joris/cyclomult/cyclomult.pdf}{Author manuscript}.
+
+\bibitem{HVH22Finite}
+David Harvey and Joris van der Hoeven.
+\newblock Polynomial multiplication over finite fields in time $O(n\log n)$.
+\newblock \emph{Journal of the ACM}, 69(2), Article 12, 1--40, 2022.
+\newblock \href{https://doi.org/10.1145/3505584}{doi:10.1145/3505584}.
+\newblock Theorem 1.2 is conditional on the stated Linnik hypothesis.
+\href{https://www.texmacs.org/joris/ffnlogn/ffnlogn.pdf}{Author manuscript}.
+
+\bibitem{Harvey26}
+David Harvey.
+\newblock On the recently proposed $o(n\log n)$ integer multiplication algorithm.
+\newblock Unpublished note, 20 October 2026, Section 4, p.~4.
+\newblock \url{https://web.maths.unsw.edu.au/~davidharvey/research/subnlogn.pdf}.
+
+\bibitem{SimpleBinary}
+\'Arp\'ad Csizmadia.
+\newblock \emph{Exact Binary Polynomial Multiplication from Fast Pascal Transforms}.
+\newblock Accompanying AI-assisted research preprint, version 0.1.0-preprint,
+2026; \path{papers/02-simple-binary/} in this collection.
+
+\bibitem{GeneralBest}
+\'Arp\'ad Csizmadia.
+\newblock \emph{Ordinary Polynomial Multiplication over Every Fixed Finite Field}.
+\newblock Accompanying AI-assisted research preprint, version 0.1.0-preprint,
+2026; Proposition 1 and its bundled proof sources,
+\path{papers/01-general/} in this collection.
+
+\bibitem{OpenAI26}
+OpenAI.
+\newblock \emph{Integer multiplication below $n\log n$}.
+\newblock Research preprint, 23 September 2026; Lemma 12, Section 4.
+\newblock Citation revision \texttt{4eaee87548250b2682affda7d05d947c05554bae}.
+\newblock \url{https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/preprints/Integer-multiplication-below-n-log-n-September-23-2026/build/sections/04-swap.tex}.
+
+\bibitem{Stage2}
+\texttt{platypii/integer-mult-bounds-lean} contributors.
+\newblock Stage-two equal-width interchange bound, declaration
+\path{IntegerMultBounds.MathlibTM2.M8.Stage2Machine.Bound.uniform_bound},
+commit \texttt{fefd699f9389af961046997796261333539e5909}.
+\newblock \href{https://github.com/platypii/integer-mult-bounds-lean/blob/fefd699f9389af961046997796261333539e5909/IntegerMultBounds/MathlibTM2/M8/Stage2Machine/Bound.lean}{Pinned theorem source}.
+
+\bibitem{CodexPlatform}
+Nicolas Bonamy and Derrick Choi.
+\newblock Codex as a platform: build on the open agent harness.
+\newblock OpenAI Developers, 19 August 2026.
+\newblock \url{https://developers.openai.com/blog/codex-as-a-platform}.
+\end{thebibliography}
+\endgroup
+\end{document}

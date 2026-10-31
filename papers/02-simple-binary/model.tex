@@ -1,0 +1,105 @@
+\section{Machine model and reduction statement}\label{sec:model}
+
+An input polynomial of degree less than $n$ is its $n$ coefficients in
+ascending degree order, including leading zero coefficients. The output
+has $2n-1$ coefficients. Time counts steps of one deterministic Turing
+machine with a fixed finite alphabet and a fixed finite number of
+one-dimensional tapes. The machine, its tapes and its finite tables do
+not depend on $n$. All bit movement, setup and cleanup are included.
+The number of fixed tapes and the constants may be extremely large.
+This paper makes no claim for a specified two-tape machine or for
+practical execution time.
+
+Internal array interfaces receive a self-delimiting binary description
+of their shape on descriptor tapes. In particular the tensor interface
+receives $t,D$, and a batched evaluator receives $k,D,B_0$; parameter
+processing and counter initialization are included in the bounds.
+These are shape parameters computed by the calling algorithm, with no
+input-dependent advice. At the top, an initial scan determines the raw
+input length in $O(n)$ steps. A shape word of length $O(\log(D+1))$
+does not have unit cost; its handling is charged to the nonempty
+$D$-bit records as specified in the subroutines.
+
+For a binary linear map $L$, $L^{\T}$ always denotes the transpose in
+the displayed coefficient coordinates. Field-trace adjoints will be
+converted to this transpose by explicit Gram maps. No generic
+circuit-transposition or inverse-as-adjoint simulation is assumed.
+
+\begin{contract}[Equal-chunk interchange]\label{con:swap}
+For a fixed $0<\tau<1$, the permutation
+\[
+ [P]\times[2^u]\times[G]\times[2^u]\times[B]
+ \longrightarrow [P]\times[2^u]\times[G]\times[2^u]\times[B],
+ \quad(p,x,g,y,z)\longmapsto(p,y,g,x,z)
+\]
+has time $O(Vu^\tau)$, where $V=PGB2^{2u}$. The constant is uniform
+in all positive dimensions, including $B=1$, and includes processing
+the shape, temporary padding, unpadding and cleanup.
+\end{contract}
+This is the statement imported from Lemma 12 of \cite{OpenAI26}.
+It is an external theorem dependency, not a conjecture about primes or
+about polynomial multiplication. Section~\ref{sec:tensor} explains its
+separate use in the tensor construction.
+
+\begin{contract}[Uniform binary tensor transform]\label{con:tensor}
+For some fixed $\beta<1$, put
+\[
+ H=\begin{pmatrix}1&1\\1&0\end{pmatrix}.
+\]
+For every $t\geq1$ and binary payload width $D\geq1$, one fixed machine
+computes $H^{\otimes t}\otimes I_D$ in $O(2^tDt^\beta)$ time,
+including all auxiliary representations, padding and cleanup. The
+constant is independent of $D$.
+\end{contract}
+Since $H=H^{\T}$ and $H^3=I$, this same algorithm computes the binary
+transpose, and two applications compute the inverse. If
+$S=\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)$ and
+$J=\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$,
+then $S=HJ$. Lucas' binomial congruence gives the Pascal matrix
+\[
+ (\mathcal P_{2^t})_{s,j}=\binom js\bmod2
+       = (S^{\otimes t})_{s,j}.
+\]
+Thus one call to Contract~\ref{con:tensor} and reversal of the record
+order compute $\mathcal P_{2^t}$. Its transpose places that reversal on
+the other side. The payload can be a list of coefficient words: it
+need not be one element of an enormous field.
+
+\begin{lemma}[Rectangular reorientation]\label{lem:rectangle}
+Contract~\ref{con:swap} permits the address-field rotation
+$[2^a]\times[2^b]\to[2^b]\times[2^a]$ in
+$O(V(a+b)^\gamma)$ time, where $\gamma=1/(2-\tau)<1$.
+The bound includes an arbitrary opaque suffix payload.
+\end{lemma}
+\begin{proof}
+Use the Euclidean block-rotation schedule. At widths $a\geq b$,
+write $a=qb+r$, exchange the right field past the $q$ complete
+$b$-bit chunks, then rotate the remaining pair of widths $b,r$.
+Stop when the smaller positive width is less than $z$; move its
+individual bits across the other field, preserving their order.
+Single-bit moves cost $O(V)$ by a sequential split and merge.
+The Euclidean remainders satisfy
+\[
+ \sum_i q_i r_i^\tau
+ \leq z^{\tau-1}\sum_i q_i r_i
+ \leq(a+b)z^{\tau-1}.
+\]
+The last sum telescopes, since $q_i r_i=r_{i-1}-r_{i+1}$.
+The final individual-bit moves cost $O(Vz)$. Choose $z$ within a
+constant factor of $(a+b)^\gamma$ using a power of two and integer
+arithmetic on $\lceil\log_2(a+b)\rceil$. Both terms have the asserted
+bound. Reverse the actual schedule for the transpose permutation.
+\end{proof}
+
+\begin{theorem}[Exact reduction]\label{thm:reduction}
+Contracts~\ref{con:swap} and~\ref{con:tensor} imply an exact
+$O(n\log n)$ algorithm for multiplying two degree-$<n$ polynomials
+over $\F_2$ in the stated model. For either fixed operand, the ordinary
+binary transpose of the multiplication map has the same bound.
+\end{theorem}
+Sections~\ref{sec:fields}--\ref{sec:decoding} prove this implication.
+The removal of Contract~\ref{con:tensor} as a separate premise
+is isolated in Section~\ref{sec:tensor} and Appendix~\ref{app:word}.
+Theorem~\ref{thm:reduction} does not assume an arithmetic-operation
+model with unit-cost extension-field scalars.
+

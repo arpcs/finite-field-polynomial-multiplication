@@ -1,0 +1,204 @@
+\section{Sibling fusion, local scalar costs and evaluation}\label{sec:evaluation}
+
+\subsection{Evaluate the outer prefix before translating the inner rows}
+After Lemma~\ref{lem:radix}, scale digit $t$ by $c_l^t$ and, for
+each inner monomial coefficient, evaluate the outer polynomial on
+$W_r$. This produces the degree-$<M$ polynomials
+\begin{equation}\label{eq:outer}
+ g_v(X)=\sum_{t<\ell}c_t(X)c_l^tv^t,\qquad v\in W_r.
+\end{equation}
+For $x\in W_m$, Lemma~\ref{lem:annihilator} gives
+$f(x+u^lv)=g_v(x+u^lv)$. Hence translate $g_v$ by
+$\delta_v=u^lv$ and evaluate the result on $W_m$.
+For $v=0$ the translation is the identity. For every $v\ne0$,
+\begin{equation}\label{eq:phase}
+ \operatorname{Taylor}_{\delta_v}
+ =\operatorname{diag}(\delta_v^{-s})\,
+   \mathcal P_M\,
+   \operatorname{diag}(\delta_v^t).
+\end{equation}
+This is the coefficient identity
+$[X^s]g(X+\delta)=\sum_{t\geq s}\binom ts g_t\delta^{t-s}$.
+
+Thus there are two scalar actions per coefficient in the translation,
+plus the separate outer scale. There is no scalar action at every
+Pascal butterfly level. Evaluating \eqref{eq:outer} first is important:
+$\delta_v$ is now a public field element, so no symbolic two-variable
+coefficient box is expanded when $r\ll m$. The zero row bypasses
+\eqref{eq:phase}, and its transpose bypasses it by the same identity
+map. In particular no inverse of zero is requested.
+
+\subsection{Native child fields, even for large ambient payloads}
+At the node with macro power $a$, all phases and scales belong to
+\[
+ B_a=\F_2[T]/\Phi_{9a}(T),\qquad d=6a=\Theta(k).
+\]
+This field has $\F_4$ dimension $3a$, regardless of whether $m=a$ or
+$m=2a$. It would be incorrect to demand a subfield of dimension $3m$
+in the second case. Let $h_0=3A/a$; the powers of three divide, and
+\begin{equation}\label{eq:module}
+ T=Y^{h_0},\qquad
+ \Phi_{27A}(Y)=\Phi_{9a}(Y^{h_0}),\qquad
+ E=\bigoplus_{j<h_0}Y^j B_a,\quad D=h_0d.
+\end{equation}
+This chart is the literal coefficient permutation $i=j+h_0t$.
+
+\begin{lemma}[Uniform short scalar action]\label{lem:scalar}
+Put $\alpha=\log_2 3$ and $\rho=\alpha-1<1$.
+Multiplication by a public element of $B_a$ on an arbitrary $E$ word,
+and its ordinary binary transpose, cost $O(Dk^\rho)$, uniformly even
+when $D/k$ is arbitrarily large.
+\end{lemma}
+\begin{proof}
+Pack the $d\times h_0$ coefficient rectangle in
+$O(D\log\min(d,h_0))$ time. A fixed-tape construction recursively
+bisects the shorter dimension, transforms its two parts and merges
+corresponding row fragments from two sequential streams. At every
+depth the total moved volume is $O(D)$ and there are
+$O(\log\min(d,h_0))$ depths. The inverse and the actual transpose
+permutation have the same cost. Record-length counters use amortized
+ripple updates; parameter initialization is at most the volume of the
+current stream, not a $\log D$ charge per bit.
+
+Binary polynomial Karatsuba multiplication~\cite{KaratsubaOfman62} costs $K(d)=O(d^\alpha)$ on fixed tapes.
+Pad once per local product to the next power of two. Three half-size
+products, sequential XORs and depth-first parking give
+$K(2s)\leq3K(s)+O(s)$. Parent storage is parked locally and not crossed
+by a descendant. The native modulus is $T^{2s}+T^s+1$, with $d=2s$.
+A raw product split into four aligned $s$-bit blocks reduces by
+\[
+ A_0+T^sA_1+T^{2s}A_2+T^{3s}A_3
+ \longmapsto (A_0+A_2+A_3)+T^s(A_1+A_2).
+\]
+This needs $O(d)$ sequential moves and XORs. Apply the same scalar
+to the $h_0$ components in \eqref{eq:module}. The total cost is
+\[
+ O(D\log d+h_0d^\alpha)=O(Dk^\rho).
+\]
+
+For the transpose, let $K_d$ be the coefficient-residue Gram matrix
+for $\lambda(a)=[T^{d-1}]a$ modulo that native modulus. Its entries
+are one exactly when $i+j=2s-1$ or $3s-1$.
+Let $J_d$ reverse $d$ coordinates and let $N$ copy the last $s$
+input coordinates into the first $s$ outputs, zero elsewhere. Then
+\[
+ K_d=J_d(I+N),\qquad N^2=0,\qquad
+ K_d^{-1}=(I+N)J_d.
+\]
+Associativity of $\lambda(ab)$ gives
+\begin{equation}\label{eq:scalar-transpose}
+ M_c^{\T}=K_d M_c K_d^{-1}.
+\end{equation}
+Thus two explicit linear-cost maps and one actual scalar product
+compute the transpose, with the same bound. Transpose the packing
+permutation literally. This proof uses no inverse-Frobenius rule and
+no trace-adjoint substitution for an ordinary coordinate transpose.
+\end{proof}
+
+The positive and negative powers in \eqref{eq:phase} are generated
+sequentially in the $d$-bit field, for each outer label $v$. There
+are $O(M\ell)$ such short products. Their time
+$O(M\ell d^\alpha)$ is at most $O(M\ell Dk^\rho)$.
+One field inversion per nonzero $v$ may use any fixed polynomial-time
+algorithm in $k$: $M\geq4^{k/2}$ absorbs this per-label setup.
+Fixed small $k$ uses direct fixed-subfield maps on each native word.
+Likewise the basis powers, native indices and inverses of the scales
+$c_l$ are public short-field computations. No generic ambient-field
+product is used at a small recursive node.
+
+The separate outer scale in \eqref{eq:outer} is charged as well.
+Generate the $\ell$ powers $c_l^t$ with $O(\ell)$ products in $B_a$,
+then apply them to the $M\ell$ native $E$ words using
+Lemma~\ref{lem:scalar}. The total is
+\[
+ O(\ell d^\alpha+M\ell Dk^\rho)=O(M\ell Dk^\rho).
+\]
+The ordinary transpose uses the same local Gram formula. With an
+external batch of $B_0$ independent lanes the data-action cost is
+multiplied by $B_0$, while the public powers are generated once.
+
+\subsection{The full recurrence and all transposes}
+Choose a fixed
+\begin{equation}\label{eq:theta}
+ \max(\beta,\gamma,\rho)<\theta<1.
+\end{equation}
+Let $F_D(k)$ be the time to evaluate an arbitrary degree-$<4^k$
+polynomial over $E$ on $W_k$, with the fixed top width $D$.
+Radix extraction, outer scaling, the shared Pascal/Taylor layer,
+public setup and rectangular reorientation together cost
+$O(4^kDk^\theta)$. Equations~\eqref{eq:outer}--\eqref{eq:phase}
+therefore give
+\begin{equation}\label{eq:recurrence}
+ F_D(k)\leq4^rF_D(m)+4^mF_D(r)+C4^kDk^\theta.
+\end{equation}
+The $4^r$ inner evaluations are identical maps on separate coefficient
+lists, after the distinct translations have been performed. They can
+be streamed as one batched map, with the batch index an opaque payload
+coordinate. The same applies to the outer evaluations. Scalar actions
+remain componentwise on the original $D$-bit field words. This batching
+does not reinterpret a list of words as a larger field and does not
+reload a parent array once for every child. Copying into and out of
+the local child I/O interval contributes to the displayed node toll.
+
+More precisely, strengthen the interface to
+$\operatorname{Eval}(k,D,B_0)$, with stream shape
+$[4^k][B_0][D]$ and volume $V=B_04^kD$. After radix extraction the
+shape is $[\ell][M][B_0][D]$. The outer call is
+$\operatorname{Eval}(r,D,B_0M)$, consuming the whole current array.
+Perform the $v$-dependent translations, reorient the two local fields
+$[\ell][M]$ to $[M][\ell]$ by Lemma~\ref{lem:rectangle}, and call
+$\operatorname{Eval}(m,D,B_0\ell)$ on that same whole array. The
+external lane remains an identity factor and the field degree remains
+$D$. Thus the uniform time satisfies
+\[
+ T_D(k,B_0)\le T_D(r,B_0M)+T_D(m,B_0\ell)
+       +CVk^\theta.
+\]
+Normalizing by $V$ gives the same recurrence as
+\eqref{eq:recurrence}. Only descriptors are suspended on the parent
+stack: all current data belong to the active child, so there is no
+inactive sibling array to park or replay. Header initialization is
+charged once per call, and amortized ripple counters charge record
+boundaries to their scans. The local reorientation depends on $k$,
+not on the size of the external lane.
+
+\begin{lemma}[All-prefix recurrence]\label{lem:recurrence}
+The recurrence \eqref{eq:recurrence} implies
+$F_D(k)=O(4^kDk)$ with constants independent of the top width $D$.
+\end{lemma}
+\begin{proof}
+Normalize by $4^kD$ and denote the resulting cost by $T(k)$.
+If $k=a+r$, expand the power-three child $a$ into three $a/3$
+children using its two macro steps. The new children have heights
+$a/3,a/3,a/3,r$. If $k=2a+r$, first split $2a$ into two $a$
+children and expand both, obtaining six $a/3$ children and $r$.
+All bounded cases are included directly. In each case the child
+heights $x_i$ sum to $k$, each is at most $k/2$, and only a bounded
+number of tolls $O(k^\theta)$ has been introduced. Since
+\[
+ \sum_i x_i^\theta
+ \geq(k/2)^{\theta-1}\sum_i x_i
+ =2^{1-\theta}k^\theta,
+\]
+induction with the upper potential $C_0k-Lk^\theta$ succeeds after
+choosing $L$ to dominate the toll divided by
+$2^{1-\theta}-1$, and $C_0$ to cover the fixed bases.
+\end{proof}
+
+The ordinary transpose reverses inner evaluations, the two actual
+scalar transposes in \eqref{eq:phase}, the Pascal transpose, outer
+evaluations, scales, and radix extraction. Lemma~\ref{lem:scalar}
+and the explicit shift/carry transposes give the same recurrence on
+unrestricted covectors. The inverse also has the same bound: invert
+the children and scales, use the same characteristic-two translation,
+then the separately proved synthesis \eqref{eq:radix-inverse}.
+
+Evaluation on the affine grid $Y+W_K$ is one initial translation by
+$Y$ followed by this evaluator. Its diagonal factors are native
+$Y^i$ and $Y^{-s}$ actions. Reduce their exponents modulo $27A$;
+cyclic shifts in a $27A$-slot representation and an aligned fold cost
+$O(D)$ per word. Its Pascal call is covered by
+Contract~\ref{con:tensor}. It follows that affine evaluation and its
+ordinary transpose both cost $O(bDK)$. This global affine shift is
+performed once, not at every recursive node.
+

@@ -1,0 +1,412 @@
+Ordinary odd-field multiplication through the existing cyclotomic host
+===================================================================
+30 October 2026. Full odd-characteristic transfer and native proof sources are bundled alongside this note. The host, native odd-field services, generic permutations, Newton factorization, dirty replay, and displacement identities are attributed constructions; this transfer rederives the odd-characteristic interfaces it changes. The
+proposed advance is their composition WITHOUT the balanced full-field
+correction cut, whose exponent loss was quadratic in the supplier gap.
+
+Status: the full reduction has now been rederived in
+ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt, requirements1-26,
+including the broader native shape, odd replay, actual coefficient
+representations, both CRT components and bit invoice. Its named native
+constructions and external stage-two interchange theorem remain explicit
+dependencies. This is a mathematical theorem derivation with internal
+adversarial validation, not external acceptance or a priority claim.
+No practical HQC implication. The earlier construction history and
+finite-scope qualifications below are retained.
+
+Result using the named existing native/movement constructions:
+    M_(p^e)(n)=O_(p,e)(n (log(n+2))^(9999/10000))       (T)
+for every fixed odd prime p and fixed e, ordinary coefficients at both
+ends on a fixed finite alphabet and fixed finite number of tapes.
+This replaces this chat's earlier odd saving1/27200000000 by1/10000,
+a factor2720000 in the SAVING, not in measured runtime. It says nothing
+about a comparable characteristic-two phase supplier.
+
+I. Exact antecedents and actual source interfaces
+------------------------------------------------
+A. The ordinary endpoint and odd-characteristic compiler/replay/Toeplitz
+proof are reproduced in odd_cyclotomic_host_transfer.tex. The grouped
+native matching service is in odd_grouped_native_transfer.tex. These are
+proof sources, not complexity-oracle citations.
+
+B. native_odd_source_snapshot.tex.txt contains the complete current finite-ring
+proof source, including lem:nativedock, prop:nativephase,
+lem:nativeselector, prop:nativecontrolled, prop:nativeCRT, lem:CRTphase,
+thm:stage2phase, and the proof of lem:nativeparameter. Its broader dock
+and phase hypotheses allow L^3 <= n_i <= R and
+log R = O((log(L+2))^c). The host here has c=2. The transfer uses the
+proof of lem:nativeparameter at that larger shape, not its narrower
+polynomial-radix statement.
+The stage-two source tariff is
+    tau_L=1-123879734039/10^15,
+    eta_L=1/(2-tau_L)=10^15/(10^15+123879734039).
+The named import is Stage2Machine.Bound.uniform_bound at the pinned
+source recorded in PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt.
+Its exact ordinary-bit adapter, rather than a whole integer multiplier,
+is the movement input. The phase manuscript retains the plain exponent
+gamma0=1-619/5000000>eta_L, absorbing its fixed secondary logarithms.
+Both are strictly below beta=9999/10000. The existing native proofs
+use O(log R) endpoint blocks and ragged-network levels. For fixed c=2
+these are still fixed logarithmic powers of L; no new power of L arises.
+
+Scope detail: the later lem:nativeparameter is stated for polynomial
+radices, as used by that manuscript's integer host. We do not quote its
+statement at the present larger R. Its exponent-substitution PROOF
+extends here for the following concrete reasons. The earlier nativedock
+and nativephase propositions already state fixed-polylog(log R) shapes.
+The banks have h=floor(L/(40 log2R)) axes, and t>=(L-2)/log2R supplies
+more than2h axes. Their untouched suffix remains >=0.8L bits, so its
+opaque width dominates every fixed polynomial in R,L when
+log R=O((log L)^2). The only extra repetition counts are O(log R)
+endpoint blocks, O(log R) ragged slots and O(log t) CRT levels; all
+are fixed powers of log L in this host. Every variable per-record
+integer table/gauge computation is covered by P_(G,family)(R,L), paid
+by the enlarged external coefficient record. The equal/unequal swaps
+and contiguous phase calls themselves depend on selected BIT widths
+and actual volume, never on an assumption that R has polynomial size.
+Replacing their old tariffs by tau_L,eta_L,gamma0 therefore yields
+the same leading gamma0 for this c=2 family as well. No precision or
+complex numerical-recovery theorem is used in this finite-field case.
+
+For each fixed odd field G containing i^2=-1, and fixed family of
+polynomial-time public generators, the services apply local permutation
+tensors/inverses, controlled tensors, the coupled prime-CRT map, and the
+canonical endpoint C tensor, where
+    C=1/2 [[1+i,1-i],[1-i,1+i]].
+Records are vectors of G lanes for C, or arbitrary bit payloads for
+permutations. Their required per-record public-work allowance is one
+fixed effective polynomial P_(G,family)(R,L). Retain it. No growing
+coefficient-algebra multiplication is charged as a fixed G operation.
+
+The Gaussian specialization and complete-call G codecs were already
+derived in odd_grouped_native_transfer.tex. The source's finite mixed
+word specializes entrywise from Z[i,1/2] to G, with all actual signs and
+constant phases. This is not a homomorphism from C to a finite field.
+Its full finite transition table was checked in the preceding source
+audit, but finite checks do not establish the growing machine theorem.
+
+C. Harvey--van der Hoeven, author cyclomult.pdf, Propositions3.4/3.8
+and Lemma2.2 are the established deterministic host and top isomorphism.
+Their actual PDF was reopened during this audit. Proposition3.8's proof
+selects at most O((loglog N)^2) primes, which gives the strong density
+needed below. The source uses deterministic fixed multitape bit time
+and states its implied constants are effective.
+https://www.texmacs.org/joris/cyclomult/cyclomult.pdf
+
+II. A formal convolution supplier in every fixed characteristic
+--------------------------------------------------------------
+Fix p odd. Choose ell=3 if p!=3, and ell=5 if p=3. This ell is a
+CONSTANT address/root radix; it is not the coefficient characteristic.
+For a large input length v, let b be the least ell-power with b^2>=v,
+s=ceil(v/b), and t the least ell-power >=2s-1. Then
+    sqrt(v)<=b<ell sqrt(v), s<=b,
+    t<=ell b, t<2ell s, t divides ell b.
+Over ANY commutative Fp-algebra A, use
+    R=A[Y]/Phi_(ell b)(Y), rank r=(ell-1)b.
+The defining polynomial is sum_(j=0)^(ell-1) Y^(jb). Its roots over
+the algebraic closure of Fp have exact order ell b, because ell b
+is an ell-power and ell!=p. Thus Y^j-1 is a unit for0<j<ell b:
+the coprime-polynomial Bezout identity over Fp remains valid over A.
+The root zeta=Y^(ell b/t) is principal of order t, including over
+nonreduced A. Its inverse transform has normalization t^-1 in Fp,
+not the characteristic-two value1. This scalar is always a unit.
+
+Block the input into s length-b polynomials over A. Two t-point DFTs,
+t recursive ordinary length-r products over A, and the inverse DFT
+recover all block products. The true blocks have degree <=2b-2<r,
+so the quotient loses no true block coefficient. Add overlapping
+length-2b blocks and crop only the known padded tail.
+
+Multiplication by a root power pads an r-vector to ell b, rotates, and
+subtracts the last length-b block from EACH of the first ell-1 blocks.
+For a point product, first fold modulo Y^(ell b)-1 (its degree is
+<2ell b), then use that same cyclotomic fold. Both have O_p(b) size
+and constant arithmetic depth. The ell-ary butterflies, their explicit
+twiddles, normalization and block reconstruction give
+    S(v)<=t S(r)+O_p(tb log(2t)),
+    D(v)<=D(r)+O_p(log(2t)).
+For v above a fixed threshold, r<=v^(2/3), and
+    tr < 2ell(ell-1)bs <=4ell(ell-1)v <=80v.
+Since80*(2/3)^16<1, induction gives a division-free formal bilinear
+circuit of size O_p(v log^16(2v)), depth O_p(log(2v)), with polynomial
+wire-descriptor generation. The direct base branch is finite and exact.
+Every normalization is a fixed-field scalar, not inversion of data.
+
+Specialize one operand, or retain constants and the degree-one part
+at every gate: (c,l)(d,m) -> (cd,cm+dl). No relation x^p=x is used.
+Count input/output copy trees. The resulting linear DAG has
+    g(v)=O_p(v log^16(2v)), H(v)=O_p(log^2(2v)).
+All coefficient constants are prepared once with polynomial work in
+the local dimensions and the actual algebra representation.
+
+III. Dirty replay and exact-width Toeplitz: retain the minus signs
+----------------------------------------------------------------
+On pairwise disjoint source x, target y and borrowed gate coordinates z,
+the first in-place linear sweep has z'=Uz+Tx. With counted output ports
+Fz+Dx, zero initialization gives FT+D=M. Sweep/read/undo increments y by
+    Mx+FUz.
+Repeat the sweep with EVERY original-source edge omitted, including
+input-copy roots and direct output reads. SUBTRACT its borrowed output
+FUz from y, then undo. This yields y+Mx and restores arbitrary dirty z.
+Adding both outputs, as in characteristic two, would instead leave
+2FUz and is incorrect for odd p. Reverse sweeps use negative shears.
+Bounded degree and edge coloring give O_p(H+1) disjoint-shear layers.
+
+For a unit lower Toeplitz matrix T_v, split at s=floor(v/2). Apply its
+two diagonal children, then cross-update E=B T_s^-1. If h is the
+Toeplitz sequence and g its reciprocal, the absolute-index difference is
+    E_(i,j)-E_(i-1,j-1)=-h_(i-s) g_(s-j).
+The rank-three displacement and first-row/column corrections in the
+existing local appendix hold verbatim over Fp, with these signed
+coefficients. Each rectangular chunk action is SIX fixed-kernel
+convolutions, including correlation/reversal ports, with both input
+chunk lengths <=b and all intermediate/output wires counted.
+
+Choose the largest b for which e+a+g<=v for EVERY ragged chunk pair;
+the actual DAG can be printed and counted during setup. Eventually
+b=Omega_p(v/log^16v). Sources and targets lie in different half intervals;
+all borrowed gates come from their complement INSIDE the same v slots.
+Replay restores them before another chunk pair. There are O(log^32v)
+chunk pairs and O(log^2v) layers per pair. Diagonal child words run in
+parallel, so
+    d(v)<=max(d(floor(v/2)),d(ceil(v/2)))+O_p(log^34(2v)),
+    d(v)=O_p(log^35(2v)).
+No padding of each prime axis or clean gate coordinate is needed.
+This is an exact-width compiler, not a unit-cost growing-ring DAG.
+
+IV. Newton Fourier words and arbitrary nonunit shear coefficients
+----------------------------------------------------------------
+Let S be the etale coefficient algebra below and u a principal q-root,
+q a host prime different from p. Put H_j=product_(1<=a<=j)(1-u^a),
+H_0=1. All H_j are units in S. The Newton matrix has
+    N_(j,k)=H_j H_(j-k)^-1 beta_k,
+    beta_k=(-1)^k u^(k(k-1)/2).
+The SIGN (-1)^k is essential in odd characteristic. Unit-pivot symmetry
+gives F_q=N diag(N_jj)^-1 N^t, over the ring as well as a field. With
+A=diag(H_j), T the unit Toeplitz sequence H_j^-1, this is
+    F_q=A T Gamma T^t A, Gamma=diag(beta_j/H_j).
+The transpose is the field-coordinate matrix transpose, not a physical
+transpose of the expanded coefficient-bit map.
+
+Take fixed G=F_(p^2), which contains i^2=-1 and has >5 elements, and
+B=S tensor_Fp G, represented as G[U]/Phi_(alpha')(U). Every B component
+is F_(p^rB), rB=lcm(ord_(alpha')p,2)<=2D'. It is a product of fields,
+not presumed one field. Write lambda for any fixed G\{0,1}. For mu in B,
+    e_mu=1-(mu-1)^(p^rB-1),
+    d=1+(lambda-1)e_mu.
+Componentwise d and mu-d are units, and mu=d+(mu-d). Nonzero-divisor
+claims are componentwise; mu itself and mu-1 need not be units.
+These selectors/inverses are public setup, polynomial in R0,D',L0.
+
+The existing fixed five-C word gives U(1)=I+E12 over G. Its proof
+chooses a in G outside{0,1,-1,i,-i}, forms the upper triangular
+C diag(a,1) C^-1 diag(-(a+1)/(a-1),1) C, normalizes its two diagonal
+entries, and rescales its nonzero upper-right entry. Therefore for
+every UNIT z in the growing B,
+    U(z)=diag(z,1) U(1) diag(z^-1,1).
+For general mu use U(mu)=U(d)U(mu-d). The number of native C calls and
+growing B diagonal slots is an ABSOLUTE CONSTANT depending only on p.
+Zero shears receive the same completed identity word. Pair all unused
+positions, including the one native dummy, with coefficient zero.
+Pair ordering and its inverse are existing generic permutation tensors.
+
+This does NOT invoke a fixed-kernel theorem at a growing field B.
+The ONLY accelerated fixed scalar kernel is C over the FIXED G, acting
+independently on the D' native G lanes. Growing B diagonals retain the
+separate old multiplication tariff. Keep all pair/dummy/G lanes until
+each complete word returns. Completed words fix every unused pair and
+preserve each per-axis dummy-pattern subspace.
+
+Synchronize the two Toeplitz halves of the five-stage Newton template
+separately to K=max_i len(T_qi)=O_p(log^35(2R0)) matching rounds. Missing
+layers are identity matchings. Thus there are2K rounds and three outer
+tensor diagonals; no whole-array call per prime axis. Every round has
+constant-many native C, generic permutation and B diagonal calls.
+
+V. Host, coefficient word, and ALL ordinary coefficients
+--------------------------------------------------------
+For fixed p, apply HvdH3.4 at target2n, then3.8, to construct the whole
+p-admissible tuple and its divisor/root in N^o(1) bit time, with
+2n<N<4n. Let L0=ceil(log2N), ell0=ceil(log2L0), R0=2^(ell0^2).
+The remaining distinct primes satisfy L0^3<q_i<=R0; none equals p.
+The constructed alpha includes q0 and only O(ell0^2) primes.
+
+Freeze the actual polynomial allowance P_(G,family)(R,L), including
+controlled CRT and compiled local pair permutations. Its address
+generators depend on R,L and fixed topology, not on growing B elements:
+retain zero coefficient edges in each public DAG, so no scalar-valued
+branch changes its wire topology. Their scalar coefficients belong to
+the separate prepared B tables. Choose a fixed effective A0 large
+enough that (R0+L0+5)^A0 dominates this allowance at R=R0+1,L<=L0.
+Enlarge alpha to alpha'=alpha J using unused host primes until
+    D'=phi(alpha') >= (R0+L0+5)^A0.
+Only O_p,A0(ell0) primes are added and many remain, since the whole
+tuple has Omega(L0/ell0^2) primes. The first crossing gives
+    log alpha'=O_p,A0(ell0^4), m'=N/alpha', m'D'=Theta(N),
+    theta=1-D'/alpha'=O_p,A0(ell0^2/L0^3).
+The last estimate comes from the ACTUAL number and minimum size of
+selected prime factors, not just the weaker 1/L0 density bound.
+
+The old-to-new homomorphism Y_old -> U^J is used ONLY to lift roots.
+If rho has order N/q0, first take omega=rho^(alpha/q0), then lift and
+raise to J. Period splitting cancels the factors alpha/q0 and J because
+they are nonzero in Fp. This yields a principal m' root in
+    S=Fp[U]/Phi_(alpha')(U).
+The INPUT coefficient identification is the rename Y_new -> U,
+not a second exponent-J substitution. All root data/certificates and
+fixed monic reductions are prepared once in polynomial(R0,D',L0),
+which is N^o(1). No root for every input length is assumed as advice.
+
+Use the top isomorphism
+    Fp[X]/(X^N-1) -> Fp[Y,Z]/(Y^alpha'-1,Z^m'-1),
+    X -> Y^c Z, c=(m')^-1 mod alpha'.
+Exponent k=r+m'j goes to (Z-index,Y-index)=(r,cr+j mod alpha'). Both
+directions cost O_p(N log alpha') by the established two-factor map.
+Project each Y-row to f=Phi_(alpha') and psi=(Y^alpha'-1)/f. Reconstruct
+rowwise by Bezout idempotents after both component products. The
+new large component is S by renaming its variable. Prepared monic
+remainder and CRT reconstruction cost O_p(M_old(alpha')) per row.
+
+Embed the large component in B and pad each remaining prime axis once
+from q_i to n_i=q_i+1. The product volume ratio is
+    M/m'=product_i(1+1/q_i)=1+O(L0^-2).
+L=ceil(log2(2M)) is Theta(L0) and eventually <=L0. The native service
+conditions hold with log R=O((log L)^2) and record width proportional
+to D', including ordinary coefficient codecs. Keep the same M B words
+through both forward transforms, their point product and the inverse.
+
+For CRT idempotents E_i=(m'/q_i)((m'/q_i)^-1 mod q_i), use EXACT local
+roots omega^E_i. Let Q be the completed extended prime-residue map.
+The tensor T of F_qi(omega^E_i) direct-sum1 gives
+    Q^-1 T Q E = E F_m'(omega),
+where E is the ordinary-order zero-fill embedding. This is a literal
+frequency identity, stronger than a matched roundtrip/product test.
+The inverse uses omega^-1 AND normalization (m')^-1 in Fp. This last
+factor is generally NOT1. It costs a linear scan. The principal-root
+character sums then give the actual cyclic S[Z]/(Z^m'-1) product.
+Completed transforms have S entries, hence return S-valued arrays; only
+after the inverse remove zero helper G lanes and the dummy complement.
+
+For the complement d=deg psi=alpha'-D', v=dm'=N theta, use ordinary
+fixed-p polynomial packing Y^j Z^i -> T^(2di+j) at input length2v.
+There is no inner coefficient carry into a neighboring outer slot.
+After the full product, reduce each length-2d row modulo psi and fold
+Z^m'=1. Its cost is O_p(M_old(v)+m'M_old(d)), with d=1 direct and
+d=0 omitted. The strong density makes this o_p(N).
+
+Finally reconstruct both coefficient CRT components rowwise, invert
+the top map, and extract the first2n-1 coefficients. Since the original
+ordinary product has degree<=2n-2<N, there is no cyclic alias. Thus the
+function really is ordinary dense Fp polynomial multiplication, with
+ordinary coefficients at BOTH ends. Fixed extensions F_(p^e) follow
+by a fixed number of Fp products and their fixed basis/table maps.
+
+VI. Complete bit invoice and finite-tape ownership
+---------------------------------------------------
+Use the independent classical SS integer algorithm with base2^k packing,
+k large enough that v(p-1)^2<2^k, for all small word arithmetic. Reducing
+each exact integer convolution chunk modulo fixed p gives
+    M_old,p(v)=O_p(v log^2(2v) loglog(4v)).
+No call uses the proposed new multiplier as its own premise. Fixed monic
+remainder uses reversal, a prepared reciprocal, two such products and
+subtraction, valid in every characteristic. Products/reductions in
+B=G[U]/f need only a constant number of Fp word products, so each actual
+growing-ring scalar action costs O_p(M_old(D')). Unit setup is separate.
+
+Represent a B word as D' consecutive ordinary G coefficients, so the
+native C service acts on actual serialized G lanes. Runtime arithmetic
+may split each such word into its TWO Fp coefficient polynomials by
+one scan to two fixed tapes, compute the fixed-degree extension product,
+then zip those two output tapes. Each split/zip costs O_p(D'), including
+returns. G's fixed polynomial basis and multiplication table are fixed
+once; if i already lies in Fp, no variable isomorphism is introduced.
+This constant-column lane conversion is included in M_old(D'); it is
+not a free transpose of two growing address fields. The helper G lanes
+stay allocated across all full transforms and point products.
+
+At each synchronized tensor diagonal, generate product coefficients by
+prefix expansion in CURRENT native order. If M_j are successive prefix
+volumes, sum_j M_j<2M. Therefore generation, table rewinds, application
+and erasure cost O_p(M M_old(D')), not M times the number of axes.
+The controlled CRT diagonals are fixed-field routing scalars with the
+separately paid polynomial generator, not these B diagonals.
+
+The local Fourier tensor cost is consequently
+    O_p(K MD' L^eta_L polylog L + (K+1) M M_old(D')),
+or its already rounded gamma0 version, with K=polylog L0. Include the
+constant-many coupled CRT maps per transform. All three transforms,
+point products, codecs, root setup, both coefficient components, top
+maps and ordinary output have aggregate bound
+    O_p(N L0^eta_L (log L0)^C) + N polylog L0 + N^o(1).
+Using gamma0 instead is harmless because
+    eta_L < gamma0=1-619/5000000 < 9999/10000.
+Every fixed secondary logarithm fits the STRICT gap to9999/10000.
+All parameter choices and polynomial degrees precede N; effective
+constants give one fixed direct cutoff. No input-dependent exponent.
+
+Each imported service includes its actual field codec, preparation,
+padding, erasure and head returns. Native pads survive only their
+specified completed words; no fresh volume factor is introduced into
+the role recursion. The ordinary top-level program uses a fixed bank
+of streams, parks the complementary component and second transform
+array on disjoint tapes, and lets callees operate only on their current
+owned arrays. Their existing current-parent stack protocols return
+without crossing parked ancestors. Classical word arithmetic uses its
+own fixed bank with charged returns. No tape per prime, recursion
+level, coefficient table or transform point is introduced.
+
+VII. Adversarial obligations and overlap decision
+------------------------------------------------
+The new transfer does not follow by replacing F2 with Fp in old text.
+Four essential changes are explicitly above:
+ (a) a transform radix ell coprime to p, with t^-1 normalization;
+ (b) SUBTRACT the second dirty replay output;
+ (c) retain (-1)^k in the Newton beta coefficients;
+ (d) apply (m')^-1 after the inverse ordinary DFT.
+The helper-unit split also uses mu-d, not mu+d, and the cyclotomic fold
+subtracts its final block. The root lift cancels nonzero factors in Fp;
+they need not equal1. These are natural finite falsification targets.
+
+The key reuse distinction is between an odd ADDRESS prime in a binary
+coefficient proof and a fixed odd COEFFICIENT characteristic. Notes about
+odd cyclotomic indices over F2 do not establish this transfer. The source
+native odd-ring manuscript already has controlled CRT and arbitrary
+fixed-polylog radix sizes, so neither is redeveloped as a new result.
+
+The earlier ODD_POWERLOG_COMPOSITION_AUDIT reduction remains a valid
+different route. Its squared exponent loss arises from its upper/lower
+correction cut, not from a universal lower bound. This cyclotomic host
+avoids that cut and inherits the native service's leading exponent.
+The full audit now derives each interface above and establishes the
+ordinary fixed-odd-field bound(T) through those named constructions.
+
+VIII. Bounded odd-algebra witness and present conclusion
+-------------------------------------------------------
+The new odd_cyclotomic_transfer_check.cpp compiled warning-free and its
+one guarded run passed1072 assertions in758ms. It imports and installs
+the original64MiB/10CPU-second job guard before algebra, or refuses.
+No existing mathematical program was rerun. The report checks:
+ -243 signed Newton entries for lengths5,7,13 over F81/F729;
+ -243 inverse entries, including the nontrivial factor5^-1=2 in F3;
+ -80 arbitrary/nonunit cases in the genuinely split algebra
+  S[eta]/(eta^2+1), including a nontrivial component idempotent;
+ -the actual fixed five-C U1 word and growing two-unit shear word;
+ -64 arbitrary-dirty replay fixtures with subtractive second output;
+ -146 detected wrong-middle-factor/sign/normalization controls.
+The maximum matrix width is13 and scalar field size729. These are
+finite algebra checks, not execution of the native tape supplier,
+formal growing convolution circuit, whole admissible host or runtime
+proof. Unit arithmetic shares one explicit polynomial-field routine;
+the matrix/Fourier comparisons check map identities at this finite size.
+
+The preceding paragraph records the original local witness. The later
+whole-source audit now supplies the c=2 native tariff substitution,
+fixed polynomial ordering and ordinary coefficient reconstruction by
+derivation. Its separate new whole-host witness checks24 products and
+1560 complete coefficients over F3 and F5 in1920 assertions, using
+actual compiled five-C/Newton/unit-shear words and both CRT components;
+the F5 coefficient ring is a product of fields. It retains the original
+guard and ran once in750ms. Neither finite program is used as a proof
+of the asymptotic bit bound. The formal/cost proofs and exact external
+dependency are itemized in the full audit, independently of status
+labels, reviewer agreement or finite-sample outcomes.

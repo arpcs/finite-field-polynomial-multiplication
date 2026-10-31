@@ -1,0 +1,155 @@
+\section{An explicit positive word for the binary tensor core}\label{app:word}
+
+This appendix gives a fixed matrix identity over a small extension field. It
+will be used only as an algebraic identity: by itself it implies no
+asymptotic running-time bound. Let
+\[
+   \F_{16}=\F_2[t]/(t^4+t+1),\qquad \eta=t^5=t^2+t.
+\]
+The polynomial is irreducible: it has no root in $\F_2$, and reduction
+modulo the only irreducible quadratic $X^2+X+1$ gives remainder $1$.
+Consequently the quotient is a field. The relation $t^4=t+1$ gives
+\[
+  \eta^2+\eta+1=t^4+t+1=0,\qquad \eta^3=1,
+\]
+so $\F_4=\F_2(\eta)$ is its subfield. Put $a=\eta^2$ and $b=\eta$;
+then $ab=1$. The element $t$ is outside $\F_4$, and in particular
+$t$, $t+1$, and $t^2+t+1$ are nonzero.
+
+All matrices below act on column vectors, and products are composed
+rightmost first. Write $J$ for the $3$-by-$3$ all-ones matrix and define
+\[
+ C_3=\eta I_3+\eta^2J
+   =\begin{pmatrix}1&a&a\\a&1&a\\a&a&1\end{pmatrix},
+ \qquad A=C_3\oplus[1].
+\]
+Since $J^2=J$ in characteristic two, direct multiplication gives
+$C_3^2=\eta^2I_3+\eta J$ and $C_3^3=I_3$. Thus $A^{-1}=A^2$.
+The only nonmonomial letter permitted below is the forward matrix $A$;
+every inverse occurrence is replaced by two forward occurrences. Diagonal
+matrices with nonzero entries and coordinate permutations are monomial.
+
+\paragraph{Projectors and a rank-one commutator.}
+Let $E_{ij}$ denote the standard matrix units and set
+\[
+ u=(1,a,a,0)^T,\quad v=(1,b,b,0)^T,\quad
+ P=A E_{11}A^{-1}=uv^T.
+\]
+Indeed, the first column of $A$ is $u$, and the first row of $A^{-1}$
+is $v^T$. Also $v^Tu=1+ab+ab=1$, hence $P^2=P$. With
+\[
+ D=\operatorname{diag}(t,1,t+1,1),\quad Q=DPD^{-1}=x_0y_0^T,
+\]
+where
+\[
+ x_0=(t,a,a(t+1),0)^T,\qquad
+ y_0=(t^{-1},b,b/(t+1),0)^T,
+\]
+we again have $Q^2=Q$. Calculation in $\F_{16}$ gives
+\[
+ v^Tx_0=t+1+(t+1)=0,\qquad
+ y_0^Tu=t^{-1}+1+(t+1)^{-1}=\kappa,
+ \quad \kappa=\frac{t^2+t+1}{t(t+1)}\ne0.
+\]
+Therefore $PQ=0$ while $QP=\kappa x_0v^T$.
+
+For idempotents $P,Q$ satisfying $PQ=0$, expansion using
+$(I+cP)^{-1}=I+\frac{c}{1+c}P$ yields
+\[
+ [I+cP,I+dQ]:=(I+cP)(I+dQ)(I+cP)^{-1}(I+dQ)^{-1}
+      =I+\frac{cd}{1+c}QP,
+\]
+when the displayed inverses exist. To see the cancellation, multiply the
+first three factors and use $PQ=0$: the $P$ terms cancel, leaving
+$I+dQ+\frac{cd}{1+c}QP$. On multiplication by $(I+dQ)^{-1}$,
+the $Q$ term cancels and the extra term vanishes because
+$QPQ=Q(PQ)=0$.
+
+Define the diagonal $R=\operatorname{diag}(\eta,1,1,1)$ and let
+\[
+ G=ARA^{-1}=I+aP,\qquad H=DGD^{-1}=I+aQ.
+\]
+The formula above with $c=d=a$ has coefficient
+$a^2/(1+a)=\eta^4/(1+\eta^2)=1$. Thus
+\[
+ T_0=GHG^{-1}H^{-1}=I+QP=I+\kappa x_0v^T.
+\]
+This is already a positive word: each of $G,H,G^{-1},H^{-1}$ uses
+three forward $A$ letters after replacing $A^{-1}$ by $A^2$. Hence
+$T_0$ uses 12 forward $A$ letters; its other letters are monomial.
+
+\paragraph{Four successive transvections.}
+Let $B=\operatorname{diag}(1,\eta,\eta,1)$. Then
+\[
+ x=Bx_0=(t,1,t+1,0)^T,\qquad w^T=v^TB^{-1}=(1,1,1,0),
+ \quad T_1=BT_0B^{-1}=I+\kappa xw^T.
+\]
+Let $S_{12}$ interchange coordinates 1 and 2. It fixes the row $w^T$
+and $w^TS_{12}x=1+t+(t+1)=0$. Consequently, multiplying the two
+rank-one updates in $T_1S_{12}T_1S_{12}^{-1}$ gives
+\[
+ T_2=I+\kappa(t+1)(e_1+e_2)w^T.
+\]
+In this calculation the two cross terms combine as
+$\kappa (x+S_{12}x)w^T$; the quadratic term is zero because
+$w^Tx=0$. Now take $D_3=\operatorname{diag}(1,1,\eta,1)$.
+The row difference $w^T+w^TD_3^{-1}$ is
+$(1+\eta^{-1})e_3^T=\eta e_3^T$, and both row vectors pair to zero
+with $e_1+e_2$. Hence
+\[
+ T_3=T_2D_3T_2D_3^{-1}
+    =I+\kappa(t+1)\eta(e_1+e_2)e_3^T.
+\]
+With $D_1=\operatorname{diag}(\eta,1,1,1)$, the corresponding
+rank-one update has zero cross-pairing; its column difference is
+$(1+\eta)e_1=\eta^2e_1$. Therefore
+\[
+ T_4=T_3D_1T_3D_1^{-1}
+    =I+\kappa(t+1)E_{13}.
+\]
+Put $\mu=\kappa(t+1)\ne0$. Diagonal conjugation removes this
+coefficient:
+\[
+ T_5=\operatorname{diag}(\mu^{-1},1,1,1)\,T_4\,
+          \operatorname{diag}(\mu,1,1,1)
+       =I+E_{13}=:U_{13}(1).
+\]
+Here $U_{ij}(c)=I+cE_{ij}$ is a transvection. At each of the four
+commutator stages the word length doubles, while the conjugating diagonal
+adds two monomial letters. The forward-$A$ counts are therefore
+$12,12,24,48,96,96$ for $T_0,T_1,T_2,T_3,T_4,T_5$, respectively.
+The final word for $U_{13}(1)$ has 192 letters, 96 of them equal to $A$.
+Conjugating by a permutation gives a positive word for any desired
+$U_{ij}(1)$, with the same 96 forward-$A$ occurrences and two additional
+permutation letters except for the base pair.
+
+\paragraph{The target and its factor order.}
+Write
+\[
+ H_2=\begin{pmatrix}1&1\\1&0\end{pmatrix}=U_{12}(1)S,
+\]
+where $S$ swaps the two coordinates. Let
+$P_f=(1\ 3)(2\ 4)$ interchange the first-coordinate labels and
+$P_s=(1\ 2)(3\ 4)$ interchange the second-coordinate labels. With coordinates
+ordered $(1,1),(1,2),(2,1),(2,2)$, the exact rightmost-first identity is
+\[
+ H_2\otimes H_2
+   =U_{13}(1)U_{24}(1)P_f\,U_{12}(1)U_{34}(1)P_s.
+\]
+The first two transvections are the two disjoint copies of $U_{12}$ on
+the first tensor factor, and the next two are the copies on the second;
+the intervening and final permutations implement the two swaps. Equivalently
+the combined wire permutation is $P_fP_s=(1\ 4)(2\ 3)$, and the four
+transvections are all over $\F_2$. Replace each $U_{ij}(1)$ by the
+explicit conjugate of $T_5$ just constructed. The resulting word has
+exactly $4\cdot96=384$ forward $A$ letters. The four $U$ words contribute
+768 letters before conjugating permutations; the three non-base
+conjugations add six permutation letters, and $P_f,P_s$ add two more.
+Thus the full positive word has 776 letters, of which 392 are monomial.
+Its product is exactly $H_2\otimes H_2$, whose entries lie in $\F_2$.
+
+A separate bounded witness checks the chosen coordinates and finite identities; it is corroboration for this calculation, not a proof of a runtime bound. That witness is not included in this focused bundle. The word alone
+does not establish a tensor-rank saving, a fast $A$-tensor algorithm, or
+an asymptotic multiplication theorem. Those claims require separate
+arguments for tensoring the word, routing its monomial factors, and
+charging every operation in the chosen machine model.

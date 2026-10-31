@@ -1,0 +1,27 @@
+# Local tools, dependency caches and build products
+.build/
+.tools/
+lean/.lake/
+lean/build/
+**/build/
+*.exe
+*.dll
+*.olean
+*.ilean
+*.olean.private
+*.olean.server
+*.ir
+*.o
+*.obj
+*.aux
+*.toc
+*.out
+*.xdv
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.log
+.env
+.env.*
+!.env.example
+# PDFs, source files and the JSON evidence records are intentionally versioned.

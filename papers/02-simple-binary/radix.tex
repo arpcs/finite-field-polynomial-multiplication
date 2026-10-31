@@ -1,0 +1,78 @@
+\section{Sparse canonical radix conversion}\label{sec:radix}
+
+Let $P=X^M+h$, where $h$ has at most two monomials with coefficients
+in $\F_4$, and $d=\deg h$ satisfies $d\ell\leq M$.
+Write $f=\sum_{t<\ell}f_tX^{Mt}$, with $\deg f_t<M$.
+
+\begin{lemma}[Canonical digits and synthesis]\label{lem:radix}
+Define
+\[
+ F_s=\sum_{t\geq s}\binom ts f_t h^{t-s}
+      =L_s+X^M B_s,\qquad \deg L_s<M.
+\]
+With $B_{-1}=B_{\ell-1}=0$, the canonical $P$-radix digits are
+\begin{equation}\label{eq:radix}
+ c_s=L_s+hB_s+B_{s-1},\qquad f=\sum_{s<\ell}c_sP^s,
+ \qquad \deg c_s<M.
+\end{equation}
+Conversely, apply the same row Taylor map to $(c_s)$, obtaining
+$G_t=L'_t+X^MH_t$. The ordinary monomial blocks are
+\begin{equation}\label{eq:radix-inverse}
+ f_t=L'_t+H_{t-1}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Substitute $X^M=P+h$ and expand by the binomial theorem. This gives
+$f=\sum_sF_sP^s$. Replace $X^MB_s$ by $(P+h)B_s$ and collect
+equal powers of $P$ to obtain \eqref{eq:radix}. The degree bound
+\[
+ \deg F_s<M+d(\ell-1-s),\qquad
+ \deg B_s<d(\ell-1-s)
+\]
+implies $\deg(hB_s)<d(\ell-s)\leq M$.
+For synthesis expand $P^s=(X^M+h)^s$, giving
+$\sum_tG_tX^{Mt}$, and collect adjacent high and low blocks.
+This proves \eqref{eq:radix-inverse}; there is no $hH_t$ term in it.
+\end{proof}
+
+The condition holds for both polynomials in
+Lemma~\ref{lem:annihilator}: for $P_1$, $d=1$ and $\ell\leq Q=M$;
+for $P_2$, $d=Q$ and $\ell\leq Q$, whereas $M=Q^2$.
+
+For a monomial $h=\alpha X^e$, its row Taylor operation factors as
+\begin{equation}\label{eq:monomial-taylor}
+ (F_s)_s=
+ \operatorname{diag}(\alpha^{-s}X^{-es})\,
+ \mathcal P_\ell\,
+ \operatorname{diag}(\alpha^tX^{et})\,(f_t)_t.
+\end{equation}
+The negative shifts mean deletion of known zero prefixes, not Laurent
+coefficients. Indeed every contributing index $t$ obeys $t\geq s$.
+If $h=h_1+h_2$, compose the commuting Taylor translations for the two
+monomials. Each intermediate row has $O(M)$ coefficients: even the
+crude bound using both shifts is below $3M$. A common $4M$-slot
+rectangle therefore suffices, with a constant volume factor that is
+removed before any recursive evaluator call.
+
+Store complete coefficient words contiguously. Row shifts, fixed
+$\F_4$ scalings and the carry operation cost $O(M\ell D)$.
+Lemma~\ref{lem:rectangle} reorients the row/coefficient address
+fields at cost $O(M\ell D k^\gamma)$, where their total address
+width is $O(k)$, not merely $O(r)$. On that rectangle the Pascal
+map has payload equal to the entire coefficient row and is covered
+by Contract~\ref{con:tensor}. Alternatively this is the direct
+uniform-payload interface to that contract. Both layouts include
+their physical rearrangements.
+
+All transposes are explicit coordinate operations. If a row map is
+written $R\mathcal P_\ell G$, its transpose is
+$G^{\T}\mathcal P_\ell^{\T}R^{\T}$: $R^{\T}$ inserts zeros at the
+deleted prefix and $G^{\T}$ selects the original input interval.
+The carry map \eqref{eq:radix} sends a covector $z_s$ to $z_s$ on
+$L_s$ and $M_h^{\T}z_s+z_{s+1}$ on $B_s$, with the appropriate
+degree projections. Synthesis sends $z_{s+1}$ to $H_s$.
+The transpose of multiplication by a fixed monomial $h$ is just a
+reverse shift and fixed-field scalar transpose. These statements hold
+for arbitrary covectors: the primal zero-prefix fact is never imposed
+on a cotangent.
+

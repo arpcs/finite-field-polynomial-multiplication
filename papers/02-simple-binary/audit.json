@@ -1,0 +1,149 @@
+[
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/decoding.tex",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/decoding.tex",
+    "original_sha256": "eca55c762d50a68bb4216b72024e4b6aa7aebb05a8025213938f3ca55231dd63",
+    "edits_scope": "copied unchanged 2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
+    "staged_sha256": "863c0baeccf2cb1d1582e7f816bf2c7eb0614f3ad575191eb65d749d1fe52101"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/evaluation.tex",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/evaluation.tex",
+    "original_sha256": "3371f658473f2f954c2235dcd88072f588c9573d3db3a50bd045fa005f08d9ce",
+    "edits_scope": "copied unchanged 2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
+    "staged_sha256": "ab281b6d4b08e21f7d039751727439d422aa5ee9248bf209dc93fbe923a1249a"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/evidence.tex",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/evidence.tex",
+    "original_sha256": "20011cb213990fa6ce8d9b5d44bd4b30a3a24f0f4377b7b893d045b7a298461c",
+    "edits_scope": "copied; updated finite witness provenance to dated historical receipts included in release; no current rerun claim 2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
+    "staged_sha256": "ddd95ffa10d54c793d1618093a2ca64d135b6500d0786f12af0d94cf5c7b7f18"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/fields.tex",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/fields.tex",
+    "original_sha256": "01b635e5d04428c6e53f63f6c7aad500678c2b68923f8b5169d20e01ef81b5aa",
+    "edits_scope": "copied unchanged",
+    "staged_sha256": "01b635e5d04428c6e53f63f6c7aad500678c2b68923f8b5169d20e01ef81b5aa"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/finite-role.tex",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/finite-role.tex",
+    "original_sha256": "2e373b64f62ededc541b01d2e88ad205bff432a5347829838bc197183b2a641d",
+    "edits_scope": "copied unchanged",
+    "staged_sha256": "2e373b64f62ededc541b01d2e88ad205bff432a5347829838bc197183b2a641d"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/finite-word.tex",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/finite-word.tex",
+    "original_sha256": "c11a2c8407204eab381984ed7d5b945a849063466ff49e94c5e7dd729dc836b1",
+    "edits_scope": "copied unchanged",
+    "staged_sha256": "42841b58ef738c69c3ee82f1c67374240e61224fc9b1ccf026df7b6c8d3f6b0a"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/introduction.tex",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/introduction.tex",
+    "original_sha256": "b89e184fc48f231ec68d45545908235b3f74640f5c57390a9fde678a1623183b",
+    "edits_scope": "copied unchanged 2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
+    "staged_sha256": "63168a3e429559f3155172fa1fcab085e051d8342a197a4971ff2faa1d969a2a"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/main.tex",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/main.tex",
+    "original_sha256": "9345fa99e8f982ca053f1b1cc3a7915c1ab181db2e19efa6641f6d7b5134d213",
+    "edits_scope": "copied; AI/Lean disclosure wording updated and user-supplied public email added to author block; mathematical content unchanged Final release: author/contact, date/version/license, PDF metadata, typesetting and companion-relationship/disclosure clarification; selected theorem bound retained. Final author/date/license, front AI disclosure and companion-relationship typography finalized; core selected theorem unchanged. Privacy/claims review: clarified unfinished Lean plans and open-review status; finite-witness scope made explicit where relevant; theorem bounds unchanged. 2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
+    "staged_sha256": "bc776e5069762c5389ab849b332bf18e13d2b37461e415eaa75b4d7bc4afba80"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/model.tex",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/model.tex",
+    "original_sha256": "43c6cb572097344205179d5d286ccdb808a982abf9b99d44a5ef409611c41b71",
+    "edits_scope": "copied unchanged",
+    "staged_sha256": "43c6cb572097344205179d5d286ccdb808a982abf9b99d44a5ef409611c41b71"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/radix.tex",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/radix.tex",
+    "original_sha256": "a594452f7c1690764c8cbb1bf3a670222f14629df6a0956742222643fefc996a",
+    "edits_scope": "copied unchanged",
+    "staged_sha256": "a594452f7c1690764c8cbb1bf3a670222f14629df6a0956742222643fefc996a"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/README.md",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/README.md",
+    "original_sha256": "db4da46e54f76f317266aae1e1eac19764485626429895e20c736c7c505fcbe7",
+    "edits_scope": "rewritten as release-local README; source TeX untouched 2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
+    "staged_sha256": "0e3705c6955de479b59ad11e21785382ddc56be14f24649dd313079eebc581aa"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/references.tex",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/references.tex",
+    "original_sha256": "e56964c589ba4774dc254d8c42e58df63f8e39b678ac12f4d32c97a550a4ae8b",
+    "edits_scope": "copied unchanged 2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
+    "staged_sha256": "9a0e91572e1e30c55740b64768c2db295bd0472df11b7d40ff41bb9578cf3f3f"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/tensor.tex",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/tensor.tex",
+    "original_sha256": "680bcc3e78b6363203bd434d29657e465f805b4ee9b5bccf96ee37ba8083eb2f",
+    "edits_scope": "copied unchanged 2026-10-31 PR correction: distinguish active-mask invariance under completed T_Z from paired-source preservation under completed target-only L_Q; theorem and cost bound unchanged; PDF rebuilt.",
+    "staged_sha256": "d7cd619a6cef4b3aa85707ee943f8be8aabdd7cd150d3b7285f30769e29d25c6"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/code/bounded_prefix_macro_fft.cpp",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/witnesses/code/bounded_prefix_macro_fft.cpp",
+    "original_sha256": "f8fc8f507aedf0c1bde284d240b85c8023aba46cebe6ee39dcfcb0e5e4a01965",
+    "staged_sha256": "f8fc8f507aedf0c1bde284d240b85c8023aba46cebe6ee39dcfcb0e5e4a01965",
+    "edits_scope": "copied byte-for-byte; historical finite witness source/report"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/code/bounded_prefix_macro_parent.cpp",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/witnesses/code/bounded_prefix_macro_parent.cpp",
+    "original_sha256": "20ef4b8cf236c896f1b10aa471192b2bcf5ed4e9463dec995734f9a0326b16db",
+    "staged_sha256": "20ef4b8cf236c896f1b10aa471192b2bcf5ed4e9463dec995734f9a0326b16db",
+    "edits_scope": "copied byte-for-byte; historical finite witness source/report"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/code/bounded_periodic_boundary_filter.cpp",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/witnesses/code/bounded_periodic_boundary_filter.cpp",
+    "original_sha256": "c045ef836ea221387577f6c4d27fdef9f250f105d8ac3eab5d902a0f83e7b297",
+    "staged_sha256": "c045ef836ea221387577f6c4d27fdef9f250f105d8ac3eab5d902a0f83e7b297",
+    "edits_scope": "copied byte-for-byte; historical finite witness source/report"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/code/bounded_binary_karatsuba.hpp",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/witnesses/code/bounded_binary_karatsuba.hpp",
+    "original_sha256": "be7f457219bb0c601d905fa32265e10980e8d3bbb7744c08e1ab1ac9530b16d6",
+    "staged_sha256": "be7f457219bb0c601d905fa32265e10980e8d3bbb7744c08e1ab1ac9530b16d6",
+    "edits_scope": "copied byte-for-byte; historical finite witness source/report"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/code/bounded_prefix_macro_fft.json",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/witnesses/code/bounded_prefix_macro_fft.json",
+    "original_sha256": "f6cb47effd8f23de78b0aec72ad579e619ae3b43d2c8ea654240aa6c56412f10",
+    "staged_sha256": "f6cb47effd8f23de78b0aec72ad579e619ae3b43d2c8ea654240aa6c56412f10",
+    "edits_scope": "copied byte-for-byte; historical finite witness source/report"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/code/bounded_prefix_macro_parent.json",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/witnesses/code/bounded_prefix_macro_parent.json",
+    "original_sha256": "76242aa69f813646c51e4bab86bcee5023593eaa57adf0ba5ae1124cd9599b75",
+    "staged_sha256": "76242aa69f813646c51e4bab86bcee5023593eaa57adf0ba5ae1124cd9599b75",
+    "edits_scope": "copied byte-for-byte; historical finite witness source/report"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/03-binary-pascal-taylor/verify-witnesses.ps1",
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/witnesses/verify-witnesses.ps1",
+    "original_sha256": "f0a89ddc4fd6dd4e53a9c62f63762dea1bc84511128a3a8818e47695f7922011",
+    "staged_sha256": "3338a2f91511aa20dd05d0fa270454908407c8b954cdc8cdb5a3096e95d682ee",
+    "edits_scope": "adapted from five-witness source runner to compile and run only the two bundled guarded witnesses"
+  },
+  {
+    "source_path": null,
+    "destination_path": "output/finite-field-polynomial-multiplication-first-release/papers/02-simple-binary/witnesses/README.md",
+    "original_sha256": null,
+    "staged_sha256": "8b64a581af94762db5998e4fbc60c10bd52c484724f619247284180283779e0d",
+    "edits_scope": "new documentation for included bounded witness bundle"
+  }
+]

@@ -1,0 +1,7 @@
+controller:32 base columns and 32 forward columns exact; boundary matrices verified; three mutations rejected
+native_calls=18 query_calls=15 idle_calls=15 wrapper_sites=16
+main_targets=17:416,25:416,33:416,41:416,49:416,57:416,65:416,73:208,145:208,
+whole_idle_paid=16:416,24:416,32:416,40:416,48:416,56:416,64:416,72:208,
+direct_geometry:104 ports; 9-bit phase domains; 17-axis basis routes; nonzero_translation_corrections=104; omitted-correction errors=26624
+PASS:2152982 exact assertions; peak one-column monomials=35
+This certifies the finite controller and direct geometry, conditional on the native supplier interface.

@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,array}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\usepackage{xurl}
+\allowdisplaybreaks
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{contract}[theorem]{Contract}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\T}{\mathsf T}
+\newcommand{\cost}{\operatorname{cost}}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\logstar}{\log^{*}}
+\newcommand{\poly}{\operatorname{poly}}
+\newcommand{\supp}{\operatorname{supp}}
+\title{Exact Binary Polynomial Multiplication\\from Fast Pascal Transforms}
+\author{\'Arp\'ad Csizmadia\\
+\small\href{mailto:arpad.csizmadia.public@gmail.com}{\texttt{arpad.csizmadia.public@gmail.com}}}
+\date{31 October 2026\\ \small Version 0.1.0-preprint. Apache-2.0.}
+\hypersetup{pdfauthor={\'Arp\'ad Csizmadia},pdftitle={Exact Binary Polynomial Multiplication from Fast Pascal Transforms}}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give an exact algorithm for multiplication in $\F_2[X]$ with
+$O(n\log(n+2))$ bit complexity, using the arbitrary-width tape
+interchange theorem of OpenAI (2026) as an external algorithmic input.
+The construction uses an explicit tower of
+ternary cyclotomic fields, arbitrary prefixes of an $\F_4$ flag, sparse
+polynomial-radix extraction, and a shared Taylor layer for sibling
+cosets. Local scalar actions are charged by the child field degree,
+even though the ambient coefficient field stays fixed throughout the
+recursion. Elementary Karatsuba multiplication suffices. A residue
+pairing reconstructs the product from one affine evaluation grid and
+its three field conjugates; its ordinary binary transpose is explicit.
+We prove a uniform binary tensor bound with a fixed strict saving in
+tensor height from a finite ternary phase network, dirty address
+selectors and an explicit word over $\F_{16}$. This supplies the
+Pascal transforms required by the multiplication reduction. All costs
+refer to one deterministic finite-alphabet machine with a fixed finite
+number of tapes, including setup, movement and cleanup. The external
+input is a routing theorem, rather than an integer-multiplication
+oracle or a hypothesis on primes. Bounded C++ witnesses
+check evaluation/product/decoder algebra and ordinary adjoints on
+finite instances; they do not implement the asymptotically fast tensor machine.
+The same asymptotic bound holds for the ordinary binary transpose of
+multiplication by either fixed operand.
+\end{abstract}
+\paragraph{AI assistance and formal verification.}
+This work was developed with substantial generative AI assistance in
+mathematical exploration, algorithm and proof development, writing,
+coding, and literature review. OpenAI Codex~\cite{CodexTool26}
+assisted release preparation and source inspection. Historical
+model versions were not consistently recorded; no complete
+model-level attribution is claimed. Full Lean formalization is unfinished
+and planned for a later update. Partial Lean work in the broader project
+is not included here and does not verify the complete theorem.
+Finite computational checks cover only their stated scopes. This
+manuscript is a working preprint open for mathematical review.
+\tableofcontents
+\input{introduction}
+\input{model}
+\input{fields}
+\input{radix}
+\input{evaluation}
+\input{decoding}
+\input{tensor}
+\input{evidence}
+\appendix
+\input{finite-role}
+\input{finite-word}
+\input{references}
+\end{document}
+

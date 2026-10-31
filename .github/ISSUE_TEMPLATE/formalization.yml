@@ -1,0 +1,41 @@
+name: Formalization proposal
+description: Discuss a Lean statement, model definition, bridge lemma, or precisely scoped formalization step.
+title: "[Formalization] "
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Keep the target and its computational model explicit. A successful
+        component check must not be described as verification of a larger
+        theorem that it does not state.
+  - type: input
+    id: target
+    attributes:
+      label: Target statement or component
+      description: State the exact mathematical proposition or interface under discussion.
+    validations:
+      required: true
+  - type: textarea
+    id: model
+    attributes:
+      label: Model and encodings
+      description: Specify inputs, outputs, machine model, cost measure, and any field or size quantifiers relevant to the target.
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: existing_scope
+    attributes:
+      label: Existing formalization and gap
+      description: Link the source revision and distinguish checked declarations from the remaining target.
+      render: markdown
+    validations:
+      required: false
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed next step
+      description: Suggest a statement, import, adapter, or proof boundary. State any assumptions explicitly.
+      render: markdown
+    validations:
+      required: false

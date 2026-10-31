@@ -1,0 +1,49 @@
+name: Mathematical proof objection
+description: Report a specific possible gap, counterexample, or ambiguity in a released claim.
+title: "[Proof objection] "
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Please identify the exact manuscript revision and claim. A question or
+        objection is welcome without a proposed repair. Do not include private
+        conversations, credentials, or unrelated personal information.
+  - type: input
+    id: revision
+    attributes:
+      label: Manuscript revision or immutable source reference
+      description: Give the public commit or release tag, if available; otherwise identify the dated candidate manuscript without exposing a local filesystem path.
+      placeholder: "30 October 2026 candidate; public commit SHA if available"
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Claim and location
+      description: Identify the theorem, definition, equation, page, or file location.
+    validations:
+      required: true
+  - type: textarea
+    id: objection
+    attributes:
+      label: Objection or question
+      description: State the suspected gap, counterexample, or ambiguity precisely.
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: reasoning
+    attributes:
+      label: Supporting reasoning or example
+      description: Include a derivation, minimal example, or relevant source if useful.
+      render: markdown
+    validations:
+      required: false
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and impact
+      description: Which conclusion may be affected? Note if this is a question rather than a confirmed defect.
+      render: markdown
+    validations:
+      required: false

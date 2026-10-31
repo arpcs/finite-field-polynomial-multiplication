@@ -1,0 +1,463 @@
+\section{Common fixed-field words and exact-width replay}
+
+This appendix makes the local characteristic-two substitution explicit.
+It does not import the complex convolution service from \cite{local}.
+
+\paragraph{Newton symmetry over a ring.}
+Let $P$ have as column $k$ the monomial coefficients of
+$\prod_{a<k}(Z-u^a)$. It is unit upper triangular, and evaluation
+gives $F_p(u)P=N$. With $D=\operatorname{diag}(N_{kk})$ and
+$L=ND^{-1}$, this is the unit-lower/diagonal/unit-upper factorization
+$F_p(u)=LDP^{-1}$. Such a factorization with invertible diagonal is
+unique over a commutative ring: comparing two makes a unit lower
+triangular matrix equal an upper triangular one, identifying the
+diagonal and then the two unit triangular factors. Since $F_p(u)$ is
+symmetric, its transposed factorization is another of that form.
+Therefore $P^{-1}=L^T$ and $F_p(u)=ND^{-1}N^T$. The pivot inverses
+are exactly the units proved in the main text; no field cancellation
+has been assumed.
+
+\paragraph{A shared eight-$H$ schedule.}
+Write $D_a=\operatorname{diag}(a,1)$, with $a=\eta$ or $\eta^2$.
+Direct multiplication in $\F_4$ gives
+\[
+ H^3=I,\qquad
+ H D_\eta H^2 D_{\eta^2}H
+   =\operatorname{diag}(\eta^2,\eta)J,
+\]
+and
+\[
+ W_4:=H D_\eta H D_{\eta^2}H D_\eta H D_{\eta^2}=I.
+\]
+Thus $I=W_4W_4$, $J$ is its displayed four-$H$ word with a leading
+unit diagonal followed by $W_4$, and $H=H^4W_4$ all have eight $H$
+letters with unit diagonals in common slots. Identity diagonals fill
+missing gaps. The formulas include all identity pairs and never
+select a zero scalar. Coefficients may depend on a pair label because
+every intermediate letter preserves that label. Controlled
+coefficients are evaluated only at the completed $K_T$ boundaries
+described in the main proof.
+
+\paragraph{Formal convolution over a coefficient algebra.}
+For comparison, Cantor--Kaltofen \cite{cantor-kaltofen} give sharper
+classical size bounds and logarithmic arithmetic depth. Their sparse
+integer \emph{stage} matrices compose to a formal bilinear identity;
+the composed matrices need not be sparse. We use the following
+elementary triadic construction instead, so its descriptor generation
+and coefficient types can be checked directly.
+
+\begin{lemma}[Elementary formal convolution]
+\label{lem:formal-convolution}
+Over any commutative $\F_2$-algebra $A$, ordinary multiplication of
+two length-$v$ polynomials has a division-free formal bilinear circuit
+with size $O(v\log^8(2v))$, depth $O(\log(2v))$, binary fan-in,
+and deterministic polynomial-$v$ wire-descriptor generation.
+\end{lemma}
+\begin{proof}
+Use schoolbook products below the fixed threshold $v_0=6^6$, with
+balanced output sums. Otherwise let $b$ be the least power of three
+with $b^2\ge v$, put $s=\lceil v/b\rceil$, and let $t$ be the
+least power of three with $t\ge2s-1$. Then
+\[
+ \sqrt v\le b<3\sqrt v,\quad s\le b,\quad
+ t\le3b,\quad t<6s,\quad t\mid3b.
+\]
+Work formally in $R=A[Y]/(Y^{2b}+Y^b+1)$, free of rank $2b$
+over $A$. The polynomial is $\Phi_{3b}$ reduced modulo two.
+Its roots over $\overline{\F}_2$ have exact order $3b$: they
+satisfy $Y^{3b}=1$, and none satisfies $Y^b=1$ since the defining
+polynomial then equals one. Every proper divisor of $3b$ divides
+$b$. Therefore $Y^j-1$ is coprime to this polynomial for
+$0<j<3b$. The corresponding Bezout identity extends from $\F_2$
+to $A$, proving principality of $Y$ and of
+$\zeta=Y^{3b/t}$ at order $t$. The inverse DFT uses $\zeta^{-1}$;
+its normalization is one because $t$ is odd.
+
+Encode the input as $\sum_{i<s}A_i(Y)Z^i$, with
+$\deg A_i<b$, and similarly for the other operand. Take their
+$t$-point DFTs over $R$. At a frequency the value is \emph{one}
+$R$ element, represented by $2b$ coefficients from $A$; no
+unevaluated $Z$ variable remains. Multiply two such values by one
+recursive ordinary length-$2b$ product over $A$, and reduce the
+degree-$\le4b-2$ result modulo $Y^{2b}+Y^b+1$.
+For $0\le r\le2b-2$, the high monomial reductions are
+\[
+ Y^{2b+r}=
+ \begin{cases}
+   Y^{b+r}+Y^r,&r<b,\\
+   Y^{r-b},&b\le r\le2b-2.
+ \end{cases}
+\]
+They cost $O(b)$ additions in constant depth.
+
+The inverse DFT recovers
+$C_j(Y)=\sum_{i+k=j}A_i(Y)B_k(Y)$ without wrap in $j$, since
+$t\ge2s-1$. Each true $C_j$ has degree at most $2b-2$, below the
+quotient degree, so reduction has lost no coefficient information.
+Reconstruct the ordinary product as $\sum_j C_j(X)X^{bj}$:
+adjacent length-$2b$ blocks overlap, and their overlaps are added,
+not concatenated. Crop the known padded zero tail to length $2v-1$.
+
+Multiplication by a root power in $R$ pads a $2b$-coordinate
+vector to $3b$, rotates, and folds
+$(a_0,a_1,a_2)\mapsto(a_0+a_2,a_1+a_2)$.
+Each coordinate uses at most two inputs. A radix-three butterfly
+therefore has $O(b)$ binary additions and constant depth over $A$.
+Explicitly, at transform length $t=3u$ split inputs as $x_{3j+r}$,
+$r=0,1,2$. Compute their three length-$u$ transforms $B_r(q)$
+with root $\zeta^3$, then print
+\[
+ \widehat x_{q+\ell u}
+   =\sum_{r=0}^2\zeta^{r(q+\ell u)}B_r(q),
+ \qquad 0\le q<u,\quad \ell=0,1,2.
+\]
+This recursively specifies every butterfly and twiddle index.
+The two forward and one inverse transforms, pointwise folds and
+reconstruction give, for an effective absolute constant $C$,
+\[
+ S(v)\le tS(2b)+Ctb\log(2t),\qquad
+ D(v)\le D(2b)+C\log(2t).
+\]
+These counts are in $A$ gates, not unit-cost $R$ operations.
+Moreover
+\[
+ 2bt<12bs\le12(v+b)\le24v,\qquad
+ 2b<6\sqrt v\le v^{2/3}\quad(v\ge v_0).
+\]
+Induction using $S(v)\le K v(\log_2v)^8$ above the direct branch
+contracts the recursive term by
+\[
+ 24(2/3)^8=6144/6561<1.
+\]
+The $O(v\log v)$ toll is absorbed by increasing a fixed $K$;
+the finite direct branch fixes an effective base constant. This
+proves the size bound. The logarithms of child lengths contract
+by $2/3$, so the depth recurrence sums to $O(\log(2v))$.
+
+All nonrecursive maps are the printed linear maps; recursive
+leaves multiply a left-operand form by a right-operand form.
+This proves a formal bilinear identity over $A$, without
+$x^2=x$. For generation, compute $b,s,t$ by integer loops, emit
+radix-three butterflies with rotation/fold source indices, and
+recursively emit the $t$ children. Each descriptor has
+$O(\log v)$ address bits; source indices can be obtained by
+schoolbook arithmetic and sequential list scans in polynomial
+time. This finite recursive printer is uniform, with no root
+table, factorization, or coefficient-dependent branch.
+\end{proof}
+
+Here is a second explicit way to see that specialization leaves only
+linear gates. After fixing the kernel, attach to each gate its
+constant value $c_g$ and its homogeneous degree-one part $\ell_g$
+in the remaining input indeterminates. An input $x_i$ has pair
+$(0,x_i)$, a fixed scalar $a$ has $(a,0)$, and the rules are
+\[
+ (c,\ell)+(d,m)=(c+d,\ell+m),\qquad
+ (c,\ell)(d,m)=(cd,c\,m+d\,\ell).
+\]
+The constants are prepared once. Only additions and multiplication
+by these fixed constants remain in the linear DAG. The rules are
+formal truncation modulo total degree at least two; they use no
+Boolean relation $x_i^2=x_i$. Since fixed-kernel convolution is
+homogeneous linear, its output is exactly the degree-one part.
+The transformation changes size and depth by constant factors.
+
+Bounded-degree copy trees, including copies of inputs and outputs,
+cost size proportional to the number of use edges. Replacing each
+gate's fan-out by its balanced tree adds at most $O(\log v)$ depth
+per original circuit layer. The deliberately loose linear-DAG bounds
+are therefore
+\[
+ g(v)=O(v\log^8(2v)),\qquad H(v)=O(\log^2(2v)).
+\]
+All wire and scalar descriptors have polynomial-time generation in
+$v$ and the explicit coefficient dimension. Kernel-specific constant
+propagation is charged once in that setup, with the actual coefficient
+words retained. This construction is
+independent of the faster multiplier being proposed.
+
+\paragraph{Replay on arbitrary dirty coordinates.}
+Let a linear DAG implement $M:A^e\to A^a$, and assign a distinct
+borrowed coordinate to each of its $g$ gates. The physical source
+coordinates $x$, target coordinates $y$, and borrowed coordinates $z$
+are pairwise disjoint. Every output is a designated wire; any additions
+needed to form it and any input/output copy trees are included in the
+counted DAG. Thus the output-read edges also have bounded degree.
+In the notation below, $F,D$ name these actual port reads, rather than
+uncosted dense matrix applications.
+Replace gate assignment
+by addition of its predecessor form into that coordinate, in
+topological order. For initial borrowed vector $z$ this sweep has
+form $z\mapsto Uz+Tx$, where $U$ is unit lower triangular.
+If the prescribed reads are $Fz+Dx$, zero initialization would compute
+the DAG, so $FT+D=M$.
+Sweep, add these reads to $y$, and undo the sweep. The net increment
+is $Mx+FUz$, while $z$ is restored. Now sweep with every direct edge
+from $x$ omitted, including edges to input-copy-tree roots, and add
+only the borrowed-coordinate read $FUz$ to $y$,
+and undo again. In characteristic two the two $FUz$ terms cancel.
+This realizes $(x,y,z)\mapsto(x,y+Mx,z)$ for every initial $z$,
+including coordinates correlated with current sources and targets.
+
+At each DAG depth destinations are fresh gate coordinates and
+predecessors are earlier ones. Bounded fan-in and fan-out give a
+bounded-degree graph of shear edges. A constant edge coloring makes
+each color disjoint pairs. Apply its colors before advancing to the
+next depth; undo in reverse depth and color order. The output-port
+edges into the distinct $y$ coordinates have the same constant-color
+bound. In the second read omit every direct $x$-to-output edge as well.
+Zero-coefficient edges may be omitted throughout.
+The four sweeps and two output rounds
+thus use $O(H+1)$ shear layers, on exactly $e+a+g$ coordinates.
+No clean gate values or fresh zero coordinates are assumed.
+Other parent coordinates can be selected as borrowed gates, even if
+they contain data from an earlier chunk operation; the replay restores
+them exactly. A source/target alias is outside this contract.
+
+\paragraph{Explicit rectangular displacement reconstruction.}
+\begin{lemma}[Exact-width unit Toeplitz word]
+\label{lem:exact-width-toeplitz}
+Over any commutative $\F_2$-algebra $A$, a unit lower triangular
+Toeplitz matrix $T_v$ has a word on exactly its original $v$ coordinates
+of $O(\log^{19}(2v))$ layers. Each layer consists of shears
+$(x,y)\mapsto(x,y+\mu x)$ on disjoint ordered pairs.
+No clean coordinate is required. Descriptors and coefficients can be
+prepared by polynomially many operations on indices, finite lists,
+and public coefficient-algebra elements.
+\end{lemma}
+\begin{proof}
+Write $(T_v)_{ij}=h_{i-j}$ for $i\ge j$, with $h_0=1$.
+Its reciprocal sequence is prepared by $g_0=1$ and
+$g_k=-\sum_{j=1}^k h_jg_{k-j}$; no coefficient inversion is needed.
+For $v\ge2$ split at $s=\lfloor v/2\rfloor$ and put $r=v-s$.
+The matrix has blocks
+\[
+ T_v=\begin{pmatrix}T_s&0\\B&T_r\end{pmatrix}.
+\]
+After applying the two diagonal children in place, a cross update
+$E=BT_s^{-1}$ gives this matrix exactly. Its entries are
+\[
+ E_{ij}=\sum_{\nu=j}^{s-1}h_{i-\nu}g_{\nu-j}.
+\]
+For consecutive row/column chunks, the interior difference is
+\[
+ E_{ij}-E_{i-1,j-1}=-h_{i-s}g_{s-j}.
+\]
+Let $M$ be that rectangular chunk and let $J_a,J_e$ be lower shifts.
+Its difference $\mathcal D=M-J_aMJ_e^T$ is the displayed outer
+product plus first-row and first-column corrections, hence the sum
+of three explicit outer products. More explicitly, let the chunk's
+absolute row and column indices start at $i_0\ge s$ and $j_0<s$,
+and use zero-based local indices. Set
+\[
+ v_i=-h_{i_0+i-s},\qquad w_j=g_{s-j_0-j},\qquad
+ r_j=M_{0j}-v_0w_j,
+\]
+and set $c_0=0$, $c_i=M_{i0}-v_iw_0$ for $i>0$. Then, with $e_0$
+the first standard vector of the appropriate length,
+\[
+ \mathcal D=vw^T+e_0r^T+ce_0^T.
+\]
+The interior follows from the displayed difference identity, the
+second term corrects the complete first row, and the third corrects
+the remaining first column without counting $(0,0)$ twice. Every
+entry is given by finite sums and products of the prepared Toeplitz
+and reciprocal coefficients. This uses no field rank test.
+Nilpotence gives
+$M=\sum_{l\ge0}J_a^l\mathcal D(J_e^T)^l$.
+For one term $vw^T$, its action on $x$ is
+\[
+ b_l=\sum_{j=l}^{e-1}w_{j-l}x_j,\qquad
+ c_i=\sum_{l=0}^{e-1}v_{i-l}b_l.
+\]
+Here $v_k=0$ outside $0\le k<a$.
+For literal convolution windows put
+$W(Z)=\sum_{j<e}w_jZ^j$, $X^{\rm rev}(Z)=\sum_{j<e}x_jZ^{e-1-j}$
+and $V(Z)=\sum_{i<a}v_iZ^i$. The polynomial with coefficients $b_l$ is
+\[
+ \operatorname{rev}_e\bigl((W X^{\rm rev})\bmod Z^e\bigr),
+\]
+and the output polynomial is its product with $V$, reduced modulo $Z^a$.
+Here $\operatorname{rev}_e P=Z^{e-1}P(Z^{-1})$ at fixed padded width.
+The two ordinary products have output lengths at most $2e-1$ and
+$a+e-1$, respectively. If $a,e\le b$, both are at most $2b-1$.
+Their padding zeros are formal constants; they introduce no extra
+runtime source coordinates. Reversal and selection specify DAG ports.
+The three displacement terms therefore use six fixed-kernel convolution
+circuits and their sum, with total gate bound $O(b\log^8(2b))$ and
+depth $O(\log^2(2b))$ including all intermediate and copy coordinates.
+
+At setup enumerate $b=1,\ldots,v$, partition both sides of the cross
+block into consecutive chunks of width at most $b$, and print the
+actual DAG for every pair, including ragged final chunks and its
+input/output copies. Choose the largest $b$ for which
+$e+a+g\le v$ for every pair. For a uniform fixed $C$ the count is
+$e+a+g\le2b+Cb\log^8(2b)$. Thus
+$b_0=\lfloor c v/\log^8(2v)\rfloor$ passes for sufficiently large $v$
+and a sufficiently small fixed $c>0$; the chosen size is at least $b_0$.
+If none passes, use the direct triangular shear word, updating targets
+in descending order from their earlier source coordinates.
+This branch occurs only in a fixed finite range.
+
+For each accepted pair its source chunk lies in $[0,s)$ and its target
+chunk in $[s,v)$, hence they are disjoint. Choose the $g$ borrowed
+coordinates from their complement inside this same $v$-coordinate
+parent. Replay restores that complement before the next pair.
+The source half is unchanged by every completed cross update, so the
+sum of all chunk updates is exactly $E$.
+There are
+$O(\log^{16}v)$ chunk pairs, each with $O(\log^2v)$ replay layers.
+The diagonal children use only their own disjoint intervals.
+Run their matching layers in parallel, padding the shorter word
+with identity layers. Their union is again a matching. Thus
+\[
+ d(v)\le\max(d(\lfloor v/2\rfloor),d(\lceil v/2\rceil))
+       +O(\log^{18}(2v)),\qquad d(v)=O(\log^{19}(2v)).
+\]
+All coordinates belong to the original $v$-coordinate parent. Preparing
+and counting graphs, reciprocal coefficients, outer-product generators
+and edge colors uses only polynomial-size finite lists and polynomially
+many public coefficient operations. The search is setup for the public
+kernel, never a per-payload-record computation.
+\end{proof}
+
+The Newton Toeplitz sequence is $h_j=H_j^{-1}$, so $h_0=1$ as required
+by Lemma~\ref{lem:exact-width-toeplitz}. Transposing a layer word reverses
+its layer order and each shear's source/target direction; this supplies
+the upper triangular word on the same coordinates at the same layer
+count. This transposition is on $A$-coordinate indices and retains each
+coefficient $\mu$. It is a descriptor operation, not a physical array transpose.
+Consequently $F_p=ND^{-1}N^T$ uses two such Toeplitz words and a fixed
+number of unit-diagonal stages. Synchronize different prime axes by
+identity matching layers. With $p\le R_0$, preparing all their words and
+actual $B$-coefficient tables has bit cost polynomial in $R_0,D',L_0$,
+as in the coefficient setup below. Each matching layer is then replaced
+by the fixed local slot word in the main text; these abstract layer
+counts do not assign unit bit cost to growing scalars or tape movement.
+
+\paragraph{The actual constant extension.}
+Every irreducible factor of $\Phi_{\alpha'}$ has degree
+$r=\operatorname{ord}_{\alpha'}(2)$, so $S$ is a product of copies
+of $\F_{2^r}$. A factor tensored with $\F_4$ splits into
+$\gcd(r,2)$ fields of degree $r_B=\operatorname{lcm}(r,2)$.
+Therefore the same Frobenius exponent in the main proof selects
+$\mu=1$ in every field component of $B$, with $r_B\le2D'$.
+Computing $r$ by repeated multiplication by $2$ modulo $\alpha'$
+needs at most $D'$ iterations and has polynomial small setup cost.
+Exponentiation for the selector needs $O(r_B)$ ring products.
+The fixed $\F_{16}$ codec inside the binary $H$ supplier need not
+embed into $B$: the completed $H$ acts identically on each of the
+$2D'$ binary lanes and is thus the required $B$-symbol map.
+
+The central $\F_4$ in $B$ and a fixed field codec used inside a
+binary routing/H kernel need not have the same intermediate bit
+encoding. The replacement is made only at a completed binary kernel:
+its target matrix is $H$, $I$ or $J$ on whole symbols and acts
+identically on every binary lane. It therefore implements the required
+$B$-linear map in the caller's original representation. Outer
+multiplications by elements of $B$ are inserted only after that
+boundary and always use the separately charged coefficient-ring
+arithmetic. Even a central $\F_4$ action on two concatenated $S$
+lanes can be implemented by a constant number of aligned word scans;
+no growing basis conversion or free bit transpose is assumed.
+
+\paragraph{Actual growing-word arithmetic and unit setup.}
+\begin{lemma}[Fixed monic remainder at any input width]
+\label{lem:fixed-monic-remainder}
+Fix a monic binary polynomial $f$ of degree $d\ge1$ and a public input
+width $r\ge d$. After polynomial-$r$ setup, the remainder modulo $f$
+of any binary polynomial of degree $<r$ costs $O(M_{\rm old}(r))$
+bit steps on the fixed tape model, including all scans and returns.
+\end{lemma}
+\begin{proof}
+If $r=d$, the input is already reduced. Otherwise set $k=r-d>0$.
+The reversal $f^*=X^df(X^{-1})$ has constant coefficient one by
+monicity. Prepare $h=(f^*)^{-1}\bmod X^k$ once, for example by its
+coefficient recurrence with elementary polynomial-time tape arithmetic.
+For the dividend $w$ put
+\[
+ w^*=X^{r-1}w(X^{-1}),\qquad
+ q^*=(w^*h)\bmod X^k,\qquad
+ q=X^{k-1}q^*(X^{-1}),\qquad R=w-qf.
+\]
+All reversals have the displayed fixed padded widths. To prove the
+formula, write the unique monic division $w=Qf+R_0$ with
+$\deg Q<k$ and $\deg R_0<d$. Reversal gives
+$w^*=Q^*f^*+X^{r-1}R_0(X^{-1})$; the second term is divisible by
+$X^k$. Multiplying by $h$ modulo $X^k$ therefore recovers $Q^*$,
+so $q=Q$ and $\deg R<d$.
+
+The first product may truncate $w^*$ to its first $k$ coefficients.
+It has two inputs of length $k$; the other product has input lengths
+$k$ and $d+1$, each at most $r$. Thus two calls to the independent
+word supplier cost $O(M_{\rm old}(r))$, and all reversals, cropping,
+XOR and head returns add $O(r)$. There is no per-dividend Euclidean
+algorithm. The prepared inverse length is $k$, even when $d\ll r$.
+\end{proof}
+
+Put $d=D'$ and $f=\Phi_{\alpha'}$. Store a $B$ symbol as the two
+consecutive $d$-bit $S$ words in $a+b\eta$. If
+$P=ac$, $Q=be$, and $T=(a+b)(c+e)$ in $S$, then
+\[
+ (a+b\eta)(c+e\eta)=(P+Q)+(T+P)\eta.
+\]
+Three binary polynomial products modulo fixed $f$, supplied by
+Lemma~\ref{lem:old-word}, with linear XOR scans, therefore suffice.
+Their degree-$\le2d-2$ outputs use
+Lemma~\ref{lem:fixed-monic-remainder} at input width $2d-1$.
+Its reciprocal is prepared at length $d-1$ for $d\ge2$; $d=1$
+is direct. This proves $O(M_{\rm old}(d))$ application time with
+no dense $d$-by-$d$ matrix operation.
+The runtime word supplier is classical integer SS with carry-free
+binary packing; it is separate from the formal characteristic-two
+convolution circuit used to construct the local linear DAG above.
+
+The involution $\eta\mapsto\eta+1$ has norm
+$N(a+b\eta)=a^2+ab+b^2\in S$. For a unit $x=a+b\eta$, its norm is
+an $S$ unit: it is a product of units in $B$, and an inverse in
+the free extension $B=S\oplus S\eta$ supplies an inverse in $S$
+by taking its constant coefficient. Thus
+\[
+ x^{-1}=((a+b)+b\eta)\,N(x)^{-1}.
+\]
+Polynomial extended Euclid with $f$ suffices for the norm inverse,
+without factoring $B$. Such inverses are prepared once in polynomial
+time in the small dimensions. The selector exponent $2^{r_B}-1$
+also needs only $O(r_B)$ binary squaring/product steps, with $r_B\le2d$.
+For example,
+from $z=\mu+1$ repeat $z\gets z^2(\mu+1)$ exactly $r_B-1$ times.
+No possibly nonunit $\mu+1$ is inverted. The one-time polynomial
+setup is separate from every runtime scalar application.
+
+\paragraph{Scalar lists on fixed tapes.}
+At a synchronized local slot, each axis has a public table
+$a_i(x_i)\in B^*$ in that slot's current coordinate order; the
+tensor diagonal is $\prod_i a_i(x_i)$. Pairing and coefficient
+choices are axis-local. Jointly controlled CRT coefficients use
+their different generator and are not covered by this factorization.
+
+Let $M_j=\prod_{i\le j}n_i$, $M_0=1$, with axes in physical
+lexicographic order. Start with the one-word list $[1]$.
+For every partial product $c$ on the current list, scan the entire
+next local table and print
+$ca_j(0),\ldots,ca_j(n_j-1)$. Rewind that local table, then advance
+to the next $c$. Its rewind costs the size of the child block just
+printed. Alternate two expansion tapes and erase the previous list
+at the end of each level. This keeps the produced list in the
+current native order and uses a fixed tape set.
+
+Level $j$ uses $M_j$ growing-ring products and
+$O(M_j(d+L))$ copying, counters and returns. Here $2d\ge L$, and
+all $n_i\ge2$, so
+\[
+ \sum_j M_j<2M,\qquad
+ \cost(\hbox{generate and apply one tensor diagonal})
+       =O(MM_{\rm old}(d)).
+\]
+Apply the final list to the payload stream in lockstep and erase it.
+Prepare or select each local table once per axis/slot in the
+polynomial small setup, using one shared archive and one reusable
+active-table tape; there is no tape per axis or indexed archive lookup per
+payload record. Rebuild the list from the next slot's tables after
+completed relabeling, $H$ and $J$ calls. Transporting an old scalar
+list and presuming alignment is not part of the program.

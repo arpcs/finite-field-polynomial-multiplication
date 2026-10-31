@@ -1,0 +1,62 @@
+\section{Exact computational witnesses and reproducibility}\label{sec:evidence}
+
+The companion programs are bounded C++17 algebra checks. Every executable
+installs a Windows job limit of 64 MiB process memory and 10 process
+CPU seconds before starting algebra, and refuses to continue if the
+limit installation fails. Fixed arrays bound every instance. The checks
+use neither a growing dense transform matrix nor an enumeration of the
+enormous role graph. Compilation is separate from these runtime limits.
+
+The evaluator witness uses the ordinary pairwise Pascal core on its
+small instances. It independently compares the resulting full map
+with Horner evaluation, the radix extraction with monic polynomial
+division, and the actual transpose with literal binary Vandermonde
+columns. Its local Karatsuba/module/Gram implementation is compared
+against an independent bit-serial ambient field implementation.
+Both radix roundtrips and the distinct inverse transpose are checked.
+
+The full product witness composes native input embedding, affine shift,
+the new prefix evaluator, pointwise multiplication, the weights
+\eqref{eq:omega}, and the decoder \eqref{eq:decoder}. It compares
+against a separate schoolbook carryless product and reduction. Arbitrary
+ambient covectors exercise evaluator and decoder transposes and the
+complete fixed-operand product adjoint; tests do not restrict those
+covectors to primal images or to smaller subfields.
+
+\begin{center}
+\begin{tabular}{@{}p{.28\textwidth}p{.40\textwidth}r@{}}
+\toprule
+Witness & Fixed scope & Assertions\\
+\midrule
+Prefix evaluator & $K=1,\ldots,5$, $b\leq1024$, $E$ of 54 bits
+ & 1,481,563\\
+Parent and raw product & $K=1,\ldots,4$, parent width $\leq4608$ bits,
+ raw inputs $\leq2304$ bits & 784,218\\
+\bottomrule
+\end{tabular}
+\end{center}
+The saved reports in \path{witnesses/code/} were produced by the bounded
+programs in the reviewed Pascal/Taylor source packet on 30 October 2026.
+They are historical receipts copied with their exact sources, not runs
+made for this focused release. The first covers $K=1,\ldots,5$ and records
+1,481,563 assertions, including 47,376 local/full-field phase comparisons.
+The second covers $K=1,\ldots,4$ and records 784,218 assertions. The
+included \path{witnesses/verify-witnesses.ps1} script can reproduce these
+finite checks under the stated per-process guard. The witnesses use
+ordinary finite Pascal cores; they neither execute nor certify the
+asymptotic fast-H2 machine or the $O(n\log n)$ theorem.
+For source provenance, the inspected local text snapshot of
+\cite{OpenAI26} has SHA256
+\begin{quote}\footnotesize\ttfamily
+BD480BB7A3F7B662B99EEBEBDBFDB01CCA8F\\
+AB9D3BB46F5CBD0DCD9E0C207493
+\end{quote}
+where the two lines are concatenated. This identifies the historical
+local text snapshot. The bibliography separately pins the citation
+revision to \path{4eaee87548250b2682affda7d05d947c05554bae}; the text hash
+is not a claim of byte identity with the raw TeX source. Neither record
+turns the source theorem into a formally verified theorem.
+No approximate complex arithmetic, Gaussian resampling, least-prime
+hypothesis or data-dependent finite-field search is used by the
+construction described here.
+

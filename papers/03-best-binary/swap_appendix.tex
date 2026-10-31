@@ -1,0 +1,664 @@
+\section{Equal-chunk interchange from the finite rational-frame motif}
+\label{app:swap}
+
+The finite rational-frame network and array-interchange strategy are
+adapted from OpenAI's Sections 3--4~\cite{swap}. The explicit reconstruction
+below supplies the parameters and tape accounting used in this paper.
+
+This appendix constructs, rather than assumes, a fixed-tape interchange
+algorithm.  For every binary width $u\ge1$, positive integers $P,G,B$,
+and arbitrary $B$-bit record payload, the machine takes an array in
+lexicographic order on
+\[
+ [P]\times[2^u]\times[G]\times[2^u]\times[B]
+\]
+to the array whose two $u$-bit fields are exchanged, retaining $P,G,B$
+and the internal order of each record.  Its time is
+\[
+                        O(Vu^\tau),
+\]
+where $V=PGB2^{2u}$ is the entire stored volume and one fixed exponent
+$\tau=1-2^{-36}<1$ suffices.  All counters, fixed-table preparation,
+copying, row padding, recursive returns, and cleanup are included.  No
+unverified global multiplication algorithm or equal-chunk interchange
+oracle is a premise.
+
+\subsection{The finite scalar routing network}
+
+Let $\mathcal T=\binom{[g]}3$ with $g=48$.  Two triples are adjacent when
+their intersection has size one.  Put
+\[
+ v=\binom{48}{3}=17296,\quad z=3\binom{45}{2}=2970,
+ \quad N=v^3,\quad I=3v^2.
+\]
+For $S,T\in\mathcal T$, define the binary maps
+\[
+ \begin{aligned}
+ V_{(S,T),T'}&=[T=T']\,[|S\cap T|=1],\\
+ J_{S,(S,T)}&=[|S\cap T|=1],\\
+ G_{i,T}&=[i\in T],\qquad R_{S,i}=[i\in S].
+ \end{aligned}
+\]
+Then $(JV)_{S,T}$ is one exactly when $|S\cap T|=1$, and
+$(RG)_{S,T}=|S\cap T|\pmod2$.  If $S=T$, the intersection size is
+three and only $RG$ contributes one.  For distinct triples with
+intersection one both terms contribute and cancel in $\mathbb F_2$;
+for intersection zero or two both are zero.  Hence
+\[
+                              RG+JV=I_v.
+\]
+
+One invocation has source $x$, target $y$, arbitrary side scratch $a$,
+and arbitrary central scratch $c$.  The chronological eight rows are
+\[
+\begin{aligned}
+ y&\gets y-Ja,& y&\gets y-Rc,& a&\gets a+Vx,& c&\gets c+Gx,\\
+ y&\gets y+Rc,& y&\gets y+Ja,& c&\gets c-Gx,& a&\gets a-Vx.
+\end{aligned}
+\]
+For initial scratch $(a_0,c_0)$ the target increment is
+\[
+ -Ja_0-Rc_0+R(c_0+Gx)+J(a_0+Vx)=(RG+JV)x=x,
+\]
+and the final scratch is exactly $(a_0,c_0)$.  The signs are harmless
+over $\mathbb F_2$, but writing them makes the restoration identity
+visible.  Thus the invocation adds its source to its target for every
+initial scratch value.
+
+Use three stages.  The first is forward from bank $X$ to bank $Y$, the
+second is the inverse schedule from $Y$ to $X$, and the third is forward
+from $X$ to $Y$.  On arbitrary bank contents,
+\[
+ (x,y)\longmapsto(x,y+x)\longmapsto(-y,y+x)\longmapsto(-y,x).
+\]
+Over $\mathbb F_2$ this exchanges $X,Y$.  Each triple coordinate
+participates in each stage once; invocations have disjoint scratch
+roles.  All scratch roles are restored.  The resulting finite role
+permutation $\rho$ exchanges the $N$ data roles and fixes every scratch
+role.  It is the scalar-routing network used below.  The finite incidence
+identity and scratch schedule are also recorded in
+\path{supporting/SCALAR_MOTIF_SYMBOLIC_AUDIT.md} and
+\texttt{finite\_phase\_appendix.tex}.
+
+\subsection{Rational frames and exact child count}
+
+Address arithmetic is over $\mathbb Q$ first and then over
+$\mathbb Z/(q^b)$ for a fixed odd prime $q$.  It is distinct from the
+payload network over $\mathbb F_2$.  On $F=\mathbb Q^{48}$ use the
+nondegenerate symmetric form with Gram matrix
+\[
+                         B_0=I-J/9.
+\]
+The all-one line has eigenvalue $1-48/9=-13/3$, and its orthogonal
+complement has eigenvalue one, so the form is nondegenerate.  For
+$U\in\mathcal T$, let $t_U=\mathbf1_U$.  Then
+\[
+ \langle t_U,t_V\rangle=|U\cap V|-1,\qquad
+ \langle t_U,t_U\rangle=2.
+\]
+Thus $P_U$, the orthogonal projection onto $\langle t_U\rangle$, is a
+well-defined rational rank-one projection.  Adjacent triples give
+orthogonal lines.  The common-label table for the finite motif follows
+from these orthogonal direct-sum decompositions; a derivation is in
+  \path{supporting/ntt_base_five/finite_motif_rank_closed_form_audit.md}.
+
+At one frame stage, let $A$ be the preceding tensor label, $P$ its
+prefix line, $B=P^\perp$, and $L_U=\langle t_U\rangle$.  The next center
+label satisfies
+\[
+ (P\otimes L_U)^\perp
+   =(B\otimes F)\oplus^\perp(P\otimes L_U^\perp).
+\]
+Side inclusions use $L_U\perp L_V$ for adjacent $U,V$.  In the fixed
+physical gate order the common subspace labels are
+\[
+\begin{array}{c|l}
+0&B\otimes L_U\\
+1&B\otimes F\\
+2&(B\otimes F)\oplus^\perp(P\otimes L_U)\\
+3&A\otimes F\\
+4&B\otimes F\\
+5&(B\otimes F)\oplus^\perp(P\otimes L_U^\perp)\\
+6&A\otimes F\\
+7&A\otimes F.
+\end{array}
+\]
+Every label is tensored with the fixed suffix tensor line of the
+invocation. A side wire named by its physical Y/X neighbor pair $(S,T)$
+meets rows $0(S),2(T),5(S),7(T)$; its middle inclusion is
+$L_T\subset L_S^\perp$. A center wire meets rows $1,3,4,6$.
+Data X meets $2,3,6,7$ and data Y meets $0,1,4,5$.
+The second stage uses the reversed schedule with logical banks exchanged,
+so its ordered side-pair names are reversed to retain this physical
+convention. Scratch input frames are zero, scratch output frames are
+$I_m$, and the final data X/Y frames are $I_m$ and $I_m-P_U$.
+These finite inclusions and wire incidences use no phase-kernel,
+weighted-mask, H2, or interchange algorithm as a premise.
+
+In the fixed
+eight-role order the label dimensions are
+\[
+ a-1,\quad 48(a-1),\quad48(a-1)+1,\quad48a,\quad
+ 48(a-1),\quad48a-1,\quad48a,\quad48a,
+\]
+where $a=\dim A$.  The only decreases are the central transitions
+$48a\to48(a-1)$, each losing 48 dimensions.  With the fixed counts
+\[
+ W=2N+I(vz+48),\qquad m=48^3=110592,
+ \qquad L=I\cdot48^2,
+\]
+the signed endpoint dimension telescope and twice the downward variation
+give the sum of comparable-edge ranks $Wm-2N+2L$.
+
+\paragraph{Complete physical edge ledger.}
+The inverse middle stage runs logical rows $7,6,\ldots,0$ with source
+Y and target X. Its physical gate incidences are nevertheless
+Y-side, Y-center, X-side, X-center, Y-center, Y-side, X-center, X-side,
+the same chronological order as the other stages. Thus the common-label
+table is used in its printed order, with the side-pair names reversed;
+one must not reverse the table along with the logical row numbers.
+Put $d=48$ and $a=d^{j-1}$ at stage $j$. Suppressing the suffix line,
+the complete scratch dimension paths, including their endpoints, are
+\[
+\begin{array}{c|l|c}
+ \hbox{physical wire}&\hbox{dimension path}&\hbox{downward loss}\\ \hline
+ \hbox{side}&0,\ a-1,\ d(a-1)+1,\ da-1,\ da,\ m&0\\
+ \hbox{center}&0,\ d(a-1),\ da,\ d(a-1),\ da,\ m&d .
+\end{array}
+\]
+These are geometric inclusions: the middle side edge uses
+$L_T\subset L_S^\perp$, whose nondegenerate residual has dimension
+$d-2$; the center's downward residual is $P\otimes F$.
+At an interstage boundary X enters as $A\otimes L_T$, contained in
+$(B\otimes F)\oplus(P\otimes L_T)$, while Y enters as
+$B\otimes L_S$, exactly its next first label. The physical X path is
+therefore nondecreasing from a formal positive input line to dimension
+$m$, and Y is nondecreasing from zero to dimension $m-1$.
+Their ordinary edge-rank sums are both $m-1$.
+Each side contributes $m$ and each center $m+2d$.
+Since there are $I\cdot48$ centers, summing gives directly
+\[
+ 2N(m-1)+(W-2N)m+2I\cdot48d=Wm-2N+2L.
+\]
+The actual negative X source, treated next, replaces its formal
+zero-rank first edge by one rank-one edge; it does not alter the
+ordinary interstage inclusions.
+
+At each of the $N$ exceptional $X$ sources choose input frame $-P_U$;
+the first gate frame is $+P_U$.  Their difference is
+$2P_U$, of rational rank one.  Since the address modulus will have odd
+characteristic, this is not zero.  These $N$ source corrections add $N$
+recursive children, so the full child count is
+\[
+                         s=Wm-N+2L.
+\]
+For every routed role $w$, the endpoint labels obey
+\[
+                  M_{\rm out}(\rho(w))-M_{\rm in}(w)=I_m.
+\]
+For an $X$ data role the endpoint difference is
+$P_{U^\perp}-(-P_U)=I_m$; the other data and scratch endpoint pairs
+are the corresponding zero/full or complementary-label pairs in the
+finite common-label table.  For comparable labels, the rank of the
+projection difference is the dimension change.  The only equal-dimension
+exception is the $N$ first $X$ edges, already counted as $2P_U$ of rank
+one.  Thus no source correction is hidden by the endpoint identity.
+At each role edge with label difference $A$, implement the corresponding
+address-frame change.  The scalar routing sends role $w$ to $\rho(w)$;
+the displayed endpoint identity then leaves the same target shear on
+data and scratch roles alike.
+
+The exact fixed counts reduce to
+\[
+ \frac WN=\frac{9633881}{1081},\qquad
+ \frac LN=\frac{432}{1081},\qquad
+ 1-\frac{s}{Wm}=\frac{217}{9633881\cdot110592}.
+\]
+The integer inequality
+\[
+ 217\cdot2^{36}>12\cdot9633881\cdot110592
+\]
+and $m<2^{17}$ give $\ln m<12$ and
+$1-s/(Wm)>12\cdot2^{-36}$.  From $e^{-x}>1-x$ it follows that
+\[
+                      s/W<m^\tau,\qquad \tau=1-2^{-36}.
+\]
+All constants here are fixed.  These are exact rational counts, not a
+finite-size matrix-rank inference.
+
+\subsection{Choosing one odd address prime}
+
+There are finitely many rational label matrices, projections, and frame
+differences.  For each edge matrix the construction below gives a fixed
+factorization into lower-triangular matrices and a partial permutation.
+Collect the denominators of all entries and the numerators and
+denominators of every nonzero diagonal unit in these factorizations and
+their inverses.  This is a finite set of nonzero integers.  Choose one
+odd prime $q$ dividing none of them.  Such a prime exists by Euclid's
+argument; trial division through primes finds one after finitely many
+steps.  This is fixed finite setup, independent of $b,u,P,G,B$.  The
+prime and the rational matrices may equivalently be constants of the
+finite machine.
+
+All rational matrices now reduce to $\mathbb Z/(q^b)$ for every $b$.
+The chosen triangular diagonal entries remain units.  Each fixed
+factorization remains an exact identity, with the same $a$ partial
+permutation pivots.  No data-dependent division or prime oracle is used.
+Because $q$ is odd, the exceptional source matrix $2P_U$ still has its
+one nonzero pivot and costs one child swap.
+
+\subsection{Fixed-radix tape operations}
+
+The following operations use fixed $q$ and fixed tape families.
+
+\paragraph{Counters and records.}
+Use little-endian ripple counters with the head returning to the low
+end. Over a run of $A$ increments, or a run of $A$ decrements, of an $r$-bit
+counter from an arbitrary initial state, bit $j$ is visited
+$O(1+A/2^j)$ times, so the total cost is $O(A+r)$.
+The width term is necessary: one increment from $2^r-1$ can visit
+all $r$ bits. For a nonempty range of $n$ values, use its own
+$r=\max\{1,\lceil\log_2(n+1)\rceil\}$ active counter width and
+initialize/reset it at the prescribed endpoint. A full scan,
+initialization and return then cost $O(n+r)=O(n)$.
+To test termination without a full-width comparison after each step,
+initialize a countdown to $n-1$, execute the loop body, then
+decrement and stop precisely on borrow out of its marked $r$-bit
+interval. The last decrement from zero performs the end test
+while visiting those bits. This gives exactly $n$ bodies, including
+$n=1$. A needed forward index uses a separate amortized counter.
+Range bounds are prepared once in their own canonical widths;
+each reset copies only that bound, not a full ambient-width register.
+Stale cells outside this active interval are not rescanned at every
+reset. With a fixed number of nested ranges, charge each inner reset
+to its ensuing nonempty scan. Copying a $B$-bit record thus costs
+$O(B)$ including its counter initialization and returns, even for
+$B=1$. Recursion saves counters/descriptors at the current stack top;
+it does not cross an ancestor to fetch a length. Ordinary schoolbook
+shape arithmetic has a fixed polynomial cost in descriptor bitlength;
+the retained-range bound below pays it at every recursive call.
+
+More explicitly, traversing a fixed-depth product of nonempty ranges
+$n_1,\ldots,n_d$, including a final bit-record range if necessary,
+has counter cost bounded by
+\[
+ O\!\left(\sum_{i=1}^d
+       \Bigl(\prod_{j<i}n_j\Bigr)
+       (n_i+\log(2n_i))\right)
+   =O\!\left(d\prod_{i=1}^d n_i\right).
+\]
+For the current fixed matrix dimension, $d$ is fixed, even when
+prefix, gap and suffix ranges are arbitrarily large. All array
+bits remain raw payload: counters and boundary markers are on
+work tapes, with no growing header added to each record. Rewinding
+the fixed number of current split tracks costs their combined
+volume and stops at their current stack boundaries.
+
+\paragraph{Digit moves and pointwise maps.}
+Split a stream into $q$ tracks by one selected radix-$q$ digit, preserving
+order on each track, and merge in the desired digit order.  A single
+digit move costs $O(V)$.  For a fixed permutation of two digit positions,
+split into $q^2$ tracks and merge according to the two preimage digits;
+this also costs $O(V)$.  A fixed pointwise finite-alphabet map on aligned
+tracks costs $O(V)$.  The number $q^2$ is large but fixed, not input
+dependent.
+
+\paragraph{Rotations controlled by earlier fields.}
+Let the target field have $Q=q^b$ values and follow every field used to
+compute its shift.  Within each fixed earlier-address fiber, it consists
+of $Q$ consecutive blocks of suffix records.  For shift $a\in[Q]$,
+copy the first $Q-a$ blocks to one stream and the last $a$ to another,
+then write the latter before the former.  This realizes
+$y\mapsto y+a\pmod Q$ in $O(V)$ record motion.  Computing the offset by
+schoolbook arithmetic on the fixed number of $b$-digit controls costs
+$\operatorname{poly}(b)$ per fiber.  Each fiber contains $q^b$ blocks,
+so this metadata is absorbed into its own volume.  Arbitrary spectators
+and payload remain inside each block.
+The enumeration retains separate counters for the selected controls.
+Large spectator counters are advanced or reset by the preceding
+product-scan rule; their full values are not decoded or copied into
+the offset calculation. Thus the bound is $O(V)$ even for $b=1$,
+with arbitrarily large prefix, intervening gap, or suffix.
+This argument relies on reading only the fixed number of selected
+$b$-digit fields. It does not authorize an offset depending on the
+entire ambient address at the same cost.
+
+\paragraph{Fixed rational units.}
+For a fixed positive integer $c$ coprime to $q$, partition $y\in[Q]$
+into its $c$ monotone pieces indexed by $j=\lfloor cy/Q\rfloor$.
+On a piece the output is $y'=cy-jQ$ in increasing order.  Since
+$Q$ is invertible modulo $c$, for each output value $y'$ the unique piece
+is determined by $j\equiv-y'Q^{-1}\pmod c$.  Split by these fixed $c$
+classes and merge their increasing streams in output order.  This is
+$y\mapsto cy\pmod Q$ in $O(V)$, including piece endpoints and counters.
+Prepare the endpoints and $Q^{-1}\bmod c$ in polynomial-$b$ time;
+the output selector needs only $y'\bmod c$, a fixed finite-state
+counter updated once per suffix block. It performs no full $b$-bit
+multiplication or global-address decoding at each record.
+The same residue split on a supplied output stream constructs the inverse
+permutation directly.  Negation modulo $Q$ fixes zero and reverses the
+other $Q-1$ blocks; a stack reversal plus reversal within each block costs
+$O(V)$.  A fixed rational unit $c/d$ is the composition of integer
+multiplication by $|c|$, inverse multiplication by $|d|$, and a possible
+negation.  The prime $q$ avoids $c,d$.
+
+\subsection{Lower-triangular frames and rank-many child swaps}
+
+For a fixed rational matrix $A$ of rank $a$, eliminate its topmost
+nonzero row using the rightmost nonzero pivot.  Clear entries to the
+left by lower-triangular column operations and entries below by
+lower-triangular row operations.  Remove the isolated pivot row and
+column and continue in the remaining ordered indices.  This yields
+\[
+                         A=E_1\Pi E_2,
+\]
+where $E_1,E_2$ are nonsingular lower-triangular matrices and $\Pi$
+has exactly $a$ ones in distinct rows and columns.  Reversing the
+elimination proves the factorization; nonsingularity of $A$ is not
+required.
+Concretely, if the pivot is in row $i_0$, column $j_0$, clearing a
+column $j<j_0$ adds a multiple of column $j_0$ to column $j$,
+a lower-triangular right operation. Clearing a row $i>i_0$ adds a
+multiple of row $i_0$ to row $i$, a lower-triangular left operation.
+Normalize the pivot by a nonzero diagonal scale. Previously isolated
+pivot rows and columns are unchanged, since their entries in the
+remaining submatrix are zero. Retaining the original order on the
+remaining indices preserves triangularity. Thus $LAR=\Pi$ with
+invertible lower-triangular $L,R$, and $E_1=L^{-1},E_2=R^{-1}$.
+The partial permutation need not be diagonal.
+
+\begin{lemma}[Signed factorization over every address power]
+\label{lem:swap-signed-module}
+For each actual directed rational frame difference $A=M_j-M_i$ of
+rank $a$, the chosen fixed prime gives, for every $b\ge1$,
+\[
+ A_b=E_{1,b}\Pi E_{2,b}\quad\hbox{over }R_b=\mathbb Z/(q^b),
+\]
+with both triangular factors invertible. The image and kernel of $A_b$
+are free direct summands of ranks $a$ and $m-a$. The same $a$ unit
+pivots implement the signed address shear; no field assumption on
+$R_b$ or invertibility of a data coordinate is required.
+\end{lemma}
+\begin{proof}
+The finite rational identities reduce entrywise since $q$ avoids every
+entry denominator. Each triangular diagonal remains a unit by the
+same fixed exclusion, so both factors are invertible over every $R_b$.
+Multiplication by those invertible factors identifies the image and
+kernel with those of $\Pi$, whose nonzero entries are literal ones.
+In particular these are coordinate direct summands of the stated ranks.
+This is an explicit factorization certificate over a ring, rather than
+a rank test over a field.
+
+Factor the \emph{signed} matrix $A$ before reduction. Its negative
+can equally be factored as $(-E_1)\Pi E_2$, absorbing the sign in
+unit diagonals. For the source correction $2P_U$, the factor two
+is likewise absorbed in one triangular factor; $q$ is odd.
+It retains one pivot and one child. No sign or factor two is reduced
+using the separate characteristic-two payload arithmetic.
+\end{proof}
+
+A lower-triangular coordinate change within a bank is performed in
+descending coordinate order.  At target coordinate $i$, the controls
+with index $j<i$ still have their original values and physically precede
+the target.  Apply its fixed diagonal unit, then add the fixed linear
+combination of those earlier coordinates by later-target rotations.
+This costs $O(V)$ per coordinate; the dimension $m$ is fixed.
+
+Define, for vectors of $m$ radix-$q^b$ digits,
+\[
+ \Phi_A(H,D)=(H+AD,D).
+\]
+Its induced forward record pushforward is
+\[
+ (\mathcal P_A f)(H,D)=f(H-AD,D),\qquad
+ \mathcal P_A\mathcal P_B=\mathcal P_{A+B},\qquad
+ \mathcal P_A^{-1}=\mathcal P_{-A}.
+\]
+Here the coordinate signs are in $R_b$; pointwise payload addition
+remains XOR over $\mathbb F_2$.
+To implement it, first change $D$ by $E_2$, change $H$ by $E_1^{-1}$,
+add $\Pi D$ to $H$, undo the $H$ change by $E_1$, and finally undo the
+$D$ change by $E_2^{-1}$.  The result is
+$H+E_1\Pi E_2D=H+AD$ with the original $D$ restored.  The triangular
+operations are linear volume.
+For each one in $\Pi$, the cross-bank shear $H_i\gets H_i+D_j$ is
+implemented in the physical order (earlier field $H_i$, later field
+$D_j$) by
+\[
+       D_j\gets D_j+H_i;\qquad
+       \operatorname{swap}(H_i,D_j);\qquad
+       D_j\gets H_i-D_j.
+\]
+On $(h,d)$ this is $(h,d)\mapsto(h+d,d)$.  The first and last
+operations target later fields and cost $O(V)$.  The middle operation is
+one recursive interchange of two $b$-digit fields across arbitrary gap
+and suffix.  Thus $\Phi_A$ costs exactly $a$ recursive child swaps plus
+$O(V)$ other work.  Its inverse is $\Phi_{-A}$ and has the same bound.
+Lemma~\ref{lem:swap-signed-module} justifies these same fixed factors
+for singular, negative and source-correction matrices at every $b$.
+
+\subsection{Exact power widths, role frames, and tape recurrence}
+
+First let each chunk have width $e=m^k$ radix-$q$ digits.  Keep an
+independent row field of size $R$ divisible by $W^k$, before both chunks;
+arbitrary prefix, gap, suffix, and spectators between the row and first
+chunk are retained.  For $k=0$ the two $q$-digit chunks are exchanged by
+the fixed split/merge construction in $O(V)$.
+
+For $k>0$, split each chunk into $m$ consecutive width-$b$ fields,
+$b=e/m$, and denote their vectors by $H,D$.  Split whole rows cyclically
+into $W$ role streams inside each earlier prefix, stream $w$ taking rows
+$r=Wa+w$.  Each role has the full $H,D$ ranges and all spectators, and
+row count $R/W$ divisible by $W^{k-1}$.  On each finite scalar-network
+edge from label $M_i$ to $M_j$, apply $\Phi_{M_j-M_i}$ to its role stream,
+then perform the specified pointwise XOR gate on aligned payloads.
+
+For input array $f_w$ on role $w$, use the logical interpretation
+$\mathcal P_{-M_{\rm in}(w)}f_w$.  This is a proof invariant, not a
+preprocessing pass.  The frame change on an edge is common to its aligned
+XOR operands and commutes with pointwise addition.  The scalar network
+routes role $w$ to $\rho(w)$; its physical output there is
+\[
+\mathcal P_{M_{\rm out}(\rho(w))-M_{\rm in}(w)}f_w
+       =\mathcal P_I f_w.
+\]
+Equivalently, with block-diagonal input/output pushforward frames
+$\mathcal D_{\rm in},\mathcal D_{\rm out}$ and scalar role
+permutation $P$, the entire framed word is
+\[
+ \mathcal D_{\rm out}P\mathcal D_{\rm in}^{-1}
+        =P(I_W\otimes\mathcal P_I).
+\]
+The endpoint difference is $I_m$ on every routed role, including dirty
+side and center roles. A common reindexing commutes with their XOR
+gates; no payload value is assumed zero.
+Merge output role $\rho(w)$ back into input row class $w$.  This undoes
+the role exchange and applies $H\gets H+D$ to every row, including
+arbitrary scratch rows, while preserving all spectators.
+
+The finite role network supplies only this earlier-target shear.  Complete
+the chunk interchange with the outer later-target operations
+\[
+ D\gets D-H,\qquad H\gets H+D,\qquad D\gets H-D.
+\]
+On input $(h,d)$ the result is $(d,h)$.  Only the middle operation uses
+the framed role network.  The first and last operations are later-target
+rotations and fixed unit maps, each costing $O(V)$.  Thus the number of
+recursive children remains exactly $s$; it is not multiplied by three.
+
+The finite edge matrices have ranks summing to $s$. A pivot child is a
+direct call to the exact power-width entry. More explicitly, its parent
+role shape is
+\[
+\begin{aligned}
+ &[P][R/W][A][H_1]\cdots[H_m]\\
+ &[G][D_1]\cdots[D_m][B].
+\end{aligned}
+\]
+Every formal field has width $b=e/m$, with a separate pretarget
+spectator range $A$. A pivot using $H_i,D_j$ has child parameters
+\[
+ A_c=Aq^{b(i-1)},\qquad
+ G_c=q^{b(m-i)}Gq^{b(j-1)},\qquad
+ B_c=q^{b(m-j)}B.
+\]
+The call is
+$\operatorname{SwapPower}(b,q,P,R/W,A_c,G_c,B_c)$.
+The row range remains explicit and is divisible by $W^{k-1}$;
+all unselected fields remain in the contiguous spectator products.
+Consequently
+\[
+ P(R/W)A_cG_cB_cq^{2b}
+   =P(R/W)AGBq^{2e}=V/W.
+\]
+This power entry introduces no numeric or row pad. It does not call
+the arbitrary-width or binary wrapper. The pivot factorization
+therefore gives exactly $s$ recursive calls of volume $V/W$ and
+width $e/m$. The
+finite number of role gates, fixed-rational operations, XOR scans, row
+splits/merges, and setup work contributes $C_1V$ at the parent.  Use
+separate fixed tape families and a parking stack: before one child, park
+only the other current role streams at the stack top; pass the active
+stream to the child; after return, restore siblings by popping and writing
+right-to-left.  Clear only current visited intervals.  A descendant never
+traverses a parked ancestor.  Since $s,W$ are fixed constants, all parent
+parking costs $C_sV$ and does not multiply child time.
+
+With normalized time $F_k$, the exact recurrence is
+\[
+ F_0\le C_0,\qquad
+ F_k\le(s/W)F_{k-1}+C_1.
+\]
+By the finite count $s/W<m^\tau$, this gives
+\[
+                         F_k=O(m^{k\tau})=O(e^\tau).
+\]
+The bound also holds if $s/W\le1$, since the resulting linear sum in
+$k$ is at most $O(e^\tau)$.  Parent parking uses $O(V)$ time and
+storage at the current level.  At depth $j$, the child volume is
+$V_j=V_0/W^j$; the two original full chunk ranges remain present as
+targets or spectators, so $V_j\ge q^{2e_0}$ for root width $e_0$.
+Since $j\le k=O(\log e_0)$,
+\[
+ \log V_0=\log V_j+j\log W=O(\log(2V_j)).
+\]
+Any fixed polynomial of the root descriptor bitlength therefore fits
+within $O(V_j)$ at the child.  Its descriptor lists only the current
+fields and collapsed spectator intervals, not the chain of ancestor
+subdivisions.
+
+\subsection{Arbitrary $q$-radix widths without rounding the core}
+
+Let the two original chunks have width $e$ radix-$q$ digits.  Put
+$k=\lceil\log_m e\rceil$.  Choose the least $r_0$ such that
+$q^{2r_0}\ge W^k$.  For sufficiently large $e$, $1\le r_0<e$ and
+$r_0=O(\log(2e))$; the bounded smaller range uses direct finite
+single-digit interchanges and changes only the uniform constant.
+Write the first chunk as $h_+h_-$ and the second as $d_+d_-$,
+with the four lengths specified separately:
+\[
+ |h_+|=|d_+|=r_0,\qquad |h_-|=|d_-|=e-r_0.
+\]
+Thus the plus sign always means high digits and the minus sign
+always means low digits. Starting from
+\[
+ [h_+][h_-][G][d_+][d_-],
+\]
+first exchange corresponding high digits individually, obtaining
+\[
+ [d_+][h_-][G][h_+][d_-].
+\]
+Then move only the $r_0$ digits of $h_+$ left across $h_-$ and $G$
+using fixed-radix digit moves, obtaining
+\[
+ [d_+][h_+][h_-][G][d_-].
+\]
+This costs $O(Vr_0)$.  The joined row field $(d_+,h_+)$ has size
+$R=q^{2r_0}\ge W^k$.  Pad this one independent numeric row range to
+\[
+ R'=W^k\left\lceil\frac{R}{W^k}\right\rceil,
+                   \qquad R\le R'<2R.
+\]
+It is divisible by every $W^j$ needed in the recursion.  This private
+factor below two multiplies the current volume by one constant factor for
+the whole arbitrary-width call.  All children receive that same padded
+row range and have volume $V'/W$ at the first level (then divide by $W$
+per level); the pad is not independently reintroduced at descendant
+levels.  Pad rows are initialized to zero.  Completed interchange calls
+preserve the row coordinate, so these rows remain zero at the crop
+boundary.  Crop the row factor once, after the complete arbitrary-width
+core, to recover the original volume.
+
+Write $e-r_0$ in base $m$.  At scale $m^j$ there are at most $m-1$
+matching consecutive pieces in each lower chunk.  Interchange each
+corresponding pair by the exact power-width routine, with all other
+pieces as spectators.  The sum of their costs is
+\[
+ O(V)\sum_j a_jm^{j\tau}=O(Ve^\tau),\qquad 0\le a_j<m.
+\]
+No target piece is rounded up to a larger power.  After all pieces,
+the field order is
+\[
+ [d_+][h_+][d_-][G][h_-].
+\]
+Crop the row padding back to $R$ genuine rows before undoing the high
+digit move.  Move $h_+$ after $G$ by the reverse-direction sequence of
+$r_0$ digit moves, obtaining
+\[
+ [d_+][d_-][G][h_+][h_-].
+\]
+The two original chunks have been interchanged.  The high moves cost
+$O(V\log(2e))=O(Ve^\tau)$, and row padding contributes only a fixed
+factor below two.  All spectators retain their order.
+
+For completeness, fixed-radix digit moves use $q$-way stream splitting
+and merging; their cost is $O(V)$ each and uses a fixed number of tapes.
+The $O(\log e)$ piece schedule and shape arithmetic are polynomial in
+$\log(2V)$, hence $O(V)$.  The full chunk ranges remain in every
+descendant, which is the volume lower bound used for descriptor costs.
+
+Counters and record movement use ordinary sequential tapes.  A
+little-endian binary counter changes bit $j$ only $O(1+T/2^j)$ times
+over $T$ consecutive increments, so a run of $T$ increments, its reset,
+and return cost $O(T+w)$ for width $w$. Use a range-specific active
+width as above; do not restart a full ambient-address counter for
+each constant-size inner scan. Nested counters and child
+descriptors are pushed at the current stack top and only that child's
+interval is popped on return.  A $B$-bit suffix record is copied with an
+amortized down-counter in $O(B)$, including reset.  At each call there
+are only a fixed number of shape parameters; polynomial work in
+$\log(2V)$ is $O(V)$ for all positive input volumes after increasing the
+uniform constant.  No counter repeatedly scans an ancestor descriptor.
+
+\subsection{Binary fields and final theorem}
+
+For binary width $u$, set $N=2^u$ and choose the least $e$ with
+$Q=q^e\ge N$.  Then $Q<qN$.  Pad each of the two numeric address ranges
+from $N$ to $Q$, copying the valid rectangle and filling its complement
+with zero records.  This nested scan costs $O(V')$ where
+\[
+ V'=PGBQ^2<q^2V.
+\]
+Radix-$q$ lexicographic order is numeric order, so no per-record base
+conversion is used.  Apply the exact $q$-digit interchange above.  Its
+completed coordinate transposition preserves the nested valid rectangle
+$[N]\times[N]$; hence invalid padding remains zero and can be cropped
+after the full operation.  No crop is performed inside a recursive piece.
+Because $e=O(u)$ for fixed $q$, the final time is
+\[
+                         O(V'u^\tau)=O(Vu^\tau).
+\]
+
+All operation families have fixed finite tape sets: the $q^2$ split
+tracks, the $W$ role streams, reusable I/O/work tapes, and stack/descriptor
+tapes depend only on fixed constants.  Finite rational tables and the
+avoiding prime are fixed machine data or are generated by terminating
+constant setup.  Counters use ordinary amortized binary increments;
+record copies and returns cost their full bit volume.  Thus this is one
+uniform fixed-finite-tape construction for all $P,G,B,u$, including
+$B=1$.  It proves the local interchange statement without assuming the
+source preprint's global integer multiplication algorithm.  It makes no
+novelty claim for the finite motif or its routing method.
+
+
+

@@ -1,0 +1,11 @@
+paid_invoice=1:41502,2:8226,3:8928,4:1800,5:2934,6:198,7:108,8:18,16:416,24:416,32:416,40:416,48:416,56:416,64:416,72:208
+target_invoice=1:252,2:144,3:72,4:1926,5:252,6:36,7:162,8:342,9:6930,17:416,25:416,33:416,41:416,49:416,57:416,65:416,73:208,145:208
+PASS: 20530 exact checks; 16 paid bins, 18 target bins
+finite composition:13444 independent live roles +30 owned roles; native/controller invoices agree
+tested saving=39/12500; intended full DFT saving=31/10000
+alpha_upper_48=4398020611977/4398046511104
+gamma_upper_48=68648838134283/70368744177664
+delta_upper_48=267577156343051/281474976710656
+normalized_strictification_upper=16777216015641/16794395869184 < 1
+hypotheses: actual exact native/controller unit and chronological tensor construction
+No full-word certificate, uniform program, or record is proved by this probe.

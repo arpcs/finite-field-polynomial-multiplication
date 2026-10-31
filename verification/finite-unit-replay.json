@@ -1,0 +1,252 @@
+{
+  "schema": "finite-unit-public-replay/1",
+  "completed_utc": "2026-10-31T01:48:05.0125806Z",
+  "result": "pass",
+  "scope": "Fixed scalar endpoint, Laurent controller, direct geometry and exact invoice/moment checks only; not an end-to-end asymptotic multiplier or Lean proof",
+  "review_status": "Internal AI-assisted compilation and exact finite replay; independent human proof review and complete theorem-level Lean verification remain outstanding",
+  "source_receipt": {
+    "schema": "finite-unit-replay/1",
+    "sha256": "6ce24b874ebbf6c1a720277d151a80ee2a902edde495d536cbfaf97a4ed093b0",
+    "transformation": "Public record rebases artifact/output paths to repository root, retains relative commands, and adds exact stderr hashes; no checker was rerun for this publication step"
+  },
+  "working_directory": "papers/01-general/proofs/finite-unit",
+  "artifact_manifest": {
+    "path": "papers/01-general/proofs/finite-unit/ARTIFACTS.json",
+    "sha256": "c3c0510f1a2e59d0c3668761e32c84d701b626206ed785c8eb53a7eb2324383d"
+  },
+  "compiler": {
+    "name": "g++.exe",
+    "version": "g++.exe (MinGW-W64 x86_64-msvcrt-posix-seh, built by Brecht Sanders) 13.1.0",
+    "guard": "guarded-document.exe"
+  },
+  "limits": {
+    "checker_process_memory_mib": 64,
+    "checker_cpu_seconds": 10,
+    "checker_wall_seconds": 30,
+    "compiler_guard_required": true,
+    "compiler_jobs_serialized": true
+  },
+  "command_paths": "Commands and argument paths are relative to working_directory; public file/output paths are relative to repository root; executable locations omitted",
+  "commands": [
+    {
+      "kind": "compile",
+      "program": "guarded-document.exe",
+      "arguments": [
+        "g++.exe",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-pedantic",
+        "code/native_scalar_record_probe.cpp",
+        "-lgmp",
+        "-lpsapi",
+        "-o",
+        "build/native-scalar.exe"
+      ],
+      "exit": 0
+    },
+    {
+      "kind": "replay",
+      "program": "build/native-scalar.exe",
+      "arguments": [
+        "inputs/native-word.json"
+      ],
+      "exit": 0
+    },
+    {
+      "kind": "compile",
+      "program": "guarded-document.exe",
+      "arguments": [
+        "g++.exe",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-pedantic",
+        "code/controller_record_probe.cpp",
+        "-lgmp",
+        "-lpsapi",
+        "-o",
+        "build/controller.exe"
+      ],
+      "exit": 0
+    },
+    {
+      "kind": "replay",
+      "program": "build/controller.exe",
+      "arguments": [
+        "inputs/controller.json",
+        "inputs/native-word.json"
+      ],
+      "exit": 0
+    },
+    {
+      "kind": "compile",
+      "program": "guarded-document.exe",
+      "arguments": [
+        "g++.exe",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-pedantic",
+        "code/record_rate_probe.cpp",
+        "-lgmp",
+        "-lpsapi",
+        "-o",
+        "build/rate.exe"
+      ],
+      "exit": 0
+    },
+    {
+      "kind": "replay",
+      "program": "build/rate.exe",
+      "arguments": [],
+      "exit": 0
+    }
+  ],
+  "runs": [
+    {
+      "name": "native-scalar",
+      "exit": 0,
+      "historical_output_match": true,
+      "historical_expected": "papers/01-general/proofs/finite-unit/historical/native-scalar.txt",
+      "stdout": {
+        "path": "verification/finite-unit/native-scalar.stdout.txt",
+        "bytes": 516,
+        "sha256": "ee34f0ed4e28eff05eb1b8881ebc56b21f759a9cf1b3283b0ad630c89db6ed89"
+      },
+      "stderr": {
+        "path": "verification/finite-unit/native-scalar.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "controller",
+      "exit": 0,
+      "historical_output_match": true,
+      "historical_expected": "papers/01-general/proofs/finite-unit/historical/controller.txt",
+      "stdout": {
+        "path": "verification/finite-unit/controller.stdout.txt",
+        "bytes": 633,
+        "sha256": "3c17cff0d17737a89c37dce48dbc33c78b03d2a6da49d98fb19160f06e695181"
+      },
+      "stderr": {
+        "path": "verification/finite-unit/controller.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "rate",
+      "exit": 0,
+      "historical_output_match": true,
+      "historical_expected": "papers/01-general/proofs/finite-unit/historical/rate.txt",
+      "stdout": {
+        "path": "verification/finite-unit/rate.stdout.txt",
+        "bytes": 843,
+        "sha256": "a4234258ece5583e2537949a9a8a4c838baffdbb0bab0fd85c58cc1175ce577a"
+      },
+      "stderr": {
+        "path": "verification/finite-unit/rate.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "public_result_bins_match": true,
+  "files": [
+    {
+      "path": "papers/01-general/proofs/finite-unit/code/native_scalar_record_probe.cpp",
+      "bytes": 8249,
+      "sha256": "6361b615be8b0301305f40f7ee4bddbcd9366d2b9ebdf135eef31836baef9cf4"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/code/controller_record_probe.cpp",
+      "bytes": 13163,
+      "sha256": "0f8392e4e992f0718e6092c8b9a8112ea7a507d3fb3478410a5c5b79dd11d5ea"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/code/record_rate_probe.cpp",
+      "bytes": 7246,
+      "sha256": "402bbc00cfcb6c8324668118d588c19f99be31c739106bd65d23cae5b96fdeaa"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/code/bounded_json.hpp",
+      "bytes": 4313,
+      "sha256": "535b37cc3555003b6a4679cb71b5b32cd5e81c52beb2f7920321468eb68f67b7"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/code/retuned_network_exponent_bounded_20261029.cpp",
+      "bytes": 8240,
+      "sha256": "904bb0708583324ba858d629ebda168e68e0cb1f21482e337297793603377a31"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/inputs/native-word.json",
+      "bytes": 1660484,
+      "sha256": "bdb99bde29de80e90bacbfb516bd37f636b36b52d870794851d07a3ecf639c01"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/inputs/controller.json",
+      "bytes": 57924,
+      "sha256": "1f5d6aa267e4e66048818714b5d3b5eae17a58abe91d15deeaa34574f7391a5f"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/inputs/frontier6030-result.json",
+      "bytes": 12798,
+      "sha256": "84fcbe2a0b64307b5703c363408042bdd91555b0419509aa50daa43b3b1924ad"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/historical/native-scalar.txt",
+      "bytes": 516,
+      "sha256": "ee34f0ed4e28eff05eb1b8881ebc56b21f759a9cf1b3283b0ad630c89db6ed89"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/historical/controller.txt",
+      "bytes": 633,
+      "sha256": "3c17cff0d17737a89c37dce48dbc33c78b03d2a6da49d98fb19160f06e695181"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/historical/rate.txt",
+      "bytes": 843,
+      "sha256": "a4234258ece5583e2537949a9a8a4c838baffdbb0bab0fd85c58cc1175ce577a"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/upstream/CrocSwap-NOTICE",
+      "bytes": 24973,
+      "sha256": "b49022cb4104d90b182e4c335f670faf45529025b15db77bf0291835083c28bd"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/upstream/CrocSwap-LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/upstream/native-word-README.md",
+      "bytes": 7167,
+      "sha256": "86eba866ef0af654bc06ffada16c18cb795443da33f7f636cf5c1e7aee0f6cbc"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/upstream/controller-base-README.md",
+      "bytes": 5433,
+      "sha256": "e5e1a3a11d97fa771e0ec3a4e3e596714f7f3c036fed8c97f395f4c6637317cb"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/upstream/forward-controller-README.md",
+      "bytes": 7622,
+      "sha256": "c8d3ec258ce4d15d61103b4ac90c11409587d7b1da2ed8211fc30d0e6521b466"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/README.md",
+      "bytes": 9168,
+      "sha256": "ece7a88dd2497036826f19764f81c0e06ef7138f880750be45fa43e476374283"
+    },
+    {
+      "path": "papers/01-general/proofs/finite-unit/verify-finite-unit.ps1",
+      "bytes": 7132,
+      "sha256": "7189e58f7c6486a994aeb460feb518be9b55145d397e90db8c889788e3b849e7"
+    }
+  ]
+}

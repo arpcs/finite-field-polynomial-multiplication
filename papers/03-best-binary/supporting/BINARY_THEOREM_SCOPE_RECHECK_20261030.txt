@@ -1,0 +1,77 @@
+BINARY THEOREM SCOPE RECHECK — 30 October 2026
+
+Latest source-level check and correction of audit history
+
+FINAL_PRIMARY_THEOREM_SCOPE_AUDIT_20261030.txt additionally inspects the
+current Platypii Theorem.lean declaration and proof term. Its exponent
+4222422970/2^46 was ALREADY recorded below; this is added theorem-source
+inspection, not discovery of a newer exponent. No fresh Lean build,
+kernel-output check or import/axiom audit was run. Mutable master URLs
+were checked; an immutable commit permalink could not be retrieved.
+The integer function/model and carry-free spacing distinction remain.
+
+Root also inspected van der Hoeven--Larrieu, The Frobenius FFT,
+https://www.texmacs.org/joris/ffft/ffft.pdf. The actual paper date is
+26 April 2017, despite a recent search crawl/publication label. It DOES
+use a finite-tape bit model and directly discusses F2 polynomial
+multiplication, so it must not be dismissed using the exact-complex
+paper's model exclusion. Its Theorem6.2 prices symmetry reduction using
+extension arithmetic/conversion costs; Section6.4 gives a fixed F2^60
+application with lengths dividing2^60-1. The inspected theorem and
+application do not state the all-length strict logarithmic saving
+required here. This is a bounded theorem/model check, not a priority
+claim or exhaustive proof that no transfer exists.
+
+Additional bounded scan during the whole-proof audit
+
+Fresh arXiv searches surfaced [four-term binary multiplicative complexity](https://arxiv.org/abs/2608.30238), a fixed-degree Boolean circuit result, and [low-degree skew multiplication](https://arxiv.org/abs/2607.00476), a noncommutative extension-field arithmetic bound. The [AVX512 binary multiplication paper](https://arxiv.org/abs/2201.10473) concerns hardware kernels and finite practical degree ranges. These inspected abstracts do not state the candidate's growing ordinary F2 fixed-tape bound. The current OpenAI integer and exact-complex introduction statements still have the different function/model scopes recorded below. This search is bounded negative evidence, not exhaustive priority verification.
+
+Scope and limits
+
+This is a bounded primary-source comparison for the candidate claim: ordinary dense F2[X] multiplication in O(n(log n)^(1-delta)) bit time on one deterministic fixed-finite-tape machine, unconditionally and at every input length. I inspected the cited papers and named current repositories, including the explicit polynomial corollary in the exact-DFT paper and the Lean integer statement. I did not build or clone repositories or audit proof-import closures. This is not an exhaustive novelty search or a correctness review.
+
+Primary-source comparison
+
+1. OpenAI Math, “Integer multiplication below n log n” (23 September 2026)
+
+Its theorem is exact multiplication of two n-bit integers in O(n(log n)^(1-2^-182)) worst-case time, by one fixed finite-alphabet machine with finitely many one-dimensional tapes. The paper’s function is integer multiplication; no ordinary dense F2[X] corollary appears in the inspected introduction. Direct Kronecker substitution for n binary polynomial coefficients needs Θ(log n) spacing bits per coefficient, giving integer inputs of Θ(n log n) bits. Applying the integer result directly then costs O(n log n · (log(n log n))^(1-2^-182)), which does not beat n log n. This only rules out that direct transfer.
+
+Primary link: [OpenAI Math introduction](https://github.com/openai/math/blob/main/preprints/Integer-multiplication-below-n-log-n-September-23-2026/build/sections/00-introduction.tex)
+
+2. OpenAI Math, “An explicit power saving for the exact discrete Fourier transform” (25 September 2026)
+
+This paper explicitly has an exact complex convolution/polynomial-multiplication corollary with bound O(n(log n)^theta(loglog n)^(4-theta)), hence eventually O(n(log n)^(1-10^-13)). Its model uses exact complex field operations, a specified-root operation, and unit-cost O(log n)-bit address/random-access operations; scalar/schedule work is charged. The corollary retains unrestricted complex coefficients and general complex pointwise multiplication. The source expressly excludes finite fields and bit complexity. It is direct polynomial/transform overlap, but not an F2 bit-time or fixed-tape theorem.
+
+Primary link: [OpenAI Math exact-DFT introduction and corollary](https://github.com/openai/math/blob/main/preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026/build/sections/introduction.tex)
+
+3. Harvey–van der Hoeven cyclotomic polynomial result (2017 versions)
+
+The arXiv version states that, for fixed prime p, degree-n polynomials over F_p[X] can be multiplied in O(n log n 4^(log* n)) bit operations and identifies the deterministic multitape Turing model with a fixed finite number of tapes. For p=2 it is the matching ordinary dense F2 polynomial problem and bit model, but its unbounded 4^(log* n) factor is neither O(n log n) nor a strict fixed power saving in log n.
+
+Bibliographic versions: the arXiv title is “Faster integer and polynomial multiplication using cyclotomic coefficient rings”; the current author-hosted PDF is titled “Faster polynomial multiplication over finite fields using cyclotomic coefficient rings.” The polynomial bound is the relevant common result; cite the version actually used.
+
+Primary links: [arXiv:1712.03693](https://arxiv.org/abs/1712.03693); [current author-hosted PDF](https://www.texmacs.org/joris/cyclomult/cyclomult.pdf); [author-hosted abstract/version note](https://www.texmacs.org/joris/cyclomult/cyclomult-abs.html)
+
+4. Harvey–van der Hoeven, “Polynomial multiplication over finite fields in time O(n log n)” (2019)
+
+The author-hosted paper’s Theorem 1.2 gives M_q(n)=O(n log q log(n log q)), uniformly in q, assuming a Linnik constant below 1+2^-1162. For q=2 this is O(n log n) in the deterministic multitape Turing model, but it is conditional and has no strict power saving. The paper reports the then-smallest known Linnik constant as 5.18, far from the required near-one bound.
+
+Primary link: [author-hosted paper](https://www.texmacs.org/joris/ffnlogn/ffnlogn.pdf)
+
+5. Current integer-multiplication repositories
+
+CrocSwap’s current README advertises P104 with κ=781451/250000000=0.003125804, but labels it conditional on the original OpenAI framework and says five assumptions remain; it is not a complete Lean theorem or independent human proof. The erayyap README reports an unrefereed, non-Lean integer-multiplication addendum at approximately κ=2^-59.335. Hrrsmjd’s README reports an integer addendum at κ=2^-74; it says its Lean file checks arithmetic only, not the machine or structural argument. These are integer-function claims and relevant method lineage, not explicit dense F2[X] theorems.
+
+Primary links: [CrocSwap README](https://raw.githubusercontent.com/CrocSwap/integer-mult-bounds/main/README.md); [erayyap README](https://raw.githubusercontent.com/erayyap/integer-multiplication-kappa/main/README.md); [Hrrsmjd addendum README](https://raw.githubusercontent.com/Hrrsmjd/math/main/Integer-multiplication-below-n-log-n-improved-exponent/README.md)
+
+6. Platypii Lean integer theorem
+
+The README claims a completed unconditional Mathlib FinTM2 theorem with κ=4222422970/2^46≈0.00006000424. I inspected its `MathlibTM2/Statement.lean`: the stated function multiplies two naturals from binary encodings and returns the canonical binary encoding of their product; the input length is the sum of the two binary sizes, and time is worst-case. Thus its theorem target is integer multiplication, not polynomial multiplication. The README claims a complete Mathlib proof/no custom axioms, but I did not inspect the theorem/import closure or run Lean; those remain repository claims in this report.
+
+Primary links: [README](https://raw.githubusercontent.com/platypii/integer-mult-bounds-lean/master/README.md); [statement file](https://raw.githubusercontent.com/platypii/integer-mult-bounds-lean/master/IntegerMultBounds/MathlibTM2/Statement.lean)
+
+Assessment
+
+The checked sources distinguish three scopes: (i) unconditional fixed-tape integer multiplication with a strict log saving, including newer formal/computer-assisted integer claims; (ii) exact complex polynomial multiplication with a strict saving in a complex/address-word model; and (iii) F2[X] multiplication in the fixed-tape bit model, with the checked unconditional 2017 bound O(n log n 4^(log* n)) and conditional 2019 O(n log n) result. None of the inspected integer statements supplies the candidate’s exact ordinary dense F2 polynomial function/model pair. The DFT corollary is explicit polynomial overlap but excludes the required finite-field/bit model.
+
+Bounded searches in the newer integer repositories for F2[X], characteristic-two polynomial multiplication, and similar terms did not surface a same-scope statement. This is weak negative evidence only; it does not establish that every branch or file lacks such a consequence. The broader integer-method lineage makes novelty claims especially inappropriate without a wider review. This report makes no novelty claim based on absence.

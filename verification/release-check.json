@@ -1,0 +1,15 @@
+{
+  "prepared_date": "2026-10-31",
+  "check": "Focused first-release packaging/source-integrity check",
+  "passed": true,
+  "payload_files": 130,
+  "total_release_files": 132,
+  "papers": 4,
+  "tex_closure_files": 19,
+  "finite_unit_artifacts": 18,
+  "mathematical_correctness_assessed": false,
+  "lean_executed": false,
+  "network_used": false,
+  "publishes_or_submits": false,
+  "failures": []
+}

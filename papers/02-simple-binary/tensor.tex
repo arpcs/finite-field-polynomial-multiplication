@@ -1,0 +1,341 @@
+\section{A uniform fixed-tape bound for the binary tensor transform}\label{sec:tensor}
+
+Write
+\[
+ H_2=\begin{pmatrix}1&1\\1&0\end{pmatrix},\qquad
+ V=2^tD.
+\]
+The purpose of this section is to give the machine-level tensor lemma used in the reduction. We state explicitly the one imported movement theorem. All constants below, including the number of tapes, may be enormous, but are independent of both $t$ and $D$.
+
+\begin{contract}[Imported equal-chunk interchange]\label{con:swap-tensor}
+We use only Lemma~12 of \cite{OpenAI26}: on a fixed finite-alphabet, fixed-number-of-tapes machine, an arbitrary binary array of shape
+\[
+ [P]\times[2^u]\times[G]\times[2^u]\times[B]
+\]
+can have its two $u$-bit address fields interchanged in $O(V_0u^\tau)$ bit steps, for one fixed $\tau<1$, where $V_0=PGB2^{2u}$ is the entire stored bit volume. Prefix, gap, suffix and attached payload are arbitrary; $B=1$ is allowed. The source theorem includes parameter processing, padding, unpadding and workspace cleanup. We do not use its later integer-multiplication theorem. Every use of this contract below moves a bounded number of equal-width chunks and charges the full attached record volume.
+\end{contract}
+
+\subsection{Opaque records and packed address shears}
+
+A routing array has $M$ address records and an opaque suffix of $R$ payload bits per record. Let
+\[
+ V=MR,\qquad p=\lceil\log_2(2M)\rceil.
+\]
+The $p$-bit key contains every field consulted by the routing function, including physical bit planes, dirty selector/tile fields, and role rows. No payload bit is an address control. We require $R$ to dominate every fixed polynomial in $p$ in the large-height regime. This condition is later verified from the four-block layout, not assumed uniformly for small heights.
+
+\begin{lemma}[Opaque-record packed shear]\label{lem:packed-shear}
+Let $T$ be a contiguous $u$-bit address field and $W$ a disjoint dirty $u$-bit tile field. Suppose $g$ is a fixed polynomial-time function of address controls disjoint from $T,W$, with $u$ output bits. Controls are presented before the active target in tape order; if necessary, a bounded number of width-$u$ chunk interchanges docks the target after them. The tile is docked as needed for each rotation. Full control fields need not move if a consulted prefix suffices; full-key evaluation is charged below. Then
+\[
+ (T,W,\mathrm{controls},z)\longmapsto
+ (T\mathbin\oplus g(\mathrm{controls}),W,\mathrm{controls},z)
+\]
+is an exact permutation of complete records and their attached payload. For fixed $\tau<1$ from Contract~\ref{con:swap-tensor}, its cost is
+\[
+ O\!\left(V(u^\tau+1)\log^2(p+2)+Mp^C\right)
+ \tag{\ref{lem:packed-shear}.1}
+\]
+for a fixed $C$, provided $u\le p$ and $R$ dominates $p^C$. The ordinary binary transpose is its inverse and has the same bound.
+\end{lemma}
+
+\begin{proof}
+Here are the record-level charges needed beyond the imported interchange. A record can be copied in $O(R)$ movement: keep a binary countdown initialized to $R$, scan the opaque payload once, and decrement a low-end counter per bit. The total trailing-zero traversal over the countdown $R,R-1,\ldots,1$ is $O(R)$; resetting costs $O(\log R)\le O(R)$. No payload value is interpreted, and no $R$-bit displacement is formed.
+
+For a fixed control fiber, every target value occupies a consecutive block of complete records. If the suffix contains $B_f$ records per target value, the rotation cut is at $\delta B_f$ records. The offset $\delta$ and cut count are computed from the $p$-bit address in $p^{O(1)}$ steps per fiber; the two pieces are copied by the record counter. Across fibers the movement is $O(V)$ and metadata is $O(Mp^C)$. This proves the controlled-rotation bound without requiring that a long payload be a unit-cost memory cell.
+
+For completeness, the exact packed identity is as follows. For integers $a,w$ and fixed Boolean control $c$, apply the following updates chronologically; each parity test uses the current values:
+\[
+\begin{array}{rcl@{\qquad}l}
+a&\leftarrow&a-c[w\equiv0\pmod2] &(1)\\
+w&\leftarrow&w-c[a\equiv0\pmod2] &(2)\\
+a&\leftarrow&a+c[w\equiv0\pmod2] &(3)\\
+w&\leftarrow&w+c[a\equiv0\pmod2] &(4)\\
+w&\leftarrow&w+c[a\equiv1\pmod2] &(5)\\
+a&\leftarrow&a+c[w\equiv1\pmod2] &(6)\\
+w&\leftarrow&w-c[a\equiv1\pmod2] &(7)\\
+a&\leftarrow&a-c[w\equiv1\pmod2] &(8)
+\end{array}
+\]
+Set $\epsilon(x)=1-2(x\bmod2)$. Their composition is
+\[
+ (a,w)\mapsto(a+c\epsilon(a),w).
+ \tag{\ref{lem:packed-shear}.2}
+\]
+For $c=1$, direct substitution in the eight current-value predicates gives the following four cases, where the entries are total displacements from the initial pair:
+\[
+\begin{array}{c|c|c}
+(a\bmod2,w\bmod2)&\Delta a&\Delta w\\\hline
+(0,0)&+1&0\\
+(0,1)&+1&0\\
+(1,0)&-1&0\\
+(1,1)&-1&0
+\end{array}
+\]
+For $c=0$ both displacements are zero. Each update predicate depends only on parity, so translating the initial pair by $(2r,2s)$ translates every intermediate pair by the same amount and leaves all eight decisions unchanged. The four cases therefore prove for all integers (including negative values)
+\[
+(a,w)\longmapsto(a+c(1-2(a\bmod2)),w),
+\]
+which flips the selected bit, preserves the quotient of $a$ by two, and restores the arbitrary auxiliary $w$. Substituting $c=g_i(\mathrm{controls})$ is valid because the address controls used to compute $g_i$ are frozen throughout the word; current target/tile parities are intentionally updated and tested as displayed.
+
+Put $K=\lceil(\log_2(p+2))^2\rceil$, with a fixed lower cutoff, and partition target positions into $K$ residue classes. In each class temporarily omit its highest selected bit and treat it by one direct controlled-bit route. Every other selected bit starts a real $K$-bit lane inside the actual $u$-bit field; its remaining $K-1$ bits are guards. There is no extension of the address range to a multiple of $K$. An integer lane is safe when its quotient lies in $[10,2^{K-1}-11]$. The eight rotations move its segment by at most the fixed margin, so (\ref{lem:packed-shear}.2) acts as the desired independent bit toggle without carry into a neighboring lane. At most $80u2^{-K}M$ records lie outside the safe guard set.
+
+Let $\pi$ be the packed permutation and $\sigma$ the desired XOR. Its controls are frozen and $\sigma$ changes only selected low bits, so the guard-bad set is invariant under $\sigma$. On its complement $\pi=\sigma$; bijection therefore also makes the bad set invariant under $\pi$. For a current bad-record key $y$, its exact destination is $\sigma(\pi^{-1}(y))$. Compute $\pi^{-1}$ by replaying the eight rotations backward on the key, reversing each sign and testing the current key at that step. The full controls used by $g$ are unchanged, so this takes polynomial time in the $p$-bit key and never inspects the payload.
+
+Extract bad records sequentially to a work stream with their complete destination keys, and mark the holes in the full array. Least-significant-bit radix sorting uses two bucket tapes and alternating pass tapes: split on the current destination bit, preserving order within each bucket, and concatenate. Every pass moves each entire key and attached payload, including return scans. Merge the sorted records into the marked holes in increasing full-address order. The destination keys are distinct and fill exactly the holes by the invariance and bijection just proved. If $b_{\rm bad}$ is the bad-record count, this costs $O(V+Mp^C+b_{\rm bad}p(R+p))$, hence
+\[
+ O\!\left(V+Mp^C+u2^{-K}Mp(R+p)\right).
+\]
+The last term is $O(V)$ since $up2^{-K}=o(1)$ and $R\gg p^C$. Each tile rotation docks the current target or tile chunk after all controls by a constant number of width-$u$ interchanges from Contract~\ref{con:swap-tensor}; arbitrary gaps and payload remain spectators. Summing the $K$ classes gives (\ref{lem:packed-shear}.1). The record-counter, full-key and docking constructions above supply the movement and ordering charges.\end{proof}
+
+The construction has a precise control-order condition: at every rotation, the frozen address controls precede the current target and are disjoint from target and tile. In the physical order $[X_h][Y_h][Q_h][Z_h][W_h]$, the full $X,Y$ mask controls precede the $Q,Z$ oracle targets. For uniform bit-plane shears, only consulted prefixes move: a bounded number of width-$u$ swaps docks the target behind its controls and tile. For example, the middle shear of the controlled swap reads updated $X$ and uses $[Z,X,Q,W,Y]$. The remaining suffix bits stay fixed as address context. Thus a recursive call with $u\ll h$ never swaps an $h$-bit mask field. Full-key selector calculation is charged in $Mp^C$; the source's narrower controlled-shift lemma is not invoked with an $h$-bit control pretending to have width $u$.
+
+\subsection{Dirty active-rank selection}
+
+Represent a base-four digit as $d_i=2X_i+Y_i$, with $X,Y$ bit planes. Digit $3$ is idle and the active mask is
+\[
+ S(d)=\{i:d_i<3\}.
+\]
+For a transposition $\tau$ of two active symbols that fixes the third active symbol and idle symbol $3$, let $T_Z$ apply $\tau$ at positions where a dirty selector $Z_i$ is one. Each completed $T_Z$ preserves $S$, even though its binary implementation can temporarily change it.
+
+\begin{lemma}[Dirty selector cancellation and SUM routing]\label{lem:dirty-sum}
+For any mask-only selector $J(S)$, the word
+\[
+ Z\mathbin\oplus=J(S);\quad T_Z;\quad Z\mathbin\oplus=J(S);\quad T_Z
+ \tag{\ref{lem:dirty-sum}.1}
+\]
+restores every initial dirty $Z$ and equals $T_J$. Replacing $J$ by $J\land Q$ works for arbitrary fixed dirty $Q$. If $J(S)$ specifies disjoint matched active source and target ranks and $F_a$ marks a target whose paired source has current symbol $a$, then
+\[
+ Q\mathbin\oplus=F_a;\quad L_Q;\quad Q\mathbin\oplus=F_a;\quad L_Q,
+ \qquad L_Q=T_{J\land Q},
+ \tag{\ref{lem:dirty-sum}.2}
+\]
+restores $Q,Z,W$ and implements the source-value-conditioned target transposition. A fixed sequence gives target $\gets$ target $+$ source modulo three.
+\end{lemma}
+
+\begin{proof}
+Every completed $T_Z$ preserves the active mask $S$, so the mask-only
+selector $J(S)$ is invariant at the completed-operation boundaries.
+If the original value of $Z$ is $z$, the two transpositions in
+(\ref{lem:dirty-sum}.1) compose to $T_{z\oplus J}T_z=T_J$ and the
+second selector update restores $z$. The same calculation works for
+$J\land Q$, because $Q$ is fixed throughout this inner word.
+
+In (\ref{lem:dirty-sum}.2), $J$ selects the target ranks of the
+disjoint matched pairs. Each completed $L_Q=T_{J\land Q}$ therefore
+changes only selected targets and preserves their paired-source symbols.
+The mask and those source symbols determine $F_a$, so $F_a$ is unchanged
+at the \emph{completed $L_Q$ boundaries} where it is recomputed.
+Source symbols may change during an inner $T_Z$ or its binary shears;
+the outer selector queries occur only after the whole $L_Q$ is complete.
+Applying the same involution cancellation to the two $Q$ updates
+restores its arbitrary initial value and leaves $T_{J\land F_a}$.
+Each inner word restores $Z$, and the packed-shear realization below
+restores the tile field $W$. This proves the stated outer cancellation
+for all dirty values.
+
+The controlled transpositions have literal binary shears
+\[
+ \begin{aligned}
+ (0\ 1):&\quad Y\mathbin\oplus=Z\land\neg X,\\
+ (1\ 2):&\quad X\mathbin\oplus=Z\land Y;\quad
+ Y\mathbin\oplus=Z\land X;\quad X\mathbin\oplus=Z\land Y.
+ \end{aligned}
+ \tag{\ref{lem:dirty-sum}.3}
+\]
+The second acts successively as $(x,y)\mapsto(x\oplus y,y)\mapsto(x\oplus y,x)\mapsto(y,x)$ when $Z_i=1$. Each displayed shear is an instance of Lemma~\ref{lem:packed-shear}. For the middle shear, the control is the updated $X$, not the original one. Its required order is $[Z,X,Q,W,Y]$ after docking the current target; the other two shears use $[Y,Z,Q,W,X]$ and $[X,Z,Q,W,Y]$ respectively, with unused fields as spectators. Restore the physical order after each elementary shear. Chronological $(1\ 2)$ then $(0\ 1)$ cycles $0\to1\to2\to0$; reversing the order gives its inverse. Conditioning these orientations on paired-source symbols 1 and 2 realizes addition modulo three. A coordinate swap is three SUMs plus a separate negation $(1\ 2)$; no false three-shear swap identity is used.\end{proof}
+
+All controls in the table below are address fields and exclude the elementary target and tile field.
+\[
+\begin{array}{c|c|c}
+\text{update}&\text{controls}&\text{docked order}\\
+\hline
+Q\mathbin\oplus=F_a(X,Y)&X,Y&X,Y\mid Q\mid W\\
+Z\mathbin\oplus=J(S)\land Q&X,Y,Q&X,Y,Q\mid Z\mid W\\
+Y\mathbin\oplus=Z\land\neg X&X,Z&X,Z\mid Y\mid W\\
+X\mathbin\oplus=Z\land Y&Y,Z&Y,Z\mid X\mid W\\
+Y\mathbin\oplus=Z\land X&X,Z&X,Z\mid Y\mid W
+\end{array}
+\]
+The `|` notation marks the rightmost dock; each target/tile exchange has width $u$. For $Q,Z$ oracles the full $X,Y$ controls precede the targets. For uniform $X/Y$ gates, dock the target prefix past the other consulted prefixes with a fixed number of width-$u$ swaps; the middle $Y$ shear in the controlled swap reads updated $X$ and uses the order $[Z,X,Q,W,Y]$. Unselected suffix bits remain fixed address context. Selector evaluation, including full-mask active-rank scans and paired-source lookup, is polynomial in the address-key width and included in $Mp^C$.
+
+\subsection{Prefix-local calls and exact exceptional correction}
+
+A fixed frame node of width $e$ needs only the first $e$ active ranks. Set
+\[
+ u=\min\{h,\lceil C_0(e+\log_2(p+2))\rceil\}
+ \tag{\ref{sec:tensor}.1}
+\]
+for a fixed sufficiently large $C_0$. All physical targets and the $Q,Z,W$ work fields use their first $u$ positions; full-mask fields can be read as controls. When the pass is eligible only for $|S|\ge e$, its selector is set to zero if the prefix has fewer than $e$ active positions. If $u<h$, then $u\ge2e$ (increasing the fixed lower cutoff if necessary). Under the uniform full address array, the prefix indicators are independent Bernoulli$(3/4)$, so
+\[
+ \Pr\{|S\cap[u]|<e\}\le e^{-u/24}.
+ \tag{\ref{sec:tensor}.2}
+\]
+If $u=h$, eligibility makes the bad set empty.
+
+The ideal matching acts only on active symbols and preserves $S$. The implemented completed shears also preserve $S$. Thus the prefix-bad set is invariant. If the local packed construction has its separate guard exception, that set is already corrected by Lemma~\ref{lem:packed-shear}; it is not confused with the prefix exception. For the latter, extract every bad record, compute the exact full destination key in polynomial $p$ work, radix-sort distinct destination keys, and reinsert at marked holes. Its full cost is
+\[
+ O\!\left(V+Mp^C+e^{-u/24}Mp(R+p)\right).
+ \tag{\ref{sec:tensor}.3}
+\]
+Choose one fixed $C$ covering all address-polynomial degrees in the finite collection of routing algorithms, and take $C_0\ge240(C+10)$. The role recursion below has $O(h^\sigma)$ volume-weighted nodes, where $\sigma<1$. At every node $p=\Theta(h)$ because all physical-mask and dirty fields remain present. The prefix exception fraction is at most $(p+2)^{-C_0/(24\log 2)}$. Summing its sort cost over the nodes and the polylogarithmically many cardinality groups is bounded by
+\[
+ O\!\left(Vh^\sigma\operatorname{polylog}(h+2)
+      (p+2)^{C+2-C_0/(24\log 2)}\right)=O(V).
+\]
+The metadata term is separately absorbed by the exponentially wide payload. Role splitting is independent of the mask, so the bound holds in every child. No mask or payload is dropped. Combining (\ref{lem:packed-shear}.1)--(\ref{sec:tensor}.3), one node has normalized movement toll
+\[
+ O\!\left(\operatorname{polylog}(p+2)\big((e+\log(p+2))^\tau+\operatorname{polylog}(p+2)\big)\right),
+ \tag{\ref{sec:tensor}.4}
+\]
+when $Mp^C=O(V)$. In particular this pays for small recursive prefixes instead of charging $h^\tau$ at every node.
+
+\subsection{Ternary phase frame and fixed role recursion}
+
+Let $K=\F_4=\F_2[\eta]/(\eta^2+\eta+1)$. The address field $\F_3$ is distinct from the scalar field $K$. Let $F_3$ denote the three-point Fourier matrix over $K$, normalized by $1/3=1$, and put
+\[
+ C=F_3^{-1}\operatorname{diag}(1,\eta,\eta)F_3
+ =\eta I_3+\eta^2J_3
+ =\begin{pmatrix}1&\eta^2&\eta^2\\\eta^2&1&\eta^2\\\eta^2&\eta^2&1\end{pmatrix},\qquad C^3=I.
+\]
+For a nondegenerate subspace $U\subseteq\F_3^h$, Fourier conjugation of the phase $x\mapsto\eta^{(P_Ux)\cdot(P_Ux)}$ defines $C_U$. Orthogonal direct sums multiply phases. On a comparable geometric transition from $U$ to $V$, write $P_V-P_U=\epsilon P_R$: if $U\subseteq V$, then $R=V\cap U^\perp$ and $\epsilon=1$; if $V\subseteq U$, then $R=U\cap V^\perp$ and $\epsilon=-1$. For a nondegenerate residual direction $v$ of original norm $\nu=v\cdot v\in\F_3^\times$, its phase parameter is $\lambda=\epsilon/\nu\in\F_3^\times$: its Fourier phase is $\eta^{\lambda(v\cdot x)^2}$. The norm is taken before address placement; the placement need not be an isometry. The same signed-direction rule applies to the additional source-frame correction in Appendix~\ref{app:roles}. The corresponding coordinate kernel is $C$ or $C^{-1}$ according to $\lambda$. For a fixed node edge, each basis direction $v_j\otimes I_f$ has the same signed type $\lambda_j=\epsilon/\nu_j$ across its $f$ coordinate copies. The recursion therefore has one width-$f$ child for each signed fixed direction; mixed signed types are separate rank-counted children, not one child whose type varies over an arbitrary selected subset. Since coefficient conjugation $a\mapsto a^2$ on the two explicit $\F_4$ bit planes takes $C$ to $C^{-1}$, each inverse-phase child is one forward child plus fixed linear work. This does not assume Frobenius is free in a growing field. Fixed $\F_{16}$ payload lanes are represented by their two $\F_4$ coefficient planes.
+
+Here is the finite motif defining the role network. Put $H=100$ and let vertices be triples $T\in\binom{[H]}3$, adjacent when $|S\cap T|=1$. Write
+\[
+ v=\binom{H}{3},\quad z=3\binom{H-3}{2},\quad N=v^3,\quad I=3v^2,
+ \quad m_0=(H+1)^3,
+\]
+\[
+ W=2N+I(vz+H),\quad L=I H(H+1),\quad s=Wm_0-N+2L.
+ \tag{\ref{sec:tensor}.5}
+\]
+For the lifted ternary frame use $\F_3^{H+1}$ with Gram form $\operatorname{diag}(2I_H,1)$ and line label $t_T=(1_T,1)$. Its norm is $2\cdot3+1=1$ in $\F_3$, and adjacent lines are orthogonal since $2|S\cap T|+1=0$. The form is isometric to the ordinary dot product: on each coordinate pair use $(a,b)\mapsto(2a+2b,2a+b)$, leaving the last coordinate fixed. The role labels in the scalar copy/gather/scatter schedule are tensor products of the common line and its orthogonal complements. Appendix~\ref{app:roles} gives the graph, gate labels, signed rank telescope and endpoint correction. Appendix~\ref{app:roles} also proves the scalar schedule and its fixed-tape array compiler, following Sections 3--4 of \cite{OpenAI26}. Contract~\ref{con:swap-tensor} is the external movement theorem. The local ternary phases and finite counts use the explicit data displayed here.
+
+The role count has two data banks, $2N$ data roles, and $I(vz+H)$ side/center roles. Only the $H$ central wires per invocation lose rank, each by $H+1$, giving total loss $L$. The signed dimension telescope plus twice the downward variation gives edge-rank sum $Wm_0-2N+2L$. Use the source-frame convention of Appendix~\ref{app:roles} throughout. On each exceptional $X_a\to Y_a$ route, choose source frame $C_U^{-1}$ and sink frame $C_{U^\perp}$. The endpoint is
+\[
+ C_{U^\perp}(C_U^{-1})^{-1}=C_{U^\perp}C_U=C_{\rm full}.
+\]
+The first edge has head frame $C_U$; its actual operator is $C_U(C_U^{-1})^{-1}=C_U^2=C_U^{-1}$. This is one rank-one child beyond the geometric variation, on each of the $N$ exceptional routes, giving the $+N$ in the child count. On scratch routes the source label is $0$ and the sink label is the full space, so their endpoint is already $C_{\rm full}$; they are arbitrary dirty data and are retained. Thus the corrected child count is $s$ in (\ref{sec:tensor}.5): exceptional Y sinks carry $U^\perp$, while scratch sinks carry the full space, and these cases are not conflated.
+\begin{align*}
+ M_c&=m_0=1{,}030{,}301,\\
+ W&=177{,}176{,}569{,}091{,}445{,}000{,}000,\\
+ s&=182{,}545{,}196{,}308{,}841{,}424{,}366{,}000{,}000.
+\end{align*}
+\[
+ 1-\frac{s}{W M_c}=\frac{337}{23271753837835}>20\cdot2^{-50},
+ \qquad \sigma=\log_{M_c}(s/W)<1-2^{-50}.
+ \tag{\ref{sec:tensor}.6}
+\]
+Appendix~\ref{app:roles} derives these identities from the graph and gate-label dimensions, including the source/sink endpoint correction. Bounded checks corroborate the finite arithmetic but are not used as proof. The scalar schedule, common-frame identity, and fixed-tape role compiler are proved in Appendix~\ref{app:roles}, with attribution to \cite{OpenAI26}.
+
+At a node $e=M_cf$, the fixed frame change on $M_c$ slots is a constant matrix tensored with $I_f$. Factor it into a fixed number of elementary row-addition batches over $\F_3$; each batch has disjoint source and target slots, and is implemented by Lemma~\ref{lem:dirty-sum}. Roles are split independently of masks. Every child has volume $V/W$ and still has the full physical mask distribution. Parent gates and parking/restoration cost $O(V)$ per child, but the number $s$ of children is a fixed machine constant. With the prefix toll, the normalized recurrence is
+\[
+ \begin{aligned}
+ H(e;h)&\le \frac{s}{W}H(\lceil e/M_c\rceil;h)\\
+ &\quad+O\!\left(\operatorname{polylog}(p+2)
+ \big((e+\log(p+2))^\tau+\operatorname{polylog}(p+2)\big)\right).
+ \end{aligned}
+ \tag{\ref{sec:tensor}.7}
+\]
+For every fixed $\lambda>\max(\tau,\sigma)$, $\lambda<1$, this is $O(e^\lambda\operatorname{polylog}(p+2))$. At the base $e=1$, the selected-rank kernel is the circulant $I+\eta^2(X+X^{-1})$, where $X$ increments that active trit. Implement $X$ and $X^{-1}$ by mask-only transposition selectors restricted to a prefix of $O(1+\log p)$ positions; repair exceptional prefix masks exactly, retain a fixed number of input copies, and perform fixed-field additions. This costs $O(V\operatorname{polylog}(p+2))$, not an $h$-position scan per data bit. A bounded set of widths below $M_c$ uses a fixed number of these prefix-local operations.
+
+To cover every mask cardinality $a=|S|$, express $a$ in base $M_c$ and process its consecutive active-rank intervals of power widths. These intervals partition the active ranks for each mask, and their widths sum geometrically. To place an interval at the front, express its mask-dependent coordinate permutation as two involutions; each involution is a disjoint matching of active-coordinate swaps implemented by the priced SUM/negation gadgets. Placement and its inverse have full-width cost $O(Vh^\tau\operatorname{polylog}p)$ per group. There are $O(\log h)$ groups, so their total is $O(Vh^\rho\operatorname{polylog}h)$ for some fixed $\rho<1$. No low-active mask is discarded.
+
+\paragraph{One-time row padding.} Let $k=\lceil\log_{M_c}h\rceil$ and choose $r=\lceil k\log_2W\rceil$ existing spectator index bits for the row field. Then $2^r\ge W^k$ and $r=O(\log h)$. Pad its range once to $L_0=W^k\lceil2^r/W^k\rceil$, so $2^r\le L_0<2^{r+1}$. The compiler of Appendix~\ref{app:roles} splits $q=Wg+(w-1)$; at depth $j$ a child has $L_0/W^{j+1}$ rows, divisible by $W^{k-j-1}$. Every child retains the full physical-mask and selector fields independently of this split. Intermediate gates may make artificial rows nonzero; no intermediate zero promise or crop is used. The completed endpoint identity acts independently on every original row, including arbitrary dirty scratch roles. Only that full boundary permits cropping artificial rows. The child factor remains $s/W$, without a recursive padding multiplier.
+
+\paragraph{Mask-dependent group eligibility.}
+A power-width group has enable predicate
+$E_{j,\kappa}(S)=[a_j(S)\ge\kappa]$, where $a_j(S)$ is the
+$j$th base-$M_c$ digit of $|S|$ and $1\le\kappa<M_c$.
+Include it in all dirty selector oracles, including placement and its
+inverse, and choose all frames to be the identity
+on disabled sectors. The predicate is inherited by recursive children
+and is unchanged by completed matching maps. The common-frame identity
+then gives identity on disabled sectors after the role permutation is
+undone; the same fixed child count is an upper bound. At a leaf use
+the conditionally selected trit increment $X_E$. The kernel is
+$I+\eta^2(X_E+X_E^{-1})$, which equals $I$ on a disabled sector
+because $X_E=I$ and the scalar characteristic is two. Predicate
+calculation is polynomial in $p$ and is included in the metadata toll.
+
+\subsection{Internal payload and four-block layout}
+
+For clarity about the fixed node factorization used above, a chosen
+basis direction can be negated to make its completed basis matrix
+have determinant one. This does not change the directional operator,
+whose kernel uses both $v$ and $-v$. A determinant-one matrix over
+$\F_3$ is a product of elementary row additions. Thus this step does
+not silently factor an arbitrary determinant-minus-one matrix into
+transvections; an explicit active-symbol negation could also be
+charged by the already priced selector gadget.
+
+Write $t=8h+t_0$ with $0\le t_0<8$. Handle the fewer than eight leftover binary axes by a bounded direct circuit. For the other $8h$ axes, reserve four existing $h$-digit base-four blocks, or $8h$ binary index bits. In a selected block, $X,Y$ occupy its $2h$ bits. Three other blocks supply distinct $Q,Z,W$ fields of $h$ bits each. An independent $r$-bit row field, $r=O(\log h)$, is reserved from the remaining indices; the remaining spectator index bits and the external coefficient word form the contiguous opaque suffix. Counting all nonpayload address fields gives
+\[
+ M=2^{5h+r},\qquad R=D\,2^{3h-r},\qquad p=\lceil\log_2(2M)\rceil=O(h),
+ \qquad MR=D2^{8h}.
+ \tag{\ref{sec:tensor}.8}
+\]
+The displayed counts precede row padding. Afterwards
+\[
+ M'=L_0\,2^{5h},\qquad R'=R,\qquad M\le M'<2M,\qquad
+ p'=\lceil\log_2(2M')\rceil=O(h).
+\]
+The row is an explicit Cartesian shape coordinate of range $L_0$, which need not be a power of two. Use the mixed-radix ordinal of the actual full address as the sorting key; it is below $M'$ and is computed in polynomial time in $p'$. One additional metadata bit encodes the padded range; no new binary data axis is appended. Equal-chunk interchange permits this arbitrary row prefix. At depth $j$ replace $L_0$ by $L_0/W^j$; the full $X,Y,Q,Z,W$ fields remain, so $p_j=\Theta(h)$ and $R$ is unchanged. For sufficiently large $h$, $r\le2h$, and thus $R\ge D2^h$. The finite remaining heights use direct circuits.
+
+A fixed factor accounts for encoding binary payload lanes in $\F_{16}$. Since $r=O(\log h)$, $R$ exceeds every fixed polynomial in $p$ for all sufficiently large $h$, uniformly for $D\ge1$. The remaining finite set of heights uses direct finite-width scans, whose constant is independent of $D$. Record formation is a radix split of the original column address; no gather or transpose is implicit. The three borrowed blocks and all dirty routing fields are restored after the call and can be reused in later block calls. No bit is both row address and opaque payload or both a router field and role field.
+
+\subsection{A fixed positive word and completion of the tensor theorem}
+
+The physical layout changes in the preceding construction have the
+following cost. Regard the $8h$ original address bits as eight
+contiguous $h$-bit planes. Equal-width plane interchanges promote the
+selected pair to $X,Y$ and place three spectator planes at $Q,Z,W$.
+A fixed number of Contract~\ref{con:swap-tensor} calls costs
+$O(Vh^\tau)$. Move the $r=O(\log h)$ role bits to the front by
+individual digit moves, costing $O(V\log h)$. The resulting layout is
+\[
+ [\text{role}][X_h][Y_h][Q_h][Z_h][W_h][\text{opaque suffix}].
+\]
+After the completed block map, crop only the full padded row invocation
+and undo these moves before promoting the next block. Pairing the two
+bitplanes at equal positions is a logical pairing of identical $H_2$
+tensor axes: the target tensor is invariant under reordering those
+identical factors. The routing algorithms act directly on these
+bitplanes, so no uncharged interleaving/perfect shuffle is used.
+
+Let $\eta=t^2+t$ in $E=\F_2[t]/(t^4+t+1)=\F_{16}$. The finite-word appendix, labelled \texttt{app:word}, proves that $H_2\otimes H_2$ is a fixed word with 384 forward letters $A=C\oplus[1]$ and 392 invertible monomial letters over $E$. Its projector/commutator derivation gives four elementary matrices $U_{ij}(1)$ using 96 forward $A$ calls each, then the two wire permutations; it is an algebraic identity, not an existence/search claim. Applying the word tensorwise over $h$ digits reduces its $A$ letters to the role algorithm above. A monomial letter's local permutation is in $S_4=\operatorname{AGL}(2,\F_2)$, hence a fixed NOT/CNOT address circuit. It can change the active mask, so it is completed as a full address permutation and is never commuted through a mask-preserving frame; the next $A$ call recomputes its mask selectors on the resulting complete address array. Its diagonal contributes a product of $h$ fixed $E$ scalars, computed from the $p$-bit key in $O(h)$ work per record and applied to the fixed-degree payload in $O(R)$ per record. These charges are $O(Vh^\tau\operatorname{polylog}h)$ for permutations and $O(V)$ for diagonal actions. The word length and number of block/layout interchanges are fixed.
+
+Encode each binary payload bit as a $0/1$ coordinate in a fixed $E$ lane, padding by a factor at most four. Each $E$ scalar is a fixed four-bit binary map. The complete word matrix has entries in $\F_2$ and equals the target, so the padded lanes return to the binary subspace and the same transform is applied independently to all $D$ bits. The ordinary binary transpose is the same transform because $H_2^{\otimes t}$ is symmetric; its inverse is two forward applications since $H_2^3=I$.
+
+\begin{theorem}[Uniform fixed-tape H2 tensor bound]\label{thm:tensor}
+Using the equal-chunk interchange theorem of \cite[Lemma~12]{OpenAI26}, there is one deterministic fixed-alphabet multitape machine, with a fixed finite number of tapes, which for every $t,D\ge1$ computes
+\[
+ H_2^{\otimes t}\otimes I_D
+\]
+on $2^t$ records of $D$ bits in $O(2^tD\,t^\beta)$ steps for some fixed $\beta<1$. The same bound holds for its ordinary binary transpose; its inverse has the same bound up to a constant factor.
+\end{theorem}
+
+\begin{proof}
+Choose $\lambda>\max(\tau,\sigma)$ below one. The role recurrence and geometric grouping give each $A$ tensor call $O(Vh^\lambda\operatorname{polylog}h)$; top-level placement, packed shears, and layout changes have strict sublinear height exponents as well. A fixed number of calls per positive-word letter and four blocks changes only constants. Monomial permutation and diagonal costs were charged above. Absorb the fixed polylogarithm into a slightly larger exponent $\beta<1$. The internal layout (\ref{sec:tensor}.8) makes $Mp^C=O(V)$ and the exceptional sorts fit uniformly for arbitrary $D$. Bounded $t$ is handled directly. This proves the claimed bound from the cited interchange theorem and the local routing, role, and finite-word proofs in this section and its appendices. Symmetry gives the binary transpose; $H_2^3=I$ gives the inverse.\end{proof}
+
+\begin{remark}[Dependency and arithmetic scope]
+The external machine input is Lemma~12 of \cite{OpenAI26}. The scalar bank exchange, array-frame invariant, local fixed-tape role schedule, ternary labels, and finite word are proved here. The input/output transform is binary; its internal scalar alphabet is the fixed field $\F_{16}$. The auxiliary growing coefficient fields of the multiplication reduction are opaque payload for this theorem. The $\F_{16}$ lanes encode bits; no embedding of $\F_{16}$ into those growing fields is required. No ordinary complex Walsh--Hadamard bound follows from this binary statement: the binary matrix $H_2$ is a different invertible kernel. The finite witnesses in Section~\ref{sec:evidence} corroborate finite identities and are not used to infer the asymptotic bound.
+\end{remark}
+
+\begin{corollary}[Exact multiplication consequence]\label{cor:tensor-multiplication}
+Using \cite[Lemma~12]{OpenAI26}, Theorem~\ref{thm:tensor} supplies the tensor-transform premise of Theorem~\ref{thm:reduction}. Hence the stated fixed-tape model admits an exact $O(n\log n)$ algorithm for multiplying degree-$<n$ polynomials over $\F_2$. For either fixed operand, the ordinary binary transpose has the same bound.
+\end{corollary}
+
+\begin{corollary}[Fixed characteristic-two extensions]\label{cor:fixed-characteristic-two}
+For every fixed positive integer $s$, the same bit bound holds over
+$\F_{2^s}$ in any fixed polynomial-basis representation.
+\end{corollary}
+\begin{proof}
+Write coefficients in a fixed $s$-element binary basis. A product of
+two polynomial coefficient lists uses $s^2$ binary polynomial products,
+followed by the fixed field's structure-constant linear maps. The
+number of products is constant and the latter maps cost $O(n)$.
+For a fixed operand, reverse these explicit constant-degree coordinate
+maps and use the binary fixed-operand transposes. Thus the same bound
+holds for the ordinary binary adjoint as well. The field and its
+representation are fixed independently of $n$.
+\end{proof}
+

@@ -1,0 +1,173 @@
+\subsection{An odd-field cyclotomic composition without the correction cut}
+\label{sec:oddcyclotomichost}
+The cyclotomic host, coupled CRT, Newton symmetry, arbitrary-dirty replay,
+and displacement identities give the following stronger ordinary
+endpoint. The odd-characteristic substitutions and all added cost
+invoices are derived below. Its full derivation and scope are recorded in
+\href{ODD_CYCLOTOMIC_HOST_TRANSFER_20261030.txt}{the transfer audit}.
+The host, routing, Newton symmetry and dirty replay are credited
+antecedents. The contribution being investigated is their composition
+in odd coefficient characteristic, avoiding the earlier correction cut.
+The named native constructions and external stage-two interchange
+theorem remain explicit dependencies. The complete reduction has its
+own \href{ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt}{26-item adversarial proof audit};
+neither the finite checks nor that internal audit assert external
+acceptance or publication priority.
+
+\begin{proposition}[Odd-field cyclotomic reduction]
+\label{prop:oddcyclotomichost}
+Using the retained odd native endpoint, generated-permutation and
+coupled-CRT constructions with their named stage-two movement theorem,
+the composition below has bit complexity
+\[
+ \Oh_{p,e}\!\left(n(\log(n+2))^{9999/10000}\right)
+\]
+for ordinary polynomial multiplication over each fixed odd field
+$\mathbb F_{p^e}$, with ordinary coefficients at both ends and a fixed
+finite number of sequential tapes. This is a stronger exponent
+than the previous power-log theorem; it does not improve the
+characteristic-two supplier or imply a practical HQC speedup.
+\end{proposition}
+\begin{proof}
+Fix $G=\mathbb F_{p^2}$, containing $i^2=-1$ and more than five
+elements. The actual native proofs in the finite-ring manuscript,
+\texttt{lem:nativedock}, \texttt{prop:nativephase},
+\texttt{prop:nativecontrolled} and \texttt{prop:nativeCRT}, provide
+the service of Lemma~\ref{lem:oddgroupedservice}. Here we use their
+broader native shape $\log R=\Oh((\log L)^2)$, retaining the
+effective polynomial record-width condition. The later
+\texttt{lem:nativeparameter} states only polynomial radices for its
+integer application; its proof, rather than that narrower statement,
+is used for the present tariff substitution. There are
+$\Oh(\log R)$ endpoint blocks and ragged slots, and
+$\Oh(\log t)$ CRT levels, still fixed logarithmic powers of $L$.
+The bank size $h=\lfloor L/(40\log_2R)\rfloor$ fits the available
+axes, and leaves an opaque suffix of at least $0.8L$ bits, paying
+fixed polynomial address work. The separately enlarged coefficient
+record pays the full public setting generator. Thus the same proof
+retains the leading native power
+\[
+ \gamma_0=1-\frac{619}{5000000},\qquad
+ \eta_L=\frac{10^{15}}{10^{15}+123879734039}<\gamma_0.
+\]
+No numerical recovery or integer-multiplication theorem of that
+manuscript is imported.
+
+The characteristic-two formal compiler requires real changes.
+Choose the fixed radix $\ell=3$ if $p\ne3$, and $\ell=5$ otherwise.
+For length $v$, take $b$ the least $\ell$-power with $b^2\ge v$,
+$s=\lceil v/b\rceil$ and $t$ the least $\ell$-power at least
+$2s-1$. Over any commutative $\mathbb F_p$-algebra $A$, use
+$A[Y]/\Phi_{\ell b}$, of rank $r=(\ell-1)b$. Root differences
+are units by a Bezout identity over $\mathbb F_p$, since
+$\ell\ne p$ and $\ell b$ is a prime power. The inverse transform
+uses $t^{-1}$, and the last cyclotomic block is subtracted.
+For a fixed direct threshold, $r\le v^{2/3}$ and $tr\le80v$.
+Since $80(2/3)^{16}<1$, the printed recursive construction has
+size $\Oh_p(v\log^{16}(2v))$ and depth $\Oh_p(\log(2v))$.
+Specialization and counted copy trees give a linear DAG of depth
+$\Oh_p(\log^2(2v))$.
+
+For dirty gate coordinates the first sweep, read and undo adds
+$Mx+FUz$ to the target. The source-suppressed second read must
+\emph{subtract} $FUz$, then undo. This restores arbitrary dirty
+workspace and gives the exact target increment $Mx$. The existing
+rank-three displacement expresses each Toeplitz cross chunk by six
+convolutions. Choosing chunks that fit all source, target and counted
+gate ports inside their parent gives width
+$\Omega(v/\log^{16}v)$ and $\Oh_p(\log^{35}(2v))$ matching layers
+on exactly the original coordinates.
+
+For a principal host-prime root $u$, retain the Newton sign:
+\[
+ H_j=\prod_{a=1}^j(1-u^a),\quad
+ \beta_j=(-1)^j u^{j(j-1)/2},\quad
+ F=A T\operatorname{diag}(\beta_j/H_j)T^t A,
+ \qquad A=\operatorname{diag}(H_j).
+\]
+Here $T$ is unit lower Toeplitz with sequence $H_j^{-1}$. Its
+diagonal pivots are units in the etale coefficient algebra.
+For $S=\mathbb F_p[U]/\Phi_{\alpha'}$ put $B=S\otimes G$.
+All field components of $B$ have degree
+$r_B=\operatorname{lcm}(\operatorname{ord}_{\alpha'}p,2)$ over
+$\mathbb F_p$. With fixed $\lambda\in G\setminus\{0,1\}$, set
+\[
+ e_\mu=1-(\mu-1)^{p^{r_B}-1},\quad
+ d=1+(\lambda-1)e_\mu.
+\]
+Both $d$ and $\mu-d$ are units. Lemma~\ref{lem:oddgroupedgenerator}
+gives a fixed five-$C$ word for $U(1)=I+E_{12}$ over $G$, so
+\[
+ U(\mu)=U(d)U(\mu-d),\qquad
+ U(z)=\operatorname{diag}(z,1)U(1)\operatorname{diag}(z^{-1},1)
+\]
+implements every growing-$B$ shear with constant-many native calls
+and growing-ring diagonals. No fixed-kernel theorem is evaluated at
+the growing algebra $B$. Synchronize the two Toeplitz parts to
+$K=\Oh_p(\log^{35}(2R))$ rounds, with identity missing layers.
+
+The established Harvey--van der Hoeven host constructs
+$2n<N<4n$, the complete factor data, divisor and principal root in
+$N^{o(1)}$ time. Write $L_0=\lceil\log_2N\rceil$,
+$a=\lceil\log_2L_0\rceil$ and $R_0=2^{a^2}$. Freeze all
+public-generator degrees, then append unused host primes until
+$D'=\varphi(\alpha')\ge(R_0+L_0+5)^{A_0}$ for a fixed effective
+$A_0$ paying their polynomial. Only $\Oh(a)$ primes are added.
+The actual host construction gives
+\[
+ \log\alpha'=\Oh(a^4),\quad m'=N/\alpha',\quad
+ m'D'=\Theta(N),\quad
+ 1-D'/\alpha'=\Oh(a^2/L_0^3).
+\]
+Root lifting uses $Y_{\rm old}\mapsto U^{\alpha'/\alpha}$;
+new input coefficients use only $Y_{\rm new}\mapsto U$.
+Project each coefficient row onto both coprime coefficient moduli,
+reconstruct with the corresponding Bezout idempotents, and invert the
+top map $X\mapsto Y^cZ$, $c=(m')^{-1}\bmod\alpha'$. The small complement has volume
+$\Oh(Na^2/L_0^3)$, so independent classical word multiplication
+and monic reductions cost $o(N)$. This argument needs the strong
+density, not just a $1/L_0$ bound.
+
+Pad each remaining prime axis $q_i$ once to $q_i+1$. The total
+ratio is $1+\Oh(L_0^{-2})$, and $\log R=\Oh((\log L)^2)$
+with $L=\Theta(L_0)$. Use the existing coupled CRT permutation
+and roots $\omega^{E_i}$ with CRT idempotents $E_i$ on both sides
+of the synchronized Newton tensor. The inverse additionally scales
+by $(m')^{-1}$ in $\mathbb F_p$. Keep the full $B$ and native
+dummy grid through the two forwards, point products and inverse;
+crop only after return to $S$. Reconstruct both coefficient
+components and invert the top map. Degree $2n-2<N$ proves ordinary
+output without aliasing.
+
+Independent classical integer multiplication with carry-free packing
+gives $M_{\rm old,p}(v)=\Oh_p(v\log^2(2v)\log\log(4v))$.
+Every growing-$B$ product and scalar action retains this tariff.
+Store $B$ as consecutive $G$ coefficients for native calls; splitting
+and zipping its fixed two $\mathbb F_p$ lanes for word arithmetic uses
+two fixed tapes and $\Oh_p(D')$ scans, included in that tariff.
+Prefix expansion generates a tensor diagonal in fewer than $2M$
+products in its current order. The complete cost is therefore
+\[
+ \Oh_p\bigl(NL_0^{\gamma_0}(\log L_0)^C\bigr)
+       +N\operatorname{polylog}L_0+N^{o(1)}.
+\]
+All fixed secondary logarithms fit
+$\gamma_0<9999/10000$. Current-parent parking, fixed tape families
+and completed-call crop boundaries are inherited at their actual
+interfaces. Fixed extensions follow by constant-many prime-field
+products and fixed ordinary basis maps.
+\end{proof}
+
+The new guarded C++ witness passes 1,072 assertions on signed Newton
+matrices, nontrivial inverse normalization, split-algebra unit selectors,
+the actual fixed five-$C$ word and subtractive dirty replay. It runs
+within the original 64 MiB/10 CPU-second guard. These finite identities
+do not test the growing native tape service, host construction or
+asymptotic complexity. A later bounded whole-host witness checks 24
+ordinary products and 1,560 complete host coefficients over
+$\mathbb F_3$ and $\mathbb F_5$, including both coefficient CRT
+components and a coefficient algebra with zero divisors. Its 1,920
+assertions use actual compiled five-$C$/Newton/unit-shear words and
+detect missing shifts, the dropped complement and early helper
+projection. The separate whole-source audit establishes the growing
+identities and costs by derivation, rather than these finite samples.

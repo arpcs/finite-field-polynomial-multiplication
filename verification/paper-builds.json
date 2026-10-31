@@ -1,0 +1,150 @@
+[
+  {
+    "paper": "papers/04-general-nlogn",
+    "source": "main.tex",
+    "pdf": "paper.pdf",
+    "exit": 0,
+    "pdf_sha256": "15029bdee05cf9695b02633eea290b9f732c1728b9770f918ecb97144aa3f394",
+    "source_files": [
+      {
+        "path": "papers/04-general-nlogn/citation.bib",
+        "sha256": "77dc48883fea0f745793cfc958b161f54b059a8961aa44d6b091aff29bc1a1da"
+      },
+      {
+        "path": "papers/04-general-nlogn/main.tex",
+        "sha256": "9309caf99763428217434e4313b72aefa170addcfecdf58c9b0b52192242cde8"
+      }
+    ],
+    "compiler": "Tectonic",
+    "untrusted_mode": true,
+    "note": "Document compilation only; no mathematical proof certification"
+  },
+  {
+    "paper": "papers/01-general",
+    "source": "main.tex",
+    "pdf": "paper.pdf",
+    "exit": 0,
+    "pdf_sha256": "98ea67b81eba969f8df4f18d792518804ad40f755d100169cd501c0593069ba2",
+    "source_files": [
+      {
+        "path": "papers/01-general/citation.bib",
+        "sha256": "bd75d55f6e591e00a408ff4e627b349daf97b1a4253fc85c73aa6ae0945e5823"
+      },
+      {
+        "path": "papers/01-general/main.tex",
+        "sha256": "53f7081776790aaf99aaaef44a5eb2fa75ec7682b4c77b8ddcc62cdd70685be0"
+      },
+      {
+        "path": "papers/01-general/proofs/odd_cyclotomic_host_transfer.tex",
+        "sha256": "1c6046d44f20d7e5350b87289c89b1ae20f0f8e505d3438a517d45e7ff612828"
+      },
+      {
+        "path": "papers/01-general/proofs/odd_grouped_native_transfer.tex",
+        "sha256": "17adda4e972d04fdcec2efe71fba955b020e63fc5dca16d48fce40e50f27b48c"
+      }
+    ],
+    "compiler": "Tectonic",
+    "untrusted_mode": true,
+    "note": "Document compilation only; no mathematical proof certification"
+  },
+  {
+    "paper": "papers/03-best-binary",
+    "source": "main.tex",
+    "pdf": "paper.pdf",
+    "exit": 0,
+    "pdf_sha256": "18a5d005ebc072beb932cfaeda8c0122a44a62751505b18de9fadb330f6a15bf",
+    "source_files": [
+      {
+        "path": "papers/03-best-binary/citation.bib",
+        "sha256": "3dbbdb1940b2b448e609ffda821f50656ab6db1ce9df26a1fd635e9b07de90ab"
+      },
+      {
+        "path": "papers/03-best-binary/finite_phase_appendix.tex",
+        "sha256": "fa1e6e1b9cc2d444d7d85b0e349913a6fe048980913ecb9b556d540677509d7d"
+      },
+      {
+        "path": "papers/03-best-binary/local_appendix.tex",
+        "sha256": "e2aa1d68580a00b7f055225e89deb10dde098ce8d5cc45dc17b82cde46a19e36"
+      },
+      {
+        "path": "papers/03-best-binary/main.tex",
+        "sha256": "e7327644cd1f0282290d82863181b18c0d503971a139bb3faa41ee42c2995971"
+      },
+      {
+        "path": "papers/03-best-binary/native_appendix.tex",
+        "sha256": "9259e102b11a6af0f4141af13ef3f85e11dd723c1f8a4b2cfd848ff6774c806e"
+      },
+      {
+        "path": "papers/03-best-binary/swap_appendix.tex",
+        "sha256": "7ade765a17d6e6fe334f910d7b2c5c8c405229294d06e14c0268bac6a2321459"
+      }
+    ],
+    "compiler": "Tectonic",
+    "untrusted_mode": true,
+    "note": "Document compilation only; no mathematical proof certification"
+  },
+  {
+    "paper": "papers/02-simple-binary",
+    "source": "main.tex",
+    "pdf": "paper.pdf",
+    "exit": 0,
+    "pdf_sha256": "140ed0cf93648890936c05fcdb8e6714548c2f936a14a2e8df51bfbd804a4fe7",
+    "source_files": [
+      {
+        "path": "papers/02-simple-binary/citation.bib",
+        "sha256": "fef72080e568f8c3cb77ba17dac0ee0fd3d541188c8835976f9f6e0c43c1d277"
+      },
+      {
+        "path": "papers/02-simple-binary/decoding.tex",
+        "sha256": "863c0baeccf2cb1d1582e7f816bf2c7eb0614f3ad575191eb65d749d1fe52101"
+      },
+      {
+        "path": "papers/02-simple-binary/evaluation.tex",
+        "sha256": "ab281b6d4b08e21f7d039751727439d422aa5ee9248bf209dc93fbe923a1249a"
+      },
+      {
+        "path": "papers/02-simple-binary/evidence.tex",
+        "sha256": "ddd95ffa10d54c793d1618093a2ca64d135b6500d0786f12af0d94cf5c7b7f18"
+      },
+      {
+        "path": "papers/02-simple-binary/fields.tex",
+        "sha256": "01b635e5d04428c6e53f63f6c7aad500678c2b68923f8b5169d20e01ef81b5aa"
+      },
+      {
+        "path": "papers/02-simple-binary/finite-role.tex",
+        "sha256": "2e373b64f62ededc541b01d2e88ad205bff432a5347829838bc197183b2a641d"
+      },
+      {
+        "path": "papers/02-simple-binary/finite-word.tex",
+        "sha256": "42841b58ef738c69c3ee82f1c67374240e61224fc9b1ccf026df7b6c8d3f6b0a"
+      },
+      {
+        "path": "papers/02-simple-binary/introduction.tex",
+        "sha256": "63168a3e429559f3155172fa1fcab085e051d8342a197a4971ff2faa1d969a2a"
+      },
+      {
+        "path": "papers/02-simple-binary/main.tex",
+        "sha256": "bc776e5069762c5389ab849b332bf18e13d2b37461e415eaa75b4d7bc4afba80"
+      },
+      {
+        "path": "papers/02-simple-binary/model.tex",
+        "sha256": "43c6cb572097344205179d5d286ccdb808a982abf9b99d44a5ef409611c41b71"
+      },
+      {
+        "path": "papers/02-simple-binary/radix.tex",
+        "sha256": "a594452f7c1690764c8cbb1bf3a670222f14629df6a0956742222643fefc996a"
+      },
+      {
+        "path": "papers/02-simple-binary/references.tex",
+        "sha256": "9a0e91572e1e30c55740b64768c2db295bd0472df11b7d40ff41bb9578cf3f3f"
+      },
+      {
+        "path": "papers/02-simple-binary/tensor.tex",
+        "sha256": "d7cd619a6cef4b3aa85707ee943f8be8aabdd7cd150d3b7285f30769e29d25c6"
+      }
+    ],
+    "compiler": "Tectonic",
+    "untrusted_mode": true,
+    "note": "Document compilation only; no mathematical proof certification"
+  }
+]

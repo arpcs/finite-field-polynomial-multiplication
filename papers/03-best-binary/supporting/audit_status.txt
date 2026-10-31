@@ -1,0 +1,526 @@
+AUDIT STATUS: SOURCE DRAFT UNDER REVIEW
+======================================
+30 October 2026.
+
+Problem and model
+  Ordinary dense degree-<n F2[X] multiplication, ordinary 2n-1 coefficient
+  output, deterministic finite alphabet and fixed finite number of tapes.
+  Candidate explicit asymptotic bound: O(n (log n)^(1-2^-38)).
+  This supersedes the valid but weaker earlier 2^-60 bound.
+
+What was added across the construction continuations
+  Fixed metadata polynomial P1=(R+L+2)^64, with sequential table generator.
+  Enlarged cyclotomic word chosen against that polynomial before runtime.
+  Current-address/scalar alignment and moving-control fiber invariant.
+  Complete fixed tape-family and padding lifetime ledger.
+  Ordinary top map X->Y^cZ, both coefficient CRT components and output.
+  Source-only manuscript plus proof dependency map.
+  Explicit appendix: Newton ring symmetry, eight-H words, formal triadic
+  convolution, dirty replay, rank-three rectangular displacement and
+  exact-width chunk fitting, actual S tensor F4 component calculation.
+  Integrated finite phase appendix: actual eight scalar rows, complete
+  gate-wire trace, h48/d49 source-rank correction, fixed F16 commutators.
+  Integrated native appendix: exact integer tile, P^-1(y) repair source,
+  role/dock/opaque placement, inherited masks, group permutation pricing,
+  and current-parent tape parking. No physical endpoint gather is assumed.
+  Explicit Euclidean threshold proof for aggregate rectangle exponent.
+  Integrated standalone interchange appendix: rational Q^48 frames,
+  exact217 rank deficit, rank-many pivots, actual V/W child recurrence,
+  high-digit row supply, shared row padding and binary numerical lift.
+  Fast interchange is now reconstructed in the bundle, retaining source
+  attribution; it is not an unproved external movement oracle.
+  Further machine-cost continuation: actual native instruction metadata
+  bounded by O(L^16) time/O(L^4) storage, with fixed P_nat=L^64.
+  Explicit role-width choice r=56 ceil(log_m h), sufficient opaque
+  width for L>=2^16 on admissible blocks, and prefix constant4096.
+  Selective-shift proof now derives the O(L^2) exceptional decoder and
+  Horner reconstruction from sum ceil(log n_i)<=2L, and gives a linear
+  product-mask generator and full-payload radix-sort/hole-refill ledger.
+  Clarifies separate bit codecs versus the caller's B=S tensor F4 type.
+  Prepared-core interfaces now separate root setup from recursion:
+    SwapPower children retain all unselected fields as exact spectator
+    products; PhasePower children retain h, all five banks, dock and
+    arbitrary F16 lanes. Only the independent row is divided by W.
+  The numeric native row pad is kept through the whole fixed H word.
+  Row and codec crops precede restoring role-bit positions and the whole
+  suffix crop. No fresh suffix/row/codec pad is constructed in a child.
+  PhaseAll's explicit digit-conditioned starts partition all active ranks.
+  Native full-block size h=Theta(L/ceil(log2 R)) is derived, with shorter
+  remainder blocks bounded directly in the ambient L.
+  Local formal convolution has a direct classical Cantor--Kaltofen1991
+  supplier citation. Constant/linear gate projection proves fixed-kernel
+  linearity without requiring a hidden gate-organizing assumption.
+  All three displacement outer-product vectors, including first-row/
+  first-column corrections and the single-counted corner, are printed.
+  Post-shuffle endpoint correction now has an explicit physical program:
+  reverse [0,t-1), then [0,t); batch opposite interval pairs; extract
+  X,Y,W in the requested order using <=3 whole-range exchanges and
+  undo those exchanges after the three reverse-index XOR masks.
+  The auxiliary is selected from three LINEAR complement intervals,
+  and its low suffix supplies R_op>=2^(.9L-O(1))D actual record bits.
+  Odd-start matching conjugates explicitly disable the source pair
+  whose image would wrap across (n-1,0), plus all irrelevant pairs.
+  Current primary-source comparisons include the complex polynomial
+  corollary and stronger integer-focused follow-up repositories.
+  Local Fourier shear rounds now complete unused pairs with coefficient
+  zero and use the same two-H/two-J/three-unit-diagonal word on all pairs.
+  Idle/dummy pairs return to identity at the completed word; no local
+  H-versus-I selection or projection inside the word is needed.
+  B applications are explicitly three S products with fixed reciprocal
+  reduction; unit inverses use the conjugate norm and one-time Euclid.
+  A shared archive and active table feed two alternating expansion tapes.
+  Sum M_j<2M prices scalar generation, table rewinds and payload alignment
+  without an axis loop at each record.
+  The frequency convention has an explicit gauge calculation: local
+  root exponents b_i*h_i make output residue b_i*h_i*s_i. The current
+  idempotent choice gives the claimed literal ordinary DFT.
+  A finite whole-function host program now composes top AC, BOTH
+  coefficient CRT components, affine index routing, compiled Newton/
+  two-H Fourier words, point products, complement packing and output.
+  The native proof now states an induction on the complete physical
+  four-state universe, with full parent eligibility inherited by children.
+  All raw dirty transpositions and selector toggles use the selected
+  prefix; eligibility is placed only in the stable selector, not in an
+  inner CNOT reading a changing target.
+  Exact recurrence unrolling gives e^max(sigma,tau) polylog L, with only
+  a logarithm when equal. Here sigma<tau=1-2^-36, certified by the two
+  finite motifs, so no intermediate lambda exponent is needed.
+  Native H, shuffle, generic/controlled permutations, CRT and Fourier
+  now all retain gamma=1/(2-tau). Its gap>2^-37 absorbs secondary
+  logarithms in the revised 2^-38 final bound.
+
+Independent internal checks
+  Fresh whole audit identified five missing explicit interfaces.
+  Root supplied them in STRICT_BINARY_MACHINE_COMPOSITION_ROOT_20261030.
+  Separate supplier, base SWAP/H2, host, local Fourier and final ledger
+  attacks found no concrete contradiction within their stated scopes.
+  These reviews are not external proof certification.
+  Manuscript attack found no concrete discrepancy; its scalar-dimension,
+  component-degree notation, AC index and ledger-reference fixes were applied.
+  Root caught and corrected errors in the new supplier drafts: F3 inverse
+  (F3^3, not F3^2), the intermediate bank-exchange state, isometry pair
+  count, source attribution, logical endpoint pairing, and field/frame
+  scope. Final included appendices remove an unsupported extra binary
+  H2 theorem and distinguish arbitrary E lanes from 0/1 embeddings.
+  A row-pad-width audit led to an explicit convention: the privately
+  padded numeric row factor may use an r+1-bit counter; it adds <2
+  volume and does not consume another original low suffix index bit.
+  Whole dependency audit found no missing lemma under the then-external
+  SWAP theorem. Two further reviews checked its new direct reconstruction.
+  One review misread the ambiguous high/low field names; final source now
+  gives all four lengths and both high-digit substeps explicitly, and
+  the reviewer withdrew its layout objection after checking that trace.
+  A fresh whole audit initially inferred a missing mask/sort certificate;
+  after reading the included native proof in bounded chunks it withdrew
+  that concern and corrected its own root-order conflation.
+  Root caught a fresh typed-control audit error: arbitrary dirty T_Z can
+  change sources; only S is stable there. Source-value F_a is stable only
+  across completed T_J/L_Q, which support matching targets. The report
+  was corrected; the paper's intended implementation did not change.
+  Its suffix-pad wording was also tightened: the whole spectator-suffix
+  and F16 lane pads survive the complete binary H2 word, not just a
+  nonbinary role/phase call. The main paper already uses that lifetime.
+  A proposed odometer audit also used an unjustified blanket amortization
+  for an oscillating binary bad-count. It now charges worst-case counter
+  work only at sparse wrap-flag transitions. The actual paper uses the
+  simpler prefix-product mask generator and needs no such global count.
+  Fresh machine primitive schedules, native degree/width certificate,
+  typed controls and D=1 shift repair were checked in focused reports.
+  Fresh core attacks reconstructed strided numeric role gather/merge and
+  exact child spectator factors. Root/agent derivations give V_child=V/W,
+  without a root pad multiplier in the recursive coefficient.
+  The arbitrary-F16 norm-two wrapper was checked on both existing F4
+  planes, and matching source predicates at their completed boundaries.
+  A fresh composition audit derived MD'=Theta(N), small-algebra setup,
+  local round count and secondary-cost absorption within its scope.
+  A further local attack led to the direct classical circuit citation,
+  explicit formal gate projection and displacement boundary vectors.
+  Their follow-up entrywise/algebra audit found no concrete counterexample.
+  Fresh ordinary-I/O audit derives the flat-index map, both coefficient
+  CRT components and the no-overlap complement packing cost.
+  A ragged n=6 trace checks full-shuffle odd children and disables
+  wrapped switches; its control gauge is checked at actual boundaries.
+  Root caught two issues in the endpoint-layout audit: a long cyclic
+  gap could cross physical index zero, and a low-index bitlength is
+  not itself an exponentially wide opaque record. The corrected
+  three-linear-gap/exponential-record proof is now in the manuscript.
+  An independent follow-up checks that explicit physical program.
+  Separate local-layer and scalar-stream attacks check the two-H word,
+  zero-shear completion, axis-factorized scalars, archive/tape staging and
+  normalized prefix sum. Root caught a parity-prose error in the growing
+  ring audit: r odd gives one degree-2r extension, r even two degree-r
+  factors per S field. Its displayed gcd/lcm formula and the manuscript
+  were already correct; the report is now corrected explicitly.
+  Internal scoped checks still do not certify the complete main theorem.
+
+Bounded finite witnesses
+  Exact-even ragged networks: 42,090 permutations, n<=12.
+  Controlled-gauge/CRT: 768 cases, 23,040 nonzero-gauge E evaluations,
+  all105 valid CRT addresses, all192 bijective/invertible native states,
+  exact per-axis dummy masks. Gauge omission fails.
+  Runtime guard64MiB/10CPU seconds before algebra, fixed arrays, C++17.
+  Each witness is algebra/combinatorics only, not a tape-complexity test.
+  Growing-ring/two-H witness: all65,536 coefficient values in B with
+  S=F2[Y]/Phi15; 50,625 units/14,911 nonunits; explicit nonzero zero-divisor.
+  Checks256 basis products against separate F4 schoolbook arithmetic;
+  six scalar streams each use220 B products on4x6x8 axes;12 tensor
+  fixtures have exact dirty/valid outputs, inverses and dummy restoration.
+  Wrong-middle and transported-stale-coefficient controls both fail.
+  Guarded C++17 run exit0, observed wall time558ms; temporary exe removed.
+  Whole host N255=17*15:15 literal forward/inverse DFT basis vectors,
+  all24 padded CRT states,96 ordinary binary products through n128.
+  Guard64MiB/10CPU seconds before algebra; exit0, observed373ms;
+  temporary exe removed. Driver and two includes are hashed in its report.
+  Wrong row shift/complement/lane projection are detected. Naive local
+  roots have180 Fourier-entry errors despite passing15 roundtrips and
+  two matched products, confirming why literal DFT comparison is needed.
+  Code-review fixes before execution corrected padded transform lengths,
+  an integer-versus-ring encoding error and lower-shear orientation.
+  The never-executed initial scaffold supplied no verification evidence.
+  This uses finite branches and does not test asymptotic tape complexity.
+
+Latest asymptotic review
+  Full-universe induction, finite frame operator trace, prefix dirty
+  truncation and normalized recurrence were reviewed separately.
+  Sharp SWAP wrappers preserve tau=1-2^-36 from the exact48-triple count.
+  Final reviews read the ACTUAL updated TeX/ledger and found no old
+  weaker exponent tariff left in the current source chain.
+  Root corrected two reviews which reversed near-one inequality
+  comparisons. The old bounds were consistent; they were too weak for
+  the new claim. Historical audit reports are not current tariff inputs.
+  The strengthened full candidate still lacks external verification.
+
+Latest sparse-correction review
+  General lemma proves H=P(B)=T(B), keys T(P^-1(y)), and exact refill
+  without comparing full keys at every good record. Stable binary radix
+  passes include staging, bucket scans, head returns and counter resets;
+  repair overhead is separate from executing P. Selective shifts cover
+  D=1 by K<=M/L^2, C_addr=O(L^2). Native tile/prefix guards are invariant
+  at their OWN completed boundaries, so mark B directly without changing
+  the retained F16 codec; R_op>=L^64 pays native metadata.
+  Prefix repair follows a completed logical route with all nested source
+  conditioning and selectors restored. Inner CNOT may change S, and raw
+  full-h T_Z can differ from its truncated helper even on a good prefix.
+  Root caught the latter false-owner claim in a review draft and supplied
+  an explicit h2/u1 counterexample; the report and actual TeX are corrected.
+  Fixed target sets are translated at each odd-start sublayer, independent
+  of c; idle K_i(c)=I. Finish sparse repair before reading control settings.
+  Far-away PhaseAll digit-group placement keeps its full-h root toll;
+  it does not use the small group's prefix tariff or recur in children.
+  Current-source focused reviews and the new root derivation are linked
+  in proof_map.txt. Candidate delta2^-38 is unchanged; goal stays ACTIVE.
+  No mathematical executable, Python/JS algebra, heavy or TeX/PDF build
+  ran in this continuation.
+
+Latest independent arithmetic refinement
+  Uses classical integer1971 SS plus explicit
+  carry-free coefficient packing for every runtime binary word product.
+  M_old is the regular bound v log^2(2v) loglog(4v), with fixed-factor
+  length changes, head returns and visited-workspace cleanup included.
+  The actual host density gives theta=O(ell^2/L0^3), retained after
+  O(ell) prime additions. Thus dm'=N theta, and even the packed whole
+  complement costs O(N ell^3/L0)=o(N) with this slower word supplier.
+  The weak dm'<N/L0 bound alone would NOT justify the replacement.
+  Runtime small scalars/CRT/point products remain N poly(ell); formal
+  convolution remains a separate input, now explicitly reconstructed
+  by the elementary triadic supplier in the latest continuation below.
+  This removes a required specialized characteristic-two runtime SS
+  supplier without improving or certifying the final candidate exponent.
+  Actual included main/local sources and machine ledger were reviewed;
+  three scoped Luna reports are linked in proof_map.txt. Classical
+  primary integer source and stronger host proof were freshly checked.
+  No new mathematical executable, Python/JS algebra or heavy build ran.
+
+Latest elementary formal circuit refinement
+  Required CK circuit-generation premise replaced with a fully printed
+  ternary Fourier/quotient construction over any commutative F2-algebra.
+  Each frequency is one 2b-coordinate quotient element; one ordinary
+  length-2b base-algebra product plus a linear fold implements its product.
+  True block convolution coefficients have degree<2b, so inverse DFT
+  loses no data. Neighboring blocks overlap and are added before cropping.
+  Child mass<=24v, length<=v^(2/3), and 24(2/3)^8<1 prove size
+  O(v log^8v), depthO(logv). Explicit butterfly indices and a polynomial
+  sequential-list printer give uniform generation and coefficient typing.
+  Fixed kernels and copy trees give g8/H2, chunk width v/log^8v,
+  log16 chunk pairs, log18 cross layers and log19 triangular rounds.
+  All gamma tariffs and candidate delta2^-38 are unchanged.
+  Literal graph-fit search and kernel-constant setup are public
+  polynomial(R0,D',L0)=2^O(ell^4)=N^o(1). Primes are bounded by
+  2^(ell^2), generally not a fixed polylogarithmic function of N.
+  Every original-source edge, including copy roots, is suppressed
+  in the dirty replay's second sweep.
+  New guarded C++ witness:130 positive products over the nonreduced
+  algebra F2[eps]/eps^2; wrong overlap detected; coefficient law checked.
+  Total132 checks,23180 recursive calls,maxdepth2,335ms exit0.
+  Naive finite DFT/basecutoff32 tests only the algebraic construction;
+  the proof uses radix3 depth and analytic cutoff6^6. Temporary exe removed.
+  No large graph was materialized, no Python/JS algebra or heavy/TeX build.
+  The full major theorem still lacks external verification.
+
+Latest finite-word continuation
+  Prints A.17 as three nibble XORs.
+  The wrapper is F2-linear/F4-semilinear, not E-linear or a general
+  E automorphism; conjugation inverts the completed F4 phase matrix.
+  Two O(V/W) scans wrap ONE child, retaining exact recursive mass.
+  Idle values can change on the first pass; the two passes cancel there.
+  The finite word lifts letterwise to384 tensor phase calls, with no
+  per-axis child multiplier. Monomial scalar products are evaluated at
+  SOURCE addresses before routing. Post-route evaluation would require
+  inverse-permuted source indices. All four packed E bitplanes remain
+  data; only extra zero bits from a final partial group are cropped.
+  Expanded guarded C++ witness binds exact code/stdout and historical
+  finite/native source snapshots at that review. Current paper hashes
+  are recorded separately in source_validation.txt. Checks all16 symbols,256 additive pairs,
+  64 F4-semilinear pairs,16 binary conjugation basis states,384+392
+  word counts,256 binary transpose pairings, and monomial order.
+  Ordinary F16 squaring on both sides and stale-scalar controls fail
+  as required. Final run exit0 in510ms; new temporary executable removed.
+  Historical word files were preserved; old PASS had no source hash.
+  This is finite verification and a concrete implementation proof,
+  not certification of the whole major theorem. Delta2^-38 unchanged.
+
+Latest base-SWAP counter review
+  Corrects the earlier O(A+logA) wording
+  to O(A+r) for arbitrary initial r-bit counters. One increment from
+  2^r-1 demonstrates why the width term is necessary. Range-sized
+  counters keep full scans O(n), including initialization and resets.
+  An n-1 countdown executes the body then decrements; final borrow-out
+  detects termination with no full-width compare per body, including n1.
+  A fixed-depth product-scan summation covers arbitrary large P/G/B.
+  Only selected b-digit controls enter polynomial-b offset arithmetic,
+  paid by each q^b-block target fiber; unrelated spectators are not
+  decoded per fiber. Fixed-c unit maps use finite-state output residues.
+  Descriptor polynomial work is once per node, separately volume-paid.
+  No new record header/pad enters children; s/W and tau are unchanged.
+  Root proof and three scoped Luna audits are indexed in proof_map.txt.
+  This continuation required no math executable or heavy build.
+
+Latest private native padding and exception-universe review
+  A binary bank pad can occupy a constant fraction of the helper domain;
+  sorting all such tails would destroy the rare-correction bill.
+  The included native appendix now marks only
+  valid_X AND valid_W AND [a quotient margin fails].
+  Invalid tails are fixed agreement states, never decoded as wrapped
+  native tuples or sent through the sparse sorter. Logical validity
+  follows a target into the dock, and swapback closes every update.
+  Repair uses padded destination ordinals and marked slots in that same
+  order, then crops only the private tails after exact mask/dock return.
+  Mpad<4M_native but K<=delta M_native before padding; R_op pays the
+  full-scan metadata. The original density bound is unchanged.
+  An outer Fourier dummy p_i is native-valid, not a private tail.
+  Completed tensor maps preserve each exact dummy-pattern subspace;
+  they need not fix every address containing a dummy. main.tex now
+  explicitly zero-fills this complement and retains the full grid
+  through forward transforms, point products and inverse routing.
+  Full local proof is NATIVE_PRIVATE_PAD_AND_EXCEPTION_UNIVERSE_ROOT.
+  Three scoped Luna reports are indexed in proof_map.txt.
+  No new executable, Python/JS algebra or heavy/TeX build ran.
+  Exact phase child V/W, gamma and candidate delta2^-38 are unchanged.
+  Static source validation checks current paper hashes separately from
+  the historical finite witness's appendix snapshot hashes.
+
+Latest exact-width local Fourier bridge review
+  The included local appendix now states and proves an exact-width
+  unit lower Toeplitz lemma: O(log19(2v)) matching layers on the original
+  v coordinates over any commutative F2-algebra, without clean values.
+  Source x, target y and borrowed gates z are pairwise disjoint.
+  All output sums/copy trees are counted; F,D in the replay identity
+  name bounded-degree port reads, not dense matrix applications.
+  Four colored sweeps and two colored reads take O(H+1) matching layers.
+  Three displacement branches use six fixed-kernel convolutions with
+  output lengths 2e-1 and a+e-1 <=2b-1. Reversal/crops are DAG ports;
+  zeros are formal constants, and intermediate/copy gates count in g.
+  Actual ragged-pair fit search gives b>=c v/log8(2v) eventually,
+  restoring borrowed values between pairs; disjoint children run in
+  parallel. Setup is polynomial(R0,D',L0), once per public kernel.
+  Newton h0=1 permits two such Toeplitz words plus unit diagonals.
+  Word transposition is on algebra-coordinate indices, retaining mu.
+  Different prime axes synchronize with identity matching layers.
+  Main/ledger now reference this lemma. The local two-H shear word and
+  generic eight-H permutation word remain separate contracts.
+  Root: LOCAL_EXACT_WIDTH_REPLAY_AND_FOURIER_BRIDGE_ROOT_20261030.txt.
+  Three scoped Luna reviews, including final-source checks, are indexed.
+  New finite C++ witness:128 rectangular displacement/replay fixtures
+  over F2[eps]/eps^2 on1024-coordinate parents, full-parent checks,
+  ragged ports and correlated dirty gates, independent direct-E reference.
+  Both copy-root/direct-output broken suppression controls are detected.
+  Guard64MiB/10CPU/oneprocess before algebra; warning-free build,
+  exit0 in184ms; max126 borrowed gates, two colors, depth11.
+  CPP/stdout have a byte-bound receipt in ntt_base_five. This does not
+  execute the formal triadic or full Toeplitz/Fourier recursion.
+  No large graph, Python/JS algebra or heavy/TeX build ran.
+  This strengthens the growing-size supplier proof; candidate delta and
+  the full theorem's under-review status remain unchanged.
+
+Latest ordinary coefficient I/O and general remainder review
+  The included local appendix now proves fixed-monic remainder at any
+  public input width r>=d: reciprocal length k=r-d, two independent
+  word products and O(r) scans, with polynomial-r setup once per modulus.
+  This supplies the needed alpha'-bit row projection modulo tiny psi.
+  The old degree<=2d-2 product-remainder formula alone did not display
+  that long-row interface; it is now a special case of the general lemma.
+  Main explicitly gives the two CRT idempotents, degree<alpha' each,
+  two length-alpha' reconstruction products and one linear cyclic fold.
+  Projections/reconstruction cost m'M_old(alpha')=N polylog L0;
+  the projected streams total m'(D'+d)=N bits. Ambient N scans are
+  billed separately from the complement's v=dm' product volume.
+  Complement inputs/product have exact degree bounds2v-d-1/4v-2d-2;
+  crop known zeros, unpack2m'-1 rows2d, reduce at width2d-1 and foldZ.
+  Generic monic reduction includes psi; d1/m'1/d0 branches are explicit.
+  Strong density pays O(v L0²ell)=O(N ell³/L0)=o(N).
+  Fresh author-PDF reading confirms Def3.1/3.7 and Propositions3.4/3.8:
+  root rho order N/q0 with q0|alpha; the old m-root is rho^(alpha/q0).
+  Main explicitly proves the homomorphism/J-th-power m'-root sums.
+  Root: COEFFICIENT_CRT_GENERAL_REMAINDER_AND_ORDINARY_IO_ROOT_20261030.txt.
+  Three scoped Luna final-source reviews found no remaining issue in
+  those interfaces; they do not certify the full theorem.
+  No executable, Python/JS algebra, large graph or heavy/TeX build ran.
+  Candidate gamma/delta and major-goal scope are unchanged.
+
+Latest signed phase execution correction and full-role identity
+  FOUND an actual missing execution flag: norm alone selects inverse
+  only on positive edges. The motif has downward edges and the unit-line
+  source correction2P_U. A negative unit-norm child must be inverse;
+  negative norm-two must be forward. A norm-only prescription gives
+  the wrong operator. Earlier finite positive-word checks did not test it.
+  Included finite/native appendices now explicitly retain epsilon and
+  original nu, selecting lambda=epsilon/nu in{1,2}. The four-case table
+  and lemma prove the exact directional phase using pushforwardA,
+  child^lambda on first f ranks, then inversepushforwardA. A need not
+  preserve the form; nu is measured before placement. Sourceextra
+  children are tagged lambda2. The one-child Frobenius wrapper is reused.
+  Child count s, exact V/W and the recurrence ratio are unchanged;
+  two wrapper scans are node work, not a second child.
+  Full-role identity D_out P D_in^-1=P(I_W tensor C_full) is now explicit
+  on arbitrary dirty role arrays and cancels P off common eligibility.
+  Root: SIGNED_PHASE_DIRECTION_AND_ROLE_OPERATOR_ROOT_20261030.txt.
+  Three scoped Luna reviews include current-source sign/order checks.
+  New tiny C++ witness:744 basis/random finite phases over F16, f1/2,
+  against fullF3 Fourier reference, eight ineligible identity cases.
+  Four norm-only and two wrong-order controls are detected. The latter
+  holds the correctlambda fixed. Guard64MiB/10CPU/oneprocess before
+  algebra, warning-free build, exit0 in279ms, arraysN<=81. CPP/stdout
+  byte-bound receipt and newexe removed; historical files preserved.
+  This tests the corrected child interface, not the full48-frame
+  recursion, prefix repair, tape tariffs or whole ordinary multiplier.
+  No Python/JS algebra, large graph, heavy or TeX/PDF build.
+  Candidate gamma/delta2^-38 unchanged AFTER this operator correction.
+  Full theorem remains under verification; the major goal stays ACTIVE.
+
+Latest signed rational interchange and module-lift review
+  Audited the rational compiler after the phase sign error. Its existing
+  prescription already factors the complete signed A=M_j-M_i; no
+  analogous lost sign was found. Actual swap appendix now includes a
+  formal all-power module certificate and explicit elimination detail.
+  E1 Pi E2 identities reduce for one fixed avoiding q at every q^b;
+  both triangular factors remain units. Image/kernel are free direct
+  summands of ranks a,m-a even when the address ring has zero divisors.
+  Rational rank alone would not guarantee this; the unit factors do.
+  Signed/source2 coefficients are normalized before reduction. Every
+  pivot remains exactly one smaller interchange; no data unit is needed.
+  Defines coordinate Phi_A and its forward record pushforward separately.
+  The full role word D_out P D_in^-1=P(I_W tensor P_I) covers arbitrary
+  dirty scratch arrays. Outer later-target rotations complete exchange
+  without tripling the recursive child count.
+  Root: SIGNED_RATIONAL_SHEAR_AND_MODULE_CERTIFICATE_ROOT_20261030.txt.
+  Three scoped Luna reviews, including final-source module/order checks,
+  are indexed. New lemma strengthens the explicit supplier certificate;
+  it does not change tau, gamma, delta or certify the whole theorem.
+  No executable, Python/JS algebra, large graph or heavy/TeX build ran.
+
+Latest exact ragged topology and controlled-generator quantifiers
+  Growing-size review found no odd-parent path/parity defect. Main now
+  explicitly requires each parent interval be preserved setwise and gives
+  its exact even/odd fragment endpoints under the SAME full S_n^-1.
+  Their all-even/all-odd order partitions the original n wires; each
+  size is <=ceil(parent/2). There is ONE residual call on the whole
+  updated partition, so word length grows by constant slots per level.
+  Topology is independent of pi and c. Passive singletons add no wires.
+  The controlled lemma's earlier generic “fixed polynomial” premise did
+  not by itself imply that Q64 pays every generator degree. It now
+  explicitly retains per-record G and costs
+  O((MD L^gamma+MG) polylog L), including gauge/tables/cleanup/returns.
+  Only G=O(D) simplifies to the usual generic tariff. The actual CRT
+  specialization remains G=O(Q12), paid by D'>=Q64 as already proved;
+  there was no cost gap in that specific application.
+  Root: RAGGED_PARTITION_AND_CONTROLLED_METADATA_ROOT_20261030.txt.
+  Three scoped Luna reviews with actual-source followups are indexed.
+  No new executable, graph, Python/JS algebra or heavy/TeX build ran.
+  Historical finite witnesses were not rerun and do not prove growing
+  tape complexity. Candidate gamma/delta and goal scope are unchanged.
+
+Latest fresh whole-proof and requirement audit
+  Three fresh Luna reviewers read current sources rather than prior PASS
+  reports. Their initial findings required follow-up: the whole-review
+  flagged an implicit initial host invoice; primary source construction
+  closes it, and actual main now proves host-initialization from n.
+  The tuple/lambda/divisor/root and per-component certificate checks are
+  N^o(1), with separate O(n) input scan and a fixed finite direct branch.
+  A fresh supplier report mixed rational and phase constants; it now
+  explicitly corrects432/217 versus441/199. A host report's initial
+  rho-lift wording has an erratum: first omega=rho^(alpha/q0), then
+  quotient lift/powerJ. Current manuscript already used these root types.
+  The supplier reviewer inspected detailed tape roots and withdrew its
+  broad transition-table objection; it found no exact unpriced step
+  in that reviewed scope. All addenda are retained as evidence history.
+  WHOLE_THEOREM_REQUIREMENT_AUDIT_20261030.txt maps the full original
+  objective to actual derivations, primary imports and remaining audit
+  work. It is not a proof validator or completion certificate.
+  The top-level execution manifest is now integrated and audited below.
+  No end-to-end executable, benchmark or external approval is imposed
+  as a new requirement. Full goal remains ACTIVE under verification.
+  No executable, Python/JS algebra, large graph or heavy/TeX build ran.
+
+Latest typed top-level execution and cross-requirement cost audit
+  Actual main now contains lemma typed-execution and equation typed-dft;
+  ledger SectionVII gives the same literal stream manifest.
+  Root setup oldY->U^J is distinguished from new input renameY->U.
+  ForJ>1, Phi_alpha'(U^J) is a unit, so the erroneous second
+  substitution would not even descend from the new quotient.
+  Both wholeM B arrays retain eta and all native dummies through both
+  forwards; fullM B products replace the first and erase the second.
+  The inverse stays in B and crops eta/dummies once at completion.
+  Q^-1 T Q gives literal ordinary frequency order, not merely a
+  roundtrip/product-equivalent frequency permutation. The explicit
+  principal-character sum proves the retained-grid convolution identity.
+  Passing/parking, fullM products, projection/crop and both output
+  components are charged. Internal private pads keep their own earlier
+  boundaries; the single crop concerns only the OUTER B/native grid.
+  Two Luna composition reports rechecked the actual new lemma; their
+  addenda distinguish a prior alternate eta-crop schedule. A third
+  cost-boundary report derives the growing diagonal-list, setup,
+  coefficient-projection, per-record metadata and root-group invoices.
+  These are scoped evidence, not independent whole-theorem proof.
+  No new executed witness, Python/JS algebra, graph or heavy/TeX build.
+  The candidate exponent is unchanged and full goal remains ACTIVE.
+
+Latest single-cutoff and noncircular parameter check
+  New root SINGLE_UNIFORM_CUTOFF_AND_PARAMETER_ORDER_ROOT and scoped
+  SINGLE_CUTOFF_FEASIBILITY_ATTACK are integrated in the main paragraph
+  Order of choices and one cutoff. The old host tuple is generated
+  before the enlarged width, and the width threshold usesL0 before
+  actual nativeL exists. Its eventualL<=L0 closes the implication
+  without feedback. Enough axes remain and theta retains its strong
+  bound. Fixed setup polynomial degrees costN^o(1); only actual
+  degree12 per-record routing is charged againstQ64.
+  The printed t=lnL0 threshold absorbs A(lnL0)^C intoL0^delta
+  for fixedA,C anddelta2^-38. One maximum of effective thresholds
+  handles all root inequalities; internal base cases keep local branches.
+  Primary host rounded-lg convention/effectiveness was rechecked.
+  This feasibility proof does not certify the critical SWAP/phase
+  suppliers or change the claimed exponent. No executable/heavy build.
+
+Current limitations
+  The manuscript includes the finite/native/local/interchange derivations,
+  with the detailed machine ledger retained as a companion. It has not
+  received external mathematical verification of the main theorem.
+  No end-to-end executable realizes the astronomical asymptotic construction.
+  No practical speedup or experimentally observable exponent saving claimed.
+  Existing network topology has prior art; no broad topology novelty claim.
+  Search absence does not prove literature priority.
+  No PDF export or large build was run.
+
+Persistent goal status
+  ACTIVE: complete candidate proof chain assembled; the major mathematical
+  claim remains under verification. Do not mark
+  complete merely because bounded checks or scoped internal reviews pass.

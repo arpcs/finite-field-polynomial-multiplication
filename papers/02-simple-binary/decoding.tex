@@ -1,0 +1,200 @@
+\section{A residue decoder and the raw product}\label{sec:decoding}
+
+\subsection{The parent is a quotient ring, not a field}
+Take the explicit fields \eqref{eq:fields} and set
+\[
+ \mathcal R=B[X]/(X^b-Z),\qquad N=wb=6Ab.
+\]
+The coordinate $X^iZ^j$ is the raw binary monomial $X^{i+bj}$.
+More formally
+\[
+ \mathcal R\simeq\F_2[X]/\Phi_{9A}(X^b),
+\]
+and the modulus is monic of degree $N$. This ring is inseparable;
+we will use no field trace or inversion in it.
+
+Put $W=W_K$ and let $L=L_W$ be its monic annihilator. Since $W$ is
+an $\F_4$-space in $B$,
+\[
+ L(X)=X^b+C(X),\qquad \deg C\leq b/4,\qquad
+ \ell_0=L'\ne0.
+\]
+Set $u_0=L(Y)\ne0$. Relative Frobenius fixes $L$ and sends $u_0$
+to $\eta u_0$. Consequently
+\begin{equation}\label{eq:three-grids}
+ F(X)=L(X)^3+u_0^3\in B[X]
+\end{equation}
+is monic, squarefree, of degree $3b$, and its roots are the three
+distinct cosets $\eta^tY+W$, $t=0,1,2$.
+The three grids are field conjugates; they are not three unrelated
+evaluation spaces.
+
+\begin{lemma}[Coefficient kernel with its degree cutoff]\label{lem:kernel}
+For $\deg g<3b-1$, let
+$\lambda(g)=[X^{b-1}](g\bmod(X^b-Z))$. Define polynomial quotient
+parts by $[\ ]_+$ and put
+\begin{align}
+ Q(X)&=[F/X^b]_++Z[F/X^{2b}]_+\notag\\
+ &=X^{2b}+X^bC+C^2+ZX^b+ZC.\label{eq:kernel}
+\end{align}
+Then
+\begin{equation}\label{eq:lagrange}
+ \lambda(g)=g_{b-1}+Zg_{2b-1}
+ =\sum_{F(\xi)=0}\frac{g(\xi)Q(\xi)}{F'(\xi)}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+For any root $\xi$ and $1\leq j\leq3b$,
+\[
+ [X^{j-1}]\frac{F(X)}{X-\xi}=[F/X^j]_+(\xi).
+\]
+To see this, write the quotient as a sum of the finite geometric
+quotients $(X^t-\xi^t)/(X-\xi)$, using $F(\xi)=0$.
+Extract coefficient $j-1$ in the Lagrange formula for $g$, first
+with $j=b$ and then $j=2b$. The stated cutoff also excludes the
+otherwise possible residue contribution $Z^2g_{3b-1}$.
+Expansion of \eqref{eq:three-grids} gives \eqref{eq:kernel}; the
+discarded terms have degree less than $b$ because $\deg C\leq b/4$.
+\end{proof}
+
+At the representative $\xi=Y+v$, $v\in W$, write $s=\xi^b$.
+Since $C(\xi)=u_0+s$, the weight is
+\begin{equation}\label{eq:omega}
+ \omega_v=\frac{Q(\xi)}{F'(\xi)}
+ =\frac{s^2+u_0s+u_0^2+Zu_0}{\ell_0u_0^2}.
+\end{equation}
+Only the nonzero constant denominator is inverted.
+
+\subsection{Convert the pairing to the actual binary transpose}
+Let $A_B:B^b\to E^b$ evaluate on $Y+W$, including the stride-three
+native embedding $Z^j\mapsto Y^{3j}$. Let $G_B,G_E$ be the absolute
+field trace Grams in the native coefficient bases, acting separately
+on every coefficient word. Let $J_b$ reverse the coefficient records
+without reversing bits inside a word, and put
+\[
+ K_{\mathcal R}=J_b\otimes G_B.
+\]
+This is the Gram of
+$(f,t)\mapsto\Tr_{B/\F_2}\lambda(ft)$. It is nonsingular: for
+$\deg f,\deg t<b$ the product has degree at most $2b-2$, so its
+residue coefficient $b-1$ is the ordinary anti-diagonal pairing.
+
+\begin{proposition}[Decoder and ordinary adjoint]\label{prop:decoder}
+Define a binary linear map on arbitrary $E$-valued inputs by
+\begin{equation}\label{eq:decoder}
+ D_{\mathcal R}=K_{\mathcal R}^{-1}A_B^{\T}G_E M_\omega.
+\end{equation}
+For $f,g\in B[X]$ of degree less than $b$,
+\[
+ D_{\mathcal R}(A_B(f)\cdot A_B(g))=fg\bmod(X^b-Z).
+\]
+Its ordinary binary transpose is
+\begin{equation}\label{eq:decoder-transpose}
+ D_{\mathcal R}^{\T}=M_\omega^{\T}G_E A_B K_{\mathcal R}^{-1}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Apply Lemma~\ref{lem:kernel} to $fgt$ for arbitrary $t\in B[X]$
+of degree less than $b$. Its degree is at most $3b-3$, so the cutoff
+is satisfied. Group the three conjugate summands for each $v$ into
+the relative trace $E/B$, then apply the absolute trace of $B$.
+Trace transitivity gives precisely
+\[
+ t^{\T}K_{\mathcal R}(fg\bmod(X^b-Z))
+ = (A_Bt)^{\T}G_E M_\omega(A_Bf\cdot A_Bg).
+\]
+Nonsingularity of $K_{\mathcal R}$ proves \eqref{eq:decoder}.
+This uses the field traces of $B,E$, not a trace of $\mathcal R$.
+Both field Grams and $K_{\mathcal R}$ are symmetric, so literal
+matrix transposition proves \eqref{eq:decoder-transpose}.
+No restriction is imposed on an input covector to that formula.
+\end{proof}
+
+The field Grams have linear-time inverses without generic matrix
+inversion. For $g_0(T)=T^{2s}+T^s+1$ with $s$ a power of three, let
+$K_{2s}$ be the coefficient Gram from Lemma~\ref{lem:scalar}.
+The separable-modulus trace identity gives
+\begin{equation}\label{eq:tracegram}
+ G=K_{2s}M_{T^{s-1}},\qquad
+ G^{-1}=M_{T^{1-s}}K_{2s}^{-1}.
+\end{equation}
+Indeed root-by-root Lagrange interpolation yields
+$\Tr(a)=[T^{2s-1}](g_0'a\bmod g_0)$, and $g_0'=T^{s-1}$.
+The $K$ maps are reversals and aligned block XORs; native root powers
+are cyclic shifts and folds. Thus both maps in \eqref{eq:tracegram}
+cost $O(s)$. In the bounded witnesses the equivalent form is
+$G=S\overline{\phantom a}$, where $S$ swaps the two $s$-bit blocks
+and the bar substitutes $T^{-1}$; its inverse is bar followed by $S$.
+
+There are $b$ pointwise field products and a constant number of
+weight/scalar products per point in the forward and transposed maps.
+The same elementary Karatsuba implementation~\cite{KaratsubaOfman62} costs
+\begin{equation}\label{eq:pointcost}
+ O(bD^\alpha)=O(NK^\rho),\qquad \rho=\log_2 3-1<1.
+\end{equation}
+Equation~\eqref{eq:scalar-transpose}, now in the ambient field,
+prices their ordinary transposes as actual field products too.
+
+The weights in \eqref{eq:omega} are $\F_2$-affine functions of the
+$2K$ bits indexing $v$: both $v\mapsto v^b$ and squaring are additive.
+Compute the constant weight and $2K$ differences in polynomial time
+in $K$, then enumerate the table with an odometer. Binary increments
+flip fewer than two bits on average, giving $O(bD)$ work. The
+annihilator has only $K+1$ linearized coefficients; extending the flag
+one direction at a time computes it by
+$L_{j+1}=L_j^4+L_j(\psi_j)^3L_j$ in polynomial time in $K$.
+Its derivative, the public denominator inverse and field root indices
+have the same scope. There are no $b$ generic inversions.
+
+\subsection{One padding and the complete bit bound}
+Choose the first $K\geq2$ with $N_K=6A(K)4^K\geq2n-1$; bounded
+smaller inputs are handled directly. Consecutive sizes grow by at
+most twelve, so $N_K<24n$ outside those fixed base cases.
+The raw product has degree at most $2n-2<N_K$, hence reduction in
+$\mathcal R$ does not change it. Also $K=\Theta(\log n)$,
+$D=\Theta(K)$ and $bD=3N_K$.
+
+Let $I_n$ zero-extend and pack the raw input into the native $B^b$
+chart, and let $C_n$ unpack the parent result and select its first
+$2n-1$ bits. To pack, transpose the raw $[w][b]$ bit rectangle to
+$[b][w]$. Pad the short range $w$ to the next power of two, increasing
+volume by less than two; its address width is $O(\log K)$, while the
+other width is $2K$. Lemma~\ref{lem:rectangle} gives time
+$O(N_KK^\gamma)$, with $\gamma<1$. Remove the inserted coordinates
+and apply the stride-three embedding by a linear scan. Unpacking
+reverses these explicit operations. Their ordinary transposes reverse
+the permutation and exchange zero insertion with selection, with the
+same bound. The padding is in a temporary address layout and does not
+change either field degree.
+The complete algorithm and its fixed-$g$ transpose are
+\begin{align}
+ \operatorname{mul}_n(f,g)
+ &=C_nD_{\mathcal R}(A_B(I_nf)\cdot A_B(I_ng)),\label{eq:rawmul}\\
+ (\partial_f\operatorname{mul}_n)^{\T}z
+ &=I_n^{\T}A_B^{\T}M_{A_B(I_ng)}^{\T}
+             D_{\mathcal R}^{\T}C_n^{\T}z.\label{eq:rawadjoint}
+\end{align}
+The transpose of selection in $C_n$ is explicit zero insertion; the
+transpose of the packing is the reversed physical permutation.
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Operation & Charged bit time\\
+\midrule
+Affine evaluator or ordinary transpose & $O(bDK)$\\
+Pointwise products, weights and scalar transposes & $O(N_KK^\rho)$\\
+Native field Grams and root actions & $O(bD)$\\
+Input/output representation changes & $O(N_KK^\gamma)$\\
+Public top-level setup & $\poly(K)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Every recursive layout is restored to native words before descent;
+the local rectangular padding is not multiplied across dimensions.
+A fixed number of subroutine tape banks and local depth-first parking
+stacks suffices; no descendant crosses a parked ancestor. Cleanup
+scans only the current used intervals. The first line of the table is
+$O(N_KK)=O(n\log n)$, and the other lines fit within it.
+This proves Theorem~\ref{thm:reduction} for both operand branches.
+

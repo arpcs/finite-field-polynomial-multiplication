@@ -1,0 +1,156 @@
+[
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/02-characteristic-two/main.tex",
+    "destination_path": "main.tex",
+    "original_sha256": "F54DCD59CDEA1A82FE1CE8139A673EF3B8ADBDF995B88079320B316DA152F48F",
+    "edits_scope": "Primary theorem, model, ordinary input/output argument, and cited bibliography; only title/author/date/provenance/review wording adjusted. Final release: author/contact, date/version/license, PDF metadata, typesetting and companion-relationship/disclosure clarification; selected theorem bound retained. Final author/date/license, front AI disclosure and companion-relationship typography finalized; core selected theorem unchanged. Privacy/claims review: clarified unfinished Lean plans and open-review status; finite-witness scope made explicit where relevant; theorem bounds unchanged. 2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
+    "staged_sha256": "e7327644cd1f0282290d82863181b18c0d503971a139bb3faa41ee42c2995971"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/02-characteristic-two/finite_phase_appendix.tex",
+    "destination_path": "finite_phase_appendix.tex",
+    "original_sha256": "EE617087ADF9F9E2ACAF8021A54E3383424D596680CF5E105503A9E01DDD15C3",
+    "edits_scope": "Finite ternary phase, dirty-selector and positive-word proof appendix; source TeX copied. 2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
+    "staged_sha256": "fa1e6e1b9cc2d444d7d85b0e349913a6fe048980913ecb9b556d540677509d7d"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/02-characteristic-two/native_appendix.tex",
+    "destination_path": "native_appendix.tex",
+    "original_sha256": "096D8BF2CCE8A104BADD4A7AB7DBB99CA38C4853DA9BD0D3B2048AFDFD6337AD",
+    "edits_scope": "Weighted masks, repair, native endpoint and recursive cost appendix; proof text copied, source-record paths made relative. 2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
+    "staged_sha256": "9259e102b11a6af0f4141af13ef3f85e11dd723c1f8a4b2cfd848ff6774c806e"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/02-characteristic-two/local_appendix.tex",
+    "destination_path": "local_appendix.tex",
+    "original_sha256": "E2AA1D68580A00B7F055225E89DEB10DDE098CE8D5CC45DC17B82CDE46A19E36",
+    "edits_scope": "Exact-width local Fourier/replay and scalar arithmetic proof appendix; source TeX copied.",
+    "staged_sha256": "e2aa1d68580a00b7f055225e89deb10dde098ce8d5cc45dc17b82cde46a19e36"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/02-characteristic-two/swap_appendix.tex",
+    "destination_path": "swap_appendix.tex",
+    "original_sha256": "2BDAABD02EF82658CC6DB6EACE1AADF52B4A2F9D0621690B3EBBBEC021031B33",
+    "edits_scope": "Equal-chunk interchange construction appendix; proof text copied, source-record paths made relative. 2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
+    "staged_sha256": "7ade765a17d6e6fe334f910d7b2c5c8c405229294d06e14c0268bac6a2321459"
+  },
+  {
+    "source_path": "investigation/SCALAR_MOTIF_SYMBOLIC_AUDIT.md",
+    "destination_path": "supporting/SCALAR_MOTIF_SYMBOLIC_AUDIT.md",
+    "original_sha256": "4F732E41822F90C90F1F0B752C1CFA8158F4E2DFA18EDD846861EA018EB68B03",
+    "edits_scope": "Selected explicit symbolic motif derivation record.",
+    "staged_sha256": "4f732e41822f90c90f1f0b752c1cfa8158f4e2dfa18edd846861ea018eb68b03"
+  },
+  {
+    "source_path": "investigation/OPAQUE_RECORD_PACKED_ROUTING_AUDIT.md",
+    "destination_path": "supporting/OPAQUE_RECORD_PACKED_ROUTING_AUDIT.md",
+    "original_sha256": "F6828BC39C228BD67EB3A204F25A68410BDFC58F412BD57690CDF387243DBEAD",
+    "edits_scope": "Selected full-payload routing cost derivation record.",
+    "staged_sha256": "f6828bc39c228bd67eb3a204f25a68410bdfc58f412bd57690cdf387243dbead"
+  },
+  {
+    "source_path": "investigation/H2_TENSOR_CLOSED_PROOF.md",
+    "destination_path": "supporting/H2_TENSOR_CLOSED_PROOF.md",
+    "original_sha256": "E5D83EF85FEC5D0EC42DB42593D15C563F2203BA9B23D6F8DC55C27D610C2B81",
+    "edits_scope": "Finite recursive tensor and dirty-router proof record.",
+    "staged_sha256": "e5d83ef85fec5d0ec42db42593d15c563f2203ba9b23d6f8dc55c27d610c2b81"
+  },
+  {
+    "source_path": "investigation/H2_FINAL_TERNARY_ROLE_CERTIFICATE.md",
+    "destination_path": "supporting/H2_FINAL_TERNARY_ROLE_CERTIFICATE.md",
+    "original_sha256": "CD9B013FAAF50047D3A33A964CEA4C0D5FCEAB4DADD8BC925EF9E9D1CAD39CC0",
+    "edits_scope": "Finite ternary role/frame certificate.",
+    "staged_sha256": "cd9b013faaf50047d3a33a964cea4c0d5fceab4dadd8bc925ef9e9d1cad39cc0"
+  },
+  {
+    "source_path": "investigation/H2_FINAL_PACKED_ROUTER_CERTIFICATE.md",
+    "destination_path": "supporting/H2_FINAL_PACKED_ROUTER_CERTIFICATE.md",
+    "original_sha256": "1B1F1DF94D114F735E79720C8F3E4B8856B78BE4B105CB49EE2865D23066D37A",
+    "edits_scope": "Packed router and source correction certificate.",
+    "staged_sha256": "1b1f1df94d114f735e79720c8f3e4b8856b78be4b105cb49ee2865d23066d37a"
+  },
+  {
+    "source_path": "investigation/ntt_base_five/H2_FINAL_FINITE_WORD_CERTIFICATE.md",
+    "destination_path": "supporting/ntt_base_five/H2_FINAL_FINITE_WORD_CERTIFICATE.md",
+    "original_sha256": "50940E51FB4265F17E1798B57801E56DCF0418BDF786F7035062DF783E28AE5D",
+    "edits_scope": "Finite 776-letter phase word certificate.",
+    "staged_sha256": "50940e51fb4265f17e1798b57801e56dcf0418bdf786f7035062df783e28ae5d"
+  },
+  {
+    "source_path": "investigation/ntt_base_five/finite_motif_rank_closed_form_audit.md",
+    "destination_path": "supporting/ntt_base_five/finite_motif_rank_closed_form_audit.md",
+    "original_sha256": "94E0F4F93B66AA84D1FB3FBFBFB24192D0886284B115E0FCB6C3138C9FCAF7D6",
+    "edits_scope": "Finite role/frame rank and recurrence derivation.",
+    "staged_sha256": "94e0f4f93b66aa84d1fb3fbfbfb24192d0886284b115e0fcb6c3138c9fcaf7d6"
+  },
+  {
+    "source_path": "investigation/ntt_base_five/h2_from_chunk_swap_integrated_audit.md",
+    "destination_path": "supporting/ntt_base_five/h2_from_chunk_swap_integrated_audit.md",
+    "original_sha256": "C3B288115919BD3A6C2A9FB041C97629282292654AEB6D946031E98B65A1DE95",
+    "edits_scope": "Integrated finite H2 phase/rank derivation.",
+    "staged_sha256": "c3b288115919bd3a6c2a9fb041c97629282292654aeb6d946031e98b65a1de95"
+  },
+  {
+    "source_path": "investigation/ntt_base_five/binary_packed_affine_monomial_routing.md",
+    "destination_path": "supporting/ntt_base_five/binary_packed_affine_monomial_routing.md",
+    "original_sha256": "22F6EC23410C7892F4DDC15B3C956CCDC94042159BD5F9D5BB809059A43E3D80",
+    "edits_scope": "Binary packed affine monomial routing identity.",
+    "staged_sha256": "22f6ec23410c7892f4ddc15b3c956ccdc94042159bd5f9d5bb809059a43e3d80"
+  },
+  {
+    "source_path": "investigation/ntt_base_five/fixed_tape_primitive_reconstruction.md",
+    "destination_path": "supporting/ntt_base_five/fixed_tape_primitive_reconstruction.md",
+    "original_sha256": "67E399FF0DED47D1FA12A50131D7A1E7F189B90687E77C353EF16EB03D211950",
+    "edits_scope": "Fixed-tape primitive reconstruction derivation.",
+    "staged_sha256": "67e399ff0ded47d1fa12a50131d7a1e7f189b90687e77c353ef16eb03d211950"
+  },
+  {
+    "source_path": "investigation/ntt_base_five/chunk_swap_uniform_completion_audit.md",
+    "destination_path": "supporting/ntt_base_five/chunk_swap_uniform_completion_audit.md",
+    "original_sha256": "4D7B2D7B68089015799F5AE03711AE96EAABB22C77DA65334F94BE8BA3047098",
+    "edits_scope": "Uniform equal-chunk interchange completion derivation.",
+    "staged_sha256": "4d7b2d7b68089015799f5ae03711ae96eaabb22c77da65334f94be8ba3047098"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/02-characteristic-two/supplement/proof_map.txt",
+    "destination_path": "supporting/proof_map.txt",
+    "original_sha256": "8720601B7C1AEC50BCEAA968971B2FB0AF8C6A8B87003D6979AC4FB76BA84A6A",
+    "edits_scope": "Focused source/proof dependency map from companion manuscript package.",
+    "staged_sha256": "8720601b7c1aec50bceaa968971b2fb0af8c6a8b87003d6979ac4fb76ba84a6a"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication/papers/02-characteristic-two/supplement/audit_status.txt",
+    "destination_path": "supporting/audit_status.txt",
+    "original_sha256": "8621595899F9D5605B8DE26417FB9E9088301E48CD09CE014F5010B7D2C2CFC1",
+    "edits_scope": "Historical internal audit log; not external review.",
+    "staged_sha256": "8621595899f9d5605b8de26417fb9e9088301e48cd09ce014f5010b7d2c2cfc1"
+  },
+  {
+    "source_path": "investigation/binary_strict_tape_candidate_20261030/BINARY_THEOREM_SCOPE_RECHECK_20261030.txt",
+    "destination_path": "supporting/BINARY_THEOREM_SCOPE_RECHECK_20261030.txt",
+    "original_sha256": "5CFADF922EDD73B75D5F65E9C2405D8FD2791BD1E1F4155304EA67A4A62F4BAA",
+    "edits_scope": "Historical scoped prior-work/source comparison; not a priority determination.",
+    "staged_sha256": "5cfadf922edd73b75d5f65e9c2405d8fd2791bd1e1f4155304ea67a4a62f4baa"
+  },
+  {
+    "source_path": "investigation/STRICT_BINARY_MACHINE_COMPOSITION_ROOT_20261030.txt",
+    "destination_path": "supporting/STRICT_BINARY_MACHINE_COMPOSITION_ROOT_20261030.txt",
+    "original_sha256": "DA9695037EFBDBD4484A53A6E14E42AE076FF9CF740581A9ED6C535204718EEA",
+    "edits_scope": "Detailed machine composition and sequential-cost derivation.",
+    "staged_sha256": "da9695037efbdbd4484a53a6e14e42ae076ff9cf740581a9ed6c535204718eea"
+  },
+  {
+    "source_path": "output/finite-field-polynomial-multiplication-first-release/LICENSE",
+    "destination_path": "LICENSE",
+    "original_sha256": "E03BA41D7FAB20700769FE4118BAB50D800CB74F990353A05D2F5FFF1C228363",
+    "edits_scope": "Apache License 2.0 text for this release package.",
+    "staged_sha256": "e03ba41d7fab20700769fe4118bab50d800cb74f990353a05d2f5fff1c228363"
+  },
+  {
+    "source_path": "New release status written 2026-10-31",
+    "destination_path": "STATUS.md",
+    "original_sha256": null,
+    "edits_scope": "Created release scope, dependency status, verification limits and no-build status. 2026-10-31: clarified that the internal source-inspection pass was AI-assisted; no personal human proof check inferred. Aligned status version with 0.1.0-preprint and clarified open-for-review wording. Privacy/claims review: clarified unfinished Lean plans and open-review status; finite-witness scope made explicit where relevant; theorem bounds unchanged.",
+    "staged_sha256": "a072fbac013abd8d24b65dcfb95d220b9b8599a3435c2cdd1c79e46bcb47d9ad"
+  }
+]

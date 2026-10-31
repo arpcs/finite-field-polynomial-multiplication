@@ -1,0 +1,188 @@
+\section{Finite role and phase certificate}\label{app:roles}
+
+This appendix records the finite network used in the ternary phase construction. It separates three ingredients: an exact scalar bank exchange with dirty scratch, a subspace-label assignment to every wire, and the endpoint correction that makes the induced phase the same on data and scratch. All role counts below count physical wires with multiplicity; equal labels on distinct wires are never identified. The label argument is the finite-dimensional certificate underlying the role recurrence, not by itself a proof of its tape implementation. The scalar schedule and array-frame construction follow Sections~3--4 of \cite{OpenAI26}; their needed algebraic and fixed-tape arguments are given below. The ternary labels, endpoint choices and directional-child counts are explicit.
+
+\subsection{The scalar eight-gate schedule}
+
+Fix an integer $h\ge 6$, and let $\mathcal T=\binom{[h]}{3}$ be the set of triples. Put $v=|\mathcal T|=\binom h3$. Declare distinct $S,T\in\mathcal T$ adjacent when $|S\cap T|=1$. Each $S$ has
+\[
+ z=3\binom{h-3}{2}
+\]
+ordered neighbors: choose the common element in three ways, then choose the two elements of $T$ outside $S$.
+
+An invocation has data banks $x=(x_T)_{T\in\mathcal T}$ and $y=(y_S)_{S\in\mathcal T}$. It also has an arbitrary side-scratch value $a_{S,T}$ for each ordered adjacent pair and an arbitrary central-scratch vector $c=(c_i)_{i\in[h]}$. Define the incidence maps over $\F_2$ by
+\[
+ V_{(S,T),T'}=[T=T'][|S\cap T|=1],\quad
+ J_{S,(S,T)}=[|S\cap T|=1],\quad
+ G_{i,T}=[i\in T],\quad R_{S,i}=[i\in S].
+\]
+Thus $V$ copies the indicated source coordinate to the side role, $J$ gathers side roles to a target, $G$ gathers data to the central roles, and $R$ scatters central values to targets. Execute the following eight updates chronologically; scratch named in an update is read as a control and is not changed by that update:
+\[
+\begin{array}{c|l}
+0&y\leftarrow y-Ja\\
+1&y\leftarrow y-Rc\\
+2&a\leftarrow a+Vx\\
+3&c\leftarrow c+Gx\\
+4&y\leftarrow y+Rc\\
+5&y\leftarrow y+Ja\\
+6&c\leftarrow c-Gx\\
+7&a\leftarrow a-Vx.
+\end{array}
+\]
+If the initial scratch is $(a_0,c_0)$, its final value is again $(a_0,c_0)$. The net target increment is
+\[
+ -Ja_0-Rc_0+R(c_0+Gx)+J(a_0+Vx)=(RG+JV)x.
+\]
+For any $S,T$, $(RG)_{S,T}=|S\cap T|\pmod 2$, while $(JV)_{S,T}$ is one exactly for intersection size one. If $S=T$, the intersection size is three, so $RG=1$ and there is no side role. For distinct triples, intersection sizes are $0,1,2$: at size one both terms are one and cancel, and at sizes zero or two both vanish. Hence $RG+JV=I$. This proves that the invocation performs $y\leftarrow y+x$ for every starting value of every scratch register.
+
+Three disjoint-scratch stages give a bank exchange. Stage one applies the forward schedule from $X$ to $Y$. Stage two applies its exact inverse from $Y$ to $X$, and stage three again applies it from $X$ to $Y$. On arbitrary initial banks the states are
+\[
+ (x,y)\longmapsto(x,y+x)\longmapsto(-y,y+x)\longmapsto(-y,x).
+\]
+Over $\F_2$, minus equals plus, so the final state is $(y,x)$. Every invocation scratch is restored before the next stage, and the stages use distinct scratch roles. Thus the network is an exact permutation of data roles and identity on scratch roles, including when the scratch was dirty initially.
+
+Let $N=v^3$ be the number of paired data coordinates in the three-factor role array and let $I=3v^2$ be the number of invocations in its three stages. Each invocation has $vz$ ordered side roles and $h$ center roles. Including two data banks, the full role count is
+\[
+ W=2N+I(vz+h).
+\]
+This count is used as the arity of the finite role construction.
+
+\subsection{Array frames and a fixed-tape compiler}\label{app:role-compiler}
+
+Replace each scalar role by an array on the same ordered finite address set $\Omega$, and apply the scalar gates pointwise. At each source, gate and sink $v$, assign an invertible $K$-linear operator $D_v$ on $K^\Omega$, with one common operator on all incidences of a gate; here $K=\F_4$, or its fixed extension $\F_{16}$. On each wire edge from $u$ to $v$, implement $D_vD_u^{-1}$. If the supplied physical array at an input is $f$, define its logical value to be $D_{\rm source}^{-1}f$. This defines an invariant and is not a physical preprocessing operation. Along an edge the stored value changes from $D_u g$ to $D_v g$. At a pointwise gate $G$, linearity and the common frame give
+\[
+ G(D_vg_1,\ldots,D_vg_q)=D_vG(g_1,\ldots,g_q).
+\]
+Thus, if the scalar schedule routes role $w$ to $\pi(w)$, the full physical operator on that route is
+\[
+ D_{\rm sink(\pi(w))}D_{\rm source(w)}^{-1}.
+\]
+The identity holds on every data and dirty-scratch role. It also holds for a direct sum over active-mask sectors, since the frame within each sector is linear and each gate combines the same addresses.
+
+Suppose a preceding Cartesian row coordinate has range divisible by $W$. Split rows cyclically as $q=Wg+(w-1)$ onto $W$ role streams; each has the identical full $\Omega$ suffix and exactly $1/W$ of the volume. Execute the framed scalar network on them. At completion, merge output role $\pi(w)$ back into original row $q$, thereby undoing the scalar exchange. The array-frame identity proves the desired endpoint operator independently on every original row. Splits, merges and pointwise gates cost linear time in the current total volume, because their number and scalar degrees are fixed. This construction applies to arbitrary row ranges, not only powers of two.
+
+For completeness, it uses a fixed set of tapes. Reserve the $W$ role tapes, fixed I/O and work tapes, a parking stack, and a descriptor stack. Before visiting a child, append the inactive role streams to the parking stack in a fixed order, put the active stream into child I/O, and push only the parent descriptor and finite program counter. The child reuses the role/work tapes. On return, pop the inactive streams in reverse order, writing each destination from its known right end so its original direction is restored. Erase only the popped interval. Every push, pop, copy, reset and cleanup scan costs $O(V_0)$ at a parent of volume $V_0$; no descendant head crosses a parked ancestor. There are the fixed number $s$ of child calls, each of volume $V_0/W$, so this is an $O(V_0)$ node toll, not an extra factor on the child cost. A row supply divisible by $W^k$ permits exactly $k$ such splits without further padding.
+
+Address-control work is polynomial in the $O(h)$-bit key. Length and volume descriptors may additionally have $O(\log(R+1))$ bits. Their per-node arithmetic costs at most a fixed polynomial in $h+\log(R+1)$, and initializing a record counter costs $O(\log(R+1))$ per record. In the four-block use $R\ge D2^h$ above a fixed threshold, so $h\le\log_2R$ and every such fixed polynomial is $O(R)$. Record copying itself is $O(R)$ by amortized ripple counters, as proved in Lemma~\ref{lem:packed-shear}; no $\log R$ factor is charged per payload bit. These charges fit the current-node volume uniformly in $D$ and at every role depth. Fixed small heights use direct finite circuits. This proves the role-array compiler used in Section~\ref{sec:tensor} without importing a second machine oracle.
+
+\subsection{Factor geometry and gate labels}
+
+For the phase network take $h=100$ and the factor space $F=\F_3^{h+1}$ with symmetric form
+\[
+ \langle(a,r),(b,s)\rangle=-\sum_{i=1}^h a_i b_i+rs.
+\]
+For each triple $S$, let $t_S=(\mathbf 1_S,1)$ and $L_S=\langle t_S\rangle$. Then
+\[
+ \langle t_S,t_S\rangle=-3+1=-2=1\quad\text{in }\F_3,
+ \qquad \langle t_S,t_T\rangle=1-|S\cap T|.
+\]
+Thus each $L_S$ is a nondegenerate unit line, and adjacent triples give orthogonal lines. The form is explicitly isometric to the standard dot product: on each pair of the first $h$ coordinates use $(a,b)\mapsto(2a+2b,2a+b)$ and leave the last coordinate unchanged. Indeed the sum of squares of the two new coordinates is $2a^2+2b^2$, the old paired form. The full-factor phase is therefore the same coordinatewise ternary phase operator on every factor axis.
+
+Here is the label table for one invocation, with a common suffix factor suppressed. At a given stage let $A$ be the prefix factor accumulated so far, let $P$ be its distinguished prefix line, and write $A=B\perp P$ with $B=P^\perp$. For the current triple $t$, abbreviate $L=L_t$ and write $L^\perp$ for its orthogonal complement in $F$. Labels are subspaces; the symbol $\oplus^\perp$ denotes an orthogonal direct sum.
+\[
+\begin{array}{c|c}
+\text{wire role}&\text{label}\\\hline
+ t_0\text{, }Y\text{-side}&B\otimes L\\
+ t_1\text{, }Y\text{-center}&B\otimes F\\
+ t_2\text{, }X\text{-side}&(B\otimes F)\oplus^\perp(P\otimes L)\\
+ t_3\text{, }X\text{-center}&A\otimes F\\
+ t_4\text{, }Y\text{-center}&B\otimes F\\
+ t_5\text{, }Y\text{-side}&(B\otimes F)\oplus^\perp(P\otimes L^\perp)\\
+ t_6\text{, }X\text{-center}&A\otimes F\\
+ t_7\text{, }X\text{-side}&A\otimes F
+\end{array}
+\]
+For an ordered adjacent side role $(S,T)$, the actual successive labels
+are
+\begin{align*}
+ B\otimes L_S
+ &\subseteq (B\otimes F)\oplus^\perp(P\otimes L_T)\\
+ &\subseteq (B\otimes F)\oplus^\perp(P\otimes L_S^\perp)
+ \subseteq A\otimes F.
+\end{align*}
+The middle inclusion is exactly $L_T\subseteq L_S^\perp$ from
+adjacency. All inclusions are orthogonal direct-summand inclusions,
+so the residual form is nondegenerate, not just a dimension count.
+The center sequence is $B\otimes F$, $A\otimes F$,
+$B\otimes F$, $A\otimes F$, giving its one downward transition.
+The data sequences use the corresponding common gate labels in the
+table. Together these describe every side, center and data edge.
+For example, the next prefix complement is
+\[
+ B'=(P\otimes L_t)^\perp=(B\otimes F)\oplus^\perp(P\otimes L_t^\perp),
+\]
+which is exactly the $t_5$ label. These decompositions give a direct-sum proof of each within-invocation and interstage inclusion. In stage two the chronological physical gate order is the inverse forward order with logical source and target exchanged; the physical sequence remains $Y$-side, $Y$-center, $X$-side, $X$-center, $Y$-center, $Y$-side, $X$-center, $X$-side. This is why the labels are assigned to physical $X,Y$ roles throughout, rather than relabeling the banks midway.
+
+The physical endpoint labels must be distinguished from the phase frames. Each exceptional original $X$ input has geometric source label $U$, its triple tensor line of dimension one; every original $Y$ source and every scratch source has label $0$. The scalar network routes original $X$ data to the $Y$ bank and original $Y$ data to the $X$ bank. Thus $X$ sinks have label $F^{\otimes3}$, the routed exceptional $Y$ sinks have label $U^\perp$, and scratch sinks have label $F^{\otimes3}$. The corresponding endpoint frames and routes are:
+\[
+\begin{array}{c|c|c|c|c}
+\text{route}&\text{source label}&\text{source frame}&\text{sink label}&\text{sink frame}\\\hline
+X\text{ data}\to Y&U&C_U^{-1}&U^\perp&C_{U^\perp}\\
+Y\text{ data}\to X&0&I&F^{\otimes3}&C_{F^{\otimes3}}\\
+\text{scratch}\to\text{scratch}&0&I&F^{\otimes3}&C_{F^{\otimes3}}
+\end{array}
+\]
+In particular scratch is not assumed clean: its arbitrary input value is processed, and its full sink contribution is counted. The $C_U^{-1}$ entry is an operator frame and is not a negative subspace label.
+
+The signed endpoint dimension sum is the total sink dimension minus the total source dimension:
+\[
+\bigl(Nm+N(m-1)+(W-2N)m\bigr)-N=(Wm-N)-N=Wm-2N.
+\]
+Here the three sink terms are, respectively, the $X$ bank, the $Y$ bank, and scratch; the only nonzero source-label dimensions are the $N$ exceptional $X$ sources. This explicit route count explains the $-2N$ term without conflating geometric labels and phase matrices.
+
+The dimensional telescope is short enough to state explicitly. Put $d=\dim F=h+1=101$ and $m=d^3=1{,}030{,}301$. A label tensor with factor dimension $a$ has dimension $a d$ at the next factor level. In the table the only downward transitions are the center transitions $t_3\to t_4$, from $A\otimes F$ to $B\otimes F$; each loses $d$ dimensions because $A/B$ has dimension one. There are $h$ center roles per invocation and $I$ invocations, so the total downward loss is
+\[
+ L=Ihd.
+\]
+The signed edge-dimension sum is the sink-minus-source total just computed, $Wm-2N$. An absolute variation sum changes a decrease of size $r$ from signed contribution $-r$ to absolute contribution $+r$, adding $2r$; hence its value is $Wm-2N+2L$. The phase-frame correction on the first edge of each exceptional route contributes one additional rank-one child. The total directional-child count is therefore
+\[
+ s=Wm-2N+2L+N=Wm-N+2L.
+\]
+The $N$-term is an endpoint correction, not a label-dimension drop and not a free frame change.
+
+For $h=100$, the exact values are
+\begin{align*}
+ v&=161700,\qquad z=13968,\\
+ N&=4{,}227{,}952{,}113{,}000{,}000,\qquad I=78{,}440{,}670{,}000,\\
+ W&=177{,}176{,}569{,}091{,}445{,}000{,}000,\\
+ L&=792{,}250{,}767{,}000{,}000.
+\end{align*}
+The saving is certified by exact ratios
+\[
+ \frac WN=41906+\frac1{539},\qquad
+ \frac{N-2L}{N}=\frac{337}{539},\qquad
+ 1-\frac{s}{Wm}=\frac{337}{23271753837835}.
+\]
+Since $m<2^{20}$, we have $\log m<20$ (using $\log 2<1$). The displayed deficit exceeds $20\cdot2^{-50}$, so for $\epsilon=2^{-50}$,
+\[
+ 1-m^{-\epsilon}<\epsilon\log m<20\epsilon<1-\frac{s}{Wm}.
+\]
+It follows that $s/W<m^{1-\epsilon}$. This is the strict finite exponent inequality required by the role recurrence.
+
+\subsection{Phase directions at a growing node}
+
+The label count must be converted into directional children without conflating different norms. Let $K=\F_4=\F_2(\eta)$, where $\eta^2+\eta+1=0$, and take the fixed three-point kernel
+\[
+ C=\begin{pmatrix}1&\eta^2&\eta^2\\\eta^2&1&\eta^2\\\eta^2&\eta^2&1\end{pmatrix},\qquad C^3=I.
+\]
+For a nondegenerate ternary direction $v$, its norm $\nu=v\cdot v$ is either $1$ or $2$. A directional edge also has a sign $\epsilon\in\{1,-1\}$, according to its orientation in the signed frame difference. Its phase parameter is
+\[
+ \lambda=\epsilon/\nu\in\F_3^\times.
+\]
+The corresponding directional operator is
+\[
+ C_{\langle v,\epsilon\rangle}=I+\eta^{-\lambda}(T_v+T_{-v}),
+\]
+where $\eta$ is the chosen primitive cube root in $K$ and $T_v$ translates by $v$. Fourier diagonalization gives the signed phase $\eta^{\epsilon(v\cdot x)^2/\nu}=\eta^{\lambda(v\cdot x)^2}$. Thus the child type is determined by $\lambda$, not by $\nu$ alone: reversing an edge changes $\lambda$ to $-\lambda$ and inverts the phase. The two possible nonzero types are implemented by $C$ and $C^{-1}$. Since $C^3=I$ and coefficientwise $\F_4$ Frobenius conjugates $C$ to $C^{-1}$, this costs one fixed wrapper around one child; it is not an additional recursive child.
+
+At a growing node, write the selected address width as $e=mf$, where $m=d^3$ is the fixed slot width and $f$ counts repeated coordinates. A residual direction from the fixed slot factor is a vector $v_j\in\F_3^m$. Its repeated direction is $v_j\otimes I_f$: the same slot coefficients act on each of the $f$ coordinate axes. The child therefore has width $f$ and applies the kernel specified by $\lambda_j=\epsilon_j/\nu_j$ uniformly to all those axes. A negative edge direction is not identified with a positive one merely because its norm is unchanged. This is one width-$f$ child for the fixed direction $v_j$ and signed edge, not $f$ separate children.
+
+An orthogonal basis of the residual space may contain both signs and both norms. Each signed basis direction is a separate child, already counted in the rank sum $s$ with its edge orientation. Its $\epsilon_j$ and norm $\nu_j$ are fixed across all repeated axes of that child. One must not posit a single global Frobenius wrapper that inverts an arbitrary subset of axes: such a mixed subset need not be one directional child. The valid argument is coordinatewise by the orthogonal basis: for each $j$, use its one width-$f$ child with type $\lambda_j=\epsilon_j/\nu_j$. Thus the signed types affect which fixed wrapper each counted child uses, but do not alter the count or introduce hidden children.
+
+Finally, for each exceptional data route let $U$ be its triple tensor line. The source-frame choice is $C_U^{-1}$, with the other source frames the identity and the prescribed positive phase frames at gates and sinks. Because $U\perp U^\perp$ and $C_U$ has order three, the routed endpoint identity is
+\[
+ C_{U^\perp}(C_U^{-1})^{-1}=C_{U^\perp}C_U=C_{F^{\otimes3}}.
+\]
+At the first $X$ edge, the chosen head frame $C_U$ and source frame $C_U^{-1}$ give edge operator $C_U(C_U^{-1})^{-1}=C_U^2=C_U^{-1}$, a rank-one directional correction. There are exactly $N$ such exceptional data sources, which is the added $N$ in $s=Wm-N+2L$. The ordinary $Y$-source to $X$-sink routes and all scratch routes start with frame $C_0=I$ and end with $C_{F^{\otimes3}}$. Thus every routed path has the required full phase after the correction, while the geometric sink label on the exceptional $Y$ endpoint remains $U^\perp$. Scratch values remain arbitrary throughout; the endpoint statement is an operator identity on the entire role space.
+
+The scalar schedule, direct-sum labels, dimensional telescope, and source correction together provide the finite certificate used at every growing node. The asymptotic tape cost still depends on the separately stated fixed-tape interchange/router implementation and the recurrence that consumes the strict inequality; this appendix does not replace those machine-level arguments.

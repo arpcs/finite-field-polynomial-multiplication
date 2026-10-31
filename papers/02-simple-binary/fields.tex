@@ -1,0 +1,102 @@
+\section{Explicit fields and arbitrary prefix flags}\label{sec:fields}
+
+For $K\geq2$, let $A$ be the largest power of three strictly smaller
+than $K$, so $A<K\leq3A$, and put
+\begin{equation}\label{eq:fields}
+ \begin{gathered}
+ b=4^K,\qquad
+ B=\F_2[Z]/\Phi_{9A}(Z),\quad w=6A,\qquad
+ \\
+ E=\F_2[Y]/\Phi_{27A}(Y),\quad D=18A,
+ \qquad Z=Y^3.
+ \end{gathered}
+\end{equation}
+Here and below $\Phi$ is a cyclotomic polynomial, reduced modulo two.
+The fields are given in their native monomial bases.
+
+\begin{lemma}\label{lem:fields}
+If $m$ is a power of three, then
+$\Phi_{3m}(T)=T^{2m}+T^m+1$ is irreducible over $\F_2$.
+The chart in \eqref{eq:fields} is an explicit degree-three extension
+$E/B$. With $\eta=Y^{9A}$, its relative Frobenius sends
+$Y$ to $\eta Y$, where $\eta^2+\eta+1=0$.
+\end{lemma}
+\begin{proof}
+The order of $2$ modulo $3^{j+1}$ is $2\cdot3^j$.
+For example, $v_3(4^{3^j}-1)=j+1$, proved inductively by expanding
+$(1+3^{j+1}c)^3$, proves the order assertion. Thus the order equals
+$\varphi(3m)=2m$, which proves the cyclotomic irreducibility.
+Substitution gives $\Phi_{27A}(Y)=\Phi_{9A}(Y^3)$.
+The identity $4^{3A}\equiv1+9A\pmod{27A}$ gives the displayed
+relative Frobenius. In particular $1,\eta,\eta^2$ are the
+specified four-element subfield, with $\eta^2=1+\eta$.
+\end{proof}
+
+Write $Q=4^a$ for a power of three $a$, and let $u$ be the native
+root of order $9a$ in $\F_{Q^3}$. Then
+\[
+ \F_{Q^3}=\F_Q\oplus u\F_Q\oplus u^2\F_Q,
+ \qquad u^Q=\eta u.
+\]
+Starting from the basis $(1)$ over $\F_4$, recursively order each
+cubic extension basis in three consecutive blocks:
+\[
+ (\psi_i)_i,\qquad (u\psi_i)_i,\qquad (u^2\psi_i)_i.
+\]
+Explicitly, let $\mathcal E_1=(0)$ and define ordered exponent lists by
+\[
+ \mathcal E_{3a}=(3\mathcal E_a,\ 3\mathcal E_a+1,\ 3\mathcal E_a+2).
+\]
+The lower native root is $u^3$, so the first block $u^{3e}$ is
+exactly the previously defined lower-field basis, followed by its
+$u$ and $u^2$ multiples. These are ternary digit-reversed native
+powers. In the fixed ambient chart the node root is explicitly
+$u=Y^{3A/a}$, so $u^{3a}=\eta$ at every node. The recursive order
+is therefore consistent under the actual native field inclusions.
+Let $W_k$ be
+the initial $k$-dimensional $\F_4$ subspace in the smallest such field
+containing it. In particular $W_K\subseteq B$ and $1\in W_K$.
+
+For a node $k>1$, take the largest power of three $a<k$ and define
+\begin{equation}\label{eq:split}
+ (m,r,l)=
+ \begin{cases}
+ (a,k-a,1),& k\leq2a,\\
+ (2a,k-2a,2),& 2a<k\leq3a.
+ \end{cases}
+ \qquad M=4^m,\quad \ell=4^r.
+\end{equation}
+Thus $1\leq r\leq a$ and $m\geq k/2$. No prefix is padded to the
+next full field dimension.
+
+\begin{lemma}[Sparse low-prefix annihilators]\label{lem:annihilator}
+For $Q=4^a$, the annihilator of $W_m$ and the upper image scale are
+\[
+ \begin{array}{ll}
+ P_1(X)=X^Q+X,&c_1=P_1(u)=\eta^2u,\\[2pt]
+ P_2(X)=X^{Q^2}+\eta^2X^Q+\eta X,
+       &c_2=P_2(u^2)=\eta u^2.
+ \end{array}
+\]
+For the split \eqref{eq:split},
+$W_k=W_m\oplus u^lW_r$ and $P_l(x+u^lv)=c_lv$ for
+$x\in W_m$, $v\in W_r$.
+\end{lemma}
+\begin{proof}
+$W_a=\F_Q$ and $W_{2a}=\F_Q\oplus u\F_Q$ by the recursive
+basis order. The displayed polynomials vanish on these spaces: use
+$u^Q=\eta u$ and $u^{Q^2}=\eta^2u$. They are monic and have the
+correct degree and nonzero derivative, so these are all their roots.
+Every $v\in W_r$ belongs to $\F_Q$, and $Q$-powering fixes $v$.
+Consequently $P_l(u^lv)=P_l(u^l)v=c_lv$. Linearity proves the rest.
+\end{proof}
+
+The coefficients transformed recursively are arbitrary elements of
+the same ambient $E$, of binary width $D$, throughout. The flag
+describes evaluation points, not a promise that data lie in a smaller
+coefficient field. The bounded case $k=1$ is the four-point
+$\F_4$ Vandermonde map, with fixed scalar matrices on native words.
+Its constants are $0,1,\eta,\eta^2$; native root shifts and XORs
+implement each in $O(D)$ time. This base is uniform in arbitrarily
+large ambient width $D$.
+

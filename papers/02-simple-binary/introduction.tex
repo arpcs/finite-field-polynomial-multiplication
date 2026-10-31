@@ -1,0 +1,37 @@
+\section{Introduction}
+
+Let $F,G\in\F_2[X]$ have degree less than $n$. Their product has at most $2n-1$ binary coefficients, so the input and output have total size $\Theta(n)$. We study the bit complexity of computing this product on a deterministic multitape Turing machine with a fixed finite alphabet and a fixed finite number of one-dimensional tapes. Every tape scan, data rearrangement, setup operation, and output step is included in the time bound. The target is an exact algorithm, uniform over all input lengths.
+
+For fixed prime fields, our unconditional comparison is Harvey and van der Hoeven's cyclotomic-coefficient-ring algorithm. For each fixed prime $p$, it multiplies degree-$<n$ polynomials in $\F_p[X]$ using $O(n\log n\,4^{\logstar n})$ bit operations on a deterministic multitape Turing machine \cite{HVH19Cyclo}. In particular, this applies to $p=2$. The bound obtained here from the cited tape-interchange theorem removes that unbounded iterated-logarithmic factor for this fixed field. For fixed $p$, an earlier result of Harvey, van der Hoeven, and Lecerf gives $O_p(n\log n\,8^{\logstar n})$ bit operations \cite{HVHL17}; for fixed $p$, the 2019 theorem is the sharper comparison.
+
+There is also a conditional finite-field theorem. Harvey and van der Hoeven prove, uniformly over finite fields of size $q$, a bit bound $M_q(n)=O(n\log q\log(n\log q))$ under the hypothesis that a Linnik constant exists with $L<1+2^{-1162}$ \cite[Theorem 1.2]{HVH22Finite}. This result does not supply the unconditional fixed-$\F_2$ bound considered here. Separately, Harvey and van der Hoeven prove unconditional $O(n\log n)$ bit complexity for integer multiplication in the multitape Turing model \cite{HVH21Integer}; integer multiplication is not itself the finite-field polynomial problem. The September 2026 OpenAI preprint claims a faster exact integer multiplier in a fixed finite-tape model, and proves, among other tools, an equal-chunk interchange bound in its Lemma 12 \cite[Lemma 12, Section 4]{OpenAI26}. We use that lemma only as a machine-level interchange dependency. The preprint does not state the finite-$\F_2$ polynomial multiplication theorem of this paper.
+
+Harvey's October 2026 discussion also singles out fixed-field polynomial multiplication as a separate problem from the new integer claims \cite[Section 4]{Harvey26Context}. We use that discussion to locate the problem, without suggesting endorsement or verification of this manuscript.
+
+The earlier work established the arithmetic, evaluation and bit-cost
+framework for the present question. Reaching $n\log n$ without the
+number-theoretic assumption in the fixed-field case is the baseline
+advance claimed here. We pursue it by adapting the recent finite-network
+tape method to explicit binary evaluation and reconstruction.
+The prior uniform-field and lookup-table results retain their own
+broader scopes or different access models; the comparison here concerns
+ordinary binary multiplication on fixed sequential tapes.
+
+The proof strategy has two logically distinct parts. First, we give an explicit reduction from polynomial multiplication to a uniform fast binary tensor action. The algebraic part builds a tower of ternary cyclotomic fields and uses arbitrary prefixes of an $\F_4$-linear flag. Sparse polynomial-radix extraction is expressed through Pascal transforms; sibling-coset evaluation shares its Taylor stages. Local scalar operations are charged in the child field, while coefficient words retain their full ambient width. The product is reconstructed from one affine evaluation grid and its field conjugates using an explicit residue pairing. The proof also constructs the ordinary binary transpose of the fixed-operand map directly, with its own cost accounting.
+
+Second, we derive the needed tensor action from a finite construction: an exact ternary phase network, a fixed word over $\F_{16}$, and a router with opaque payloads and dirty selectors. The sole external machine theorem is the equal-chunk interchange result just described. The scalar bank exchange and array-frame compiler used in the local adaptation are proved in Appendix~\ref{app:roles}, with their source attribution retained. The reduction and the tensor theorem are stated separately: the reduction needs any uniform strict saving in tensor height, whereas the tensor proof supplies such a saving and accounts for finite words, routing, arbitrary payload, and fixed tapes.
+
+Evaluation on additive subspaces has a substantial history, including
+Cantor's constructions~\cite{Cantor89} and Gao--Mateer's
+Taylor-expansion-based additive FFTs~\cite{GaoMateer10}. Liu's
+generalization gives an $O(n\log n(\log\log n)^2)$ binary
+polynomial bound~\cite{Liu25}; this is relevant related work, although
+the 2019 cyclotomic bound is asymptotically sharper.
+Evaluation and interpolation on structured sets, and their
+interpretation as basis conversions, are classical topics; see also
+Bostan and Schost~\cite{BostanSchost05}. The present issue is the complete bit cost of the particular prefix conversions, their scalar actions and their tape layouts.
+
+Sub-$N\log N$ bit bounds for binary tensor transforms also have prior art. Alman~\cite[Section~1.1, Section~1.2 and footnote~4]{Alman23} gives $O(N\log N/\log\log N)$ bit operations for fixed-matrix Kronecker powers in a RAM model with lookup tables; the paper explicitly includes the kernel $H_2=\left(\begin{smallmatrix}1&1\\1&0\end{smallmatrix}\right)$. This supplies an important comparison, but does not state the fixed-tape, arbitrary-payload contract used here. Our target is a fixed exponent $\beta<1$ in $O(N(\log N)^\beta)$ with movement and cleanup included. The fixed-power saving matters to the evaluator recurrence: a toll $k/\log k$ in its balanced version sums to $\Theta(k\log\log k)$, whereas a toll $k^\beta$ sums to $O(k)$.\footnote{For $k=2^a$, the nonbase levels of the balanced tree contribute $k\sum_{j=1}^a 1/j$ to a $k/\log_2 k$ toll. This observation concerns that recurrence, and does not rule out other uses or refinements of lookup-table algorithms.} We make no claim of the first sub-$N\log N$ binary tensor algorithm.
+
+The bounded C++ witnesses accompanying the manuscript check finite instances of the evaluation, product, decoder, and adjoint identities. They do not implement the asymptotically fast tensor machine; the running-time bound rests on the uniform proof. No practical-speed or priority claim is made. The following sections specify the machine model, define the field and flag coordinates, prove the radix and evaluation identities, construct the decoder and adjoints, and then prove the tensor theorem and describe the finite witnesses.
+

@@ -1,0 +1,42 @@
+Polynomial multiplication over fixed finite fields
+Research preprints by Árpád Csizmadia
+Public contact: arpad.csizmadia.public@gmail.com
+
+Original project contributions in this release are provided under the
+Apache License, Version 2.0, except material identified under its own terms.
+The license grant covers only rights the relevant contributors can grant.
+It does not replace third-party copyright, license or attribution notices.
+
+The manuscripts adapt and cite prior finite-field, Fourier, tensor and
+interchange work, including the OpenAI math preprints, the Harvey–van der
+Hoeven finite-field constructions, and named community/Lean machinery.
+Detailed references and exact dependency pins are retained in the papers
+and docs/THIRD_PARTY_NOTICES.md. Citing a theorem does not import its entire
+repository or claim its authors' endorsement of this work.
+
+The fixed finite-unit bundle under papers/01-general/proofs/finite-unit/
+contains exact CrocSwap mathematical inputs from commit
+2485805a6d47f36ea83ddde6327d453ac82d44dc. The selected native word and profile
+are from research/p104-helper470-twin-rung-removal; the p16 controller is from
+research/joint-helper-lattice. Credit Cinna Davis's productive-controller
+lineage, Ali Romman's forward wrapper and verifier lineage, DreamingOfClouds'
+helper-470 edit, and the preceding contributors retained in the upstream
+notes. Their stated OpenAI Codex and Claude Code/Claude Opus 5.5 assistance
+is retained. The full upstream NOTICE, Apache-2.0 license and source-specific
+README credits accompany those inputs. ARTIFACTS.json identifies exact bytes,
+immutable paths and the limited publication edits to this project's checkers.
+
+verification/finite-unit-replay.json and verification/finite-unit/ record a
+fresh bounded replay of fixed scalar, Laurent-controller, geometry and
+invoice/moment checks. Historical expected reports remain separately labeled.
+This finite replay does not certify the full asymptotic algorithm, replace
+the written proof, or represent independent human or Lean verification.
+
+Substantial generative AI assistance was used. Full Lean verification is
+unfinished. The selected written arguments are open for mathematical review;
+no independent proof certification or race acceptance is claimed.
+
+This is a focused first-release source and evidence selection. Only the
+explicitly included historical records are part of this repository; the
+broader private research workspace is omitted.
+Source and copy hashes describe provenance, not proof correctness or novelty.

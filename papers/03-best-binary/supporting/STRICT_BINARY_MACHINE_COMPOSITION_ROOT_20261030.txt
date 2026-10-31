@@ -1,0 +1,692 @@
+EXPLICIT MACHINE COMPOSITION FOR THE CONTROLLED-CRT CONSTRUCTION
+==============================================================
+30 October 2026. Root derivation. This discharges the five interface
+obligations in STRICT_BINARY_WHOLE_ADVERSARY_20261030.txt. It is part of
+the construction, not a claim of external verification. The detailed
+SWAP, canonical-H, exact-width-local and ragged-network proofs remain
+dependencies with their own explicit constructions and audits.
+
+Conventions
+-----------
+All logarithms in bounds here are binary, rounded up when used as integer
+parameters. Fix a finite alphabet, fixed tape families, and ordinary
+binary shape descriptors. A stream boundary means a complete array in
+lexicographic order on its CURRENT named coordinates. An address is its
+position, not a key carried permanently with each payload record.
+Scratch used in a recursive family is restored by that family's call
+protocol, and no caller reads its payload while a callee is active.
+
+I. Freeze a polynomial before enlarging the word
+----------------------------------------------
+The generic controlled compiler explicitly retains a per-current-record
+coefficient-generation bound G(R,L), including address/gauge, all target
+settings, cleanup and returns. Its cost is
+O((MD L^gamma+M G(R,L)) polylog L). The usual kernel tariff needs
+G=O(D); an arbitrary polynomial degree is not paid by Q^64 automatically.
+The concrete CRT generator below has degree12, so the frozen exponent64
+is sufficient for this application. Current full derivation:
+binary_strict_tape_candidate_20261030/
+RAGGED_PARTITION_AND_CONTROLLED_METADATA_ROOT_20261030.txt.
+
+Let R bound every native radix and let L bound the total native address
+width and number of axes. Set Q=R+L+2. Use the following deliberately
+inefficient but concrete coefficient generator for CRT routing.
+
+1. Decode a scanned flat L-bit address by schoolbook division into its
+   native digits. Decode each control gauge by at most ceil(log R)
+   applications of the formulas
+     S_n(x)=2(x mod(n/2))+floor(x/(n/2)),
+     S_n^-1(x)=floor(x/2)+(n/2)(x mod2).
+   Thus no modular inverse oracle or table indexed in unit time is used.
+2. For each target axis, inspect its node's left controls. If a dummy is
+   present, use the identity. Otherwise compute x_A by the CRT sum
+     x_A = sum_j c_j (P_A/p_j) ((P_A/p_j)^-1 mod p_j) mod P_A.
+   The products and inverses involving only node primes are public
+   setup. Each variable CRT sum and modular affine table is produced
+   with schoolbook integer arithmetic on O(L)-bit words. Generate all
+   n_i values of the requested affine permutation, fixing its dummy.
+   To generate an inverse, scan the forward table for each image value.
+3. For an n-wire table, store records (packet,input pair,output pair,
+   color,visited). The total list at one level has O(n) entries. For
+   each as-yet-unvisited edge, find its next incident edge by scanning
+   the list. Follow the cycle/path, marking by rewriting the list.
+   A path starts at the singleton, with its forced endpoint color;
+   a cycle starts at its least unvisited edge with color zero.
+   Obtain E_in,E_out and the next child table by sequential full-list
+   lookup for each of the n packets. Store the ragged interval list
+   in [all even fragments][all odd fragments] order. Repeat at most
+   ceil(log n) levels; completed singleton levels have no switches.
+   For each setwise-invariant parent[a,b), fragments are exactly
+   [ceil(a/2),ceil(b/2)) and
+   [n/2+floor(a/2),n/2+floor(b/2)).
+   They partition the same n-wire set in those two ordered halves.
+   Topology is independent of the permutation and control tuple; only
+   switch colors depend on it. Recurse once on the whole residual
+   table/updated partition, keeping the same global shuffle at every level.
+4. Select the requested level, sublayer, pair and endpoint by full
+   sequential scans of these lists. Read its fixed eight-H/F4 table.
+   Multiply the at-most-L target factors in F4. Output that ONE scalar
+   coefficient and erase/reuse the local variable tables.
+
+Here is an intentionally loose finite-tape bound, to fix the degree
+rather than hide it in an unspecified polynomial. At most Q axes and Q
+levels are visited. All the route records for one control tuple occupy
+O(Q^5) bits: at most Q axes times Q levels times Q packets, with at most
+O(Q^2) bits per overallocated record. Even allowing Q^6 elementary
+list lookups/updates across these loops, replacing each by an entire
+O(Q^5)-bit scan costs O(Q^11). Schoolbook arithmetic, address parsing,
+CRT sums, table inversions and archive selection are bounded by O(Q^12)
+with these same overallocations. Rewinds and erasures multiply this by
+a fixed constant. The algorithm never enumerates control tuples, only
+the one tuple decoded from the current record address.
+
+Fix ONCE
+     P1(R,L)=(R+L+2)^64.
+For all sufficiently large Q this dominates the fixed constant times
+Q^12 just derived, plus the address-counter, copying, gauge and scalar
+selection costs. The bounded remaining Q range has a fixed finite direct
+branch. Neither the exponent 64 nor the generator changes with N, tree
+depth, control tuple, or payload. The table size can also be bounded by
+P1. This is a computable uniform choice, not growing advice.
+
+For each scanned record, park its D bits once on a local tape, compute
+the coefficient on disjoint metadata tapes, apply its fixed F4 binary
+map in a linear pass, and erase/rewind the parked interval. The cost is
+O(D+P1). Under D>=P1 it is O(D). The main payload head waits at this
+record boundary during metadata generation; it does not rewind the
+whole array. Advancing the public address counter and copying it into
+the generator is included in P1. Thus a scalar stage costs O(MD), with
+no uncharged RAM access and no all-control table of size M*P1.
+
+This P1 is for controlled CRT ROUTING, not for every small algebraic
+setup routine. Fourier scalar constants may cost polynomial(D,R,L) to
+prepare once; per-record multiplication by such a scalar is separately
+charged as M_old(D), as in section V.
+
+II. Width and native-shape compatibility
+---------------------------------------
+The host is constructed from the ordinary input length; it is not advice.
+If needed, count/copy the end-marked coefficient lists in O(n) time.
+At fixed p=2, apply HvdH Proposition3.4 to target2n, obtaining
+2n<N<4n, its ordered prime tuple and attached lambda data in
+2^O((loglog n)^2) bit time. Proposition3.8 supplies alpha, Phi_alpha
+and principalK=N/q0 root rho in2^O((loglog N)^4) bit time.
+Both are N^o(1) on the source's fixed-finite-tape model. Main now
+states this imported initialization as a separate lemma.
+
+Factor and root certificates can be checked in the same budget:
+trial-divide the factors<=R0, verify their productN, and use
+rho^K=1 and gcd(rho^(K/q_i)-1,Phi_alpha)=1 for all known q_i|K.
+Squarefreeness makes the gcd condition enforce exact orderK in EVERY
+field component, hence principal character sums. Polynomial(alpha,R0,L0)
+schoolbook setup suffices; no new full multiplier is used. All emitted
+objects are ordinary binary words on fixed tapes. The bounded initial
+input range uses the direct branch. This initial setup is included
+in the N^o(1) term separately from later word enlargement/tables.
+
+Let N be the unconditional 2-admissible length, and L0=ceil(log N).
+Let ell=ceil(log L0), choose the computable upper bound R0=2^(ell^2),
+and R=R0+1. The original remaining primes satisfy
+     L0^3 < p_i <= R0.
+The author's selected alpha has at most O(ell^2) prime factors, so
+     log alpha=O(ell^4),
+     -log(phi(alpha)/alpha)=O(ell^2/L0^3).
+These are properties of its actual construction, stronger than just
+phi(alpha)/alpha>1-1/L0. Only the stronger estimate justifies preserving
+the density after adding factors.
+
+Use the uniform address bound L0+2 in P1, before choosing extra factors.
+Append unused prime factors of N to alpha until
+     D'=phi(alpha') >= (R0+L0+5)^64.
+Let J=alpha'/alpha. Each new factor multiplies D by p-1>L0^2 for large
+L0. The number added is at most
+     1+ceil(64 log(R0+L0+5)/(2 log L0)) = O(ell).
+Choose factors in their given deterministic order, and stop at the first
+crossing. There are enough: log alpha'=O(ell^4) whereas log N~L0 and
+each unused prime has log p<=ell^2. The previous factor count excludes
+only O(ell^2) primes, while N has at least L0/ell^2 of them.
+
+The first-crossing rule gives D'<(R0-1)*(R0+L0+5)^64 unless D already
+exceeded the threshold. Consequently log D'=O(ell^4), including that
+initial-D case. Furthermore
+     -log(phi(alpha')/alpha')=O((ell^2+ell)/L0^3),
+so phi(alpha')/alpha'>1-1/L0 for sufficiently large L0. Put m'=N/alpha'.
+Then m'D'=N phi(alpha')/alpha'=Theta(N).
+
+Root lift is an actual quotient homomorphism. With old variable Y and
+new variable U, send Y to U^J modulo Phi_alpha'(U). Since alpha,J are
+coprime and squarefree, a primitive alpha'-root raised to J has order
+alpha; hence Phi_alpha' divides Phi_alpha(U^J) in F2[U]. Unital ring
+homomorphisms preserve the old root's character-sum identities. If w
+is the image of an old principal m-th root (m=N/alpha), w^J is principal
+of order m'=m/J: an m-th character sum for exponent Jj is J times the
+m'-th character sum, and J is odd, hence a unit in characteristic two.
+The source gives rho of principal order K=N/q0, where the distinguished
+prime q0 divides alpha. The old m-root is exactly rho^(alpha/q0),
+since m=K/(alpha/q0); no principal N-root is assumed.
+All constants are prepared once in
+polynomial(alpha',R0,L0)=2^O(ell^4)=N^o(1) bit time.
+
+Pad each remaining p_i to n_i=p_i+1. With M=product n_i,
+     M/m'=product(1+1/p_i)<=exp(t/L0^3)=1+O(L0^-2).
+Since alpha'>=D'>L0^64, 2M<N for large L0, so
+     L=ceil(log(2M))<=L0.
+Thus the canonical/native hypotheses L^3<=n_i<=R and D'>=P1(R,L)
+hold simultaneously. Also L=L0-O(ell^4)=Theta(L0), log R=O(ell^2).
+This checks the rounded-width hypothesis instead of identifying two
+slightly different logarithms without an inequality.
+
+III. Stream order and controlled coefficients at EVERY outer boundary
+----------------------------------------------------------------------
+Fix a target set T and control set C for one CRT tree level. At entry,
+position x=(x_i) has an ordinary D'-bit payload in native lexicographic
+order. Let e be the signed count of completed full forward minus inverse
+shuffle slots. It is a public scalar, initially zero. At each completed
+outer slot the stream is again native lexicographic order, and a stored
+record at address x occupies THAT address; no hidden old key determines
+its scalar coefficient.
+
+For a fixed original logical control c, the invariant subspace is
+supported at the CURRENT physical control address q_e(c)=S_C^e(c).
+Within that fiber, the target coordinates have undergone precisely the
+prefix of their ragged-network word generated for pi_i(c). This is an
+invariant for arbitrary payloads, by linearity, not just packet labels.
+
+At a scalar slot reset a native lexicographic address counter, decode
+the CURRENT x, and recover c=S_C^-e(x_C). Generate the target word's
+coefficient from c, the current target pair labels and the public slot
+number. Apply it to the record at that same x. Therefore the scalar
+list is recomputed in its actual post-shuffle order, not transported as
+an assumed aligned old list. Section I pays its generation in full.
+
+Each completed K_T=H_T tensor I_C preserves every physical control
+coordinate. Its eight inner all-axis H calls use STATIC diagonals
+depending only on T and local endpoints. Outer controlled scalars are
+never read inside that implementation. This establishes the invariant
+at the next scalar boundary even though C may move inside K_T.
+
+At every odd-start sublayer translate ALL axes in the fixed target set T,
+independently of c and switch settings. Use K_i(c)=I on idle axes/fibers;
+their conjugating translations cancel. Thus the flat offset and product
+source mask are c-independent. During the flat approximation, bad
+records can temporarily carry into C; finish the exact sparse repair
+BEFORE decoding any c-dependent setting. Completed translations preserve
+x_C. For
+a full S^epsilon slot, target wiring advances by that exact permutation
+and physical C moves from q_e(c) to q_(e+epsilon)(c). Update e accordingly.
+This proves the invariant inductively across every outer slot, including
+interleaved target/control axes. On unwind e returns to zero. The result
+is exactly the controlled tensor and C is restored on arbitrary inputs.
+
+IV. Finite tape families, scratch lifetimes and crop rules
+---------------------------------------------------------
+Sparse correction has an explicit key/movement contract. If P=T on
+good sources G, then H=P(B)=T(B) for B=complement(G). At bad output
+y in H the destination key is T(P^-1(y)); sort those keys and refill
+H in increasing order. The sorted destinations ARE the hole list, so
+there is no full-key comparison at every good record. Fixed-tape stable
+binary radix passes, with staging and zero/one bucket concatenation,
+cost O(K b(D+b)) for K bad records and b-bit keys. Add O(K C_addr)
+key computation and O(MD) marking/refill. This is correction overhead,
+not a linear-cost assertion for the underlying P.
+
+Flat selective shifts use C_addr=O(L^2), K<=M/L^2 and a rotated
+product mask to mark H, giving O(V) even D=1. Native weighted XORs
+use quotient invariance H=B, direct output marking and the already
+retained R_op>=L^64 to pay polynomial metadata. Their tile repair
+belongs after one complete eight-update XOR. Its bad marker is
+valid_X AND valid_W AND [some quotient margin fails]. Both private
+binary bank tails are fixed agreement states, not bad records. Keep
+them through repair, use destination ordinals in that same padded
+layout, refill only the marked native bad slots, then crop the tails.
+The padding factor is below four, but K<=delta M_native before it.
+Validity follows the logical target into the dock, not its old slot.
+Full proof:
+binary_strict_tape_candidate_20261030/
+NATIVE_PRIVATE_PAD_AND_EXCEPTION_UNIVERSE_ROOT_20261030.txt.
+Prefix repair belongs
+after a COMPLETE logical selected-rank route, with source conditioning
+and Q/Z restored; only this whole route agrees on good prefixes.
+Neither an inner CNOT nor a prefix-truncated raw T_Z is such an owner.
+Top digit-group placements retain their full-h ROOT charge. Full proof:
+binary_strict_tape_candidate_20261030/
+SPARSE_CORRECTION_AND_REPAIR_OWNERSHIP_ROOT_20261030.txt.
+
+The calling DAG has only the following distinct families; recursive
+depth changes their stack lengths, never the tape count.
+
+  host I/O and retained input/product streams;
+  classical integer SS and carry-free binary-word arithmetic;
+  coefficient CRT/ring arithmetic and its public constant archive;
+  tree/route metadata generator and one-record scalar parking;
+  tensor-permutation coordinator and sparse-wrap radix sorting;
+  native endpoint/H2 role recursion with its role and descriptor stacks;
+  weighted tile/rectangle coordinator;
+  equal-chunk SWAP recursion with its fixed role and descriptor stacks.
+
+Give these eight families disjoint fixed tape sets. Within one family
+reuse its work tapes and park only the CURRENT caller state on that
+family's stack. The SWAP proof explicitly restores its work heads and
+cleans only visited intervals; its descendants never traverse parked
+ancestors. The H2 role protocol has the same current-parent rule with
+its own stacks. A tile invocation can call SWAP, but not H2; an H2
+invocation can call a tile, but never the CRT coordinator. The metadata
+generator uses ordinary sequential integer/table algorithms, not the
+new full-array multiplier. The small SS machine is independent.
+Thus no recursive cross-family cycle retains unbounded tape families.
+Their total is one fixed finite number, however large the finite motif.
+
+The top coordinators call child slots sequentially, with no live scan
+head that must be advanced across the outer array at each inner step.
+A nested SWAP or H2 call receives the actual array and an ordinary
+descriptor; its O(V f(L)) cost already includes passing/restoring it.
+The coordinator's work per boundary is a fixed number of O(V) scans
+or polynomial-size metadata operations. Outer input streams can remain
+parked untouched; they are read when that input's transform is called,
+not on each descendant slot. Sum slot costs, not a free circuit-gate
+cost and not an additional uncounted ancestor scan.
+
+Padding/cropping has the following strict lifetimes.
+
+(a) Product grid: insert n_i=p_i+1 dummies in one nested lex scan. Keep
+    the SAME full grid throughout CRT routing and the local Fourier
+    tensor. At a completed routing permutation every dummy-pattern
+    class is preserved. At a completed local axis transform the map is
+    F_pi direct-sum I_dummy. Its tensor preserves the valid embedded
+    grid and each exact per-axis dummy-pattern subspace. It need not
+    fix every full address having a dummy, since other axes transform.
+    The zero-filled dummy complement stays zero under completed
+    routing/Fourier operations and pointwise products. Crop only after the
+    complete transform and inverse routing, or retain the grid across
+    both. Never crop at an intermediate H or scalar letter.
+(b) External constant-field lanes: one F4 extension of coefficient words
+    is retained for a complete local Fourier tensor. Its completed
+    matrix has entries in S=F2[U]/Phi_alpha', so inputs in S return to S.
+    Project the auxiliary F4 lane only then. Controlled routing's own
+    F4 lanes can be cropped only after its completed binary permutation.
+(c) Canonical H's suffix numeric pad survives its COMPLETE binary H
+    block. Its F16 internals can mix bundled low suffix index bits, so
+    neither an internal scalar nor one nonbinary A letter permits crop.
+    The chosen native implementation retains its ONE numeric role-row
+    pad through the complete fixed H word, including all phase and
+    monomial letters. Its root contracts are in
+    binary_strict_tape_candidate_20261030/RECURSION_ENTRY_CONTRACTS_ROOT_20261030.txt.
+    At the completed binary boundary crop the numeric row and codec
+    BEFORE undoing the borrowed role-bit moves, then crop the suffix.
+    Private numeric tile-prefix pads survive a completed tile mask
+    INCLUDING its exact sparse repair. Its marker excludes those
+    pointwise fixed tails, and keys/refill share the padded layout.
+    Crop them only after exact repair and dirty-dock return. A caller's
+    Fourier dummy p_i inside n_i=p_i+1 remains native-valid throughout;
+    it is not one of these private tails.
+(d) Rectangle pads survive the complete rectangle exchange, which maps
+    the nested valid rectangle to the nested transposed valid rectangle.
+    SWAP's q-radix numerical and independent row pads are outside its
+    complete core and piece loop, respectively. They are cropped before
+    that primitive returns. Thus constants from private pads affect
+    local running-time constants, not recursive child mass.
+
+V. Ordinary input/output, both coefficient-ring components and costs
+------------------------------------------------------------------
+Input: two ordinary dense lists a_0,...,a_(n-1), b_0,...,b_(n-1).
+Choose the 2-admissible N>2n-2 with N=Theta(n) and its certified factors
+by the unconditional author algorithm. Finite small n use schoolbook.
+Zero-fill both lists to N and regard them in F2[X]/(X^N-1).
+
+Use the exact Agarwal--Cooley map from the source's Lemma 2.2:
+     X -> Y^c Z,
+     c=(m')^-1 mod alpha',
+to F2[Y,Z]/(Y^alpha'-1,Z^m'-1), in the ordinary coefficient order
+[Z index][Y index]. This is a ring isomorphism, not a claim that its
+exact convention is X->YZ. Transpose an [alpha'][m'] rectangle, then
+cyclically shift the alpha'-entry row at Z=j by jc mod alpha'. The
+transpose costs O(N log alpha'), the row shifts O(N), and schoolbook
+offset preparation costs polynomial(log N) per row, absorbed here by
+alpha'>=D'>=(R0+L0+5)^64. The inverse reverses these actual steps.
+Ordinary classical rectangle transposition suffices because
+log alpha'=O(ell^4); no new CRT grid compiler is assumed in this map.
+
+Let f=Phi_alpha', psi=(Y^alpha'-1)/f, d=deg psi. Because alpha' is odd,
+f and psi are coprime. Public extended Euclid gives u f+v psi=1.
+For every Z coefficient project modulo f and psi using fixed-modulus
+word arithmetic. Here the dividend width is alpha' even if d is tiny.
+For a monic degree-d0 modulus and r-bit input, k=r-d0>0, prepare
+h=(X^d0 f0(X^-1))^-1 modX^k once. Reverse the input at widthr,
+multiply/truncate moduloX^k, reverse this quotient at widthk, and
+subtract q*f0. Both product inputs have length<=r and all scans cost
+O(r), so remainder costs O(M_old(r)); r=d0 is already reduced.
+This general lemma is included in local_appendix.tex. The older
+degree<=2d0-2 formula alone would not justify long input modulo psi.
+Prepare deg u<d, deg v<D', so both idempotents e_f=vpsi, e_psi=uf
+have degree<alpha'. Reconstruct by
+     A = (A_f v psi + A_psi u f) mod (Y^alpha'-1).
+Use the two precomputed idempotents in two padded alpha'-bit products
+and a linear high/low cyclic fold. These formulas cost O(M_old(alpha'))
+per Z coefficient with fixed reciprocals. Their total cost is N polylog L0, since D'=Theta(alpha')
+and log alpha'=O(ell^4). They are calls on contiguous words, not a free
+field-coordinate basis conversion. Both projected streams total
+m'(D'+d)=N bits; these ambient projection/reconstruction scans are
+separate from the smaller complement-product volume v=dm'.
+For d=0 the split is identity. Complete derivation:
+binary_strict_tape_candidate_20261030/
+COEFFICIENT_CRT_GENERAL_REMAINDER_AND_ORDINARY_IO_ROOT_20261030.txt.
+
+Large component: coefficients lie in S=F2[Y]/f of width D'. Its
+ordinary m'-coefficient stream has index x in mixed-radix prime order
+with the smallest-significance prime stored fastest. Apply the balanced
+controlled CRT tree from CONTROLLED_TENSOR_CRT_ROOT. Section III gives
+the actual tape implementation of each level; all disjoint nodes at
+that level are ONE controlled tensor. There are O(log(t+1)) levels.
+
+For principal m'-root omega let
+     E_i=(m'/p_i)*((m'/p_i)^-1 mod p_i), omega_i=omega^E_i.
+The CRT idempotents satisfy E_i E_j=0 for i!=j and E_i^2=E_i modulo m'.
+Therefore omega^(xy)=product_i omega_i^((x mod p_i)(y mod p_i)).
+This proves that routing, the local Fourier tensor and inverse routing
+are the ordinary m'-DFT over S, with its precise input/output indices.
+The inverse uses inverse roots and the inverse routing; m' is odd,
+so its normalization is one in S. No ordinary binary transpose oracle
+is needed for this inverse.
+
+The characteristic-two exact-width local word has O(log^19 R0) rounds.
+Its formal supplier is now an elementary triadic reconstruction over
+arbitrary commutative F2-algebras: size O(v log^8 v), depth O(log v),
+with explicit polynomial-v wire generation. Each frequency is ONE
+rank-2b quotient element, so its product is one ordinary length-2b
+base-algebra product plus a linear fold. The size induction uses
+child mass<=24v, child length<=v^(2/3), and
+24*(2/3)^8=6144/6561<1. After specialization/copy trees the linear DAG
+has g(v)=O(v log^8 v), H(v)=O(log^2 v). Chunk width v/log^8 v gives
+O(log^16 v) pairs, O(log^18 v) off-diagonal layers and O(log^19 p)
+balanced triangular rounds. This changes only secondary logarithms.
+The formal printer uses no growing-field oracle or input-dependent
+choice. Polynomial(R0,D',L0) setup includes all wire IDs, fixed kernel
+coefficients and copy-tree/source-edge tags. Physical source, target
+and borrowed gate coordinates are pairwise disjoint. Output reads
+are counted bounded-degree port edges with all output copies inside g,
+not arbitrary dense matrices. On the dirty replay's second sweep omit
+EVERY original-source edge, including copy roots and direct output reads.
+Four colored gate sweeps and two colored port-read rounds use O(H+1)
+matching layers. Each accepted chunk pair restores all borrowed parent
+values before the next pair. The new exact-width unit Toeplitz lemma
+states the literal six-convolution length-O(b) graph, actual ragged-pair
+fit search and parallel disjoint-child matching schedule. Full derivation:
+binary_strict_tape_candidate_20261030/
+LOCAL_EXACT_WIDTH_REPLAY_AND_FOURIER_BRIDGE_ROOT_20261030.txt.
+The actual local appendix now also gives the common five-factor
+Fourier template. With A=diag(H_j), beta_j=u^(j(j-1)/2),
+T=(H_(j-k)^-1), and Gamma=diag(beta_j/H_j),
+  F_p=A T Gamma T^t A.
+Pad the two Toeplitz parts separately to K=max_i length(T_p_i).
+The whole tensor has2K synchronized matching rounds and3unitdiagonals,
+not one full-volume execution per axis. Each round below has2H,
+4generic permutations and3unitdiagonals; the exact totals are4K H,
+8K generic calls and6K+3tensor diagonals. Its bit invoice is
+  O(K MD' L^gamma polylogL+(K+1)M M_old(D')).
+All algebraic and physical interfaces in this chain are rederived in
+binary_strict_tape_candidate_20261030/
+LOCAL_FOURIER_END_TO_END_DERIVATION_ROOT_20261030.txt.
+
+Extend each odd p_i axis by identity on its one dummy. Complete the
+partial pair matchings with identity pairs and use their local
+permutation conjugations, each supplied by the generic native compiler.
+Local shear rounds use two H, two J and three unit-diagonal slots.
+The generic permutation compiler retains its separate eight-H I/J/H
+normal form. Canonical H is the established native endpoint kernel. All local permutations,
+matching tables and coefficients are generated in polynomial(R0,D',L0)
+setup, once for this length, hence N^o(1).
+
+Fix the independent runtime supplier M_old(v) by a classical integer
+SS call on B=v*ceil(log2(v+1)) bits and carry-free binary polynomial
+packing. Integer convolution coefficients are at most v<2^ceil(log2(v+1)),
+so taking the low bit of each chunk recovers the exact F2 polynomial
+product. Fixed-tape encode/pad/extract scans cost O(v log(2v)).
+The 1971 integer multitape bound yields runtime O(M_old(v)), for
+     M_old(v):=v log^2(2v) loglog(4v).
+This regular bound function absorbs every fixed-factor length change.
+Extra finite-alphabet visited tracks mark each SS work tape's traversed
+intervals. Copy its output, scan and clear those intervals and restore
+heads; this adds O(T) to an SS call of T steps, independent of any
+outer parked data on separate tape families.
+This supplier never calls the proposed fast binary multiplier. The
+formal triadic convolution DAG is separately constructed in the local
+appendix; its runtime scalar applications use the present classical bit
+supplier. The sharper Cantor--Kaltofen circuit remains prior art, not a
+required uniform-generator premise in the current construction.
+
+Fourier scalar stages over B=S tensor F4 use these independent binary
+word products/reductions. Each costs O(M_old(D')) bit time per record.
+Explicit 3-S-product B arithmetic, fixed-reciprocal reduction and one-time
+unit inverses, plus the uniform two-H shear word, are derived in
+binary_strict_tape_candidate_20261030/GROWING_SCALAR_AND_LOCAL_LAYER_ROOT_20261030.txt.
+For tensor scalar lists use two alternating expansion tapes. For each
+partial product c, scan the entire next local table and print all its
+c*a_i(j) products, rewinding only that local table before the next c.
+The rewind is charged to that newly printed child block. Erase the
+previous partial list at each level. The sum of prefix list lengths
+is <2M, giving O(M) B products; no axis loop is nested per record.
+Rebuild the coefficient stream in CURRENT native order for each slot.
+Applying it costs O(M M_old(D')). This is
+N polylog L0, not O(M) unit-cost ring operations. In particular no
+expensive general B multiplication is silently placed in section I's
+O(D) fixed-F4 routing stage. Keep B and the full native grid through
+two forward transforms, allM point products in B, and one inverse.
+At completed forward boundaries the values lie in S, so the B products
+agree with S products there; every dummy remains zero. Perform even
+the zero dummy products by the same sequential scan, at cost
+O(M M_old(D'))=N polylog L0. Crop the zero eta lane and native dummy
+complement only after the completed inverse and inverse CRT routing.
+
+Small component: keep the STRONG density from section II. With
+theta=1-D'/alpha', the O(ell^2) original and O(ell) added prime factors
+all exceed L0^3. Hence
+     theta<=sum_{p|alpha'}1/p=O(ell^2/L0^3),
+     d=alpha'-D', v=m'd=N theta=O(N ell^2/L0^3).
+If d=0, omit it.
+Otherwise pack coefficients by Y^j Z^i -> T^(2di+j). In a product,
+0<=j+j'<2d and there is no slot collision from Y carries. One ordinary
+binary polynomial product has input length <2dm' and output length
+<4dm'. Use the independent classical integer-SS/carry-free supplier
+just defined at input length2v. The exact maximum input/product degrees
+are 2v-d-1 and 4v-2d-2. Crop the known zero outer tail, unpack2m'-1
+rows of width2d with zero final coefficient, reduce the degree<=2d-2
+Y words modulo psi using the general monic lemma at r=2d-1, then
+fold Z^m'=1. The d1 remainder is direct and m'1 has one row.
+Total cost is
+     O(M_old(2v)+m'M_old(d))=O(M_old(v)+m'M_old(d))
+       <=O(v L0^2 ell)=O(N ell^3/L0)=o(N).
+These are fixed-depth linear
+pack/unpack scans plus old word reduction on consecutive blocks.
+The earlier coarse v<N/L0 would NOT justify this slower supplier.
+The actual divisor's stronger density is essential. Neither the
+ordinary full input nor the large S[Z] component is packed as one
+integer multiplication. Word scalars, CRT reconstruction and point
+products remain N polylog L0 since log(alpha')=O(ell^4).
+
+Reconstruct both coefficient components and apply the inverse top
+Agarwal--Cooley map. The resulting N ordinary coefficients are exactly
+the cyclic N-point product. The input degrees were <n and 2n-2<N,
+so this IS their ordinary product. Copy out the first 2n-1 bits in
+ordinary monomial order. Every embedding, extraction and restoration
+is charged above; no finite-group answer is substituted for this output.
+
+VI. One quantitative ledger
+--------------------------
+The actual included appendices now also print the complete physical
+wire-edge ledger. Its direct generic-d proof is in
+binary_strict_tape_candidate_20261030/
+PHYSICAL_MOTIF_EDGE_LEDGER_ROOT_20261030.txt.
+Inverse middle-stage logical rows reverse, but physical gate incidences
+keep the chronological common-label table. Every side contributesm,
+each center m+2d, each physical data wire m-1 in the ordinary count.
+The exceptional actualnegativeX input replaces a zero first edge by
+one2P_U edge. These facts give the rank sum Wm-N+2L directly.
+The routed endpoint identity on arbitrary scratch remains a distinct
+operator statement. Neither this finite count nor its tests alone
+prove the child-volume and tape-toll contracts, which are used below.
+
+Use the exact 48-triple certificates and propagate one parameter:
+     SWAP tau = 1-2^-36;
+     phase sigma < tau;
+     gamma = 1/(2-tau) = 1/(1+2^-36).
+The power-core phase recurrence unrolls to e^tau polylog L: its ratio
+(s_phase/W_phase)/m_phase^tau is strictly below one. Full-h group
+placement is a root toll only. The native H and tensor shuffle therefore
+both cost O(V L^gamma polylog L). The ragged generic permutation has
+O(log R) such layers, retaining gamma rather than weakening it.
+The controlled version uses completed subset H kernels, a constant
+number of F4 scalar words, and the same O(log R) network levels. Its
+unabsorbed bound is O(V L^gamma (log L)^C), for one fixed C.
+The per-record public metadata remains O(V). The CRT tree multiplies
+that by O(log t); Fourier synchronization multiplies by a fixed power
+of log R. All are fixed powers of log L0 because log R=O((log L0)^2).
+Since V=Theta(N) and L=Theta(L0), the total is
+     O(N L0^gamma (log L0)^C') + N polylog L0 + N^o(1).
+For epsilon=2^-36, 1-gamma=epsilon/(1+epsilon)>2^-37.
+For any fixed C', secondary logarithms are thus absorbed into
+     O(n (log n)^(1-2^-38)).
+This supersedes the consistent but weaker old 2^-60 invoice.
+The full-universe induction, prefix restrictions and parameter propagation
+are derived in binary_strict_tape_candidate_20261030/
+PHASE_FULL_UNIVERSE_PARAMETRIC_ROOT_20261030.txt.
+The base SWAP's linear node toll also covers tiny selected width and
+external payload1: range-sized counters use O(A+r) unidirectional
+runs, with n-1 countdown/body/decrement/borrow-out termination and no
+full-width comparison per record. Nested resets are charged to ensuing
+nonempty blocks. Selected-control offset work is polynomial(b) per
+Q=q^b target fiber, paid by Q suffix blocks; huge spectator counters
+are not decoded into that calculation. Once-per-node descriptor work
+is polynomial(log V_root)=O(V_child), using retained full chunk ranges.
+No headers or padding multiply V_child. Full constructive proof:
+binary_strict_tape_candidate_20261030/
+SWAP_SPECTATOR_STREAMING_AND_COUNTER_ROOT_20261030.txt.
+The rational supplier factors each COMPLETE SIGNED frame difference
+A=M_j-M_i over Q as E1 Pi E2. The fixed avoiding q leaves both lower
+factors invertible over every Z/q^b, so its image/kernel are free direct
+summands with the Pi ranks; no field-only rank assertion is needed.
+Negative edges and source2P_U are normalized in those unit factors
+before reduction. Each Pi pivot still uses one smaller swap; arbitrary
+nonunit coordinate values are allowed. For forward coordinate map
+Phi_A(H,D)=(H+AD,D), record pushforward is P_A f(H,D)=f(H-AD,D).
+The full role operator D_out P D_in^-1=P(I_W tensor P_I) follows from
+the endpoint differences on all dirty roles; payload XOR stays separate
+from odd-ring address signs. Complete module/direction certificate:
+binary_strict_tape_candidate_20261030/
+SIGNED_RATIONAL_SHEAR_AND_MODULE_CERTIFICATE_ROOT_20261030.txt.
+The finite inverse-phase wrapper is explicit on polynomial-basis nibbles:
+  (c0,c1,c2,c3) -> (c0+c2+c3,c1+c3,c2,c3).
+It is an involution and F4-semilinear, so wrapping ONE completed
+phase child gives its inverse on arbitrary E-valued data. Select
+the inverse precisely for lambda=epsilon/nu=2,
+where epsilon is the directed frame sign and nu the original line norm.
+Negative unit-norm and source-correction directions use the inverse;
+negative norm-two directions use forward. The former norm-only rule
+was incomplete for actual downward frame edges. This fixes operators
+without increasing the rank sum s or exact V/W child mass.
+Full derivation and arbitrary-role framed identity:
+binary_strict_tape_candidate_20261030/
+SIGNED_PHASE_DIRECTION_AND_ROLE_OPERATOR_ROOT_20261030.txt.
+The completed framed role word is D_out P D_in^-1=P(I_W tensor C_full)
+on each common mask sector, including every arbitrary dirty scratch
+role. Ineligible phases are identity and the inverse role merge
+cancels P there too. Two linear
+scans touch only that child's current array, preserving exact V/W
+child mass. Ordinary F16 squaring on both sides would fail on idle t.
+For a monomial M_(pi(d),d)=m_d, multiply by product_i m_(d_i) BEFORE
+routing pi^tensorh; a post-route scan would instead use pi^-1(e_i).
+All coefficient planes of packed four-bit symbols remain data, and
+only the known added zero bits are cropped at the complete binary
+word boundary. Full implementation derivation:
+binary_strict_tape_candidate_20261030/
+FINITE_WORD_AND_SEMILINEAR_IMPLEMENTATION_ROOT_20261030.txt.
+The enormous effective finite cutoff is absorbed in the constant by
+the finite direct branch. There is one algorithm and one positive fixed
+delta; no input-dependent exponent or prime-distribution hypothesis.
+
+VII. Literal top-level execution and typed coefficient boundaries
+----------------------------------------------------------------
+The actual main lemma typed-execution and equation typed-dft choose
+one execution, rather than silently switching between equally valid
+auxiliary-lane lifetimes. The following is its complete stream manifest.
+
+0. Read/count two n-bit lists, construct the host and enlarged word,
+   prepare archives and zero-fill to N. Cost O(n)+N^o(1)+O(N).
+   The tuple, divisor and root are actual generated data, not advice.
+1. For each input apply X->Y^c Z, c=(m')^-1 mod alpha', obtaining m'
+   consecutive alpha'-bit rows; project each to f=Phi_alpha' and psi.
+   Exit: two m'-by-D' S streams and two m'-by-d complement streams.
+   Park the complements on a fixed pair of tapes.
+   Cost N polylog L0, including both full-width projections.
+2. Identify the new quotient F2[Y]/Phi_alpha'(Y) with S merely by
+   renaming Y->U. This is NOT old-host Y_old->U^J. The latter map is
+   applied only in root setup:
+     rho -> omega=rho^(alpha/q0) -> iota(omega) -> omega'=iota(omega)^J.
+   It is not a second substitution on the new alpha' coefficient words.
+   Negative guard when J>1: every field component u of S has order
+   alpha', so u^J has order alpha. Phi_alpha'(u^J) is nonzero in
+   every component, hence Phi_alpha'(U^J) is a UNIT in S. The second
+   substitution would not even define a map from the new quotient.
+   Example alpha3,J5: Phi15(U^5)=U^5 moduloPhi15(U), whereas the
+   correct old-ring relation Phi3(U^5)=0 does hold. This guards an
+   explicitly ruled-out composition, not a formerly used algorithm step.
+3. Embed both new S streams as a+0eta in B=S[eta]/(eta^2+eta+1).
+   Zero-fill all native dummy positions. Keep two wholeM B arrays,
+   4MD'=O(N) top-level bits, through both forwards/product/inverse.
+   While one array is transformed, the other waits on its own tape.
+   Whole-array passing/parking is a constant O(N) cost. This is a
+   top-level live-array bound, not an assertion that all recursive
+   scratch has O(N) space; that scratch has its own charged protocol.
+4. Write E for the zero-fill inclusion B^m' -> B^M. The extended CRT
+   record permutation Q sends ordinary mixed-radix labels to residues.
+   With E_i the CRT idempotent exponents, a COMPLETE forward is
+     D_omega = Q^-1 [tensor_i (F_p_i(omega^E_i) directsum1)] Q.
+   It satisfies D_omega E = E F_m'(omega), in literal ordinary
+   integer frequency order. Q and the completed tensor preserve each
+   exact dummy-pattern subspace. Their internal letters need not.
+   The valid block is an S-matrix and returns all eta lanes to zero,
+   but those lanes stay allocated. There is no intermediate projection.
+5. Zip both wholeM arrays, put their B point products into the first,
+   and erase the second. Three S-products per B-product are charged
+   using M_old, with fixed reduction. Cost O(M M_old(D'))=N polylog L0.
+   This is S multiplication on completed valid data and zero on dummies.
+6. Apply D_(omega^-1) to the first wholeM B array. Its valid inverse
+   uses F_m'(omega^-1)F_m'(omega)=m'I=I, since m' is odd in F2.
+   The result is the cyclic S[Z] product in ordinary Z order.
+   NOW delete the zero eta lanes and crop the zero native dummy
+   complement in monotone O(N) scans. Exit m' consecutive D'-bit words.
+7. Use the independent packed old-word supplier on the two parked
+   complement streams; reduce/fold exactly as section V. Exit m'
+   consecutive d-bit words, cost o(N).
+8. Reconstruct each alpha'-bit coefficient row, inverse top AC, copy
+   the first2n-1 ordinary coefficients. Cost N polylog L0+O(N).
+   Restore/erase all top-level streams with scans paid by their lengths.
+
+The zero-fill inclusion is coordinatewise multiplicative:
+E(a) pointwise E(b)=E(a pointwise b). Together with the typed DFT
+identity it gives the valid cyclic convolution without a projection
+inside an eta-dependent shear or phase word. Keeping B is harmless
+because S->B is the injective free-rank-two inclusion a->a+0eta.
+Completed S matrices preserve that subalgebra; no integrality or
+field assumption on the finite etale product algebra is being added.
+
+Every complete transform uses a constant number of CRT maps and
+O(log^19 R0) synchronized rounds, on payload2D'>=P1. Three transforms
+therefore cost O(N L0^gamma polylog L0) in total, all growing scalar
+and pointwise products add N polylog L0, complement adds o(N), and
+setup remains N^o(1). The internal private pads KEEP their own earlier
+crop boundaries. The single crop here concerns the OUTER B lane and
+native dummy grid; it does not postpone a callee's internal cleanup.
+All archives/streams use the fixed families of section IV.
+
+Review status
+-------------
+Sections I--VII close the five interface obligations left by the first
+whole audit. They must be reviewed together with the detailed suppliers;
+no PASS label or bounded witness replaces a missing supplier proof.
+The complete root proof audit is now recorded in
+binary_strict_tape_candidate_20261030/
+ROOT_FULL_REQUIREMENT_COMPLETION_AUDIT_20261030.txt.
+It derives the full ordinary-binary theorem from these actual suppliers
+and composition, including all costs. This is an internally audited
+construction; external mathematical verification and established
+publication priority are not claimed.
