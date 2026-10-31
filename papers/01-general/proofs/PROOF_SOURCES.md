@@ -28,7 +28,7 @@ The corresponding artifact bundle separates three checks:
 The fixture paths, hashes, expected results and contributor credits are in
 the artifact manifest and bundle README. The controller input is the exact
 historical p16/a7, rank-145 fixture; the differently parameterized p17
-controller is not substituted for it. The original native snapshot remains
+controller is not substituted for it. The mathematical content of the native snapshot remains
 unchanged, with these records providing the missing artifact map.
 
 The written frame-lifting, lowering and compiler arguments connect these

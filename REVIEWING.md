@@ -1,8 +1,10 @@
 # Reviewing mathematical claims
 
-The manuscripts are research drafts open for mathematical review. This guide describes useful
-ways to inspect a claim; it is not a claim that independent mathematical
-certification has taken place. No complete multiplication theorem in this release has an end-to-end Lean proof, and the full Lean goal is paused. The selected claims and excluded conditional branches are identified in [claim selection](docs/CLAIM_SELECTION.md).
+The manuscripts are research drafts open for mathematical review. This guide
+describes useful ways to inspect a claim. Independent mathematical review
+and end-to-end Lean proofs of the fast multiplication theorems remain
+outstanding. The selected claims and excluded conditional branches are
+identified in [claim selection](docs/CLAIM_SELECTION.md).
 
 ## Trace the statement and its route
 

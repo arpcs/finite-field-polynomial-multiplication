@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+% Editorial note (31 October 2026): Workflow wording has been made neutral; mathematical statements, proof arguments and review qualifications are unchanged.
 \usepackage[a4paper,margin=27mm]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{array,longtable,booktabs}
@@ -37,7 +38,7 @@ transposes and small-batch rounding by an exact rank-moment budget.
 Balancing the transpose cutoff and retaining secondary logarithms
 sharpens its leading exponent to \(1-1/(2^{36}+1)\), with a fixed
 power of \(\log\log N\); every smaller plain-log saving follows.
-A further combination of the folder's three-stage E8 motif and generic
+A further combination of the recorded three-stage E8 motif and generic
 partial-swap pivots gives an independent routing saving \(3/2000000\).
 It yields leading finite-ring exponent \(2000000/2000003\), with
 secondary logarithms, or explicit plain saving \(149/10^8\).
@@ -206,10 +207,9 @@ These numerical savings are much larger than \(2^{-38}\).
 The refreshed exact-DFT leaderboard lists an already stronger result,
 \(\kappa=30103/10000000=0.0030103\), for every positive transform
 length in the specified exact-complex RAM model, with a reported Lean
-verification receipt \cite{Leaderboard}. The active research objective
-is now to beat the applicable public record using our methods in that
-same problem and model, refreshing the benchmark before any claim.
-An improvement of this finite-ring draft alone does not meet that goal.
+verification receipt \cite{Leaderboard}. The relevant comparison target
+is the applicable public record for that same problem and model.
+An improvement of this finite-ring draft alone does not meet that target.
 
 The finite-ring statements concern bit complexity on fixed ordinary
 tapes. The separate internal RAM consequence in
@@ -679,11 +679,11 @@ adds \(O(Nw)\) copying, rather than rescanning a parent array per product.
 This proves Corollary~\ref{cor:integer}.
 
 \section{A stronger mixed-block construction under audit}\label{sec:mixedcandidate}
-The user's stronger public-record goal is active. The following is a
+The following is a
 candidate replacement for the two bottlenecks in the preceding proof,
 not a promotion of a new main theorem. It combines whole-residual batching
 and the public mixed-width recursion idea \cite{Community,Sussman} with
-the folder's involutive partial-swap and ordered idempotent compilation.
+the involutive partial-swap and ordered idempotent compilation.
 The remaining task is a fresh audit of their complete tape composition.
 Neither the public complex exponents nor its conditional bit compiler
 is an assumption of the candidate. Even if the proposed \(2^{-25}\)
@@ -1113,7 +1113,7 @@ a rank histogram alone does not supply it.
 We retain the public PR6030 subspace labels and rational scalar word,
 but may choose our own exact frame representatives. This removes the
 need to import the vendor's unexecuted native phase recipes. The
-preimage construction below is the folder's construction attributed to
+preimage construction below is the recorded construction attributed to
 icekylinx in \texttt{general-clifford-frames.tex}. Linear and quadratic
 descriptions of Clifford operations are classical \cite{Clifford}; the
 exact representatives, dyadic phases and charged implementation matter here.
@@ -2694,7 +2694,7 @@ the same closure implementation against all 32 subsets on each of
 This certificate excludes all helper subsets for the stated fixed
 deletion rule, not altered scalar programs, iterative pruning using
 new promises, new caller correlations or different frame assignments.
-The folder's complete dirty-relay and plane-cache examples motivated
+The recorded complete dirty-relay and plane-cache examples motivated
 the demotion test; their local improvements are not substituted for
 the complete native invoice of \cite{Community}.
 
@@ -2720,7 +2720,7 @@ result as a general span obstruction. No paid move beyond the 38
 neutral demotions is removed by these temporal screens.
 
 \paragraph{Joint recharting after demotion.}
-The folder's chronological-chart, overwrite-reset and expansion-cut
+The recorded chronological-chart, overwrite-reset and expansion-cut
 implementations motivate a separate combination, rather than a claim
 that overwrite freedom or metric graph cuts are new. Applying
 Lemma~\ref{lem:overwriteframe} after the neutral deletion produces
@@ -3319,7 +3319,7 @@ place of the quotient row shift fails at 6061 positions; using
 unsquared cofactor roots fails at 1669568 phase pairs. These are
 finite identity checks, separate from the tape-cost proof.
 
-This supplies the size hypotheses in the folder's
+This supplies the size hypotheses in the cited
 \texttt{CONTROLLED\_TENSOR\_CRT\_ROOT\_20261030.txt} route,
 where each even native radix must be at least the cube of its total
 address width. The original working axes, bounded by \(O(L^2)\),
@@ -3825,7 +3825,7 @@ Their docking width is that prefix, rather than the original root
 width. This identity provides a second route to prefix-scaled native
 adapters, without importing a characteristic-two arithmetic kernel.
 
-These lemmas sharpen the remaining supplier question. The folder's
+These lemmas sharpen the remaining supplier question. The recorded
 characteristic-two controlled CRT permutations can act on our Gaussian
 records by Lemma~\ref{lem:opaquerouting}, subject to their own full
 machine proofs. They need not be reimplemented as Gaussian arithmetic.
@@ -3836,7 +3836,7 @@ Proposition~\ref{prop:nativephase} supplies that kernel by a
 separate data-field swap, rather than treating its interleaved
 endpoints as already contiguous. We next reconstruct the remaining
 controlled routing interface. The shuffle, ragged-network and
-balanced CRT ideas are adapted from the folder's
+balanced CRT ideas are adapted from the cited
 \texttt{TENSOR\_PERFECT\_SHUFFLE\_ROOT\_20261030.txt},
 \texttt{GENERIC\_TENSOR\_PERMUTATION\_ROOT\_20261030.txt} and
 \texttt{CONTROLLED\_TENSOR\_CRT\_ROOT\_20261030.txt}.
@@ -4627,7 +4627,7 @@ so \(C\) and its selector diagonals act coefficientwise on the
 charge applies linearly in \(h\). General pointwise multiplication
 in \(E_h^\epsilon\) is a separate operation.
 The binomial tower and short-module method are also developed in the
-folder's \texttt{odd\_mixed\_tower\_cost\_program.md}; here the
+recorded \texttt{odd\_mixed\_tower\_cost\_program.md}; here the
 constant quadratic chart is explicit and no unproved leaf compiler
 from that note is imported. No novelty claim is made for Kummer
 fields or restriction of scalars.
@@ -5049,7 +5049,7 @@ These estimates alone do not upgrade the main theorems. The following
 composition argument prices the remaining storage and rounding steps;
 its instantiation requires a fresh whole-construction audit before changing
 Theorems~\ref{thm:phase}--\ref{thm:walsh}. Even that improvement would
-remain supporting work for the stronger public-record goal.
+remain supporting work for the stronger comparison target.
 
 \subsection{Physical stock storage and the mixed-tree bit budget}
 
@@ -5331,7 +5331,7 @@ that exponent. The new stack and owner-reduction probe uses at most
 same 64 MiB/10 CPU-second self-only execution guard. Neither this
 bounded evidence nor successful TeX compilation certifies the complete
 new finite-word instantiation. Its full composition is reviewed below;
-the stronger public-record goal remains unchanged.
+the stronger comparison target is separate from these bounded checks.
 For the explicit dyadic product of Lemma~\ref{lem:wordproduct}, take
 \(Q=1\) throughout: all words and source owners share the original
 modulus \(P\), the working width is exactly \(s\), and no owner
@@ -5634,8 +5634,8 @@ family-sensitive normalization are recorded in
 \texttt{WHOLE\_INSTANCE\_REVIEW.md}. The earlier direct proof and
 its \(\gamma\) bounds remain valid. This is a research-manuscript
 claim with exact bounded certificate support, without a new Lean build,
-external refereeing or a public priority claim. It does not complete
-the stronger public-record goal for the exact-complex DFT or integer
+external refereeing or a public priority claim. It does not settle
+the stronger comparison target for the exact-complex DFT or integer
 multiplication.
 
 \begin{theorem}[Balanced routing with an explicit secondary logarithm]
@@ -5769,7 +5769,7 @@ the fixed secondary logarithms.
 This proof reuses only a local routing construction, reconstructed in
 Appendix~\ref{app:e8routing}. It imports none of the conditional outer
 integer, Gaussian, prime-search or NTT-compiler statements surrounding
-the folder's source notes. Its explicit plain saving exceeds
+the recorded source notes. Its explicit plain saving exceeds
 \(1/(2^{36}+2)\) by more than a factor 100000, but remains much
 smaller than the public record target. The source notes also describe
 a stronger nested-basis E8 tariff; that separate layout proof is not
@@ -5809,7 +5809,7 @@ secondary logarithms.
 \end{proof}
 
 This closes the stronger local nested-frame transfer described in the
-folder, without its conditional outer compiler. It does not update the
+source notes, without its conditional outer compiler. It does not update the
 integer exponent or constitute independent formal validation.
 Proposition~\ref{prop:e8packingbarrier} also limits what further
 rank-preserving packing of this same word can establish.
@@ -6486,7 +6486,7 @@ remains mandatory. These are structural toy checks, not an execution
 of the large-radix machine or proof that tiny toy radices satisfy
 its asymptotic cube lower bound. The general proof supplies that
 shape and all-size cost argument. Balanced grouping and the dirty
-four-mask identity use elementary techniques and the folder's
+four-mask identity use elementary techniques and the cited
 existing frozen-mask construction; global novelty is not asserted.
 
 The earlier recovery witness executes the full five-native-kernel word on
@@ -7045,7 +7045,7 @@ This proves Lemma~\ref{lem:swap}.
 
 \section{A closed local E8 routing construction}
 \label{app:e8routing}
-We combine the folder's
+This section combines
 \texttt{integer\_layout\_refinement\_paper/e8\_three\_stage\_kernel.tex}
 and \texttt{generic\_routing.tex} at their local finite-network level.
 Their conditional outer multiplication conclusions are not premises.

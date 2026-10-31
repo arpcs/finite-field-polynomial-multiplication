@@ -24,7 +24,7 @@ Substantial generative AI assistance is disclosed. OpenAI Codex is identified as
 
 ## Evidence and limitations
 
-This is a written research preprint open for mathematical review. No independent human proof review or complete theorem-level Lean verification is claimed. Full Lean formalization is unfinished and planned for a later update, without a completion-date promise. The full Lean goal remains paused.
+This is a written research preprint open for mathematical review. No independent human proof review or complete theorem-level Lean verification is claimed. Full Lean formalization is unfinished and planned for a later update, without a completion-date promise.
 
 The source-authoring pass created this companion without a PDF build, scientific computation or Lean job. Final document compilation, selected-page layout review and source/PDF hashes are recorded separately under [verification](../../verification/README.md) when performed. A package or compilation check does not establish the imported arguments or the complete complexity theorem.
 

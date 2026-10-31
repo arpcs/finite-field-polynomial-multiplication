@@ -1,5 +1,6 @@
 Ordinary odd-field multiplication through the existing cyclotomic host
 ===================================================================
+Editorial note (31 October 2026): Workflow wording has been made neutral; mathematical statements, proof arguments and review qualifications are unchanged.
 30 October 2026. Full odd-characteristic transfer and native proof sources are bundled alongside this note. The host, native odd-field services, generic permutations, Newton factorization, dirty replay, and displacement identities are attributed constructions; this transfer rederives the odd-characteristic interfaces it changes. The
 proposed advance is their composition WITHOUT the balanced full-field
 correction cut, whose exponent loss was quadratic in the supplier gap.
@@ -18,7 +19,7 @@ Result using the named existing native/movement constructions:
     M_(p^e)(n)=O_(p,e)(n (log(n+2))^(9999/10000))       (T)
 for every fixed odd prime p and fixed e, ordinary coefficients at both
 ends on a fixed finite alphabet and fixed finite number of tapes.
-This replaces this chat's earlier odd saving1/27200000000 by1/10000,
+This replaces the earlier odd saving1/27200000000 by1/10000,
 a factor2720000 in the SAVING, not in measured runtime. It says nothing
 about a comparable characteristic-two phase supplier.
 

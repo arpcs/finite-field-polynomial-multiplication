@@ -1,6 +1,6 @@
 # Claims selected for the first release
 
-**31 October 2026.** The owner selected four related papers and excluded results
+**31 October 2026.** This collection includes four related papers and excludes results
 that still rely on unproved machine interfaces. The selected claims have
 written proof routes with their suppliers constructed in the paper or
 identified as cited prior theorems. This is not independent mathematical

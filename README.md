@@ -126,8 +126,7 @@ and attribution preserved in [NOTICE](NOTICE),
 [CITATION.cff](CITATION.cff) describes the collection.
 
 Project home: [arpcs/finite-field-polynomial-multiplication](https://github.com/arpcs/finite-field-polynomial-multiplication).
-This collection contains the focused four-document selection; the wider
-historical collection is kept outside it. Corrections and changed claims
-belong in the [version history](docs/VERSION_HISTORY.md), with earlier public
-versions retained. The [release status](docs/RELEASE_STATUS.md) and
-[owner-run setup guide](docs/GITHUB_SETUP.md) record publication preparation.
+Corrections and changed claims are recorded in the
+[version history](docs/VERSION_HISTORY.md), with earlier public versions
+retained. See the [release status](docs/RELEASE_STATUS.md) for the scope of
+the current collection.

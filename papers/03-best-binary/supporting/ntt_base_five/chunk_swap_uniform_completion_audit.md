@@ -1,5 +1,6 @@
 # Uniform fixed-tape equal-chunk interchange
 
+Editorial note (31 October 2026): Workflow wording has been made neutral; mathematical statements, proof arguments and review qualifications are unchanged.
 30 October 2026. This completes the composition audit of the SWAP procedure
 used in `h2_from_chunk_swap_integrated_audit.md`. It reconstructs the local
 interchange theorem from the explicit bit motif and the independently
@@ -9,9 +10,9 @@ Attribution for the finite-network/interchange method remains the September
 2026 preprint cited by the earlier audits; this is a verification and
 re-instantiation of that method, not a novelty claim for SWAP.
 
-The previous goal turn was progress: it supplied the integrated SWAP=>H2
+The earlier derivation supplied the integrated SWAP=>H2
 argument, explicit F16 constants, complete small role/frame checks and
-elementary tape reconstructions. This continuation closes the width/row/
+elementary tape reconstructions. This note closes the width/row/
 padding composition and corrects an orientation ambiguity in the rectangle
 tail used elsewhere in the multiplication proof.
 
@@ -321,8 +322,8 @@ named machine interface of `h2_from_chunk_swap_integrated_audit.md`.
 
 The resulting chain supplies a *proposed complete proof* of the original
 F2 multiplication target when combined with the ordinary coset/boundary
-ledger. The goal is not marked complete by this local conclusion: the
-next required audit is the whole construction's uniformity, ordinary
+ledger. This local conclusion does not establish complete verification:
+the next required audit covers the whole construction's uniformity, ordinary
 input/output, setups, shrinking-array batch descriptors and endpoint
 packing as one algorithm. The directional tape repair must be retained
 in that audit. Small PASS reports alone are insufficient for completion,

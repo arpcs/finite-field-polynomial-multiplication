@@ -10,7 +10,7 @@ kernel-output check or import/axiom audit was run. Mutable master URLs
 were checked; an immutable commit permalink could not be retrieved.
 The integer function/model and carry-free spacing distinction remain.
 
-Root also inspected van der Hoeven--Larrieu, The Frobenius FFT,
+The internal source inspection also covered van der Hoeven--Larrieu, The Frobenius FFT,
 https://www.texmacs.org/joris/ffft/ffft.pdf. The actual paper date is
 26 April 2017, despite a recent search crawl/publication label. It DOES
 use a finite-tape bit model and directly discusses F2 polynomial
@@ -75,3 +75,5 @@ Assessment
 The checked sources distinguish three scopes: (i) unconditional fixed-tape integer multiplication with a strict log saving, including newer formal/computer-assisted integer claims; (ii) exact complex polynomial multiplication with a strict saving in a complex/address-word model; and (iii) F2[X] multiplication in the fixed-tape bit model, with the checked unconditional 2017 bound O(n log n 4^(log* n)) and conditional 2019 O(n log n) result. None of the inspected integer statements supplies the candidate’s exact ordinary dense F2 polynomial function/model pair. The DFT corollary is explicit polynomial overlap but excludes the required finite-field/bit model.
 
 Bounded searches in the newer integer repositories for F2[X], characteristic-two polynomial multiplication, and similar terms did not surface a same-scope statement. This is weak negative evidence only; it does not establish that every branch or file lacks such a consequence. The broader integer-method lineage makes novelty claims especially inappropriate without a wider review. This report makes no novelty claim based on absence.
+
+Editorial note (31 October 2026): workflow wording and historical path labels were normalized; mathematical statements and review limits are unchanged.

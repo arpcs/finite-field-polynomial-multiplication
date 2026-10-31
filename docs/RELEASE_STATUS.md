@@ -1,6 +1,6 @@
 # Release status
 
-**Version:** 0.1.0-preprint, prepared locally on 31 October 2026.
+**Version:** 0.1.0-preprint, first published on 31 October 2026.
 
 This is a focused four-paper research-preprint selection. Author/contact
 information and Apache-2.0 licensing for original material are supplied,
@@ -18,7 +18,7 @@ related baseline and stronger claims, not four independent discoveries. Research
 branches that still require unproved uniform supplier interfaces are
 withheld rather than presented without their necessary hypotheses.
 
-No independent human review, completed Lean theorem, external acceptance,
+No independent human review, completed Lean proof of the fast multiplier, external acceptance,
 race record or worldwide priority is asserted. Substantial generative AI
 assistance is disclosed. The selected papers' written proof claims remain
 open to mathematical review.
@@ -28,13 +28,10 @@ record lists the selected pages inspected. The package checker reports
 source closure and integrity. Those checks do not establish mathematics.
 Historical finite witnesses are not called fresh runs for this revision.
 
-The focused folder is a Git repository with `origin` pointing to
-https://github.com/arpcs/finite-field-polynomial-multiplication.git. Local
-`main` tracks `origin/main`. Preparation on 31 October 2026 began from the
-existing license-only commit `fef412e`; subsequent commits and remote
-publication are recorded in the repository history. The owner workflow is
-documented in [FIRST_COMMIT.md](FIRST_COMMIT.md). The repository URL and
-immutable paper revision belong in citation/metadata when the papers are
-publicly available. GitHub publication does not submit a paper to arXiv;
-arXiv needs a separate account, category, license agreement and any requested
-endorsement. No arXiv identifier is claimed in this release.
+The papers and companion artifacts are public in
+[arpcs/finite-field-polynomial-multiplication](https://github.com/arpcs/finite-field-polynomial-multiplication).
+The initial paper snapshot is
+[`fb94421`](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/fb94421e3e6d9f8348a6e5b963b5a62d9c525e95).
+Corrections and later formalization work are recorded in
+[the version history](VERSION_HISTORY.md). No arXiv identifier or journal
+publication is claimed.

@@ -28,6 +28,7 @@ not four independent discoveries.
 
 Each paper includes author/contact information, substantial-AI disclosure,
 unfinished Lean status, references, source audit and citation.bib. Build
-receipts bind each PDF to its exact sources. The wider collection, conditional
-orthogonal-tree transfers, integer/complex-DFT investigations and unfinished
-Lean files are excluded from this first public selection.
+receipts bind each PDF to its exact sources. Conditional orthogonal-tree
+transfers and integer/complex-DFT investigations are outside the selected
+claims. Complete Lean formalization remains unfinished; Lean source files
+and theorem-verification receipts are not included in this release.

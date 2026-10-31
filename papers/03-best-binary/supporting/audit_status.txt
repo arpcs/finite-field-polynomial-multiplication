@@ -1,6 +1,7 @@
 AUDIT STATUS: SOURCE DRAFT UNDER REVIEW
 ======================================
 30 October 2026.
+Editorial note (31 October 2026): Workflow wording has been made neutral; mathematical statements, proof arguments and review qualifications are unchanged.
 
 Problem and model
   Ordinary dense degree-<n F2[X] multiplication, ordinary 2n-1 coefficient
@@ -8,7 +9,7 @@ Problem and model
   Candidate explicit asymptotic bound: O(n (log n)^(1-2^-38)).
   This supersedes the valid but weaker earlier 2^-60 bound.
 
-What was added across the construction continuations
+Recorded construction revisions
   Fixed metadata polynomial P1=(R+L+2)^64, with sequential table generator.
   Enlarged cyclotomic word chosen against that polynomial before runtime.
   Current-address/scalar alignment and moving-control fiber invariant.
@@ -89,15 +90,15 @@ What was added across the construction continuations
   now all retain gamma=1/(2-tau). Its gap>2^-37 absorbs secondary
   logarithms in the revised 2^-38 final bound.
 
-Independent internal checks
+Internal source checks
   Fresh whole audit identified five missing explicit interfaces.
-  Root supplied them in STRICT_BINARY_MACHINE_COMPOSITION_ROOT_20261030.
+  Those interfaces were supplied in STRICT_BINARY_MACHINE_COMPOSITION_ROOT_20261030.
   Separate supplier, base SWAP/H2, host, local Fourier and final ledger
   attacks found no concrete contradiction within their stated scopes.
   These reviews are not external proof certification.
   Manuscript attack found no concrete discrepancy; its scalar-dimension,
   component-degree notation, AC index and ledger-reference fixes were applied.
-  Root caught and corrected errors in the new supplier drafts: F3 inverse
+  Internal review caught and corrected errors in the new supplier drafts: F3 inverse
   (F3^3, not F3^2), the intermediate bank-exchange state, isometry pair
   count, source attribution, logical endpoint pairing, and field/frame
   scope. Final included appendices remove an unsupported extra binary
@@ -113,7 +114,7 @@ Independent internal checks
   A fresh whole audit initially inferred a missing mask/sort certificate;
   after reading the included native proof in bounded chunks it withdrew
   that concern and corrected its own root-order conflation.
-  Root caught a fresh typed-control audit error: arbitrary dirty T_Z can
+  Internal review caught a fresh typed-control audit error: arbitrary dirty T_Z can
   change sources; only S is stable there. Source-value F_a is stable only
   across completed T_J/L_Q, which support matching targets. The report
   was corrected; the paper's intended implementation did not change.
@@ -127,7 +128,7 @@ Independent internal checks
   Fresh machine primitive schedules, native degree/width certificate,
   typed controls and D=1 shift repair were checked in focused reports.
   Fresh core attacks reconstructed strided numeric role gather/merge and
-  exact child spectator factors. Root/agent derivations give V_child=V/W,
+  exact child spectator factors. The recorded derivations give V_child=V/W,
   without a root pad multiplier in the recursive coefficient.
   The arbitrary-F16 norm-two wrapper was checked on both existing F4
   planes, and matching source predicates at their completed boundaries.
@@ -140,14 +141,14 @@ Independent internal checks
   CRT components and the no-overlap complement packing cost.
   A ragged n=6 trace checks full-shuffle odd children and disables
   wrapped switches; its control gauge is checked at actual boundaries.
-  Root caught two issues in the endpoint-layout audit: a long cyclic
+  Internal review caught two issues in the endpoint-layout audit: a long cyclic
   gap could cross physical index zero, and a low-index bitlength is
   not itself an exponentially wide opaque record. The corrected
   three-linear-gap/exponential-record proof is now in the manuscript.
   An independent follow-up checks that explicit physical program.
   Separate local-layer and scalar-stream attacks check the two-H word,
   zero-shear completion, axis-factorized scalars, archive/tape staging and
-  normalized prefix sum. Root caught a parity-prose error in the growing
+  normalized prefix sum. Internal review caught a parity-prose error in the growing
   ring audit: r odd gives one degree-2r extension, r even two degree-r
   factors per S field. Its displayed gcd/lcm formula and the manuscript
   were already correct; the report is now corrected explicitly.
@@ -185,7 +186,7 @@ Latest asymptotic review
   Sharp SWAP wrappers preserve tau=1-2^-36 from the exact48-triple count.
   Final reviews read the ACTUAL updated TeX/ledger and found no old
   weaker exponent tariff left in the current source chain.
-  Root corrected two reviews which reversed near-one inequality
+  Internal source inspection corrected two reviews which reversed near-one inequality
   comparisons. The old bounds were consistent; they were too weak for
   the new claim. Historical audit reports are not current tariff inputs.
   The strengthened full candidate still lacks external verification.
@@ -201,14 +202,14 @@ Latest sparse-correction review
   Prefix repair follows a completed logical route with all nested source
   conditioning and selectors restored. Inner CNOT may change S, and raw
   full-h T_Z can differ from its truncated helper even on a good prefix.
-  Root caught the latter false-owner claim in a review draft and supplied
+  Internal review caught the latter false-owner claim in a review draft and supplied
   an explicit h2/u1 counterexample; the report and actual TeX are corrected.
   Fixed target sets are translated at each odd-start sublayer, independent
   of c; idle K_i(c)=I. Finish sparse repair before reading control settings.
   Far-away PhaseAll digit-group placement keeps its full-h root toll;
   it does not use the small group's prefix tariff or recur in children.
-  Current-source focused reviews and the new root derivation are linked
-  in proof_map.txt. Candidate delta2^-38 is unchanged; goal stays ACTIVE.
+  Current-source focused reviews and the new derivation are linked
+  in proof_map.txt. Candidate delta2^-38 is unchanged and remains under review.
   No mathematical executable, Python/JS algebra, heavy or TeX/PDF build
   ran in this continuation.
 
@@ -292,7 +293,7 @@ Latest base-SWAP counter review
   decoded per fiber. Fixed-c unit maps use finite-state output residues.
   Descriptor polynomial work is once per node, separately volume-paid.
   No new record header/pad enters children; s/W and tau are unchanged.
-  Root proof and three scoped Luna audits are indexed in proof_map.txt.
+  The proof and three scoped Luna audits are indexed in proof_map.txt.
   This continuation required no math executable or heavy build.
 
 Latest private native padding and exception-universe review
@@ -375,7 +376,7 @@ Latest ordinary coefficient I/O and general remainder review
   Three scoped Luna final-source reviews found no remaining issue in
   those interfaces; they do not certify the full theorem.
   No executable, Python/JS algebra, large graph or heavy/TeX build ran.
-  Candidate gamma/delta and major-goal scope are unchanged.
+  Candidate gamma/delta and the main claim scope are unchanged.
 
 Latest signed phase execution correction and full-role identity
   FOUND an actual missing execution flag: norm alone selects inverse
@@ -405,7 +406,7 @@ Latest signed phase execution correction and full-role identity
   recursion, prefix repair, tape tariffs or whole ordinary multiplier.
   No Python/JS algebra, large graph, heavy or TeX/PDF build.
   Candidate gamma/delta2^-38 unchanged AFTER this operator correction.
-  Full theorem remains under verification; the major goal stays ACTIVE.
+  The full theorem remains under verification.
 
 Latest signed rational interchange and module-lift review
   Audited the rational compiler after the phase sign error. Its existing
@@ -447,7 +448,7 @@ Latest exact ragged topology and controlled-generator quantifiers
   Three scoped Luna reviews with actual-source followups are indexed.
   No new executable, graph, Python/JS algebra or heavy/TeX build ran.
   Historical finite witnesses were not rerun and do not prove growing
-  tape complexity. Candidate gamma/delta and goal scope are unchanged.
+  tape complexity. Candidate gamma/delta and claim scope are unchanged.
 
 Latest fresh whole-proof and requirement audit
   Three fresh Luna reviewers read current sources rather than prior PASS
@@ -468,7 +469,7 @@ Latest fresh whole-proof and requirement audit
   work. It is not a proof validator or completion certificate.
   The top-level execution manifest is now integrated and audited below.
   No end-to-end executable, benchmark or external approval is imposed
-  as a new requirement. Full goal remains ACTIVE under verification.
+  as a new requirement. The full theorem remains under verification.
   No executable, Python/JS algebra, large graph or heavy/TeX build ran.
 
 Latest typed top-level execution and cross-requirement cost audit
@@ -492,10 +493,10 @@ Latest typed top-level execution and cross-requirement cost audit
   coefficient-projection, per-record metadata and root-group invoices.
   These are scoped evidence, not independent whole-theorem proof.
   No new executed witness, Python/JS algebra, graph or heavy/TeX build.
-  The candidate exponent is unchanged and full goal remains ACTIVE.
+  The candidate exponent is unchanged and the full theorem remains under verification.
 
 Latest single-cutoff and noncircular parameter check
-  New root SINGLE_UNIFORM_CUTOFF_AND_PARAMETER_ORDER_ROOT and scoped
+  The derivation SINGLE_UNIFORM_CUTOFF_AND_PARAMETER_ORDER_ROOT and scoped
   SINGLE_CUTOFF_FEASIBILITY_ATTACK are integrated in the main paragraph
   Order of choices and one cutoff. The old host tuple is generated
   before the enlarged width, and the width threshold usesL0 before
@@ -518,9 +519,9 @@ Current limitations
   No practical speedup or experimentally observable exponent saving claimed.
   Existing network topology has prior art; no broad topology novelty claim.
   Search absence does not prove literature priority.
-  No PDF export or large build was run.
+  No PDF export or large build was run for this audit record.
 
-Persistent goal status
-  ACTIVE: complete candidate proof chain assembled; the major mathematical
-  claim remains under verification. Do not mark
-  complete merely because bounded checks or scoped internal reviews pass.
+Verification status
+  A complete candidate proof chain has been assembled; the main mathematical
+  claim remains under verification. Bounded checks and scoped internal
+  reviews do not establish complete verification.

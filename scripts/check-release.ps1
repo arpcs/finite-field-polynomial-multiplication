@@ -8,7 +8,7 @@ function Hash([string]$path){(Get-FileHash -LiteralPath $path -Algorithm SHA256)
 $required=@('README.md','CONTENTS.md','AUTHORS.md','AI_USE.md','VERIFICATION.md','BUILDING.md',
  'CONTRIBUTING.md','REVIEWING.md','SUPPORT.md','ROADMAP.md','AGENTS.md','LICENSE','NOTICE','CITATION.cff',
  '.gitignore','.gitattributes','docs/LICENSING.md','docs/THIRD_PARTY_NOTICES.md','docs/CLAIM_SELECTION.md',
- 'docs/SUBMISSION_GUIDE.md','docs/FIRST_COMMIT.md','docs/GITHUB_SETUP.md','docs/RELEASE_STATUS.md','docs/VERSION_HISTORY.md',
+ 'docs/RELEASE_STATUS.md','docs/VERSION_HISTORY.md',
  'docs/SUBMISSION_METADATA.json','verification/README.md','verification/paper-targets.json',
  'verification/paper-builds.json','verification/pdf-layout.json',
  'papers/01-general/proofs/finite-unit/README.md',
@@ -108,7 +108,10 @@ if((Test-Path -LiteralPath $finiteReceipt -PathType Leaf) -and (Test-Path -Liter
   }
  }
 }
-$files=@(Get-ChildItem -LiteralPath $root -File -Recurse -Force|Where-Object {$_.FullName -notmatch '[\\/](\.build|\.tools|\.git|build)[\\/]'})
+$files=@(Get-ChildItem -LiteralPath $root -File -Recurse -Force|Where-Object {
+ $_.FullName.Substring($root.Length+1) -notmatch '(^|[\\/])(\.build|\.tools|\.git|build)[\\/]'
+})
+Require ($files.Count -gt 0) 'No release files were enumerated'
 foreach($file in $files){
  Require ($file.Length -lt 25000000) ('Oversized file '+$file.Name)
  Require ($file.Extension -notin @('.exe','.dll','.o','.obj','.olean','.ilean')) ('Unexpected generated object '+$file.Name)

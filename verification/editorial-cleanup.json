@@ -1,0 +1,157 @@
+{
+  "schema": "editorial-cleanup/1",
+  "date": "2026-10-31",
+  "base_commit": "fb94421e3e6d9f8348a6e5b963b5a62d9c525e95",
+  "scope": "Reader documentation, historical research-note wording and provenance labels",
+  "manuscript_tex_and_pdfs_unchanged": true,
+  "compiled_code_unchanged": true,
+  "mathematical_claims_unchanged": true,
+  "independent_mathematical_review_performed": false,
+  "lean_executed": false,
+  "research_notes_have_dated_editorial_notices": true,
+  "historical_content_hashes_retained": true,
+  "current_copy_hashes_rebound": [
+    {
+      "artifact": "papers/01-general/proofs/native_odd_source_snapshot.tex.txt",
+      "context": "root/copiedSourceRecords/item",
+      "sha256": "25d01aad610d4d2c521d3824dd7df534f491b6fdd30d404b149bded4b0159041"
+    },
+    {
+      "artifact": "papers/01-general/proofs/ODD_CYCLOTOMIC_HOST_TRANSFER_20261030.txt",
+      "context": "root/copiedSourceRecords/item",
+      "sha256": "325380f4bc35b5d0786adcf9cffe6d901a3aa0f9004baac2ac0f46cc8754cfec"
+    },
+    {
+      "artifact": "papers/01-general/proofs/ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt",
+      "context": "root/copiedSourceRecords/item",
+      "sha256": "71dab44dd031833191058228f398a22a671f213f5a65257e5f830bb8dec653a3"
+    },
+    {
+      "artifact": "papers/01-general/proofs/PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt",
+      "context": "root/copiedSourceRecords/item",
+      "sha256": "5a52a7db6be54e550072c5be021a35f4350a3048f71531e8c62c9012caccb43b"
+    },
+    {
+      "artifact": "papers/01-general/STATUS.md",
+      "context": "root/destinationFiles/item",
+      "sha256": "33716401cd3dabff263dc38e31210e7afbbd6b370d769c4767567680603f9ab0"
+    },
+    {
+      "artifact": "papers/01-general/proofs/PROOF_SOURCES.md",
+      "context": "root/destinationFiles/item",
+      "sha256": "8112c8ec1189478ff0ed67f1594cd9b0eb12ef6a6249ec8f7bdfb19e58e8dc0b"
+    },
+    {
+      "artifact": "papers/01-general/proofs/native_odd_source_snapshot.tex.txt",
+      "context": "root/destinationFiles/item",
+      "sha256": "25d01aad610d4d2c521d3824dd7df534f491b6fdd30d404b149bded4b0159041"
+    },
+    {
+      "artifact": "papers/01-general/proofs/ODD_CYCLOTOMIC_HOST_TRANSFER_20261030.txt",
+      "context": "root/destinationFiles/item",
+      "sha256": "325380f4bc35b5d0786adcf9cffe6d901a3aa0f9004baac2ac0f46cc8754cfec"
+    },
+    {
+      "artifact": "papers/01-general/proofs/ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt",
+      "context": "root/destinationFiles/item",
+      "sha256": "71dab44dd031833191058228f398a22a671f213f5a65257e5f830bb8dec653a3"
+    },
+    {
+      "artifact": "papers/01-general/proofs/PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt",
+      "context": "root/destinationFiles/item",
+      "sha256": "5a52a7db6be54e550072c5be021a35f4350a3048f71531e8c62c9012caccb43b"
+    },
+    {
+      "artifact": "papers/03-best-binary/supporting/ntt_base_five/h2_from_chunk_swap_integrated_audit.md",
+      "context": "root/item",
+      "sha256": "e25e8ac7a48240d9ab354e47fd700648fd09fcbe3ccdd61594f42aea4515e78f"
+    },
+    {
+      "artifact": "papers/03-best-binary/supporting/ntt_base_five/chunk_swap_uniform_completion_audit.md",
+      "context": "root/item",
+      "sha256": "4f5d5f7af827ec5e8e06f8a9149b7050a66d29b7e63634254aea26ee27d40678"
+    },
+    {
+      "artifact": "papers/03-best-binary/supporting/proof_map.txt",
+      "context": "root/item",
+      "sha256": "a78b0e64595dddadcbf09eea2e507d7b742011c18953a819a08fe069ff8ce2a5"
+    },
+    {
+      "artifact": "papers/03-best-binary/supporting/audit_status.txt",
+      "context": "root/item",
+      "sha256": "6e0d6b5b53eb6cc1dd2ac3ab2f2d09f8f1069444ec6ad696fdb9b0fc15ca25c3"
+    },
+    {
+      "artifact": "papers/03-best-binary/supporting/BINARY_THEOREM_SCOPE_RECHECK_20261030.txt",
+      "context": "root/item",
+      "sha256": "c5368146e421e1cf604cea17b278f871ee2df5e3b715004245366c8762f64f73"
+    },
+    {
+      "artifact": "papers/04-general-nlogn/STATUS.md",
+      "context": "root/source_files/item",
+      "sha256": "62d5ae7e640c2e587357f76d2db874bb926a2a47df825b14daad5ef853dffff9"
+    }
+  ],
+  "edited_paper_artifacts": [
+    {
+      "path": "papers/01-general/STATUS.md",
+      "previous_git_blob": "27f2a6cc783af5f2a6b86100f20ad37e1aa3ac5f",
+      "sha256": "33716401cd3dabff263dc38e31210e7afbbd6b370d769c4767567680603f9ab0"
+    },
+    {
+      "path": "papers/01-general/proofs/ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt",
+      "previous_git_blob": "2353c994a74a61b60a5149468369d7ddc198f093",
+      "sha256": "71dab44dd031833191058228f398a22a671f213f5a65257e5f830bb8dec653a3"
+    },
+    {
+      "path": "papers/01-general/proofs/ODD_CYCLOTOMIC_HOST_TRANSFER_20261030.txt",
+      "previous_git_blob": "cd6472a3ff0935ff11953832bdb89d68df05c8b4",
+      "sha256": "325380f4bc35b5d0786adcf9cffe6d901a3aa0f9004baac2ac0f46cc8754cfec"
+    },
+    {
+      "path": "papers/01-general/proofs/PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt",
+      "previous_git_blob": "7eebf20918bb7efcd8aa215499f7e1743b03dc5e",
+      "sha256": "5a52a7db6be54e550072c5be021a35f4350a3048f71531e8c62c9012caccb43b"
+    },
+    {
+      "path": "papers/01-general/proofs/PROOF_SOURCES.md",
+      "previous_git_blob": "5a20725c7a39059f125e0c2515dc12611cbcc39b",
+      "sha256": "8112c8ec1189478ff0ed67f1594cd9b0eb12ef6a6249ec8f7bdfb19e58e8dc0b"
+    },
+    {
+      "path": "papers/01-general/proofs/native_odd_source_snapshot.tex.txt",
+      "previous_git_blob": "6f004e48902c4b5182242fe31d9ed12ebb5e3d83",
+      "sha256": "25d01aad610d4d2c521d3824dd7df534f491b6fdd30d404b149bded4b0159041"
+    },
+    {
+      "path": "papers/03-best-binary/supporting/BINARY_THEOREM_SCOPE_RECHECK_20261030.txt",
+      "previous_git_blob": "74c9716f2be90bb0e3de70e92b3b9362b366aa9d",
+      "sha256": "c5368146e421e1cf604cea17b278f871ee2df5e3b715004245366c8762f64f73"
+    },
+    {
+      "path": "papers/03-best-binary/supporting/audit_status.txt",
+      "previous_git_blob": "7a6752a5db359e4ef13bffae0b0e24aea516bc75",
+      "sha256": "6e0d6b5b53eb6cc1dd2ac3ab2f2d09f8f1069444ec6ad696fdb9b0fc15ca25c3"
+    },
+    {
+      "path": "papers/03-best-binary/supporting/ntt_base_five/chunk_swap_uniform_completion_audit.md",
+      "previous_git_blob": "1fd298a62599dce4e0de18a571165d77bd6e58aa",
+      "sha256": "4f5d5f7af827ec5e8e06f8a9149b7050a66d29b7e63634254aea26ee27d40678"
+    },
+    {
+      "path": "papers/03-best-binary/supporting/ntt_base_five/h2_from_chunk_swap_integrated_audit.md",
+      "previous_git_blob": "efe452de325ce699591d7a0673082f43ade0540a",
+      "sha256": "e25e8ac7a48240d9ab354e47fd700648fd09fcbe3ccdd61594f42aea4515e78f"
+    },
+    {
+      "path": "papers/03-best-binary/supporting/proof_map.txt",
+      "previous_git_blob": "8528327a6667f2711491c75cee2e86b6fe0c5a60",
+      "sha256": "a78b0e64595dddadcbf09eea2e507d7b742011c18953a819a08fe069ff8ce2a5"
+    },
+    {
+      "path": "papers/04-general-nlogn/STATUS.md",
+      "previous_git_blob": "b0c2e8c5ded65696f60186378a0305dff0b63fff",
+      "sha256": "62d5ae7e640c2e587357f76d2db874bb926a2a47df825b14daad5ef853dffff9"
+    }
+  ]
+}

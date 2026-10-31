@@ -11,14 +11,15 @@ publication status. `payload_files` counts the checksum entries;
 `total_release_files` also includes the manifest and mutable check report.
 
 Each paper's `audit.json` records its copied or derived sources, original
-hashes, edit scope and current copy hashes. Original source paths are
-provenance identifiers relative to the wider FastMul workspace; that private
-workspace is outside this focused repository. Supporting proof records needed
-for public review are included in the corresponding paper directory.
+hashes, edit scope and current copy hashes. Historical source identifiers use
+content hashes and source filenames; they are provenance labels, not paths
+to files a reader must obtain elsewhere. Supporting proof records needed for
+review are included in the corresponding paper directory.
 
 The simple paper's bounded C++ reports are historical evidence, not new runs
-for this release. No Lean sources, completed theorem receipts or full-proof
-verification badge are supplied. See VERIFICATION.md at the repository root.
+for this release. Lean sources and completed theorem receipts are not
+included in this release. See [VERIFICATION.md](../VERIFICATION.md) for the
+exact evidence scope.
 
 The general paper's finite-unit bundle under
 `papers/01-general/proofs/finite-unit/` supplies separately identified native

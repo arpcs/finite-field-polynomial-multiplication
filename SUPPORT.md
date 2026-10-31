@@ -9,13 +9,12 @@ versions and a short error excerpt. For credit or source corrections include
 the original reference and affected passage.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) and [REVIEWING.md](REVIEWING.md).
-No response-time commitment or confidential vulnerability-reporting service
-is advertised. Remove credentials and unrelated personal information from
-logs or reports.
+Include only project-relevant information in logs or reports, and remove
+credentials and unrelated personal information.
 
 Project repository:
 [arpcs/finite-field-polynomial-multiplication](https://github.com/arpcs/finite-field-polynomial-multiplication).
 Use [Issues](https://github.com/arpcs/finite-field-polynomial-multiplication/issues)
-when enabled and accessible, or email the contact above. Check the cited
+or email the contact above. Check the cited
 revision's STATUS.md and the version history before reporting an issue that
 may already have been corrected.

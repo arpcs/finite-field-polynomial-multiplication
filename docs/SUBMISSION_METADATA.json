@@ -15,9 +15,10 @@
     ],
     "repository_license": "Apache-2.0",
     "arxiv_license": null,
-    "public_repository_url": null,
+    "public_repository_url": "https://github.com/arpcs/finite-field-polynomial-multiplication",
     "arxiv_id": null,
-    "doi": null
+    "doi": null,
+    "public_source_snapshot": "https://github.com/arpcs/finite-field-polynomial-multiplication/tree/fb94421e3e6d9f8348a6e5b963b5a62d9c525e95/papers/04-general-nlogn"
   },
   {
     "directory": "papers/01-general",
@@ -35,9 +36,10 @@
     ],
     "repository_license": "Apache-2.0",
     "arxiv_license": null,
-    "public_repository_url": null,
+    "public_repository_url": "https://github.com/arpcs/finite-field-polynomial-multiplication",
     "arxiv_id": null,
-    "doi": null
+    "doi": null,
+    "public_source_snapshot": "https://github.com/arpcs/finite-field-polynomial-multiplication/tree/fb94421e3e6d9f8348a6e5b963b5a62d9c525e95/papers/01-general"
   },
   {
     "directory": "papers/02-simple-binary",
@@ -55,9 +57,10 @@
     ],
     "repository_license": "Apache-2.0",
     "arxiv_license": null,
-    "public_repository_url": null,
+    "public_repository_url": "https://github.com/arpcs/finite-field-polynomial-multiplication",
     "arxiv_id": null,
-    "doi": null
+    "doi": null,
+    "public_source_snapshot": "https://github.com/arpcs/finite-field-polynomial-multiplication/tree/fb94421e3e6d9f8348a6e5b963b5a62d9c525e95/papers/02-simple-binary"
   },
   {
     "directory": "papers/03-best-binary",
@@ -75,8 +78,9 @@
     ],
     "repository_license": "Apache-2.0",
     "arxiv_license": null,
-    "public_repository_url": null,
+    "public_repository_url": "https://github.com/arpcs/finite-field-polynomial-multiplication",
     "arxiv_id": null,
-    "doi": null
+    "doi": null,
+    "public_source_snapshot": "https://github.com/arpcs/finite-field-polynomial-multiplication/tree/fb94421e3e6d9f8348a6e5b963b5a62d9c525e95/papers/03-best-binary"
   }
 ]

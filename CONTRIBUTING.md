@@ -2,10 +2,9 @@
 
 Project repository:
 [arpcs/finite-field-polynomial-multiplication](https://github.com/arpcs/finite-field-polynomial-multiplication).
-Use its Issues when enabled and accessible, or the public contact in
-[SUPPORT.md](SUPPORT.md). The included issue and pull-request templates help
-identify the exact claim and evidence. A local copy does not submit a report;
-repository visibility and contributor access are controlled by the owner.
+Use [Issues](https://github.com/arpcs/finite-field-polynomial-multiplication/issues)
+or the public contact in [SUPPORT.md](SUPPORT.md). The issue and pull-request
+templates help identify the exact claim and evidence.
 
 Useful contributions include precise proof objections, counterexamples,
 missing-implication reports, independent reproductions, scoped formalization,
@@ -14,24 +13,23 @@ objection is useful without a proposed repair. Before duplicating an
 investigation, check the manuscript's `STATUS.md`, the [claim-selection
 record](docs/CLAIM_SELECTION.md), and the [contents catalog](CONTENTS.md) for
 the exact claim, existing route, and prior work already recorded.
-For substantial work, also consult the [roadmap](ROADMAP.md) and, once the
-repository channels are accessible, existing issues and pull requests. Reuse suitable
+For substantial work, also consult the [roadmap](ROADMAP.md) and existing
+issues and pull requests. Reuse suitable
 pinned Mathlib and upstream results rather than duplicating their proofs;
 record the exact statement being reused and its source revision.
 
 ## Issues, pull requests and review
 
 An Issue reports a question, error or proposed direction. A pull request
-proposes actual changes to files. When the repository is public, a
-contributor can fork it, create a branch, make the change in that copy and
-open a pull request. Direct write access is not needed for this workflow.
-The owner reviews the proposal and decides whether to merge it; submission
+proposes actual changes to files. To contribute a change, fork the repository,
+create a branch, make the change in that copy and open a pull request.
+Direct write access is not needed for this workflow.
+The maintainer reviews the proposal and decides whether to merge it; submission
 does not automatically change the project or establish the mathematics.
 
 Useful contributions are credited. Paper coauthorship is discussed separately
 based on scholarly contribution and responsibility. The project's license
 and significant-AI disclosure expectations apply to submitted material.
-For the owner's initial GitHub options, see [GITHUB_SETUP.md](docs/GITHUB_SETUP.md).
 
 ## Make a report reviewable
 
@@ -74,4 +72,7 @@ on scholarly contribution and responsibility. Keep discussion focused on
 claims, evidence, and proposed changes, and treat questions and objections
 respectfully.
 
-Research branches with unclosed supplier interfaces are excluded from the selected claims. The full Lean goal remains paused; unfinished formalization alone does not settle a written mathematical argument. See the [roadmap](ROADMAP.md) for current priorities.
+Research branches with unclosed supplier interfaces are excluded from the
+selected claims. Full Lean verification remains incomplete.
+Unfinished formalization alone does not settle a written mathematical
+argument. See the [roadmap](ROADMAP.md) for current priorities.

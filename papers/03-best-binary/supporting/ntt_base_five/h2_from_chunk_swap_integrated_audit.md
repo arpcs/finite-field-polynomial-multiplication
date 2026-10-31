@@ -1,5 +1,6 @@
 # H2 from equal-chunk interchange: integrated finite-field audit
 
+Editorial note (31 October 2026): Workflow wording has been made neutral; mathematical statements, proof arguments and review qualifications are unchanged.
 30 October 2026. This consolidates the earlier active-rank, role, payload,
 and positive-word notes. The conclusion below is relative to **one**
 machine primitive, equal-chunk interchange with a strict saving. H2 is no
@@ -12,11 +13,11 @@ Subsequent completion of the local dependency:
 bit motif and ordinary tape primitives, including its arbitrary-width lift.
 Thus the proposed global proof has no remaining named oracle at this
 interface. `full_binary_multiplication_completion_ledger.md` records the
-still-pending final whole-construction audit before goal completion.
+still-pending final whole-construction audit.
 
-The previous goal turn was progress: it supplied the subquadratic native
+The earlier derivation supplied the subquadratic native
 tower scalar routine, conditional ordinary-product reduction, and bounded
-algebra witnesses. This continuation audits the H2 premise itself and adds
+algebra witnesses. This note audits the H2 premise itself and adds
 the complete finite role/frame witness described in Section 8.
 
 ## 1. Exact conclusion and sole external interface
@@ -386,5 +387,5 @@ size bounds, native/coset and padding checks, logical plane pairing and
 the counter-stack orientation. The complete proposed algorithm is now in
 `../COMPLETE_BINARY_MULTIPLICATION_CANDIDATE.md`. The remaining task is its
 final whole-construction audit, not a second independent H2 hypothesis or
-the source's whole integer multiplier. The goal remains active during that
-review; finite tests do not replace it, and no novelty claim is made.
+the source's whole integer multiplier. The whole construction remains under
+review; finite tests do not replace that review, and no novelty claim is made.

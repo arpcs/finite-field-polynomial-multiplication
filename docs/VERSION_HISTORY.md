@@ -1,6 +1,21 @@
 # Version history
 
-## 0.1.0-preprint — local preparation, 31 October 2026
+## Editorial publication cleanup — 31 October 2026
+
+- Removed repository-creation and launch instructions from the reader-facing
+  documentation, and corrected the initial release's publication status.
+- Replaced conversational workflow wording in supporting research notes with
+  neutral descriptions, preserving their mathematical content and dated scope.
+- Replaced original workspace paths in provenance metadata with content-based
+  source identifiers or paths within this repository. Original source hashes
+  remain distinct from the current, editorially updated copy hashes.
+- Retained the four manuscripts, PDFs, source code, attribution and scientific
+  verification limits. The scoped evidence is recorded in
+  [the editorial record](../verification/editorial-cleanup.json).
+- Made the package check apply ignored-directory rules relative to the
+  repository root and reject an empty file inventory.
+
+## 0.1.0-preprint — initial release, 31 October 2026
 
 - Selected general and binary n log n baselines, the stronger general
   companion, and the principal controlled-CRT binary construction with
@@ -31,8 +46,9 @@
   and explicit shared dependencies, and expanded the README's problem,
   previous-benchmark, claimed-bound and contribution overview.
 
-This is a local candidate, not a public release or submission. Future entries
-should distinguish mathematical corrections from presentation or packaging.
+The initial public paper snapshot is commit
+`fb94421e3e6d9f8348a6e5b963b5a62d9c525e95`. Later entries distinguish
+mathematical changes from presentation and packaging updates.
 
 ## PR review corrections — 31 October 2026
 
@@ -49,3 +65,4 @@ should distinguish mathematical corrections from presentation or packaging.
 - Aligned Git whitespace checks with byte-preserved CRLF files, intentional
   Markdown hard breaks and historical terminal blank lines, while retaining
   ordinary code whitespace checks.
+

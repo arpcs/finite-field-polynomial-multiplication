@@ -42,9 +42,9 @@ Research branches with explicit unclosed uniform Pascal and full-index
 packing hypotheses are excluded from this first release. Their stronger
 exponents are not advertised as established results here.
 
-Full Lean formalization is unfinished and planned for later. The full-Lean
-goal remains paused, no Lean workload was run for this release, and no Lean
-sources or theorem-verification badge are included in this focused package.
+Full Lean formalization is unfinished and planned for later. No complete
+Lean proof of the selected fast multiplication theorems is supplied.
+Lean sources and theorem-verification receipts are not included in this release.
 
 Read the paper STATUS files and [REVIEWING.md](REVIEWING.md). Source and copy
 hashes identify exact versions; a historical audit of a different hash does

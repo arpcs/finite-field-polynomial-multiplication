@@ -1,10 +1,11 @@
 Whole ordinary odd-field reduction: adversarial proof audit
 ==========================================================
+Editorial note (31 October 2026): Workflow wording has been made neutral; mathematical statements, proof arguments and review qualifications are unchanged.
 30 October 2026. Current sources were reread. No agents, Python,
 mathematical JavaScript, foreign proof builds or unrelated processes.
-Previous goal turn: PROGRESS (full reduction, local odd-algebra witness,
-editor integration). Current turn: PROGRESS (whole-source derivation
-and new full ordinary-I/O witness).
+Earlier work supplied the full reduction, a local odd-algebra witness
+and manuscript integration. This audit records a whole-source derivation
+and a full ordinary-I/O witness.
 
 Claim audited
 -------------
@@ -12,7 +13,7 @@ For each fixed odd prime p and fixed e, one deterministic machine with
 fixed finite alphabet and fixed finite number of ordinary tapes returns
 all ordinary coefficients of f*g over F_(p^e), deg f,deg g<n, in
     O_(p,e)(n (log(n+2))^(9999/10000)).                 (T)
-This is the finite-field-theory alternative in the active goal. It is
+This is the finite-field-theory reduction investigated here. It is
 not a claim about F2, a measured cryptographic speedup, linear workspace,
 a published priority record, or a new integer-multiplication bound.
 
@@ -379,7 +380,7 @@ program, crops only its completed valid box and erases/returns all
 wrapper work. Its cost is linear extra volume and preserves arbitrary
 prefix, gap and one-bit payload. We did not rebuild the transitive Lean
 proof closure. That is a declared prior theorem dependency, not an
-unimplemented local movement oracle or a request for user approval.
+unimplemented local movement oracle.
 
 The theorem derivation and its explicit dependency, representation,
 whole ordinary endpoint, literature comparison and adversarial audit

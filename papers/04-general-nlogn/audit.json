@@ -39,9 +39,10 @@
     },
     {
       "path": "STATUS.md",
-      "sha256": "d0b431d965d6a25e45b9feb0ad7c39ea31e2dff06cd11ccfdcd4937fd2ad9f4b",
-      "bytes": 3394,
-      "origin": "New baseline companion synthesis, 2026-10-31"
+      "sha256": "62d5ae7e640c2e587357f76d2db874bb926a2a47df825b14daad5ef853dffff9",
+      "bytes": 3359,
+      "origin": "New baseline companion synthesis, 2026-10-31",
+      "editorial_update": "31 October 2026: neutral research wording and provenance labels; mathematical content unchanged."
     },
     {
       "path": "citation.bib",

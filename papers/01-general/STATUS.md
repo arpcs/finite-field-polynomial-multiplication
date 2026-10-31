@@ -1,6 +1,6 @@
 # Status: general fixed-field first-release paper
 
-**Revision:** local release candidate, 31 October 2026  
+**Revision:** 0.1.0-preprint, 31 October 2026  
 **Main source:** `main.tex`  
 **Author:** Árpád Csizmadia, arpad.csizmadia.public@gmail.com
 
@@ -10,7 +10,7 @@
 - Odd characteristic: for each fixed odd prime \(p\) and fixed \(e\), ordinary fixed-basis multiplication over \(\mathbb F_{p^e}\) takes \(O_{p,e}(n(\log(n+2))^{9999/10000})\) bit time. Its host-transfer and grouped-native proof sources are bundled under `proofs/`, with the current native source snapshot and named movement adapter.
 - The fixed-extension reduction is proved explicitly in `main.tex`: expand in a fixed basis, use \(s^2\) prime-field products, then combine with the fixed structure constants and linear basis codecs.
 
-The characteristic-two theorem is cited with its accompanying preprint scope; its all-field use is only through the proved fixed-extension corollary. No combined workspace claim, practical speedup, publication priority, or completed end-to-end Lean formalization is asserted. Full Lean formalization is unfinished and is planned for a later update; the full-Lean goal remains paused.
+The characteristic-two theorem is cited with its accompanying preprint scope; its all-field use is only through the proved fixed-extension corollary. No combined workspace claim, practical speedup, publication priority, or completed end-to-end Lean formalization is asserted. Full Lean formalization remains unfinished.
 
 ## Odd-branch proof audit
 
@@ -52,7 +52,7 @@ proof review or theorem-level Lean certification is implied.
 
 ## Packaging and verification
 
-`proofs/PROOF_SOURCES.md` maps each local source and the external dependency. `audit.json` records original workspace-relative source paths and hashes, destination-copy hashes, and copy edits. The earlier copy/source-inspection stage did not compile the paper or execute the supporting proofs. The final PDF was compiled later, as recorded below. The later fresh finite replay is separately recorded above; its ARTIFACTS.json and public replay receipt identify the exact additional source/data closure. No Lean check or full asymptotic multiplier execution was run for this release. External human proof review remains open.
+`proofs/PROOF_SOURCES.md` maps each local source and the external dependency. `audit.json` records historical source identifiers and hashes, destination-copy hashes, and copy edits. The earlier copy/source-inspection stage did not compile the paper or execute the supporting proofs. The final PDF was compiled later, as recorded below. The later fresh finite replay is separately recorded above; its ARTIFACTS.json and public replay receipt identify the exact additional source/data closure. No Lean check or full asymptotic multiplier execution was run for this release. External human proof review remains open.
 
 ## Final document packaging
 

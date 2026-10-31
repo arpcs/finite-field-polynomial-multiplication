@@ -2,17 +2,17 @@ STRICT FIXED-TAPE BINARY POLYNOMIAL CANDIDATE: PROOF MAP
 =====================================================
 30 October 2026. main.tex inputs finite_phase_appendix.tex,
 native_appendix.tex, local_appendix.tex, and swap_appendix.tex as the
-source-only draft. It
-preserves the older binary_nlogn_paper and circuit-candidate folders.
+paper sources. It
+records the selected construction and its earlier derivations.
 This map is a dependency map, not a replacement for the named proofs.
-Paths below are relative to investigation/.
+Names below identify historical derivations; the included appendices contain the selected constructions.
 Files ending _draft.tex are retained working history and are NOT inputs.
 The included appendix versions contain root corrections and consolidation.
 
 Whole-objective requirement audit (not a completion certificate)
   main.tex paragraph Order of choices and one cutoff
-  binary_strict_tape_candidate_20261030/SINGLE_UNIFORM_CUTOFF_AND_PARAMETER_ORDER_ROOT_20261030.txt
-  binary_strict_tape_candidate_20261030/SINGLE_CUTOFF_FEASIBILITY_ATTACK_20261030.txt
+  SINGLE_UNIFORM_CUTOFF_AND_PARAMETER_ORDER_ROOT_20261030.txt
+  SINGLE_CUTOFF_FEASIBILITY_ATTACK_20261030.txt
     Fixed exponents/degrees precede host selection; the enlargement
     threshold usesL0 before the actual L is derived. Strong density,
     remaining axes and once-only setup all stay compatible. Explicit
@@ -26,34 +26,34 @@ Whole-objective requirement audit (not a completion certificate)
     parked complement streams, and one final outer eta/dummy crop.
     New S coefficients only renameY->U; oldY->U^J constructs roots.
     Phi_alpha'(U^J) is a unit ifJ>1, guarding the wrong second map.
-  binary_strict_tape_candidate_20261030/TOP_LEVEL_TYPED_COMPOSITION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/WHOLE_REQUIREMENT_CROSSCHECK_20261030.txt
-  binary_strict_tape_candidate_20261030/COST_BOUNDARY_CROSSCHECK_20261030.txt
+  TOP_LEVEL_TYPED_COMPOSITION_ATTACK_20261030.txt
+  WHOLE_REQUIREMENT_CROSSCHECK_20261030.txt
+  COST_BOUNDARY_CROSSCHECK_20261030.txt
     Scoped Luna source reviews, not whole-theorem certification.
     The first two explicitly supersede an alternate per-transform eta
     crop schedule. The chosen schedule retains B across all three
     transforms and fullM B products; use their current addenda.
-  binary_strict_tape_candidate_20261030/WHOLE_THEOREM_REQUIREMENT_AUDIT_20261030.txt
+  WHOLE_THEOREM_REQUIREMENT_AUDIT_20261030.txt
     Maps ordinary function/I-O, initial host generation, all suppliers,
     uniformity, bit costs, finite tapes and final exponent to actual
     proof evidence. Records review errata and remaining global audit work.
-  binary_strict_tape_candidate_20261030/FRESH_WHOLE_THEOREM_COMPLETION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/FRESH_SUPPLIER_UNIFORMITY_COMPLETION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/FRESH_HOST_EVALUATOR_COMPLETION_ATTACK_20261030.txt
+  FRESH_WHOLE_THEOREM_COMPLETION_ATTACK_20261030.txt
+  FRESH_SUPPLIER_UNIFORMITY_COMPLETION_ATTACK_20261030.txt
+  FRESH_HOST_EVALUATOR_COMPLETION_ATTACK_20261030.txt
     Fresh Luna reviews read current sources without prior PASS premises.
     Their addenda/errata supersede initial host-price, rational-count
     and root-type statements; do not quote their initial versions alone.
 
 Base equal-chunk interchange, finite motif and ordinary tape primitives
-  binary_strict_tape_candidate_20261030/SIGNED_RATIONAL_SHEAR_AND_MODULE_CERTIFICATE_ROOT_20261030.txt
+  SIGNED_RATIONAL_SHEAR_AND_MODULE_CERTIFICATE_ROOT_20261030.txt
     Exact signed A=E1 Pi E2, ordered lower elimination, one q working
     at every b. Unit factors certify free image/kernel over Z/q^b;
     no data coordinate is divided. Source2/signs stay in the factors.
     Distinguishes coordinate Phi_A from forward record pushforward
     P_A f(H,D)=f(H-AD,D), and proves the whole dirty-role operator.
     No analogous norm/sign loss was found in this rational compiler.
-  binary_strict_tape_candidate_20261030/swap_appendix.tex
-  binary_strict_tape_candidate_20261030/SWAP_SPECTATOR_STREAMING_AND_COUNTER_ROOT_20261030.txt
+  swap_appendix.tex
+  SWAP_SPECTATOR_STREAMING_AND_COUNTER_ROOT_20261030.txt
     O(A+r) startup bound, exact-n borrow-out loop termination, product-
     scan/reset sum, selected-b control metadata paid per q^b fiber.
     Arbitrary large spectators and external payload1 need no full
@@ -65,7 +65,7 @@ Base equal-chunk interchange, finite motif and ordinary tape primitives
   ntt_base_five/chunk_swap_uniform_completion_audit.md
 
 Binary H2 from finite ternary phases and constant F16 word
-  binary_strict_tape_candidate_20261030/SIGNED_PHASE_DIRECTION_AND_ROLE_OPERATOR_ROOT_20261030.txt
+  SIGNED_PHASE_DIRECTION_AND_ROLE_OPERATOR_ROOT_20261030.txt
     CORRECTED signed direction recipe: lambda=epsilon/nu selects forward
     versus inverse. The prior norm-only rule failed for negative edges.
     Downward unit-norm and source-correction children are inverse;
@@ -81,12 +81,12 @@ Binary H2 from finite ternary phases and constant F16 word
     744 basis/random finite phases against full Fourier reference,
     eight ineligible cases; old norm-only and wrong-order controls fail.
     Byte-bound receipt; not a full growing-role/tape execution.
-  binary_strict_tape_candidate_20261030/finite_phase_appendix.tex
+  finite_phase_appendix.tex
   ntt_base_five/h2_from_chunk_swap_integrated_audit.md
   ntt_base_five/H2_FINAL_FINITE_WORD_CERTIFICATE.md
   DIRTY_ACTIVE_RANK_ROUTING_AND_PREFIX_LIFT.md
   OPAQUE_RECORD_PACKED_ROUTING_AUDIT.md
-  binary_strict_tape_candidate_20261030/FINITE_WORD_AND_SEMILINEAR_IMPLEMENTATION_ROOT_20261030.txt
+  FINITE_WORD_AND_SEMILINEAR_IMPLEMENTATION_ROOT_20261030.txt
     Explicit A.17 polynomial-basis nibble map (three XORs), F4-semilinear
     inverse conjugation on arbitrary E payloads, exactly one child.
     Monomial source scalars applied BEFORE address routing; all four
@@ -101,11 +101,11 @@ Binary H2 from finite ternary phases and constant F16 word
     PASS lacked a source hash; historical files were preserved.
 
 Native mixed-radix endpoint kernel, external D>=1
-  binary_strict_tape_candidate_20261030/native_appendix.tex
-  binary_strict_tape_candidate_20261030/NATIVE_METADATA_COST_CERTIFICATE_20261030.txt
-  binary_strict_tape_candidate_20261030/NATIVE_TYPED_CONTROL_PROGRAM_20261030.txt
+  native_appendix.tex
+  NATIVE_METADATA_COST_CERTIFICATE_20261030.txt
+  NATIVE_TYPED_CONTROL_PROGRAM_20261030.txt
   MIXED_RADIX_WEIGHTED_TILE_MASK_LEMMA_20261030.txt
-  binary_strict_tape_candidate_20261030/NATIVE_PRIVATE_PAD_AND_EXCEPTION_UNIVERSE_ROOT_20261030.txt
+  NATIVE_PRIVATE_PAD_AND_EXCEPTION_UNIVERSE_ROOT_20261030.txt
     Private binary X/W tails are fixed agreement states, excluded from
     the valid_X AND valid_W AND quotient-margin-failure marker.
     Repair only native exceptions in padded key order before cropping.
@@ -113,12 +113,12 @@ Native mixed-radix endpoint kernel, external D>=1
     per-axis dummy patterns and the zero-filled complement.
   MIXED_RADIX_CANONICAL_H2_ROOT_20261030.txt
   CANONICAL_MIXED_H2_ATTACK_COSET_20261030.txt
-  binary_strict_tape_candidate_20261030/PHASE_FULL_UNIVERSE_PARAMETRIC_ROOT_20261030.txt
+  PHASE_FULL_UNIVERSE_PARAMETRIC_ROOT_20261030.txt
     Current sharp induction/cost derivation: exact prefix rules,
     complete parent eligibility, sigma<tau=1-2^-36, no lambda slack,
     gamma=1/(2-tau) retained through all compilers, final delta2^-38.
     Earlier numerical tariffs in historical reviews are weaker bounds.
-  binary_strict_tape_candidate_20261030/SPARSE_CORRECTION_AND_REPAIR_OWNERSHIP_ROOT_20261030.txt
+  SPARSE_CORRECTION_AND_REPAIR_OWNERSHIP_ROOT_20261030.txt
     General output-hole/key lemma, explicit fixed-tape radix sorting,
     D=1 selective shifts and direct invariant native bad masks.
     Tile correction follows one completed weighted XOR; prefix correction
@@ -128,7 +128,7 @@ Native mixed-radix endpoint kernel, external D>=1
     Fixed target-axis translations do not depend on logical controls.
 
 Prepared recursion entries, exact child volumes and one-time pads
-  binary_strict_tape_candidate_20261030/RECURSION_ENTRY_CONTRACTS_ROOT_20261030.txt
+  RECURSION_ENTRY_CONTRACTS_ROOT_20261030.txt
   SwapBinary -> SwapQGeneral -> SwapPower -> smaller SwapPower.
   PrepareHBlock -> PhaseAll -> PhasePower -> smaller PhasePower.
   The two power cores never re-enter their root preparation wrappers.
@@ -136,7 +136,7 @@ Prepared recursion entries, exact child volumes and one-time pads
   The root suffix/row/codec constant <=16 is not a recursion coefficient.
 
 Tensor perfect shuffle and generic exact-even permutation network
-  binary_strict_tape_candidate_20261030/RAGGED_PARTITION_AND_CONTROLLED_METADATA_ROOT_20261030.txt
+  RAGGED_PARTITION_AND_CONTROLLED_METADATA_ROOT_20261030.txt
     Setwise parents have exact split intervals
     [ceil(a/2),ceil(b/2)) and [n/2+floor(a/2),n/2+floor(b/2)).
     They cover the same n wires in all-even/all-odd order; one residual
@@ -145,7 +145,7 @@ Tensor perfect shuffle and generic exact-even permutation network
     is absorbed. Actual CRT G=O(Q12) is covered by fixed D>=Q64.
   TENSOR_PERFECT_SHUFFLE_ROOT_20261030.txt
   GENERIC_TENSOR_PERMUTATION_ROOT_20261030.txt
-  binary_strict_tape_candidate_20261030/ENDPOINT_ROTATION_CONSTRUCTION_ROOT_20261030.txt
+  ENDPOINT_ROTATION_CONSTRUCTION_ROOT_20261030.txt
     exact two-reversal schedule, three-exchange bank placement, physical
     linear-gap auxiliary and exponential opaque-record width.
   ntt_base_five/ragged_global_benes_bounded_20261030.cpp
@@ -158,7 +158,7 @@ Controlled tensor, word-width enlargement and parallel CRT tree
   ntt_base_five/controlled_gauge_crt_bounded_20261030.txt
 
 Formal characteristic-two exact-width local Fourier compiler
-  binary_strict_tape_candidate_20261030/LOCAL_EXACT_WIDTH_REPLAY_AND_FOURIER_BRIDGE_ROOT_20261030.txt
+  LOCAL_EXACT_WIDTH_REPLAY_AND_FOURIER_BRIDGE_ROOT_20261030.txt
     Explicit exact-width unit Toeplitz lemma in local_appendix.tex.
     Disjoint source/target/gate ports, counted bounded-degree outputs,
     four gate sweeps/two port reads; actual six-convolution windows
@@ -175,7 +175,7 @@ Formal characteristic-two exact-width local Fourier compiler
     reference; correlated dirty values and two broken suppression controls.
     Exit0 in184ms; max126 gate coordinates. Does not execute the growing
     triadic supplier or full Toeplitz/Fourier recursion. Byte-bound receipt.
-  binary_strict_tape_candidate_20261030/ELEMENTARY_FORMAL_TRIADIC_AND_LOCAL_COMPILER_ROOT_20261030.txt
+  ELEMENTARY_FORMAL_TRIADIC_AND_LOCAL_COMPILER_ROOT_20261030.txt
     CURRENT formal supplier: explicit arbitrary-F2-algebra triadic
     circuit, size O(v log^8 v), depth O(log v), polynomial-v printer.
     Projection/copy trees give g8/H2; exact-width chunks v/log^8 v
@@ -190,19 +190,19 @@ Formal characteristic-two exact-width local Fourier compiler
   AMBITIOUS_BINARY_MUL_CHART_TAPE_CLOSURE_ROOT_20261030.txt, triadic DAG
   STRICT_LOCAL_WIDTH_COMPILER_REATTACK_20261030.txt
   STRICT_TRIADIC_DAG_FOUNDATION_20261030.txt
-  binary_strict_tape_candidate_20261030/local_appendix.tex
-  binary_strict_tape_candidate_20261030/LOCAL_FORMAL_SPECIALIZATION_ROOT_20261030.txt
+  local_appendix.tex
+  LOCAL_FORMAL_SPECIALIZATION_ROOT_20261030.txt
   Sharper classical alternative: Cantor--Kaltofen1991,
     DOI10.1007/BF01178683, formal division-free algebra circuit.
   The local appendix prints constant/linear projection rules and all
     three displacement boundary generators. Its tape/width and scalar
     charges remain separate from the formal convolution construction.
-  binary_strict_tape_candidate_20261030/GROWING_SCALAR_AND_LOCAL_LAYER_ROOT_20261030.txt
+  GROWING_SCALAR_AND_LOCAL_LAYER_ROOT_20261030.txt
     explicit 3-S-product B arithmetic and fixed reciprocal reduction;
     one-time conjugate/norm unit inverses; zero-shear completion and
     uniform 2-H/2-J/3-diagonal word; two-tape prefix expansion in <2M
     B products, with current scalar alignment and public table staging.
-  binary_strict_tape_candidate_20261030/INDEPENDENT_INTEGER_SS_ARITHMETIC_ROOT_20261030.txt
+  INDEPENDENT_INTEGER_SS_ARITHMETIC_ROOT_20261030.txt
     CURRENT runtime word supplier: classical1971 integer SS + explicit
     carry-free binary packing, M_old(v)=v log^2(2v) loglog(4v).
     The strong actual host density survives enlargement:
@@ -221,7 +221,7 @@ Ordinary host, scalar costs, complement, finite tape composition, delta
     actual N/tuple/lambda/divisor/root generation and checks N^o(1);
     input count/copy O(n). Verified primary constructor bounds replace
     an implicit host-selection invoice. No factor list is advice.
-  binary_strict_tape_candidate_20261030/COEFFICIENT_CRT_GENERAL_REMAINDER_AND_ORDINARY_IO_ROOT_20261030.txt
+  COEFFICIENT_CRT_GENERAL_REMAINDER_AND_ORDINARY_IO_ROOT_20261030.txt
     General fixed-monic remainder lemma at input width r>=d:
     reciprocal length r-d, two old-word products and O(r) scans.
     Explicit long alpha'-row projection modulo tiny psi, both CRT
@@ -229,7 +229,7 @@ Ordinary host, scalar costs, complement, finite tape composition, delta
     Exact complement stride/row count, d1/m'1 branches and o(N) budget.
     Exact primary host root rho order N/q0, old-root power alpha/q0,
     then quotient-homomorphism lift and J-th power for the m' root.
-  binary_strict_tape_candidate_20261030/ORDINARY_HOST_COMPOSITION_ROOT_20261030.txt
+  ORDINARY_HOST_COMPOSITION_ROOT_20261030.txt
   ntt_base_five/ordinary_binary_host_end_to_end_bounded_20261030.cpp
   ntt_base_five/ordinary_binary_newton_layers_bounded_20261030.inc
   ntt_base_five/ordinary_binary_host_io_bounded_20261030.inc
@@ -244,96 +244,98 @@ Whole and supplier adversarial reviews
   STRICT_BINARY_SUPPLIER_REATTACK_20261030.txt
   STRICT_BASE_H2_SWAP_REATTACK_20261030.txt
   STRICT_MACHINE_LEDGER_FINAL_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/STRICT_TAPE_MANUSCRIPT_FINAL_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SUPPLIER_APPENDICES_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SUPPLIER_FINAL_CONSOLIDATION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/NATIVE_FINAL_CONSOLIDATION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/STRICT_LOCAL_APPENDIX_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/RECTANGLE_THRESHOLD_AUDIT_20261030.txt
-  binary_strict_tape_candidate_20261030/WHOLE_PAPER_DEPENDENCY_AUDIT_20261030.txt
-  binary_strict_tape_candidate_20261030/FRESH_WHOLE_CONSTRUCTION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SWAP_STANDALONE_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SWAP_DEPENDENCY_DISCHARGE_AUDIT_20261030.txt
-  binary_strict_tape_candidate_20261030/MACHINE_PRIMITIVE_OPERATIONS_AUDIT_20261030.txt
-  binary_strict_tape_candidate_20261030/UNIFORMITY_SECONDARY_COST_AUDIT_20261030.txt
-  binary_strict_tape_candidate_20261030/NATIVE_METADATA_COST_CERTIFICATE_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SELECTIVE_SHIFT_BIT_COST_AUDIT_20261030.txt
-  binary_strict_tape_candidate_20261030/RECURSION_ABI_SWAP_AUDIT_20261030.txt
-  binary_strict_tape_candidate_20261030/RECURSION_ABI_NATIVE_AUDIT_20261030.txt
-  binary_strict_tape_candidate_20261030/PAD_FACTOR_RECURRENCE_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/ROOT_RECURSION_CONTRACT_SWAP_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/ROOT_RECURSION_CONTRACT_NATIVE_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/ROOT_PAD_OWNERSHIP_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SWAP_CORE_STORAGE_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/NATIVE_CORE_ALGEBRA_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/NATIVE_FINAL_ENTRY_PATCH_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/GLOBAL_COMPOSITION_FRESH_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/FORMAL_SS_DAG_FRESH_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/LOCAL_EXPLICIT_SUPPLIER_PATCH_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/RAGGED_SWITCH_SHIFT_COMPLETION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/ENDPOINT_REFLECTION_LAYOUT_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/ENDPOINT_ROTATION_ROOT_PATCH_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/ORDINARY_IO_COMPONENT_COMPLETION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/TENSOR_SCALAR_STREAM_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SCALAR_PREFIX_EXPANSION_ROOT_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/GROWING_RING_UNIT_INTERFACE_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/LOCAL_LAYER_SLOT_COMPLETION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/ORDINARY_HOST_FIXTURE_SYMBOLIC_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/FOURIER_FREQUENCY_GAUGE_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/PHASE_FULL_UNIVERSE_INDUCTION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/FINITE_FRAME_OPERATOR_DISCHARGE_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/PREFIX_DIRTY_TRUNCATION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/PHASE_RECURRENCE_UNIFORM_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/PHASE_PARAMETRIC_EXPONENT_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/PREFIX_COST_PARAMETRIC_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SWAP_SHARP_EXPONENT_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/GAMMA_TARIFF_PROPAGATION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SHARP_BINARY_EXPONENT_CHAIN_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SHARP_NATIVE_PREFIX_SOURCE_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SHARP_TARIFF_SOURCE_CONSISTENCY_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SPARSE_REPAIR_FULL_TAPE_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/CONTROLLED_TRANSLATION_FIXED_SET_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/REPAIR_BOUNDARY_OWNERSHIP_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/TAPE_RADIX_COUNTER_COST_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/PREFIX_OUTER_ROUTE_ALGEBRA_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/REPAIR_MASK_AND_FIXED_TRANSLATION_FOLLOWUP_20261030.txt
-  binary_strict_tape_candidate_20261030/RUNTIME_KRONECKER_COMPLEMENT_DENSITY_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/INTEGER_SS_WORD_FALLBACK_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/ARITHMETIC_FALLBACK_DEPENDENCY_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/CK_PRIMARY_FORMAL_CIRCUIT_SOURCE_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/FORMAL_DAG_FANOUT_REPLAY_GENERATOR_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/EXPLICIT_TRIADIC_CIRCUIT_RECURRENCE_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/ELEMENTARY_TRIADIC_FORMAL_CIRCUIT_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/POLYLOG_LOCAL_COMPILER_ROBUSTNESS_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/F16_INCLUDED_WORD_SOURCE_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/F16_TWO_PLANE_INVERSE_WRAPPER_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/FINITE_WORD_TENSOR_CODEC_LIFT_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SWAP_COUNTER_STARTUP_AMORTIZATION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SWAP_SMALL_WIDTH_SPECTATOR_OFFSET_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SWAP_UNIT_STREAM_SPECTATOR_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/NATIVE_PRIVATE_PAD_EXCEPTION_DENSITY_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/DOCKED_VALIDITY_TRANSPORT_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/NATIVE_PAD_SORT_AND_DUMMY_OWNERSHIP_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/LOCAL_EXACT_WIDTH_CHUNK_FIT_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/LOCAL_REPLAY_OUTPUT_PORT_AND_ALIAS_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/LOCAL_RECTANGULAR_DISPLACEMENT_LENGTH_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/COEFFICIENT_CRT_LONG_REDUCTION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/COMPLEMENT_PACKING_ROW_WIDTH_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/HOST_ROOT_LIFT_AND_RECONSTRUCTION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SIGNED_PHASE_EDGE_CHILD_FLAG_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/PHASE_DIRECTION_PUSHFORWARD_CONJUGATION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/FULL_ROLE_PHASE_OPERATOR_IDENTITY_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/SIGNED_RATIONAL_FRAME_RING_LIFT_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/RATIONAL_BRUHAT_FACTOR_AND_DIRECTION_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/RATIONAL_ROLE_PUSHFORWARD_OPERATOR_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/RAGGED_PARTITION_ENDPOINT_AND_DEPTH_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/RAGGED_ODD_PATH_AND_GLOBAL_PARITY_ATTACK_20261030.txt
-  binary_strict_tape_candidate_20261030/RAGGED_SETTING_GENERATOR_POLYNOMIAL_ATTACK_20261030.txt
+  STRICT_TAPE_MANUSCRIPT_FINAL_ATTACK_20261030.txt
+  SUPPLIER_APPENDICES_ATTACK_20261030.txt
+  SUPPLIER_FINAL_CONSOLIDATION_ATTACK_20261030.txt
+  NATIVE_FINAL_CONSOLIDATION_ATTACK_20261030.txt
+  STRICT_LOCAL_APPENDIX_ATTACK_20261030.txt
+  RECTANGLE_THRESHOLD_AUDIT_20261030.txt
+  WHOLE_PAPER_DEPENDENCY_AUDIT_20261030.txt
+  FRESH_WHOLE_CONSTRUCTION_ATTACK_20261030.txt
+  SWAP_STANDALONE_ATTACK_20261030.txt
+  SWAP_DEPENDENCY_DISCHARGE_AUDIT_20261030.txt
+  MACHINE_PRIMITIVE_OPERATIONS_AUDIT_20261030.txt
+  UNIFORMITY_SECONDARY_COST_AUDIT_20261030.txt
+  NATIVE_METADATA_COST_CERTIFICATE_ATTACK_20261030.txt
+  SELECTIVE_SHIFT_BIT_COST_AUDIT_20261030.txt
+  RECURSION_ABI_SWAP_AUDIT_20261030.txt
+  RECURSION_ABI_NATIVE_AUDIT_20261030.txt
+  PAD_FACTOR_RECURRENCE_ATTACK_20261030.txt
+  ROOT_RECURSION_CONTRACT_SWAP_ATTACK_20261030.txt
+  ROOT_RECURSION_CONTRACT_NATIVE_ATTACK_20261030.txt
+  ROOT_PAD_OWNERSHIP_ATTACK_20261030.txt
+  SWAP_CORE_STORAGE_ATTACK_20261030.txt
+  NATIVE_CORE_ALGEBRA_ATTACK_20261030.txt
+  NATIVE_FINAL_ENTRY_PATCH_ATTACK_20261030.txt
+  GLOBAL_COMPOSITION_FRESH_ATTACK_20261030.txt
+  FORMAL_SS_DAG_FRESH_ATTACK_20261030.txt
+  LOCAL_EXPLICIT_SUPPLIER_PATCH_ATTACK_20261030.txt
+  RAGGED_SWITCH_SHIFT_COMPLETION_ATTACK_20261030.txt
+  ENDPOINT_REFLECTION_LAYOUT_ATTACK_20261030.txt
+  ENDPOINT_ROTATION_ROOT_PATCH_ATTACK_20261030.txt
+  ORDINARY_IO_COMPONENT_COMPLETION_ATTACK_20261030.txt
+  TENSOR_SCALAR_STREAM_ATTACK_20261030.txt
+  SCALAR_PREFIX_EXPANSION_ROOT_ATTACK_20261030.txt
+  GROWING_RING_UNIT_INTERFACE_ATTACK_20261030.txt
+  LOCAL_LAYER_SLOT_COMPLETION_ATTACK_20261030.txt
+  ORDINARY_HOST_FIXTURE_SYMBOLIC_ATTACK_20261030.txt
+  FOURIER_FREQUENCY_GAUGE_ATTACK_20261030.txt
+  PHASE_FULL_UNIVERSE_INDUCTION_ATTACK_20261030.txt
+  FINITE_FRAME_OPERATOR_DISCHARGE_ATTACK_20261030.txt
+  PREFIX_DIRTY_TRUNCATION_ATTACK_20261030.txt
+  PHASE_RECURRENCE_UNIFORM_ATTACK_20261030.txt
+  PHASE_PARAMETRIC_EXPONENT_ATTACK_20261030.txt
+  PREFIX_COST_PARAMETRIC_ATTACK_20261030.txt
+  SWAP_SHARP_EXPONENT_ATTACK_20261030.txt
+  GAMMA_TARIFF_PROPAGATION_ATTACK_20261030.txt
+  SHARP_BINARY_EXPONENT_CHAIN_ATTACK_20261030.txt
+  SHARP_NATIVE_PREFIX_SOURCE_ATTACK_20261030.txt
+  SHARP_TARIFF_SOURCE_CONSISTENCY_ATTACK_20261030.txt
+  SPARSE_REPAIR_FULL_TAPE_ATTACK_20261030.txt
+  CONTROLLED_TRANSLATION_FIXED_SET_ATTACK_20261030.txt
+  REPAIR_BOUNDARY_OWNERSHIP_ATTACK_20261030.txt
+  TAPE_RADIX_COUNTER_COST_ATTACK_20261030.txt
+  PREFIX_OUTER_ROUTE_ALGEBRA_ATTACK_20261030.txt
+  REPAIR_MASK_AND_FIXED_TRANSLATION_FOLLOWUP_20261030.txt
+  RUNTIME_KRONECKER_COMPLEMENT_DENSITY_ATTACK_20261030.txt
+  INTEGER_SS_WORD_FALLBACK_ATTACK_20261030.txt
+  ARITHMETIC_FALLBACK_DEPENDENCY_ATTACK_20261030.txt
+  CK_PRIMARY_FORMAL_CIRCUIT_SOURCE_ATTACK_20261030.txt
+  FORMAL_DAG_FANOUT_REPLAY_GENERATOR_ATTACK_20261030.txt
+  EXPLICIT_TRIADIC_CIRCUIT_RECURRENCE_ATTACK_20261030.txt
+  ELEMENTARY_TRIADIC_FORMAL_CIRCUIT_ATTACK_20261030.txt
+  POLYLOG_LOCAL_COMPILER_ROBUSTNESS_ATTACK_20261030.txt
+  F16_INCLUDED_WORD_SOURCE_ATTACK_20261030.txt
+  F16_TWO_PLANE_INVERSE_WRAPPER_ATTACK_20261030.txt
+  FINITE_WORD_TENSOR_CODEC_LIFT_ATTACK_20261030.txt
+  SWAP_COUNTER_STARTUP_AMORTIZATION_ATTACK_20261030.txt
+  SWAP_SMALL_WIDTH_SPECTATOR_OFFSET_ATTACK_20261030.txt
+  SWAP_UNIT_STREAM_SPECTATOR_ATTACK_20261030.txt
+  NATIVE_PRIVATE_PAD_EXCEPTION_DENSITY_ATTACK_20261030.txt
+  DOCKED_VALIDITY_TRANSPORT_ATTACK_20261030.txt
+  NATIVE_PAD_SORT_AND_DUMMY_OWNERSHIP_ATTACK_20261030.txt
+  LOCAL_EXACT_WIDTH_CHUNK_FIT_ATTACK_20261030.txt
+  LOCAL_REPLAY_OUTPUT_PORT_AND_ALIAS_ATTACK_20261030.txt
+  LOCAL_RECTANGULAR_DISPLACEMENT_LENGTH_ATTACK_20261030.txt
+  COEFFICIENT_CRT_LONG_REDUCTION_ATTACK_20261030.txt
+  COMPLEMENT_PACKING_ROW_WIDTH_ATTACK_20261030.txt
+  HOST_ROOT_LIFT_AND_RECONSTRUCTION_ATTACK_20261030.txt
+  SIGNED_PHASE_EDGE_CHILD_FLAG_ATTACK_20261030.txt
+  PHASE_DIRECTION_PUSHFORWARD_CONJUGATION_ATTACK_20261030.txt
+  FULL_ROLE_PHASE_OPERATOR_IDENTITY_ATTACK_20261030.txt
+  SIGNED_RATIONAL_FRAME_RING_LIFT_ATTACK_20261030.txt
+  RATIONAL_BRUHAT_FACTOR_AND_DIRECTION_ATTACK_20261030.txt
+  RATIONAL_ROLE_PUSHFORWARD_OPERATOR_ATTACK_20261030.txt
+  RAGGED_PARTITION_ENDPOINT_AND_DEPTH_ATTACK_20261030.txt
+  RAGGED_ODD_PATH_AND_GLOBAL_PARITY_ATTACK_20261030.txt
+  RAGGED_SETTING_GENERATOR_POLYNOMIAL_ATTACK_20261030.txt
 
 Fresh primary-source scope/overlap check
   STRICT_BINARY_CANDIDATE_FRESHNESS_20261030.txt
-  binary_strict_tape_candidate_20261030/BINARY_THEOREM_SCOPE_RECHECK_20261030.txt
+  BINARY_THEOREM_SCOPE_RECHECK_20261030.txt
     Later same-day update: includes exact-complex polynomial corollary,
     current stronger integer-repository statements and their stated
     verification scope. Not an exhaustive priority determination.
 No exhaustive novelty or external-verification claim is made.
+
+Editorial note (31 October 2026): workflow wording and historical path labels were normalized; mathematical statements and review limits are unchanged.

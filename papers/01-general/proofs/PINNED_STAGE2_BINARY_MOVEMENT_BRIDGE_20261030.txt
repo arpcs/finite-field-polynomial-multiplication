@@ -1,5 +1,6 @@
 Pinned stage-two supplier -> the complete binary movement interface
 30 October 2026. Named external theorem import and exact format bridge.
+Editorial note (31 October 2026): Workflow wording has been made neutral; mathematical statements, proof arguments and review qualifications are unchanged.
 
 RESULT AND DEPENDENCY BOUNDARY
 =============================
@@ -153,6 +154,6 @@ and symbol wrapper in Sections 2--3 is required locally. Its saving
 0.0003731649599, but is more than sufficient for the new E8 phase
 recurrence of E8_TERNARY_OWNED_CENTER_CLOSURE_20261030.txt.
 
-The original subnlogn_blackbox_link_sources_20261030 files and another
-chat's canonical proofs were read only. New source copies are in the
-workspace root investigation directory, with the pin and hash above.
+The earlier source collection and the separate canonical proof sources
+were consulted without modification. The external source is identified by
+the immutable repository revision and file hash above.

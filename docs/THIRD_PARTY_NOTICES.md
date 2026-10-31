@@ -20,9 +20,8 @@ proof-assistant machinery.
 | Dehaene and De Moor; community coordinate constructions | Classical linear/quadratic Clifford descriptions are credited separately from the specific community-derived coordinate construction. The native supplement retains the latter's individual attribution, including icekylinx. |
 | OpenAI Codex | Known software assistance is identified in each paper and AI_USE.md. Software use is separate from mathematical source dependence; AI systems are not listed as paper authors. |
 
-The frozen native and proof-source supplements are selections from the
-author's wider AI-assisted research workspace. They retain their internal
-source citations. Historical audit language is not a new external review or
+The native and proof-source supplements retain their original citations
+and identify the AI-assisted derivations they document. Historical audit language is not a new external review or
 proof-assistant receipt. Paper audit files identify originals and edits;
 the released hashes identify the exact current copy.
 

@@ -8,14 +8,13 @@ ROADMAP.md identifies current priorities without authorizing new heavy jobs.
 
 ## Scope and publication
 
-- This repository is the single working copy for publication preparation.
-  Edit its README, papers and metadata here. Existing review folders are
-  snapshots; do not switch to them or create more review copies unless the
-  owner explicitly requests it.
-- This is a local release candidate. Do not initialize Git, commit, push, publish,
-  open an external issue/PR, post to a board or contact anyone unless the owner
-  explicitly requests that action. A generic contribution prompt is not consent.
-- Do not resume the paused full-Lean goal merely because its sources are included.
+- Work in this checkout. Put temporary tools, caches and packaging artifacts in
+  ignored build directories; do not create parallel release copies by default.
+- Git commits, pushes, repository settings, external submissions and messages
+  require explicit maintainer authorization. A contribution request alone does
+  not authorize those actions.
+- Keep verification work within the current task's scope. The presence of Lean
+  sources does not authorize additional proof jobs or a default library build.
 - Keep historical snapshots intact. Add a dated correction or a new version;
   do not silently replace a historical PDF with a different source revision.
 - Keep all-fixed-field, characteristic-two, group-convolution and multivariate
@@ -34,7 +33,7 @@ ROADMAP.md identifies current priorities without authorizing new heavy jobs.
 - The standard permitted Lean logical axioms are `propext`, `Classical.choice`
   and `Quot.sound`. Report any other dependency explicitly.
 
-## Resource limits for the owner's machine
+## Resource limits
 
 - Do not launch Python/Node computational experiments, large enumerations,
   dense global matrices or unbounded jobs. Use bounded native checks when needed.
