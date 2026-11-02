@@ -1,0 +1,745 @@
+{
+  "schema": "stronger-odd-update-assets/2",
+  "generated_utc": "2026-11-02T05:07:38.1783534Z",
+  "scope": "All current native-package proof, finite-data and provenance files except this manifest. Original source identities are distinct from edited publication bytes.",
+  "hash_algorithm": "SHA-256",
+  "self_hash": "Excluded",
+  "logical_native_source": {
+    "logical_filename": "native-source.tex",
+    "original": {
+      "filename": "native-main.tex",
+      "bytes": 470230,
+      "sha256": "6cd806c6e52a4883270da6002a4d0c7b0120ca719745033183eb5686b3db6f07"
+    },
+    "package_path": "native-source.tex.txt",
+    "bytes": 306077,
+    "sha256": "97f498a394943db3fa69e9984ed11f3e59efca24dfd6f03c3d4ab3ff7b392f72",
+    "byte_identical": false,
+    "selection_record": "SOURCE_SELECTION.json"
+  },
+  "upstream_sources": [
+    {
+      "family": "PR589-BIT",
+      "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+      "commit": "322e0ec764aa7ef7801383feb1f656e460dd8bed",
+      "manifest": "finite-data/pr589-bit/sources.json",
+      "license": "Apache-2.0",
+      "checker_inputs": [
+        "finite-data/pr589-bit/WORD.json",
+        "finite-data/pr589-bit/frames.json",
+        "finite-data/pr589-bit/249-records.bin",
+        "finite-data/pr589-bit/bit_controller_322e0ec_source.json"
+      ],
+      "legal_material": {
+        "source_commit": "322e0ec764aa7ef7801383feb1f656e460dd8bed",
+        "license": "Apache-2.0",
+        "archive_directory": "finite-data/pr589-bit/upstream",
+        "retrieval_record": "finite-data/pr589-bit/upstream/RETRIEVAL.json",
+        "source_specific_contents": "Complete displayed LICENSE, NOTICE and README retrieved from pinned raw GitHub views",
+        "normalization": "UTF-8 transcription, LF line endings, final LF",
+        "original_network_byte_identity_verified": false,
+        "attribution_record": "finite-data/pr589-bit/ATTRIBUTION.md",
+        "older_sibling_notice_scope": "Separate raw-CU source family; not substituted for the pinned PR589 notice"
+      }
+    },
+    {
+      "family": "raw-CU phase word",
+      "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+      "commit": "2485805a6d47f36ea83ddde6327d453ac82d44dc",
+      "source_inputs": {
+        "controller": "investigation/ntt_base_five/croc_comparison_20261030/controller_base.json",
+        "WORD": "investigation/ntt_base_five/croc_comparison_20261030/WORD.json"
+      },
+      "package_paths": {
+        "controller": "../finite-unit/inputs/controller.json",
+        "WORD": "../finite-unit/inputs/native-word.json"
+      },
+      "license_notice_paths": [
+        "../finite-unit/upstream/CrocSwap-LICENSE",
+        "../finite-unit/upstream/CrocSwap-NOTICE"
+      ]
+    }
+  ],
+  "reused_assets": [
+    {
+      "logical_name": "raw-CU logical WORD.json",
+      "source_path": "investigation/ntt_base_five/croc_comparison_20261030/WORD.json",
+      "source_sha256": "BDB99BDE29DE80E90BACBFB516BD37F636B36B52D870794851D07A3ECF639C01",
+      "package_path": "../finite-unit/inputs/native-word.json",
+      "package_sha256": "BDB99BDE29DE80E90BACBFB516BD37F636B36B52D870794851D07A3ECF639C01",
+      "byte_identical": true,
+      "expected_sha256": "BDB99BDE29DE80E90BACBFB516BD37F636B36B52D870794851D07A3ECF639C01",
+      "reuse_reason": "Hash-identical input already included in the release finite-unit bundle; referenced instead of copied."
+    },
+    {
+      "logical_name": "raw-CU controller_base.json",
+      "source_path": "investigation/ntt_base_five/croc_comparison_20261030/controller_base.json",
+      "source_sha256": "1F5D6AA267E4E66048818714B5D3B5EAE17A58ABE91D15DEEAA34574F7391A5F",
+      "package_path": "../finite-unit/inputs/controller.json",
+      "package_sha256": "1F5D6AA267E4E66048818714B5D3B5EAE17A58ABE91D15DEEAA34574F7391A5F",
+      "byte_identical": true,
+      "expected_sha256": "1F5D6AA267E4E66048818714B5D3B5EAE17A58ABE91D15DEEAA34574F7391A5F",
+      "reuse_reason": "Hash-identical input already included in the release finite-unit bundle; referenced instead of copied."
+    },
+    {
+      "logical_name": "CrocSwap-LICENSE",
+      "package_path": "../finite-unit/upstream/CrocSwap-LICENSE",
+      "package_sha256": "C71D239DF91726FC519C6EB72D318EC65820627232B2F796219E87DCF35D0AB4",
+      "byte_identical": true,
+      "reuse_reason": "Full upstream legal text already retained in the sibling finite-unit bundle; reused by relative link to avoid duplicate copies."
+    },
+    {
+      "logical_name": "CrocSwap-NOTICE",
+      "package_path": "../finite-unit/upstream/CrocSwap-NOTICE",
+      "package_sha256": "B49022CB4104D90B182E4C335F670FAF45529025B15DB77BF0291835083C28BD",
+      "byte_identical": true,
+      "reuse_reason": "Full upstream legal text already retained in the sibling finite-unit bundle; reused by relative link to avoid duplicate copies."
+    }
+  ],
+  "files": [
+    {
+      "path": "finite-data/bounded_json.hpp",
+      "bytes": 66,
+      "sha256": "aadc615059e59f43c154585a7ccd7d1fe01c968961e3d5480f642aa098c41f7f",
+      "role": "relative-include-shim",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/bounded_json.hpp",
+        "bytes": 4313,
+        "sha256": "535B37CC3555003B6A4679CB71B5B32CD5E81C52BEB2F7920321468EB68F67B7"
+      },
+      "copy_edits": [
+        "One-line relative include wrapper; exact underlying header is reused from the sibling finite-unit bundle."
+      ],
+      "reuse_path": "../finite-unit/code/bounded_json.hpp"
+    },
+    {
+      "path": "finite-data/pr589-bit/249-records.bin",
+      "bytes": 653616,
+      "sha256": "ea44aa047a2a9cf034de8b56b2166c49cf2dbdf9cd9ed6a20299a4f2b05ef09a",
+      "role": "checker-input",
+      "license": "CrocSwap Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/record_sources/mixed_bit/249-records.bin",
+        "bytes": 653616,
+        "sha256": "EA44AA047A2A9CF034DE8B56B2166C49CF2DBDF9CD9ED6A20299A4F2B05EF09A"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/249-states.json",
+      "bytes": 10846,
+      "sha256": "701ca802279b23ba23ffd502935ae9f34a33fc81fdfd266042f3208a2cb16265",
+      "role": "pinned-context",
+      "license": "CrocSwap Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/record_sources/mixed_bit/249-states.json",
+        "bytes": 10846,
+        "sha256": "701CA802279B23BA23FFD502935AE9F34A33FC81FDFD266042F3208A2CB16265"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/ATTRIBUTION.md",
+      "bytes": 1854,
+      "sha256": "bc4540f28bfdd635b5966fa55b6ecbbd695421a23cd7ab9bbaef2162823ca58e",
+      "role": "source-attribution-and-notice-provenance"
+    },
+    {
+      "path": "finite-data/pr589-bit/bit_controller_322e0ec_source.json",
+      "bytes": 23753,
+      "sha256": "39ac84fb848b908f7ba051fae4556d507900c421dc5d23501a9c0cb1d61fd08d",
+      "role": "checker-input",
+      "license": "CrocSwap Apache-2.0",
+      "source": {
+        "path": "investigation/ntt_base_five/croc_comparison_20261030/bit_controller_322e0ec_source.json",
+        "bytes": 23753,
+        "sha256": "39AC84FB848B908F7BA051FAE4556D507900C421DC5D23501A9C0CB1D61FD08D"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/bit_native_binding_source.py.txt",
+      "bytes": 8380,
+      "sha256": "bf6374225f388e7531fa6475cc255bd430100ff62c38d582c41601f0739de7b7",
+      "role": "read-only-source-context",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/record_sources/mixed_bit/bit_native_binding_source.py",
+        "bytes": 8380,
+        "sha256": "BF6374225F388E7531FA6475CC255BD430100FF62C38D582C41601F0739DE7B7"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/frames.json",
+      "bytes": 112648,
+      "sha256": "d006b3bfe0c04afecfea7aecfa59dfe4298b99501c70da3938e40289bc2f5010",
+      "role": "checker-input",
+      "license": "CrocSwap Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/record_sources/mixed_bit/frames.json",
+        "bytes": 112648,
+        "sha256": "D006B3BFE0C04AFECFEA7AECFA59DFE4298B99501C70DA3938E40289BC2F5010"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/mixed_bit_controller_probe.cpp",
+      "bytes": 7441,
+      "sha256": "d73aee3889340bef32de6924f69119f3e0ccca56745cbbe84fc404c32e837c91",
+      "role": "guarded-checker-source",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/mixed_bit_controller_probe.cpp",
+        "bytes": 7441,
+        "sha256": "D73AEE3889340BEF32DE6924F69119F3E0CCCA56745CBBE84FC404C32E837C91"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/mixed_bit_controller_probe.txt",
+      "bytes": 460,
+      "sha256": "556c7cb06f46797e53fc930b2ee20dbf1db8cdb31f255e79db2c3896c5c8a4bb",
+      "role": "saved-finite-check-report",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/mixed_bit_controller_probe.txt",
+        "bytes": 460,
+        "sha256": "556C7CB06F46797E53FC930B2EE20DBF1DB8CDB31F255E79DB2C3896C5C8A4BB"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/pr589_listing.json",
+      "bytes": 5477,
+      "sha256": "06c7768995c115872c9ff1d6fab0a2f10cc0643dc4c36756921b246f1f952a1a",
+      "role": "upstream-directory-metadata",
+      "license": "CrocSwap Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/record_sources/mixed_bit/pr589_listing.json",
+        "bytes": 5477,
+        "sha256": "06C7768995C115872C9FF1D6FAB0A2F10CC0643DC4C36756921B246F1F952A1A"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/pr589_native_bit_probe.cpp",
+      "bytes": 10254,
+      "sha256": "cb76e808b65afc1319fd74c96c358aced408945b876de048910d682aacbcd152",
+      "role": "guarded-checker-source",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/pr589_native_bit_probe.cpp",
+        "bytes": 10254,
+        "sha256": "CB76E808B65AFC1319FD74C96C358ACED408945B876DE048910D682AACBCD152"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/pr589_native_bit_probe.txt",
+      "bytes": 454,
+      "sha256": "8a9a89b90d9472fea68b18bab0616c64c9a5edd009148dba809ae66b99075d97",
+      "role": "saved-finite-check-report",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/pr589_native_bit_probe.txt",
+        "bytes": 454,
+        "sha256": "8A9A89B90D9472FEA68B18BAB0616C64C9A5EDD009148DBA809AE66B99075D97"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/pr589_records_listing.json",
+      "bytes": 4447,
+      "sha256": "c5a322416a6eade80ca523dc14ac5774d325fe8b2a557e255363aed6f9415644",
+      "role": "upstream-directory-metadata",
+      "license": "CrocSwap Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/record_sources/mixed_bit/pr589_records_listing.json",
+        "bytes": 4447,
+        "sha256": "C5A322416A6EADE80CA523DC14AC5774D325FE8B2A557E255363AED6F9415644"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/sources.json",
+      "bytes": 4851,
+      "sha256": "b71c4b6c436ba920c80374e6c06f6e62de01bb79cbe6f72561378cafc1e115db",
+      "role": "source-manifest",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/record_sources/mixed_bit/sources.json",
+        "bytes": 4851,
+        "sha256": "B71C4B6C436BA920C80374E6C06F6E62DE01BB79CBE6F72561378CAFC1E115DB"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/upstream/LICENSE.normalized.txt",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "role": "normalized-pinned-upstream-text-or-retrieval-record",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "finite-data/pr589-bit/upstream/NOTICE.normalized.md",
+      "bytes": 4722,
+      "sha256": "5b88eb2b7de76aa2a3288ee3c7a08d18a5eadfa82f5e7a99e207d232aed71221",
+      "role": "normalized-pinned-upstream-text-or-retrieval-record",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "finite-data/pr589-bit/upstream/README.normalized.md",
+      "bytes": 12497,
+      "sha256": "481431e35bd831ec3d0bb8edc01abdfa49d5caeabebab67ac839a35053e9ef85",
+      "role": "normalized-pinned-upstream-text-or-retrieval-record",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "finite-data/pr589-bit/upstream/RETRIEVAL.json",
+      "bytes": 1925,
+      "sha256": "91a7f9b2d4f118a282784009930f7a4f6850ecf7424ff0728fc56228cf6bfb0d",
+      "role": "normalized-pinned-upstream-text-or-retrieval-record",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "finite-data/pr589-bit/WORD.json",
+      "bytes": 200852,
+      "sha256": "5642fd0e35a1acc11acff8d0c08350c1617e95f310d4d35ad63a651f9eeeba0b",
+      "role": "derived-checker-input",
+      "license": "CrocSwap Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/record_sources/mixed_bit/WORD.json",
+        "bytes": 200852,
+        "sha256": "5642FD0E35A1ACC11ACFF8D0C08350C1617E95F310D4D35AD63A651F9EEEBA0B"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/WORD.json.gz",
+      "bytes": 42353,
+      "sha256": "e3e301e62bc2b41dbf1ceac0acf3d35824ebeab1848c5a2142d4577b109da52f",
+      "role": "pinned-source-data",
+      "license": "CrocSwap Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/record_sources/mixed_bit/WORD.json.gz",
+        "bytes": 42353,
+        "sha256": "E3E301E62BC2B41DBF1CEAC0ACF3D35824EBEAB1848C5A2142D4577B109DA52F"
+      }
+    },
+    {
+      "path": "finite-data/pr589-bit/XCHECK.json",
+      "bytes": 1292,
+      "sha256": "86eab972e14f7660242b20daabe2db2ac6c0d7986fce824d2d4791c112cd78ba",
+      "role": "pinned-context",
+      "license": "CrocSwap Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/record_sources/mixed_bit/XCHECK.json",
+        "bytes": 1292,
+        "sha256": "86EAB972E14F7660242B20DAABE2DB2AC6C0D7986FCE824D2D4791C112CD78BA"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/controller_record_probe.cpp",
+      "bytes": 13069,
+      "sha256": "496adfa861363ca40c416b85be75bcd97f4da144dac18f9fcefb38f55b064607",
+      "role": "guarded-checker-source",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/controller_record_probe.cpp",
+        "bytes": 13069,
+        "sha256": "496ADFA861363CA40C416B85BE75BCD97F4DA144DAC18F9FCEFB38F55B064607"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/controller_record_probe.txt",
+      "bytes": 633,
+      "sha256": "3c17cff0d17737a89c37dce48dbc33c78b03d2a6da49d98fb19160f06e695181",
+      "role": "saved-finite-check-report",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/controller_record_probe.txt",
+        "bytes": 633,
+        "sha256": "3C17CFF0D17737A89C37DCE48DBC33C78B03D2A6DA49D98FB19160F06E695181"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/native_lowering_recipes.tsv",
+      "bytes": 432156,
+      "sha256": "10294cd5e01003b3251c1fb2403d95f61dc2ac8971bfa3082f0ecbe4bafce47b",
+      "role": "pinned-lowering-data",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/native_lowering_recipes.tsv",
+        "bytes": 432156,
+        "sha256": "10294CD5E01003B3251C1FB2403D95F61DC2AC8971BFA3082F0ECBE4BAFCE47B"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/native_lowering_record_certificate.cpp",
+      "bytes": 16331,
+      "sha256": "8577b14afe45ad63b7f6d97b131c5c8b5877dd68afe7f0f2bd15d0e6c005b67f",
+      "role": "guarded-checker-source",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/native_lowering_record_certificate.cpp",
+        "bytes": 16331,
+        "sha256": "8577B14AFE45AD63B7F6D97B131C5C8B5877DD68AFE7F0F2BD15D0E6C005B67F"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/native_lowering_record_certificate.txt",
+      "bytes": 404,
+      "sha256": "28c622f71f0444d75550b14ddb79f71f0ece211db63460de59f09c9667f47863",
+      "role": "saved-finite-check-report",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/native_lowering_record_certificate.txt",
+        "bytes": 404,
+        "sha256": "28C622F71F0444D75550B14DDB79F71F0ECE211DB63460DE59F09C9667F47863"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/native_scalar_record_probe.cpp",
+      "bytes": 8155,
+      "sha256": "987c2542254966f8d123d87729639698e8c888cc8f13167c78af7615d35e8a63",
+      "role": "guarded-checker-source",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/native_scalar_record_probe.cpp",
+        "bytes": 8155,
+        "sha256": "987C2542254966F8D123D87729639698E8C888CC8F13167C78AF7615D35E8A63"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/native_scalar_record_probe.txt",
+      "bytes": 516,
+      "sha256": "ee34f0ed4e28eff05eb1b8881ebc56b21f759a9cf1b3283b0ad630c89db6ed89",
+      "role": "saved-finite-check-report",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/native_scalar_record_probe.txt",
+        "bytes": 516,
+        "sha256": "EE34F0ED4E28EFF05EB1B8881EBC56B21F759A9CF1B3283B0AD630C89DB6ED89"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/raw_cu_dyadic_ledger_manifest.json",
+      "bytes": 560,
+      "sha256": "1dfe577347790a73fba02e0eaffd0806dff63a8f6cc221d7f384a60263beb23f",
+      "role": "source-or-check-manifest",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/raw_cu_dyadic_ledger_manifest.json",
+        "bytes": 560,
+        "sha256": "1DFE577347790A73FBA02E0EAFFD0806DFF63A8F6CC221D7F384A60263BEB23F"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/raw_cu_dyadic_ledger.cpp",
+      "bytes": 7513,
+      "sha256": "179a8c0968763fded35dd424ad9cc8732bd0c622085b5e34ed99cf843115a48d",
+      "role": "guarded-checker-source",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/raw_cu_dyadic_ledger.cpp",
+        "bytes": 7513,
+        "sha256": "179A8C0968763FDED35DD424AD9CC8732BD0C622085B5E34ED99CF843115A48D"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/raw_cu_dyadic_ledger.txt",
+      "bytes": 810,
+      "sha256": "4bef8e900523854b136447fb6570a435e122d9af332e4d5e0696cb931a71d1b1",
+      "role": "saved-finite-check-report",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/raw_cu_dyadic_ledger.txt",
+        "bytes": 810,
+        "sha256": "4BEF8E900523854B136447FB6570A435E122D9AF332E4D5E0696CB931A71D1B1"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/raw_cu_recipe.cpp",
+      "bytes": 16512,
+      "sha256": "ce6b6078cd76e0fb5347841220863acfcbcbcd411cb54659c44f6f3b7e746d27",
+      "role": "guarded-checker-source",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/raw_cu_recipe.cpp",
+        "bytes": 16512,
+        "sha256": "CE6B6078CD76E0FB5347841220863ACFCBCBCD411CB54659C44F6F3B7E746D27"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/raw_cu_recipe.json",
+      "bytes": 65809,
+      "sha256": "9c98c43332d8bafe5d59e197ac3090cb1fa71bbfcd8ccfb0f8ad90116dcb78d6",
+      "role": "source-or-check-manifest",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/raw_cu_recipe.json",
+        "bytes": 65809,
+        "sha256": "9C98C43332D8BAFE5D59E197AC3090CB1FA71BBFCD8CCFB0F8AD90116DCB78D6"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/raw_cu_recipe.txt",
+      "bytes": 610,
+      "sha256": "5da43b655ea89a858a65ea818aec3e5389a73a3e45ec800c779e067449ab155f",
+      "role": "saved-finite-check-report",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/raw_cu_recipe.txt",
+        "bytes": 610,
+        "sha256": "5DA43B655EA89A858A65EA818AEC3E5389A73A3E45EC800C779E067449AB155F"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/record_rate_probe.cpp",
+      "bytes": 7152,
+      "sha256": "7d1b7f6da431c619c18ca63acf43c1754ff063fd692b265bc0cbf73c9dc6dc88",
+      "role": "guarded-checker-source",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/record_rate_probe.cpp",
+        "bytes": 7152,
+        "sha256": "7D1B7F6DA431C619C18CA63ACF43C1754FF063FD692B265BC0CBF73C9DC6DC88"
+      }
+    },
+    {
+      "path": "finite-data/raw-cu/record_rate_probe.txt",
+      "bytes": 843,
+      "sha256": "a4234258ece5583e2537949a9a8a4c838baffdbb0bab0fd85c58cc1175ce577a",
+      "role": "saved-finite-check-report",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/major_odd_phase/record_rate_probe.txt",
+        "bytes": 843,
+        "sha256": "A4234258ECE5583E2537949A9A8A4C838BAFFDBB0BAB0FD85C58CC1175CE577A"
+      }
+    },
+    {
+      "path": "finite-data/retuned_network_exponent_bounded_20261029.cpp",
+      "bytes": 81,
+      "sha256": "8a57b82ea9e183de8d0cc00542d3606e058a00a59c1ea394adce1c0b8b57a0be",
+      "role": "relative-include-shim",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/retuned_network_exponent_bounded_20261029.cpp",
+        "bytes": 8240,
+        "sha256": "904BB0708583324BA858D629EBDA168E68E0CB1F21482E337297793603377A31"
+      },
+      "copy_edits": [
+        "One-line relative include wrapper; exact underlying source is reused from the sibling finite-unit bundle."
+      ],
+      "reuse_path": "../finite-unit/code/retuned_network_exponent_bounded_20261029.cpp"
+    },
+    {
+      "path": "host-transfer.tex",
+      "bytes": 34917,
+      "sha256": "55c18e75bbbf264bb9e0152f272199623317e8af417e45cddec038186ec6bd1e",
+      "role": "publication-proof-or-provenance",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "native-source.tex.txt",
+      "bytes": 306077,
+      "sha256": "97f498a394943db3fa69e9984ed11f3e59efca24dfd6f03c3d4ab3ff7b392f72",
+      "role": "selected-and-restated-native-proof-source",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/proof_source_snapshot/native-main.tex",
+        "bytes": 470230,
+        "sha256": "6CD806C6E52A4883270DA6002A4D0C7B0120CA719745033183EB5686B3DB6F07"
+      },
+      "byte_identical": false,
+      "transformation": "Publication selection/editorial revision; original source identity retained separately."
+    },
+    {
+      "path": "NOTE_SELECTION.json",
+      "bytes": 8704,
+      "sha256": "0973b7b42378dbf8d8d2976742ce5cbcde388d4e157a621485d47c7eb5728602",
+      "role": "publication-proof-or-provenance",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "notes/CANONICAL_HOST_REDUCTION.md",
+      "bytes": 6730,
+      "sha256": "e50702442e3095174a5f8c7785f85b591280b4ae53de9d134175edd4d2f88184",
+      "role": "edited-supporting-proof-note",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CANONICAL_HOST_REDUCTION.md",
+        "bytes": 7086,
+        "sha256": "48F97F3AB828F43DD94BF9048EAF6A26DDB828DC85A4E1703DD8F598C3728DD9"
+      },
+      "byte_identical": false,
+      "transformation": "Publication selection/editorial revision; original source identity retained separately."
+    },
+    {
+      "path": "notes/DYADIC_TO_EXACT_WIDTH_PRINTER_PROOF.md",
+      "bytes": 15098,
+      "sha256": "b723352c4589f6f6f98679f69c2f7e2604ae02a9bb03692c9354c2feec73f301",
+      "role": "edited-supporting-proof-note",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/DYADIC_TO_EXACT_WIDTH_PRINTER_PROOF.md",
+        "bytes": 11350,
+        "sha256": "4C7FD77F164908AD2CAD455DFBC70B29FB7F6CCA13E632943028379D32E6B1BD"
+      },
+      "byte_identical": false,
+      "transformation": "Publication selection/editorial revision; original source identity retained separately."
+    },
+    {
+      "path": "notes/FINITE_COMPILER_AND_RESERVE.md",
+      "bytes": 6384,
+      "sha256": "968ae599cf564a748aeabf3221f4409dd6fb086f4bf1c3706390f24c9abdaaaf",
+      "role": "edited-supporting-proof-note",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/REVIEW_20261102_PROOF_CLARIFICATIONS.md",
+        "bytes": 6710,
+        "sha256": "21D5D7F1E9830678DB1368FCD6B86A3506592856A210D85CF2D90531272A8437"
+      },
+      "previous_package_path": "notes/REVIEW_20261102_PROOF_CLARIFICATIONS.md",
+      "byte_identical": false,
+      "transformation": "Publication selection/editorial revision; original source identity retained separately."
+    },
+    {
+      "path": "notes/FINITE_NATIVE_PREMISES.md",
+      "bytes": 14488,
+      "sha256": "4369cdb9bc69ca223974eb82f0a7fd4e99bd42a8c3a90075e076b22cb396e088",
+      "role": "edited-supporting-proof-note",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CONT_20261102_NATIVE_FINITE_PREMISES.md",
+        "bytes": 16981,
+        "sha256": "38298F79689C81CD246A9865D6A93EFEF50BDCADC5AFCB41C9F536A706F3D2E7"
+      },
+      "previous_package_path": "notes/CONT_20261102_NATIVE_FINITE_PREMISES.md",
+      "byte_identical": false,
+      "transformation": "Publication selection/editorial revision; original source identity retained separately."
+    },
+    {
+      "path": "notes/FIXED_FIELD_REDUCTION.md",
+      "bytes": 13276,
+      "sha256": "f5259b0b1c0187570dc963924a18e6c5c716fe5a994cc1c510c34184295e5c10",
+      "role": "edited-supporting-proof-note",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CONT_20261102_FIXED_FIELD_REDUCTION.md",
+        "bytes": 13622,
+        "sha256": "4C4249D79EAA5D8842E3537F4A75E0A4C332E1297E3432F81F02B9FD9B1D3D37"
+      },
+      "previous_package_path": "notes/CONT_20261102_FIXED_FIELD_REDUCTION.md",
+      "byte_identical": false,
+      "transformation": "Publication selection/editorial revision; original source identity retained separately."
+    },
+    {
+      "path": "notes/NATIVE_SERVICE_CONTRACTS.md",
+      "bytes": 8760,
+      "sha256": "08624321b7fd48183f0645af31de38bcb8a16982d2cc341b45787bbe2fc694b0",
+      "role": "edited-supporting-proof-note",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CONT_20261102_SERVICE_CONTRACTS.md",
+        "bytes": 9174,
+        "sha256": "1499EB3F6C1D9E95082B82BF0694D17B2557CE3FDECFA98F54B16FAA5ACF4792"
+      },
+      "previous_package_path": "notes/CONT_20261102_SERVICE_CONTRACTS.md",
+      "byte_identical": false,
+      "transformation": "Publication selection/editorial revision; original source identity retained separately."
+    },
+    {
+      "path": "notes/OPTIMAL_THREE_C_FINITE_ALGEBRA_THEOREM.md",
+      "bytes": 9244,
+      "sha256": "778df0b3a2571eab77df17b73060daa051ff51f364b6d770317d8c89357a8b38",
+      "role": "edited-supporting-proof-note",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/OPTIMAL_THREE_C_FINITE_ALGEBRA_THEOREM.md",
+        "bytes": 9722,
+        "sha256": "E406859A8DAA22A6CA384454A2D7A1E9C2BEB02A91073C5D93904C2C13A3D9EC"
+      },
+      "byte_identical": false,
+      "transformation": "Publication selection/editorial revision; original source identity retained separately."
+    },
+    {
+      "path": "notes/PRINCIPAL_ROOT_INTERFACE.md",
+      "bytes": 2552,
+      "sha256": "5e790829e60bfb93d018224231325536d5d927b084083ead00b9344cedf06573",
+      "role": "edited-supporting-proof-note",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CONT_20261102_PRINCIPAL_ROOT_INTERFACE.md",
+        "bytes": 2595,
+        "sha256": "C5BF6A357A47BE79ADAB3AE9460533DBD2C60DD98FD8E07B0E7719075503596C"
+      },
+      "previous_package_path": "notes/CONT_20261102_PRINCIPAL_ROOT_INTERFACE.md",
+      "byte_identical": false,
+      "transformation": "Publication selection/editorial revision; original source identity retained separately."
+    },
+    {
+      "path": "notes/QUOTIENT_INSTANTIATION.md",
+      "bytes": 14136,
+      "sha256": "13fbcf7cc1903ffa68de3cf40a3ee804818b9f45b910cf7e39bb0220770f33d1",
+      "role": "edited-supporting-proof-note",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CONT_20261102_QUOTIENT_INSTANTIATION.md",
+        "bytes": 14241,
+        "sha256": "D7122DBCE926836EE8B6B58808974798C05389CE37BF6411A45648987F6C99FA"
+      },
+      "previous_package_path": "notes/CONT_20261102_QUOTIENT_INSTANTIATION.md",
+      "byte_identical": false,
+      "transformation": "Publication selection/editorial revision; original source identity retained separately."
+    },
+    {
+      "path": "notes/RING_VALID_FOURIER_TOEPLITZ_PROOF.md",
+      "bytes": 4249,
+      "sha256": "c6d8f8e63c654b96b02c4faa8b8c7d291de71897a462e0677c4a20d9e20791e6",
+      "role": "edited-supporting-proof-note",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/RING_VALID_FOURIER_TOEPLITZ_PROOF.md",
+        "bytes": 4304,
+        "sha256": "4A56C1DD577B17FDB4BC717558C8A93FB217D9ECAB49D6B136A75E780016E7C3"
+      },
+      "byte_identical": false,
+      "transformation": "Publication selection/editorial revision; original source identity retained separately."
+    },
+    {
+      "path": "notes/SHORT_DIMENSION_TOP_MAP_PROOF.md",
+      "bytes": 5001,
+      "sha256": "b7c809e5b513898dfcee4a4169dac903451088170e0939bd7c8c15016e3a68b8",
+      "role": "edited-supporting-proof-note",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/SHORT_DIMENSION_TOP_MAP_PROOF.md",
+        "bytes": 5023,
+        "sha256": "9FCDE0D2D8CED13302F73201FAF19DB545F38CEDA431AAC0AFC8D4CB097F3E18"
+      },
+      "byte_identical": false,
+      "transformation": "Publication selection/editorial revision; original source identity retained separately."
+    },
+    {
+      "path": "notes/UNIFORM_RING_OPERATIONS.md",
+      "bytes": 4152,
+      "sha256": "225d6291cebe80270286c56f062269f37cd83e2de6f2cee7edceff07a1dfb5c7",
+      "role": "edited-supporting-proof-note",
+      "license": "Apache-2.0",
+      "source": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CONT_20261102_UNIFORM_RING_ADDENDUM.md",
+        "bytes": 4280,
+        "sha256": "DCF2F84911A325F87EDDE6B9E14AE48B547E6DD02AECBD3E7F0927E1F33A386B"
+      },
+      "previous_package_path": "notes/CONT_20261102_UNIFORM_RING_ADDENDUM.md",
+      "byte_identical": false,
+      "transformation": "Publication selection/editorial revision; original source identity retained separately."
+    },
+    {
+      "path": "README.md",
+      "bytes": 3777,
+      "sha256": "84537eda2eecbdd227d0177f67c0cd117b471e7d2c240955d344177f9ce21e34",
+      "role": "current-publication-package-documentation",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "SOURCE_SELECTION.json",
+      "bytes": 11230,
+      "sha256": "b51574eada23656e2fe0ad184b18f0861bfcc5609878326aa79e9f118f15ff8e",
+      "role": "publication-proof-or-provenance",
+      "license": "Apache-2.0"
+    }
+  ],
+  "evidence_boundary": "Written source proofs and finite exact-check reports only. No Lean receipts are imported as release-kernel evidence; no full multiplier theorem is kernel checked."
+}

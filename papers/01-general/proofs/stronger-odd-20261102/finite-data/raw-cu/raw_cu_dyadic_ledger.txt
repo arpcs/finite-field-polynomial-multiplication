@@ -1,0 +1,9 @@
+PASS:all scalar coefficients in the actual native/controller recipe are dyadic
+native:denominator_charge=18592 norm_log2_charge=19972 scalar_letters=19350 paid_blocks=3453 paid_rank_mass=5952
+global:denominator_charge_D=334656 norm_log2_charge_U=380400 scalar_letters=382412 paid_blocks=66834 paid_rank_mass_S=240152
+max coefficient:denominator_exponent=4 norm_log2_charge=5
+for every f>=0:common_denominator_exponent<=e+D+S*f; every prefix l2 norm<=2^U
+Gaussian numerator signed width <= B+240297*f+715072 bits (coarse proven bound)
+target rank r:remove D+(S-r)*f denominator bits exactly after the whole invocation
+1097070 exact/structural assertions;64 MiB/10 CPU-second self-only limits
+This certifies finite-word coefficients and width, not recursive depth, tape access or an integer multiplier.

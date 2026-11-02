@@ -20,16 +20,18 @@ proof-assistant machinery.
 | Dehaene and De Moor; community coordinate constructions | Classical linear/quadratic Clifford descriptions are credited separately from the specific community-derived coordinate construction. The native supplement retains the latter's individual attribution, including icekylinx. |
 | OpenAI Codex | Known software assistance is identified in each paper and AI_USE.md. Software use is separate from mathematical source dependence; AI systems are not listed as paper authors. |
 
-The native and proof-source supplements retain their original citations
-and identify the AI-assisted derivations they document. Historical audit language is not a new external review or
+The frozen native and proof-source supplements are selections from the
+author's wider AI-assisted research workspace. They retain their internal
+source citations. Historical audit language is not a new external review or
 proof-assistant receipt. Paper audit files identify originals and edits;
 the released hashes identify the exact current copy.
 
 The citation audit uses OpenAI source revision
 `4eaee87548250b2682affda7d05d947c05554bae` and the recorded CrocSwap
-revision `2485805a6d47f36ea83ddde6327d453ac82d44dc`. The native snapshot
-retains its historical bibliography intact, including sources for separate
-RAM and conditional branches. The main papers identify the narrower
+revision `2485805a6d47f36ea83ddde6327d453ac82d44dc`. The current native
+supplement retains the references for its selected proof path;
+SOURCE_SELECTION.json records the selection from the original research
+source and its separate bibliography. The main papers identify the
 dependencies used for the selected claims. A citation revision and a
 historical inspected-text hash are separate provenance records.
 
@@ -55,7 +57,7 @@ separate from this project's small C++ replays, developed with substantial
 OpenAI Codex assistance. The included source notes preserve the fuller
 community lineage and its stated framework assumptions.
 
-The fresh [finite replay record](../verification/finite-unit-replay.json)
+The [31 October finite replay record](../verification/finite-unit-replay.json)
 and text outputs record exact fixed endpoint/controller/geometry/profile
 checks. They do not assert independent human approval, acceptance of the
 upstream conditional end-to-end claims, or formal verification of this
@@ -64,4 +66,20 @@ project's asymptotic multiplication theorem.
 Preserve any source-specific copyright, license or NOTICE attached to copied
 material. The top-level Apache-2.0 grant covers only rights the relevant
 contributors can grant; it does not silently replace upstream terms.
-Attribution corrections are welcome through the contact in SUPPORT.md.
+Attribution corrections may be sent to the public contact in AUTHORS.md.
+
+The unpublished 2 November odd-field update additionally uses the PR589
+BIT source family at CrocSwap revision
+`322e0ec764aa7ef7801383feb1f656e460dd8bed`. Its exact source paths,
+hashes, retained notices and distinction from the earlier raw-CU phase
+family are recorded in the new
+[proof package](../papers/01-general/proofs/stronger-odd-20261102/README.md).
+The selected native supplement retains the proofs and source attributions
+used for the interchange and odd-ring phase conclusions. Its source-selection
+record distinguishes the edited supplement from the original research source.
+The PR589-specific LICENSE, NOTICE and README are archived from the pinned
+raw GitHub source views as normalized UTF-8 text. Their source URLs,
+normalization, archived hashes and original-byte limitation are recorded in
+the package's `finite-data/pr589-bit/upstream/RETRIEVAL.json`.
+The complete source notice and contributor lineage are retained. The older
+sibling notice remains distinct and is not used as a substitute.

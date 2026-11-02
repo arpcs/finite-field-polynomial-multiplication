@@ -1,0 +1,5 @@
+PASS:1093 exact nine-bit frames; 3453 paid contacts +562 helper endpoints
+unique exact A C_r B recipes=2922; signed Pauli maps and absolute reference phases agree
+wrong-phase controls=2922; wrong-rank controls=2922
+caps:512 amplitudes; no dense matrix; max reference denominator exponent=20/40
+5909859 assertions; compact monomial recipes emitted; all-column lifting remains the mathematical proof.

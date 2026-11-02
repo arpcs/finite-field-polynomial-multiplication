@@ -1,0 +1,332 @@
+{
+  "original": {
+    "path": "investigation/odd_prime_gapclosure_20261031_0410/proof_source_snapshot/native-main.tex",
+    "bytes": 470230,
+    "sha256": "6cd806c6e52a4883270da6002a4d0c7b0120ca719745033183eb5686b3db6f07"
+  },
+  "derived": {
+    "path": "native-source.tex.txt",
+    "target_name": "native-source.tex.txt",
+    "bytes": 306077,
+    "lines": 6054,
+    "sha256": "97f498a394943db3fa69e9984ed11f3e59efca24dfd6f03c3d4ab3ff7b392f72",
+    "byte_identical": false,
+    "before_scope_clarification_sha256": "d2ec5e957b441a1b2142f33bc45b685e4de4aa18b863b18ca625b55138eb2794",
+    "before_presentation_revision_sha256": "5eb7a8780262bbe875a3c9b8c6fedeb7d12fc8481064ff530665790cabf9e953"
+  },
+  "retained_source_spans_inclusive": [
+    {
+      "start": 134,
+      "end": 153,
+      "purpose": "definitions and phase tensor scope"
+    },
+    {
+      "start": 157,
+      "end": 212,
+      "purpose": "definitions and phase tensor scope"
+    },
+    {
+      "start": 258,
+      "end": 702,
+      "purpose": "finite-tape C-word proof"
+    },
+    {
+      "start": 1009,
+      "end": 2347,
+      "purpose": "finite tape, numeric matcher, and q-adic port proof closure"
+    },
+    {
+      "start": 2401,
+      "end": 2459,
+      "purpose": "framed dirty-shear endpoint proof"
+    },
+    {
+      "start": 2461,
+      "end": 2566,
+      "purpose": "three-stage formal local producer and imported finite contracts"
+    },
+    {
+      "start": 2568,
+      "end": 2574,
+      "purpose": "formal producer moment statement"
+    },
+    {
+      "start": 2578,
+      "end": 2597,
+      "purpose": "formal producer histogram proof"
+    },
+    {
+      "start": 2606,
+      "end": 2630,
+      "purpose": "formal producer moment enclosure proof"
+    },
+    {
+      "start": 2663,
+      "end": 2839,
+      "purpose": "root decoder and weighted child lemmas"
+    },
+    {
+      "start": 2841,
+      "end": 2925,
+      "purpose": "full fixed-template retained-high stock lemma"
+    },
+    {
+      "start": 3076,
+      "end": 3142,
+      "purpose": "striped-rest supplier lemma"
+    },
+    {
+      "start": 3521,
+      "end": 3616,
+      "purpose": "native selector and precision proof closure"
+    },
+    {
+      "start": 3622,
+      "end": 4892,
+      "purpose": "native selector, dock, routing, and CRT proof closure"
+    },
+    {
+      "start": 5511,
+      "end": 5548,
+      "purpose": "fed-columns lemma required by stream merge"
+    },
+    {
+      "start": 5550,
+      "end": 6038,
+      "purpose": "compiler, stream/stock/ledger proof material"
+    },
+    {
+      "start": 6049,
+      "end": 6343,
+      "purpose": "compiler and prior mixed-phase theorem"
+    },
+    {
+      "start": 6531,
+      "end": 6599,
+      "purpose": "pinned Stage2 ordinary-bit/all-spectator adapter lemma and proof"
+    },
+    {
+      "start": 6842,
+      "end": 6941,
+      "purpose": "native word recovery and parameter suppliers"
+    },
+    {
+      "start": 7360,
+      "end": 7926,
+      "purpose": "delayed cover, finite BIT word, compiler supplier, and mixed-bit swap statement"
+    },
+    {
+      "start": 7929,
+      "end": 7966,
+      "purpose": "mixed-bit swap proof"
+    },
+    {
+      "start": 8299,
+      "end": 8360,
+      "purpose": "dyadic phase supplier required by outer precision"
+    },
+    {
+      "start": 8659,
+      "end": 8831,
+      "purpose": "residual table and interchange reconstruction appendix"
+    },
+    {
+      "start": 8832,
+      "end": 9119,
+      "purpose": "complete E8 interchanger closure used by the retained-stock wrapper"
+    }
+  ],
+  "rewritten_source_spans_inclusive": [
+    {
+      "start": 1,
+      "end": 133,
+      "purpose": "new professional title, author/contact, abstract, macros, and scope preamble"
+    },
+    {
+      "start": 154,
+      "end": 156,
+      "purpose": "removed internal review phrasing while preserving verification record meaning"
+    },
+    {
+      "start": 2460,
+      "end": 2460,
+      "purpose": "replaced internal reference to a frozen cover note with the specified cover geometry"
+    },
+    {
+      "start": 2567,
+      "end": 2567,
+      "purpose": "replaced internal frozen-note wording with the stated good/bad-child tariff"
+    },
+    {
+      "start": 2575,
+      "end": 2577,
+      "purpose": "removed forward reference to omitted thm:threecoverswap and stated the finite-moment limitation"
+    },
+    {
+      "start": 2598,
+      "end": 2605,
+      "purpose": "rewrote source-version comparison as concise attributed inventory evidence"
+    },
+    {
+      "start": 3617,
+      "end": 3621,
+      "purpose": "removed reference to omitted thm:ramdft while preserving the interface explanation"
+    },
+    {
+      "start": 6039,
+      "end": 6048,
+      "purpose": "clarified the formalization scope"
+    },
+    {
+      "start": 7431,
+      "end": 7432,
+      "purpose": "made the generic retained-stock argument explicitly compare cardinality accounting to lem:threecoverstock with N0/B0 substitution"
+    },
+    {
+      "start": 7436,
+      "end": 7440,
+      "purpose": "expanded the ordinary-swap wrapper into the three-call reversal identity and completed root-stock/pad restoration"
+    },
+    {
+      "start": 7927,
+      "end": 7928,
+      "purpose": "removed verification/record disclaimer from theorem statement"
+    },
+    {
+      "start": 7967,
+      "end": 8003,
+      "purpose": "restated thm:mixedbitinteger under the same label as phase-only and retained its phase proof"
+    },
+    {
+      "start": 8031,
+      "end": 8070,
+      "purpose": "stated the finite-evidence scope and source attribution"
+    },
+    {
+      "start": 9385,
+      "end": 9452,
+      "purpose": "filtered bibliography to citations used and retained upstream source attribution"
+    }
+  ],
+  "omitted_source_spans_inclusive": [
+    {
+      "start": 213,
+      "end": 257,
+      "purpose": "research comparison and unrelated opening claims"
+    },
+    {
+      "start": 703,
+      "end": 987,
+      "purpose": "superseded mixed-block candidate branch"
+    },
+    {
+      "start": 988,
+      "end": 1008,
+      "purpose": "replaced section transition"
+    },
+    {
+      "start": 2348,
+      "end": 2400,
+      "purpose": "unselected conditional-branch discussion and bounded probe note before the framed-shear proof"
+    },
+    {
+      "start": 2631,
+      "end": 2662,
+      "purpose": "transition material before the retained weighted-local subsection"
+    },
+    {
+      "start": 2840,
+      "end": 2840,
+      "purpose": "separator before lem:threecoverstock"
+    },
+    {
+      "start": 2926,
+      "end": 3075,
+      "purpose": "separate three-cover swap and phase branch; not a premise of the generic delayed-cover theorem"
+    },
+    {
+      "start": 3143,
+      "end": 3520,
+      "purpose": "unselected helper barriers and outer-RAM discussion"
+    },
+    {
+      "start": 4893,
+      "end": 5510,
+      "purpose": "outer integer/complex-RAM composition; fed-columns supplier starts at 5511 and is retained"
+    },
+    {
+      "start": 5549,
+      "end": 5549,
+      "purpose": "separator"
+    },
+    {
+      "start": 6344,
+      "end": 6530,
+      "purpose": "status/review material and alternative phase branches; Stage2 lemma starts at 6531 and is retained"
+    },
+    {
+      "start": 6600,
+      "end": 6841,
+      "purpose": "older Stage2 phase deductions and adjacent status material; Stage2 adapter proof ends at 6599 and native recovery begins at 6842"
+    },
+    {
+      "start": 6942,
+      "end": 7359,
+      "purpose": "balanced/integer transfer branch"
+    },
+    {
+      "start": 8004,
+      "end": 8030,
+      "purpose": "ordinary integer multiplication conclusion and proof from the combined theorem"
+    },
+    {
+      "start": 8071,
+      "end": 8298,
+      "purpose": "integer envelope and promotion branch"
+    },
+    {
+      "start": 8361,
+      "end": 8658,
+      "purpose": "separate complex-RAM DFT consequences and inventory"
+    },
+    {
+      "start": 9120,
+      "end": 9384,
+      "purpose": "E8 bounded-probe paragraph and later nested E8 tariff branch outside the retained stock lemma closure"
+    },
+    {
+      "start": 9453,
+      "end": 9453,
+      "purpose": "original document terminator; a new terminator is present in the candidate"
+    }
+  ],
+  "mathematical_changes": [
+    "The original thm:mixedbitinteger statement was narrowed under its existing label to the odd-residue phase/Walsh conclusion only. Its phase proof paragraph is retained; the ordinary integer multiplication conclusion and proof at original lines 8004-8030 are omitted.",
+    "The direct baseline phase theorem and earlier weaker mixed-phase result remain distinct statements with their original bounds. The retained exact Boolean integer Walsh/XOR corollary is priced using the earlier weaker exponent and does not assert the omitted ordinary integer multiplication exponent.",
+    "Complete technical dependency blocks are retained for the selected phase/compiler proof, the native dock/CRT side result, the lossless transpose material where present in the selected closure, and their cited suppliers. The specialized three-cover stock lemma is retained with its framed-shear, design-B producer, formal histogram, and E8 wrapper dependencies; the generic delayed-cover proof cites it only as the source of the cardinality argument, with N0/B0 replacing its template parameters.",
+    "The generic wrapper now states the reversal identity R_left F_I R_left(H,D)=(D,H) and says each completed call restores the common root stock and pad.",
+    "The exposition retains the selected proof dependencies, source attribution and evidence limits. No claim of full mathematical verification is made."
+  ],
+  "static_audit": {
+    "label_definitions": 86,
+    "references_checked": 156,
+    "unresolved_references": 0,
+    "citations_checked": 15,
+    "bibliography_entries": 10,
+    "missing_bibliography_entries": 0,
+    "duplicate_labels": 0,
+    "environment_mismatches": 0,
+    "open_environments": 0,
+    "stage2_adapter_label_present": true,
+    "host_appendix_reference_target_present": "lem:threecoverstock",
+    "phase_only_mixedbitinteger_label_present_once": true,
+    "threecoverstock_label_present_once": true,
+    "e8swap_label_present_once": true,
+    "compilation": "not run",
+    "proof_correctness_review": "not certified"
+  },
+  "schema": "native-proof-source-selection/1",
+  "line_count_convention": "Physical source lines; final LF does not create an extra empty line.",
+  "scope_clarification_20261102": "The introductory scope paragraph now explicitly distinguishes this supplement's phase-transform services from the accompanying host-transfer ordinary-product application. Mathematical statements and arguments are unchanged.",
+  "presentation_revision_20261102": "Repository-dependent source descriptions were replaced by cited-source terminology. Source credits, mathematical statements and arguments are unchanged."
+}

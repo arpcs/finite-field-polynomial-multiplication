@@ -49,3 +49,7 @@ Their default script invocation checks hashes only. An explicit guarded
 `-Replay` compiles and runs the three small checks serially; it does not
 execute a full multiplier or Lean. The release includes the successful
 [31 October replay record](verification/finite-unit-replay.json) and text outputs.
+
+## General preprint, version 0.2.1
+
+The metadata-only scripts/check-stronger-odd.ps1 validates the proof assets, current source/PDF bindings and previous-source identity records. It is included in the release check and runs no mathematical program. To rebuild only the revised general paper, use the documented guarded build with -TargetDirectories papers/01-general. Previous source bytes remain in the pinned Git revision; no duplicate manuscript directory is required.

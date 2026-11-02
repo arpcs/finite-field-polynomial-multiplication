@@ -1,0 +1,802 @@
+\section{Stronger odd-field transfer}\label{upd:transfer}
+
+This appendix gives the odd-characteristic argument with its
+coefficient quotient, root interface, native service tariffs, and ordinary
+input and output accounting.  The non-elementary native services are named
+source theorems with written construction proofs in the native
+supplement described below.
+
+\begin{proposition}[Odd-field ordinary product at the stronger exponent]
+\label{upd:odd-product}
+For each fixed odd prime $p$ and fixed integer $e\geq 1$, there is a
+deterministic machine with a fixed finite alphabet and a fixed finite number
+of sequential tapes which multiplies two ordinary degree-<$n$ polynomials
+over $\F_{p^e}$ in a chosen fixed basis and outputs all $2n-1$ ordinary
+coefficients, including zero leading or trailing coefficients.  Its bit
+complexity is
+\[
+  \Oh_{p,e}\!\left(n(\log(n+2))^\gamma
+                  (\log\log(n+4))^K\right),
+  \qquad \gamma=0.996874195,
+\]
+for a fixed constant $K$.  Consequently it is
+\[
+  \Oh_{p,e}\!\left(n(\log(n+2))^{319/320}\right).
+\]
+The field, basis, constants, and finite machine are fixed before $n$ varies.
+No growing-field or uniform-in-$e$ bound is asserted.
+\end{proposition}
+
+\begin{proof}
+We first construct the machine over $\F_p$.  The fixed-extension reduction
+is given at the end.  All logarithms are base two.
+
+\subsection{Cyclotomic host and the ordinary coefficient maps}
+\label{upd:host}
+
+Fix a sufficiently large $n$; the finitely many smaller values use a fixed
+schoolbook branch.  The unconditional cyclotomic construction of Harvey and
+van der Hoeven supplies a squarefree integer $N$ with
+\[
+  2n<N<4n,\qquad p\nmid N,
+\]
+its prime factor tuple, and principal-root data~\cite{HVH19Cyclo}.  Write
+\[
+  L_0=\lceil\log_2 N\rceil,\qquad
+  a=\lceil\log_2 L_0\rceil,\qquad R_0=2^{a^2}.
+\]
+Every prime factor $q_i$ of $N$ lies between $L_0^3$ and $R_0$ once $n$ is
+large enough.  The target required by the cyclotomic construction exceeds
+its fixed $p^2$ threshold; the direct branch handles the remaining inputs.
+
+The public algorithms for local shapes, permutations, and route settings
+are fixed first, with a fixed effective polynomial bound on their record
+work.  Starting with the conductor $\alpha_0$ supplied with the root, append
+unused prime factors of $N$ to obtain a squarefree conductor $\alpha$ for
+which
+\[
+  D=\varphi(\alpha)\geq (R_0+L_0+5)^A
+\]
+for a fixed sufficiently large $A$.  Each appended factor contributes
+$q_i-1>L_0^3/2$, so $O(\log L_0)$ factors suffice.  With
+\[
+  m=N/\alpha,\qquad
+  \theta=1-\frac{D}{\alpha},
+\]
+the conductor and the remaining host obey
+\begin{equation}
+\label{upd:host-shape}
+  \log\alpha,\log D=O((\log L_0)^4),\quad
+  \theta=O((\log L_0)^2/L_0^3),\quad
+  mD=N(1-\theta)=\Theta(N).
+\end{equation}
+The number of prime axes remaining in $m$ is large enough for the native
+dock: the original tuple has at least
+$(L_0-O(1))/\log_2 R_0$ axes, and deleting the $O((\log L_0)^2)$ conductor
+factors still leaves the required
+\[
+  h=\left\lfloor
+       \frac{L_{\rm dock}}
+            {40\lceil\log_2(R_0+1)\rceil}
+     \right\rfloor,
+  \qquad
+  L_{\rm dock}=\lceil\log_2(2M)\rceil,
+  \qquad
+  M=\prod_{q_i\mid m}(q_i+1).
+\]
+Here $L_{\rm dock}=L_0-O((\log L_0)^4)=\Theta(L_0)$ and
+\[
+  \frac{M}{m}=\prod_{q_i\mid m}\left(1+\frac1{q_i}\right)
+       =1+O(L_0^{-2}),\qquad MD=\Theta(N).
+\]
+The large coefficient degree $D$ pays the public setting-generation cost;
+the separate relation $MD=\Theta(N)$ pays the data volume.
+
+Let
+\[
+  S=\F_p[U]/(\Phi_\alpha(U)),\qquad
+  A_p=\F_p[I]/(I^2+1),\qquad
+  B=A_p[U]/(\Phi_\alpha(U)).
+\]
+These are literal monic quotients.  The ring $S$ has $D$ scalar
+coordinates, while $B$ has $D$ lanes over $A_p$, or $2D$ scalar
+coordinates over $\F_p$.  Neither quotient is assumed to be a field.
+
+There are two distinct coefficient maps in the construction.  First,
+ordinary input coefficients use the new parameter map $Y_{\rm new}\mapsto U$.
+Separately, the old principal root is transported from the original host:
+the host parameters satisfy $q_0\mid\alpha_0\mid\alpha\mid N$.
+Put $J=\alpha/\alpha_0$. Since $\alpha$ is squarefree,
+$\gcd(J,\alpha_0)=1$, and the cyclotomic identity
+\[
+  \Phi_{\alpha_0}(X^J)=\prod_{d\mid J}\Phi_{\alpha_0d}(X)
+\]
+implies $\Phi_\alpha(X)\mid\Phi_{\alpha_0}(X^J)$.
+Consequently $U_0\mapsto U^J$ defines a unital homomorphism
+$\varphi$ from the original coefficient quotient to $S$.
+If $\rho_0$ has principal order $N/q_0$ in the original quotient, set
+\[
+  \omega_0=\rho_0^{\alpha_0/q_0},\qquad
+  \omega=\varphi(\omega_0)^J,
+  \text{where }\varphi:U_0\longmapsto U^J.
+\]
+Taking the indicated divisor powers gives principal orders
+$N/\alpha_0$ and $m=N/\alpha$, respectively. The homomorphism preserves
+the vanishing character sums defining principality. Root transport uses
+this homomorphism separately from the ordinary-input coefficient map.
+
+The cyclic coefficient algebra of length $N=\alpha m$ is represented by
+\[
+  \F_p[X]/(X^N-1)\simeq
+  \F_p[U,Z]/(U^\alpha-1,Z^m-1),
+  \qquad X\longmapsto U^c Z,
+  \quad cm\equiv1\pmod\alpha.
+\]
+For $k=qm+r$, the monomial $X^k$ maps to
+$U^{q+cr\bmod\alpha}Z^r$.  The forward map, its inverse, the short
+$\alpha$-direction transpose, and row rotations cost
+$O_p(N(1+\log\alpha))$ on fixed banks.  This is the ordinary coefficient
+map, not the root lift above.
+
+Both coefficient CRT components are retained.  Since $p\nmid\alpha$,
+$U^\alpha-1$ is squarefree over $\F_p$, so
+\[
+  U^\alpha-1=\Phi_\alpha(U)\,\psi(U),\qquad
+  \psi(U)=\frac{U^\alpha-1}{\Phi_\alpha(U)},\qquad
+  \gcd(\Phi_\alpha,\psi)=1.
+\]
+Extended Euclid prepares the two CRT idempotents and inverses.  The
+$\psi$-component is reconstructed along with the $\Phi_\alpha$-component;
+discarding it would lose ordinary input information.
+
+\subsection{The actual quotient selector and its unit witnesses}
+\label{upd:selector}
+
+The algebraic selector is proved inside the actual quotient $B$.  The
+conductor $\alpha$ is odd and greater than one, so $D=\varphi(\alpha)$ is
+even.  Put $Q=p^D$.  Euler's theorem and oddness give
+\[
+  Q\equiv1\pmod\alpha,\qquad Q\equiv1\pmod4.
+\]
+In $B$, $U^\alpha=1$ and $I^2=-1$, hence $U^Q=U$ and $I^Q=I$.  Frobenius
+to the $D$-th power is a ring homomorphism in characteristic $p$ and fixes
+$\F_p$.  Every element has the monic-basis expression
+\[
+  x=\sum_{j=0}^{D-1}(a_j+b_jI)U^j,
+  \qquad a_j,b_j\in\F_p,
+\]
+so, by applying Frobenius to the generators and coefficients,
+\begin{equation}
+\label{upd:quotient-frobenius}
+  x^Q=x\quad\text{for every }x\in B.
+\end{equation}
+This uses the quotient generators themselves.  It does not factor $B$ or
+identify it with a field.
+
+For each local coefficient $\mu\in B$, define
+\[
+  f=\mu^{Q-1},\qquad r=1-f.
+\]
+Equation~\eqref{upd:quotient-frobenius} gives
+\begin{equation}
+\label{upd:selector-identities}
+  f^2-f=\mu^{Q-2}(\mu^Q-\mu)=0,\qquad
+  f\mu=\mu^Q=\mu,\qquad r\mu=0.
+\end{equation}
+Thus $f$ and $r$ are complementary orthogonal idempotents.  In particular,
+the nilpotent remainder needed by the generic word has bound one; the
+fixed-field argument uses no Hensel or Newton iteration.
+
+Put $h=2^{-1}\in\F_p$ and $q_U=U^2+1$.  The units used below have explicit
+inverses in $S$.  Certainly $U^{-1}=U^{\alpha-1}$.  For $U-1$, let
+\[
+  c_\alpha=\Phi_\alpha(1),\qquad
+  H(X)=\frac{\Phi_\alpha(X)-c_\alpha}{X-1}.
+\]
+Then $(U-1)H(U)=-c_\alpha$.  Since $\alpha$ is squarefree,
+$c_\alpha$ is either $1$ or the prime factor of $\alpha$ when $\alpha$ is
+a prime power; either value is nonzero modulo $p$.  Hence
+$(U-1)^{-1}=-c_\alpha^{-1}H(U)$.  For $j=1,2$, oddness of $\alpha$ gives
+\[
+  (1+U^j)\sum_{k=0}^{\alpha-1}(-U^j)^k
+      =1-(-U^j)^\alpha=2,
+\]
+so
+\[
+  (U+1)^{-1}=h\sum_{k<\alpha}(-U)^k,
+  \qquad q_U^{-1}=h\sum_{k<\alpha}(-U^2)^k.
+\]
+These sums are prepared once by geometric doubling; no inverse is taken as
+an algebraic oracle.
+
+The shared canonical parameter and all required inverses are
+\begin{align*}
+  u&=fU+rI,& u^{-1}&=fU^{-1}-rI,\\
+  v_-&=f(U-1)^{-1}-r(I+1)h,&
+    &\hspace{-1em}(u-1)v_-=1,\\
+  v_+&=f(U+1)^{-1}+r(1-I)h,&
+    &\hspace{-1em}(u+1)v_+=1,\\
+  c&=f q_U\mu^{Q-2}+r,&
+  c^{-1}&=f\mu q_U^{-1}+r.
+\end{align*}
+Orthogonality of $f,r$, together with~\eqref{upd:selector-identities},
+proves each displayed inverse identity.  In particular,
+\begin{equation}
+\label{upd:associated-q}
+  u^2+1=fq_U=c\mu,\qquad cc^{-1}=1.
+\end{equation}
+The unit $c$ is explicit even when $\mu$ or $u^2+1$ is zero or a zero
+divisor.  No factorization, zero test, or residue-field conversion is used.
+
+\subsection[The exact three-C shear word]{The exact three-$C$ shear word}
+\label{upd:three-c}
+
+Write $i=I$, $A=(1+i)h$, and $B_0=(1-i)h$, and set
+\[
+  C=\begin{pmatrix}A&B_0\\ B_0&A\end{pmatrix}.
+\]
+Then $A B_0=h$, $A^2=ih$, $B_0=-iA$, and $2AB_0=1$.  Let
+\[
+  b=(u-1)v_+,
+  \quad \alpha_1=2B_0uv_+,
+  \quad \beta_1=A(u^2+1)v_+,
+  \quad \delta_1=B_0(u-1).
+\]
+Direct multiplication, using $(u+1)b=u-1$, gives the literal three-call
+core
+\begin{equation}
+\label{upd:three-c-core}
+  C\begin{pmatrix}u&0\\0&1\end{pmatrix}
+   C\begin{pmatrix}b&0\\0&1\end{pmatrix}C
+    =\begin{pmatrix}\alpha_1&\beta_1\\0&\delta_1\end{pmatrix}.
+\end{equation}
+For example,
+\[
+  C\begin{pmatrix}u&0\\0&1\end{pmatrix}C
+   =\begin{pmatrix}ih(u-1)&h(u+1)\\
+                     h(u+1)&-ih(u-1)\end{pmatrix};
+\]
+right multiplication by $\operatorname{diag}(b,1)C$ gives
+\eqref{upd:three-c-core}.  Thus the identity is a product of three
+positive $C$ factors, not a matrix supplied as a premise.
+
+The two nonzero diagonal pivots in~\eqref{upd:three-c-core} have the
+following explicit inverse witnesses:
+\[
+  \alpha_1^{-1}=A(u+1)u^{-1},\qquad
+  \delta_1^{-1}=2A v_-.
+\]
+Indeed $\alpha_1\alpha_1^{-1}=2AB_0(uv_+)(u+1)u^{-1}=1$ and
+$\delta_1\delta_1^{-1}=2AB_0(u-1)v_-=1$.  Normalize the left side of
+the core by these units.  The resulting upper shear has parameter
+\[
+  \kappa=\alpha_1^{-1}\beta_1
+       =A^2(u^2+1)u^{-1}
+       =ih\,c\mu u^{-1}.
+\]
+Now put
+\[
+  z=-2iu c^{-1},\qquad z^{-1}=ih u^{-1}c.
+\]
+Equation~\eqref{upd:associated-q} gives $zz^{-1}=1$ and $z\kappa=\mu$.
+Consequently the four diagonal factors
+\[
+  D_0=\operatorname{diag}(z\alpha_1^{-1},\delta_1^{-1}),\quad
+  D_1=\operatorname{diag}(u,1),\quad
+  D_2=\operatorname{diag}(b,1),\quad
+  D_3=\operatorname{diag}(z^{-1},1)
+\]
+are all unit diagonals, and
+\begin{equation}
+\label{upd:three-c-word}
+  D_0 C D_1 C D_2 C D_3
+       =\begin{pmatrix}1&\mu\\0&1\end{pmatrix}.
+\end{equation}
+This one word works for every $\mu$, including $0$ and zero divisors.  Its
+three calls and four diagonal slots have fixed topology.  The generic
+identity is also the content of the arbitrary-coefficient theorem
+\texttt{arbitrary\_threeC\_word\_correct} in
+\texttt{OddGeneralThreeCWord.lean}; the displayed host formulas supply its
+unit witnesses rather than assuming them.
+
+\subsection{Principal-root differences and the local transforms}
+\label{upd:roots}
+
+The cyclotomic host supplies a principal root, whose defining character
+sums give explicit differences that are units.  For any $z$ in a
+commutative ring define
+\[
+  G_k(z)=\sum_{j=0}^{k-1}z^j,
+  \qquad J_k(z)=\sum_{j=0}^{k-1}(k-j)z^j.
+\]
+Telescoping (or induction using
+$J_{k+1}=J_k+G_{k+1}$) gives
+\begin{equation}
+\label{upd:weighted-geometric}
+  (1-z)J_k(z)=k-zG_k(z).
+\end{equation}
+If $G_k(z)=0$ and $k$ is invertible, then $J_k(z)k^{-1}$ is an explicit
+inverse of $1-z$.  For a principal $k$-th root $\eta$, apply this to
+$z=\eta^r$ for $0<r<k$.  This argument works in product rings and
+requires no cancellation.  Since all the lengths here divide $m$ and
+$p\nmid m$, the needed scalar inverses exist.  This identity proves unit
+existence for every divisor length of $m$; it does not evaluate a
+length-$m$ sum for each record.  The actual local transforms have prime
+lengths $q_i\leq R_0$.  For each required local root difference, direct
+evaluation of $J_{q_i}$ uses a fixed polynomial number of operations in
+$R_0$ over $B$; an extended-Euclid calculation modulo $\Phi_\alpha$ is
+another charged method with a fixed polynomial cost in $D$.  These
+preparations are made in public setup, so
+the total is $n^{o(1)}$.  No length-$m$ sum is run per local record.
+
+For each prime $q_i\mid m$, let
+\[
+  E_i=\frac{m}{q_i}
+       \left(\left(\frac{m}{q_i}\right)^{-1}\bmod q_i\right),
+  \qquad \zeta_i=\omega^{E_i}.
+\]
+These are the coupled CRT idempotents and roots; they are derived from the
+one transported root rather than supplied by an independent root oracle.
+For $0\leq j<q_i$, put
+\[
+  H_j=\prod_{a=1}^j(1-\zeta_i^a),\qquad H_0=1,
+  \qquad \beta_j=(-1)^j\zeta_i^{j(j-1)/2}.
+\]
+Equation~\eqref{upd:weighted-geometric} proves each $H_j$ is a unit.  The
+ring-valid Newton-basis identity factors the $q_i$-point Fourier matrix
+$F_{r,s}=\zeta_i^{rs}$ as
+\[
+  F=\mathcal A T\operatorname{diag}(\beta_jH_j^{-1})T^{\mathsf T}\mathcal A,
+  \qquad \mathcal A=\operatorname{diag}(H_j),
+\]
+where $T$ is unit lower triangular Toeplitz with defining sequence
+$H_j^{-1}$.  For the entrywise proof, define
+\[
+  P_0(X)=1,\qquad P_k(X)=\prod_{a=0}^{k-1}(X-\zeta_i^a),\qquad
+  g_{j,k}=H_jH_k^{-1}H_{j-k}^{-1}\quad(0\leq k\leq j<q_i).
+\]
+Set $g_{j,k}=0$ outside this range.  The relation
+$XP_k=P_{k+1}+\zeta_i^kP_k$ and
+\[
+  g_{j,k-1}+\zeta_i^kg_{j,k}
+    =H_jH_k^{-1}H_{j+1-k}^{-1}
+       \bigl((1-\zeta_i^k)+
+                  \zeta_i^k(1-\zeta_i^{j+1-k})\bigr)
+    =g_{j+1,k}
+\]
+for $j+1<q_i$, with the two edge coefficients equal to one, prove by
+induction the formal polynomial identity
+$X^j=\sum_{k=0}^j g_{j,k}P_k(X)$ for every $j<q_i$.  If $r<k$ then
+$P_k(\zeta_i^r)=0$.  If $r\geq k$, direct factorization gives
+\[
+  P_k(\zeta_i^r)
+    =\prod_{a<k}\zeta_i^a(\zeta_i^{r-a}-1)
+    =\beta_k H_rH_{r-k}^{-1}.
+\]
+Substitution in the polynomial identity yields
+\[
+  \zeta_i^{rs}
+    =H_rH_s\sum_{k=0}^{\min(r,s)}
+       \beta_k H_k^{-1}H_{r-k}^{-1}H_{s-k}^{-1},
+\]
+which is exactly the $(r,s)$ entry of the displayed factorization.
+Only $H_j$ for $j<q_i$ is inverted; no $H_{q_i}$ inverse, polynomial
+equality from finite evaluations, or field cancellation is used.  The
+character sums give the inverse transform after multiplication by the
+genuine scalar $q_i^{-1}$.
+
+For the local formal convolution let $\mathcal R$ be a nonzero commutative
+ring with a specified inverse $h$ of $2$; the actual coefficient ring
+$B$ has this property.  At length $v\geq256$, choose $b$ to be the least power of
+two with $b^2\geq4v$, put $s=b/2$ and $a=\lceil v/s\rceil$, and choose
+$t$ to be the least power of two at least $2a-1$.  For $v<256$ use direct
+multiplication.  Since $b^2\geq4v$, $a\leq b/2$ and $t\leq b$.
+Minimality of $b$ gives $b<4\sqrt v$.  Also
+$t<2(2a-1)<4a\leq8v/b+4$, whence $tb<8v+4b<9v$ because
+$4b<16\sqrt v\leq v$ for $v\geq256$.
+Finally $b<4\sqrt v\leq v^{3/4}$ in this range.
+
+Work in the free monic quotient
+$\mathcal C_b=\mathcal R[Y]/(Y^b+1)$ with generator $y$.  Its free basis
+$1,y,\ldots,y^{b-1}$ shows $y^j\ne1$ for $0<j<b$; for
+$b\leq j<2b$, $y^j=-y^{j-b}\ne1$ by the same basis independence and
+$2\in\mathcal R^\times$.  Thus $y$ has exact order $2b$.
+Since $t\leq b$ and both are powers of two, $t\mid b$, so
+$\omega=y^{2b/t}$ has exact order $t$.  For $0<r<t$, write
+$g=\gcd(r,t)$ and $d=t/(2g)$.  Then $r/g$ is odd and
+$(\omega^r)^d=y^{b(r/g)}=-1$, so
+\[
+  (1-\omega^r)\left(h\sum_{j=0}^{d-1}\omega^{rj}\right)=1.
+\]
+Every nontrivial root difference is therefore an explicit unit, and
+$t^{-1}$ is a unit because $t$ is a power of two.  If $t=2^j$, prepare
+$t^{-1}=h^j$ and count each of its applications as a scalar gate.  The
+radix-two transform and its inverse are valid over $\mathcal C_b$ with
+this genuine normalization.  Split the input polynomials into width-$s$
+blocks.  Their outer block product has degree at most $2a-2<t$, and
+each inner block product has degree at most $2s-2=b-2$.  Thus neither
+transform coordinate wraps; overlap-add recovers the exact product in
+$\mathcal R[X]$ and costs $O(ab)=O(v)$.
+
+Counting additions, products and scalar operations, the recursive
+supplier has one length-$b$ product for each outer transform point.  The
+length-$t$ transforms on $t$ elements of $\mathcal C_b$ use
+$O(tb\log(t+2))=O(v\log(v+2))$ coefficient-ring operations; powers of
+$y$ are signed coordinate rotations, and the inverse normalization uses
+the prepared scalar $t^{-1}$.  Folding, padding, and overlap-add cost
+$O(v+ab+tb)=O(v)$.  Therefore
+\[
+  T(v)\leq tT(b)+K v\log(v+2),\qquad tb<9v,\quad b\leq v^{3/4}.
+\]
+Since $b\leq v^{3/4}$, we have
+$\limsup_{v\to\infty}\log(b+2)/\log(v+2)\leq3/4$.  Choose a fixed
+$\eta$ with $9(3/4)^{16}<\eta<1$.  Beyond a fixed threshold, the
+recursive coefficient
+$9(\log(b+2)/\log(v+2))^{16}$ is at most $\eta$.  Choose $C$ large
+enough to absorb the $O(v\log(v+2))$ toll into
+$(1-\eta)Cv\log^{16}(v+2)$; increasing $C$ also covers the finite
+intervening values and the direct range.  Hence
+$T(v)=O(v\log^{16}(v+2))$.  The transform depth sums to
+$O(\log(v+2))$ along a recursive path: these parameters give
+$t<8v/b+4=O(\sqrt v)$, so each transform has depth
+$O(\log(v+2))$, while recursive child logarithms shrink by a factor
+at most $3/4$.
+
+Fixing the second convolution vector yields a linear DAG over
+$\mathcal R$: evaluate the finite arithmetic circuit in
+$\mathcal R[\epsilon]/(\epsilon^2)$, replace a variable input by
+$\epsilon x_j$ and the fixed kernel by its constant value, and take the
+linear component.  This is a ring identity and uses no field
+interpolation.  Replace every fanout by a binary copy tree.  The copied
+DAG has size $O(v\log^{16}(v+2))$ and depth $O(\log^2(v+2))$.
+
+The off-diagonal block in the lower-unit-Toeplitz recursion has a
+rank-three displacement representation.  Each of its three terms uses
+two fixed-kernel convolutions, so one composite chunk DAG contains six
+convolutions, all intermediate vectors, copies, pads, summands, and
+outputs.  If $u$ is the parent interval and $w$ the larger chunk width,
+each chunk's source and target lie in different halves of the original
+parent.  The fitting rule counts its actual source and target ports and
+every such gate, including the intermediate vectors, and yields
+$w=\Omega(u/\log^{16}(u+2))$.  There are
+$O(\log^{32}(u+2))$ ragged chunk pairs per recursion level.  Signed dirty
+replay executes the DAG, adds its outputs to the target, undoes it, then
+executes the source-suppressed DAG and subtracts its outputs before
+undoing.  The common dirty contribution cancels, the target receives
+exactly the intended chunk map, and every borrowed cell returns to its
+incoming value.  Fanout copy trees and the four replay traversals give
+$O(\log^2(u+2))$ matching layers per chunk; recursion over
+$O(\log(u+2))$ levels therefore uses $O(\log^{35}(u+2))$ rounds on the
+original parent coordinates.  The fixed finite range where a composite
+chunk does not fit uses direct triangular-shear words.  This printer and its setup lists have
+polynomial size in $R_0$; the coefficient arithmetic and record width
+are charged separately below.
+\subsection{Native services and repriced routing}
+\label{upd:native}
+
+Let $V$ denote the whole physical bit volume of a call, including complete
+prefixes, gaps, suffixes, independent lanes, coefficient bits,
+initialization, head movement, and cleanup.  The native
+source supplies the following named theorem interfaces:
+\begin{align*}
+  I_\tau &: \text{opaque equal binary-field interchange},
+  &\tau&=1-\frac{859173879734039}{250000000000000000},\\
+  P_\gamma &: C^{\otimes k}\text{ over }
+      A_P=(\mathbb Z/P\mathbb Z)[I]/(I^2+1),
+  &\gamma&=1-\frac{3125805}{10^9}=0.996874195.
+\end{align*}
+The $I_\tau$ interface permits arbitrary complete spectators and opaque
+payload and costs $O(V(u+1)^\tau\operatorname{polylog}(u+2))$ for $u$-bit
+address fields.  The $P_\gamma$ interface applies the literal tensor over
+every odd modulus $P$, every coefficient width $s$, and every independent
+lane count $\ell$ at cost
+\[
+  O\!\left(2^k\ell s(k+1)^\gamma
+                   \operatorname{polylog}(k+2)\right).
+\]
+Both tariffs include headers, record encodings, movement, all lanes,
+complete spectators, returns, and cleanup.  The interchange proof is
+\path{thm:mixedbitswap}.  The phase proof is
+\path{thm:mixedbitinteger}.  Their construction uses the pinned source
+theorem \path{Stage2Machine.Bound.uniform_bound}~\cite{Stage2Machine26}.
+The precise external statement and source revision are recorded in the
+supplementary dependency map.
+The finite-ring construction retains the contributor attributions recorded
+in~\cite{Community26}.
+
+Every aggregate relocation in the strong transfer is charged through
+$I_\tau$ as follows.  Suppose two moved objects are contiguous complete
+numeric ranges of sizes $A$ and $B$, with $AB\leq M$.  Pad each whole
+range separately to a binary power; the combined padded volume is less
+than $4AB$.  Apply the lossless binary transpose to this complete rectangle
+and crop only after its completed permutation.  Its address width is at
+most $\lceil\log_2 M\rceil+2$, so each direction costs
+\begin{equation}
+\label{upd:rectangle-route}
+  O\!\left(VL^\tau\operatorname{polylog}(L+2)\right),
+  \qquad L=\lceil\log_2(2M)\rceil.
+\end{equation}
+This route pads a whole rectangle once.  The earlier row-by-row routing
+estimate with exponent $\rho=1-3\cdot2^{-38}$ is larger than $\gamma$ and
+does not give~\eqref{upd:rectangle-route}.
+
+At the selected host shape, the native radices satisfy
+$L_0^3\leq q_i\leq R_0$, and the per-record width is at least the fixed
+polynomial required by the public generators, since $D$ was chosen after
+that polynomial was frozen.  The native dock uses disjoint data, dirty
+auxiliary, and movement fields; its untouched suffix has at least $0.8L$
+bits and pays the polynomial address and gauge work.  The source supplies
+the dock in \path{lem:nativedock} and the phase in
+\texttt{prop:nativephase}.  The shuffle and ragged routing proofs are
+\path{lem:nativeshuffle} and \path{lem:raggednative}.
+Controlled permutations use \path{prop:nativecontrolled}; coupled CRT
+levels use \path{prop:nativeCRT} and \path{lem:CRTphase}.
+The wider host condition
+$\log R_0=O((\log L)^2)$ follows from these proofs and the stated dock
+hypotheses; it is not inferred from the narrower polynomial-radix
+statement alone.
+
+The strong native bounds satisfy
+\[
+  \tau<\gamma,\qquad
+  \left(1-\tau\right)-\frac{3125805}{10^9}
+   =\frac{77722629734039}{250000000000000000}>0.
+\]
+The shuffle has $O(\log R_0)$ endpoint blocks, ragged routing has
+$O(\log R_0)$ global levels, and balanced CRT routing has $O(\log t)$
+depths, where $t$ is the number of axes.  Replacing every aggregate move
+by~\eqref{upd:rectangle-route} charges these as fixed secondary powers of
+$\log L$.  The native phase uses $P_\gamma$; no integer-multiplier
+conclusion from that source is used.
+
+Each odd $q_i$ axis is completed to the even radix $q_i+1$.  Complete
+each local edge matching by pairing its remaining positions, including
+the existing dummy coordinate; the remaining count is even.  Give every
+such added pair the coefficient $\mu=0$.  Equation~\eqref{upd:three-c-word}
+then acts as the identity on arbitrary incoming values, with all three
+$C$ calls and all four diagonal slots still present.  The generated local
+permutation places pairs in canonical adjacent positions; a separately
+priced route-in and route-out implements this change of layout.
+Shorter axis schedules are padded to the common tensor schedule with
+these zero-weight identity words.
+
+In a synchronized tensor round, the product of local words is three full
+$P_\gamma$ calls and four product-diagonal slots.  It is a product of
+operator words, not an expansion into exponentially many additive terms.
+Inside a word, live values can occupy a dummy or the $I$ helper coordinate;
+only its completed shear boundary is used for restoration or cropping.
+At completed boundaries the zero shears restore every dummy-pattern class,
+and the shear over $S$ restores the helper subspace.  The controlled and
+CRT routes preserve those same classes at their completed boundaries.
+Thus no crop or helper projection is inserted inside a native word.
+
+All local edge matchings use
+$O(L_0R_0\log^{35}(R_0+2))$ coefficient records.  The selector exponent
+has $O(D\log p)$ bits.  Root differences, selector powers, diagonals,
+archives, shape lists, route settings, and erasure are prepared once per
+local record, not once per global sample.  Their total work is a fixed
+polynomial in $R_0,D,L_0$, hence $n^{o(1)}$.  The total volume of one
+native call is
+\[
+  V=2MD\,\lceil\log_2 p\rceil=\Theta_p(n).
+\]
+Including the fixed powers of secondary logarithms, all native phase,
+route-in, route-out, and CRT work is therefore
+\begin{equation}
+\label{upd:native-cost}
+  O_p\!\left(n(\log n)^\gamma
+                 (\log\log(n+4))^{K_1}\right)
+\end{equation}
+for a fixed $K_1$.
+
+The native BIT precompiler fixes one moment parameter $t\in(0,1)$ for
+which its productive and total profiles satisfy $P_t\leq T_t$; it does
+not require this inequality for every $t$.  The application uses
+$t=1-173/50000$ and $z=1-3459/10^6>t$.  For rational $z=a/b$, its finite
+stopping test is the exact integer comparison
+$F(N)^b<B(N)^bN^a$.  The induction sets $B(0)=1$, $F(0)=0$, and
+$\ell(0)=0$.  Rank-zero complements are identities and are omitted;
+positive-rank recipes have positive productive count.  At height $G$,
+the empty-target class has at most $J^G$ columns and is admissible because
+$m_{\rm flow}J^G\leq m_{\rm flow}L^G\leq n$.  Thus a source exists and
+the normalization denominator is positive.  The finite winning word is
+selected before the later input widths vary; it is not an input-sized
+advice table or a compiler oracle.
+
+The separated base word has dimension $127^{1024}$ in
+\texttt{lem:finitebitflow}.  Its all-column proof and strictification feed
+\texttt{thm:finitebitcompiler}, which selects the effective finite winner
+and its constants $N_0\geq2$, $B_0$, and $F_0$; the enormous instruction
+list is not materialized.  Every paid leaf has rank one.  At width $n$,
+a rank-one child has width $\lfloor n/N_0\rfloor$; aside from
+nonrecursive old-supplier leaves, each fallback child is no wider, so
+every recursive child has width at most
+$\lfloor n/N_0\rfloor\leq n/2$.  For the rank-one tree, a safe path
+allowance is
+\[
+  D_0=2(\lceil\log_2(E+1)\rceil+1),
+\]
+where $E$ is the root digit parameter.  This uses the actual half-width
+contraction of the compiled word.
+
+Fix the finite owned/route inventory and choose one eligible odd address
+prime $q$ after the winning word is frozen.  Put
+\[
+  L_{\rm cov}=B_0|\operatorname{GL}_{N_0}(\F_q)|,\qquad
+  A_w=q^{N_0^2(w-1)},\qquad W_w=L_{\rm cov}A_w,
+  \qquad w=\lceil E^{1/250}\rceil.
+\]
+Choose the least $r_0$ with $q^{2r_0}\geq W_w^{D_0}$, then increase it
+by fewer than $w$ digits to $r$ so that $w\mid E-r$.  Because
+\[
+  \log_q W_w=\log_q L_{\rm cov}+N_0^2(w-1)=O_{N_0,B_0,q}(w),
+\]
+we have $r=O_{N_0,B_0,q}(w\log(E+2))=o(E)$.  The finitely many $E$
+for which $r\geq E$ use a direct branch.  Exchange the two high
+$r$-digit fields and place the right high field before the low head field;
+these short moves cost $O(Vr)$.  Pad their joined $q^{2r}$ row values
+once to
+\[
+  R'=W_w^{D_0}\left\lceil\frac{q^{2r}}{W_w^{D_0}}\right\rceil
+       <2q^{2r}.
+\]
+The range supplies an outer factor and $D_0$ consecutive $W_w$ cover
+slots.  This is a grouped complete numeric range, not entrywise radix
+conversion.
+
+A child fixes only a productive role and low matrix type, consuming one
+fresh cover slot while retaining all $A_w$ high matrices as complete
+earlier spectators.  At depth $d$, retained-high multiplicity $A_w^d$
+times unused stock $R'/W_w^d$ is exactly $R'/L_{\rm cov}^d$.  Thus the
+child volume is divided by $L_{\rm cov}$, not by $W_w$; there is no
+second high-matrix saving.  Siblings reuse restored stock, parent
+inactive banks remain below their stack tops, and the finite owned-bank
+inventory travels with the active stream until its prescribed clearing
+boundary.  Only the completed root endpoint restores the padded row
+support for cropping.  This is the retained-stock argument of
+\texttt{lem:threecoverstock}, generalized to the winning finite word by
+\texttt{prop:delayedbitcover}.
+
+The finite program gives
+\[
+  C_0=\frac{3459}{10^6},\qquad C_1=\frac{69}{20000},\qquad
+  \frac{F_0}{B_0}<N_0^{1-C_0},\qquad d=C_0-C_1=\frac9{10^6}.
+\]
+Choose $q$ large enough to avoid every finite denominator and rank
+witness and to satisfy $q>256N_0^5/d$.  With
+$\sigma=1-C_1$, the fresh-cover density and full fallback give
+\[
+  \mu_\sigma\leq\frac{F_0}{B_0}N_0^{-\sigma}
+       \left(1+\frac{64N_0^5}{q}\right)
+   <N_0^{-d}(1+d/4)
+   <\frac{1+d/4}{1+d/2}<1,
+  \qquad \mu_1\leq\mu_\sigma.
+\]
+The last inequality uses $N_0^d\geq1+d/2$, since $N_0\geq2$ and
+$\ln 2>1/2$.  This is the BIT density estimate.  The separate phase
+moment theorem \texttt{lem:strongerphasemoment} supplies $P_\gamma$; it
+is not used for the BIT density bound.
+
+The ancestor decoder is charged by \path{lem:rootdecoder}.
+Its descriptor work is polynomial in $E$
+and is absorbed by the complete $q^w$ target fibres, because
+$E\leq w^{250}$.  Let
+$a_L=123879734039/10^{15}$ and $\tau_L=1-a_L$, so a port costs
+$G(w)=(w+1)^{\tau_L}\operatorname{polylog}(w+2)$ per active volume.
+The strict profile bound gives the recurrence estimate
+$T(n,w)\leq A n+B n^{1-C_1}G(w)$, with the finite generated-adapter
+cost charged linearly.  The one-reserve wrapper costs
+\[
+  O\!\left(V\left(E/w+(E/w)^{1-C_1}G(w)+w\log(E+2)\right)\right).
+\]
+With $\vartheta=1/250$, its leading saving is
+\[
+  a_B=(1-\vartheta)C_1+\vartheta a_L
+      =\frac{859173879734039}{250000000000000000},
+  \qquad \tau=1-a_B.
+\]
+Exact rational comparison gives $a_B<\vartheta<1-a_B$, so the stopped
+term dominates the other root terms.  The general reserve and finite
+profile are used by \path{prop:delayedbitcover}.
+The old \path{lem:threecoverstock} is the retained-stock template.
+Coefficient preparation is charged by \path{lem:rootdecoder}.
+\subsection{Diagonal invoices, the complement, and ordinary output}
+\label{upd:invoice}
+
+The four diagonal slots in a tensor round are product tables of already
+prepared local weights.  If the prefix products have cardinalities
+$M_1,\ldots,M_t$, their construction uses
+\[
+  \sum_{j=1}^t M_j<2M
+\]
+$B$-products: in reverse axis order these cardinalities form a geometric
+sum with ratio at most $1/2$.  Applying the resulting table to all $M$
+sample positions is a separate $M$-product scan.  Copies, inverses,
+erasure, and head returns are charged with those scans.  An ordinary
+$B$-product costs $O_p(D\operatorname{polylog}L_0)$ by carry-free integer
+packing, classical integer multiplication, and reduction modulo the
+monic polynomial $\Phi_\alpha$~\cite{SS71,BrentZimmermann10}.  Coefficient
+slots have $O(\log D)$ bits; public integer-modulus reciprocals use
+$O(\log D)$ precision, while reversed monic reciprocals use their actual
+quotient precision.  Thus building and applying one product-diagonal
+table costs
+\[
+  O_p(MD\operatorname{polylog}L_0),
+\]
+not $O(Mt)$ ring products and not $M$ fresh selector computations.  The
+number of rounds is a fixed power of $\log R_0$, so all diagonal slots
+contribute $O_p(n(\log\log(n+4))^{K_2})$ for a fixed $K_2$.
+
+It remains to account for the $\psi$-component.  Write
+$d_\psi=\alpha-D$ and $v=d_\psi m=N\theta$.  Classical Schönhage--Strassen
+arithmetic computes this component with inner stride $2d_\psi$ and long
+integer-modulus precision $O(L_0)$, so coefficient bands do not overlap
+and integer carries do not cross their slots.  The full $\alpha$-row
+monic division by $\psi$ uses $D+1$ reciprocal coefficients; a short
+degree-$d_\psi$ product reciprocal is not enough.  Its total cost is
+\[
+  O_p(N\theta L_0^2\operatorname{polylog}L_0)
+      =O_p(N\operatorname{polylog}L_0)
+\]
+by~\eqref{upd:host-shape}.  All full coefficient-CRT row maps have the
+same $O_p(N\operatorname{polylog}L_0)$ bound.  This complement is
+computed and recombined.
+
+On the $\Phi_\alpha$ component, embed the valid coefficient data into
+$B$, run two completed forward transforms, multiply pointwise in $B$, and
+run the inverse. The pointwise stage uses at most $M$ ordinary
+$B$-products, hence costs
+\[
+  O_p(MD\operatorname{polylog}L_0)
+     =O_p(n(\log\log(n+4))^{K_3})
+\]
+for a fixed $K_3$, including the associated scans and head returns.
+Initially invalid dummy entries are zero and remain zero
+at every completed shear/route boundary; their point products are zero.
+The inverse uses the genuine $m^{-1}$ on this reached valid subspace; no
+inverse assertion is made for arbitrary nonzero dummy fibres.  Project
+away the restored helper coordinate, reconstruct both coefficient CRT
+components, invert the ordinary top map, crop only at its completed
+boundary, and output the $2n-1$ canonical residues.  Since $N>2n-1$, the
+zero-filled cyclic product has no aliasing among degrees $0$ through
+$2n-2$.  Input scans, output scans, and final cleanup cost $O_p(n)$.
+
+Combining~\eqref{upd:native-cost}, the diagonal invoice, the complement,
+the coefficient maps, and the fixed polynomial setup proves the
+$e=1$ case of the proposition.  Each named supplier is a completed
+fixed-tape machine.  Their finite bank sets are renamed and reused, and
+recursive setup stacks are tape data; joins, returns, and cleanup are
+included.  No tape is added per axis, prime, depth, or gate.
+
+Finally fix a basis $\{\beta_1,\ldots,\beta_e\}$ of $\F_{p^e}$ over
+$\F_p$ and its structure constants
+$\beta_i\beta_j=\sum_k c_{ij,k}\beta_k$.  A linear scan separates each
+input into its $e$ prime-field component streams.  Run the $e^2$ ordered
+component-pair products serially, reusing the same prime-field banks, then
+accumulate the fixed combinations $c_{ij,k}$ and merge the $e$ output
+streams coefficient by coefficient.  These codecs and fixed linear
+combinations cost $O_{p,e}(n)$, and the $e^2$ calls are a constant factor.
+All $2n-1$ output coefficients, including zeros, are retained.  This
+proves the fixed-extension case.
+
+For the plain exponent, observe that
+\[
+  \frac{319}{320}-\gamma
+     =\frac{805}{10^9}>0.
+\]
+For each fixed $K$, the factor $(\log\log(n+4))^K$ is absorbed by
+$(\log(n+2))^{805/10^9}$ for sufficiently large $n$; changing the
+constant covers the remaining finite range.  This yields the stated
+$319/320$ bound.
+\end{proof}
+
+\begin{remark}[Source and verification boundary]
+\label{upd:boundary}
+The native interfaces are \texttt{thm:mixedbitswap} and the phase-only
+\texttt{thm:mixedbitinteger} in the accompanying native supplement,
+with the constructive adapters and proof labels listed above.
+\path{ASSETS.json} binds the supplement and its finite premises;
+\path{SOURCE_SELECTION.json} records its derivation from the research
+source. Finite checks concern their stated finite identities and do not
+replace the all-size arguments. Complete Lean verification remains open.
+\end{remark}

@@ -16,6 +16,8 @@ $required=@('README.md','CONTENTS.md','AUTHORS.md','AI_USE.md','VERIFICATION.md'
  'papers/01-general/proofs/finite-unit/verify-finite-unit.ps1',
  'verification/finite-unit-replay.json')
 foreach($name in $required){Require (Test-Path -LiteralPath (Join-Path $root $name) -PathType Leaf) ('Missing '+$name)}
+try { & (Join-Path $PSScriptRoot 'check-stronger-odd.ps1') | Out-Host }
+catch { $failures.Add('Stronger odd-field update integrity: '+$_.Exception.Message) }
 # Check the separate binary capsule offline, without refreshing its manifest
 # or executing its finite probes, document compiler or any Lean workload.
 $binaryVersionChecked=$false
@@ -56,6 +58,24 @@ foreach($target in $targets){
  if($pageRecord.Count -eq 1){
   Require ($pageRecord[0].pdf_sha256 -eq (Hash (Join-Path $paperRoot 'paper.pdf'))) ('Stale layout record '+$target)
   Require ($pageRecord[0].overfull_boxes -eq 0 -and $pageRecord[0].undefined_references -eq 0) ('Unresolved layout/reference warning '+$target)
+ }
+ # Current copy audits use either manuscript-relative or repository-relative paths.
+ $copyEntries=@(Get-Content -LiteralPath (Join-Path $paperRoot 'audit.json') -Raw|ConvertFrom-Json)
+ foreach($copyRecord in $copyEntries){
+  if(-not $copyRecord.destination_path -or -not $copyRecord.staged_sha256){continue}
+  $copyRelative=if($copyRecord.destination_path.StartsWith($target+'/')){$copyRecord.destination_path}else{$target+'/'+$copyRecord.destination_path}
+  $copyPath=[IO.Path]::GetFullPath((Join-Path $root $copyRelative))
+  $insidePaper=$copyPath.StartsWith($paperRoot+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)
+  Require $insidePaper ('Copy-audit path escapes manuscript '+$target)
+  if($insidePaper){Require ((Test-Path -LiteralPath $copyPath -PathType Leaf) -and (Hash $copyPath) -eq $copyRecord.staged_sha256.ToLowerInvariant()) ('Stale copy-audit binding '+$copyRelative)}
+ }
+ if($copyEntries.Count -eq 1 -and $copyEntries[0].source_files){
+  foreach($copySource in $copyEntries[0].source_files){
+   $copyPath=[IO.Path]::GetFullPath((Join-Path $paperRoot $copySource.path))
+   $insidePaper=$copyPath.StartsWith($paperRoot+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)
+   Require $insidePaper ('Source-audit path escapes manuscript '+$target)
+   if($insidePaper){Require ((Test-Path -LiteralPath $copyPath -PathType Leaf) -and (Hash $copyPath) -eq $copySource.sha256.ToLowerInvariant()) ('Stale source-audit binding '+$target+'/'+$copySource.path)}
+  }
  }
  $pending=[Collections.Generic.Queue[string]]::new();$seen=[Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
  $pending.Enqueue((Join-Path $paperRoot 'main.tex'))
@@ -115,9 +135,32 @@ if((Test-Path -LiteralPath $finiteReceipt -PathType Leaf) -and (Test-Path -Liter
   }
  }
 }
-$files=@(Get-ChildItem -LiteralPath $root -File -Recurse -Force|Where-Object {
- $_.FullName.Substring($root.Length+1) -notmatch '(^|[\\/])(\.build|\.tools|\.git|build)[\\/]'
-})
+# In a checkout, use Git's publishable inventory: tracked files plus
+# untracked files not excluded by .gitignore. This preserves other workers'
+# ignored caches without admitting a tracked generated object. A source
+# export without .git retains the complete non-build-directory fallback.
+$gitCommand=Get-Command git -ErrorAction SilentlyContinue
+if($gitCommand -and (Test-Path -LiteralPath (Join-Path $root '.git'))){
+ $start=[Diagnostics.ProcessStartInfo]::new($gitCommand.Source)
+ $start.UseShellExecute=$false;$start.CreateNoWindow=$true
+ $start.RedirectStandardOutput=$true;$start.RedirectStandardError=$true
+ foreach($argument in @('-C',$root,'ls-files','--cached','--others','--exclude-standard','-z')){$start.ArgumentList.Add($argument)}
+ $process=[Diagnostics.Process]::new();$process.StartInfo=$start
+ try{
+  if(-not $process.Start()){throw 'Could not read Git file inventory'}
+  $inventory=$process.StandardOutput.ReadToEnd();$inventoryError=$process.StandardError.ReadToEnd();$process.WaitForExit()
+  if($process.ExitCode -ne 0){throw ('Git file inventory failed: '+$inventoryError)}
+ }finally{$process.Dispose()}
+ $files=@(foreach($relative in $inventory.Split([char]0,[StringSplitOptions]::RemoveEmptyEntries)){
+  $path=[IO.Path]::GetFullPath((Join-Path $root $relative))
+  if(-not $path.StartsWith($root+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)){throw 'Git inventory path escapes root'}
+  if(Test-Path -LiteralPath $path -PathType Leaf){Get-Item -LiteralPath $path}
+ })
+}else{
+ $files=@(Get-ChildItem -LiteralPath $root -File -Recurse -Force|Where-Object {
+  $_.FullName.Substring($root.Length+1) -notmatch '(^|[\\/])(\.build|\.tools|\.git|build)[\\/]'
+ })
+}
 Require ($files.Count -gt 0) 'No release files were enumerated'
 foreach($file in $files){
  Require ($file.Length -lt 25000000) ('Oversized file '+$file.Name)
@@ -142,7 +185,7 @@ if(Test-Path -LiteralPath $manifest){
  }
 }
 $report=[pscustomobject]@{
- prepared_date='2026-10-31';check='Focused first-release packaging/source-integrity check'
+ prepared_date='2026-10-31';checked_utc=[DateTime]::UtcNow.ToString('o');check='Four-paper packaging/source-integrity check'
  passed=($failures.Count -eq 0);payload_files=$payload.Count;total_release_files=$files.Count
  papers=$targets.Count;tex_closure_files=$closureCount;finite_unit_artifacts=$unitCount
  binary_version_0_2_1_checked=$binaryVersionChecked

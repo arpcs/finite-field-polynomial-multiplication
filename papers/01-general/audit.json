@@ -1,242 +1,142 @@
 {
-  "revision": "2026-10-31",
-  "scope": "General fixed-field source-inspection/copy audit; original copy stage executed no proofs; later finite-premise replay and final PDF compilation recorded separately",
+  "schema": "odd-field-local-update/1",
+  "revision": "2026-11-02",
+  "version": "0.2.1",
+  "publication_status": "unpublished",
+  "scope": "Written ordinary odd-field proof, selected native supplement, source provenance and document/package checks. No complete formal proof is asserted.",
   "claimDecision": {
-    "unconditionalBaseline": "O_q(n log(n+2)) follows as a weaker corollary of the all-fields theorem",
-    "oddClaim": "O_{p,e}(n log(n+2)^(9999/10000)) for each fixed odd field, using bundled host transfer/native proof and named Stage2 source",
-    "allFieldsBound": "O_q(n log(n+2)^(1-2^-38)) from controlled-tensor binary theorem, its fixed-extension corollary, and the odd-field proposition"
+    "oddClaim": "O_(p,e)(n log(n+2)^(319/320)) for every fixed odd p,e",
+    "leading_gamma": "1-3125805/10^9=0.996874195, retaining a fixed secondary logarithm",
+    "allFieldsBound": "O_q(n log(n+2)^(1-2^-38)); characteristic-two input retains accompanying paper scope",
+    "ordinary_output": "All 2*n-1 canonical fixed-basis coefficients",
+    "native_imports": "Written mixedbitswap and odd-ring phase conclusion of mixedbitinteger, plus explicit lossless-transpose native routing reprice",
+    "external_machine": "Stage2Machine.Bound.uniform_bound at fefd699f9389af961046997796261333539e5909"
   },
-  "originalSources": [
+  "previous_revision": {
+    "version": "0.1.0-preprint",
+    "git_commit": "14532be8e044c0f6588b9787a842a96da695769f",
+    "directory": "papers/01-general",
+    "source_tree_url": "https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/01-general",
+    "first_public_scientific_revision": "fb94421e3e6d9f8348a6e5b963b5a62d9c525e95",
+    "files": [
+      {
+        "path": "main.tex",
+        "bytes": 20139,
+        "sha256": "53f7081776790aaf99aaaef44a5eb2fa75ec7682b4c77b8ddcc62cdd70685be0",
+        "git_blob_sha1": "b8002d60e2dc29ac8b8de592c162ec2c334c943c"
+      },
+      {
+        "path": "paper.pdf",
+        "bytes": 84154,
+        "sha256": "98ea67b81eba969f8df4f18d792518804ad40f755d100169cd501c0593069ba2",
+        "git_blob_sha1": "b32784487cf28075f1ac51cb795a62c4006f5a89"
+      },
+      {
+        "path": "STATUS.md",
+        "bytes": 6687,
+        "sha256": "33716401cd3dabff263dc38e31210e7afbbd6b370d769c4767567680603f9ab0",
+        "git_blob_sha1": "7896d73ecb404366147e1a41f0763e60f234e00b"
+      },
+      {
+        "path": "audit.json",
+        "bytes": 14463,
+        "sha256": "2c4031412dac7134ea4a9dd70a2b894acc4d87d1412a1ddead82a248e2e802fb",
+        "git_blob_sha1": "e4ff66672cf839d6ae7404c28eab2b0905c74988"
+      },
+      {
+        "path": "citation.bib",
+        "bytes": 284,
+        "sha256": "bd75d55f6e591e00a408ff4e627b349daf97b1a4253fc85c73aa6ae0945e5823",
+        "git_blob_sha1": "0e479d81a4f0256ab1f9e1b13d64106a2b0e776e"
+      }
+    ],
+    "scope": "Exact earlier source and metadata identities retained through immutable Git objects; prior manuscript files are not duplicated in this update."
+  },
+  "current_sources": [
     {
-      "sha256": "f5d5e43aed3f29515c76a85aa9ba3eb7f85f6f29e1e1c25f48b6802de6fc29ac",
-      "bytes": 8804,
-      "source_identifier": "sha256/f5d5e43aed3f29515c76a85aa9ba3eb7f85f6f29e1e1c25f48b6802de6fc29ac/odd_cyclotomic_host_transfer.tex"
+      "path": "main.tex",
+      "bytes": 21080,
+      "sha256": "b1a1bc3e7ac1d6e0744f665ccdc56e9c3eb316f052b3cf7cf5e4c3870ba8f0d6"
     },
     {
-      "sha256": "65df48c3a1191a1dde02e331f3a47e287cb80e0d576eb74c13ea09320be9914e",
-      "bytes": 26311,
-      "source_identifier": "sha256/65df48c3a1191a1dde02e331f3a47e287cb80e0d576eb74c13ea09320be9914e/odd_grouped_native_transfer.tex"
+      "path": "citation.bib",
+      "bytes": 330,
+      "sha256": "2fb1939914f8618bd7728ea56de937dc4c5a9e83fc305937e8643e4fa8d888d6"
     },
     {
-      "sha256": "3ea8ddde648a7cccfa01f25f97c673b3f546ca5d83e98d8f913ed3e93d2c73ee",
-      "bytes": 380818,
-      "source_identifier": "sha256/3ea8ddde648a7cccfa01f25f97c673b3f546ca5d83e98d8f913ed3e93d2c73ee/main.tex"
+      "path": "STATUS.md",
+      "bytes": 3396,
+      "sha256": "55a68df7961431197d42e615702628c4a9920dbbf91418c30e97db54ce2e8227"
     },
     {
-      "sha256": "7f192f822c0d54ddd024fa7d58f156366abfc1b4b7c1c1c13af29cc0f9e2d02c",
-      "bytes": 24175,
-      "source_identifier": "sha256/7f192f822c0d54ddd024fa7d58f156366abfc1b4b7c1c1c13af29cc0f9e2d02c/ODD_CYCLOTOMIC_HOST_TRANSFER_20261030.txt"
+      "path": "proofs/PROOF_SOURCES.md",
+      "bytes": 4692,
+      "sha256": "bce484ee71880954a8e9dca6c6a16dbab5752f9ecb67fdc048c7786a1e0ef85f"
     },
     {
-      "sha256": "4e31978dd40ac5a83469231059fa3608fc4abd4b51a8dfbb8beb8b9c3eec2d0c",
-      "bytes": 23323,
-      "source_identifier": "sha256/4e31978dd40ac5a83469231059fa3608fc4abd4b51a8dfbb8beb8b9c3eec2d0c/ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt"
+      "path": "proofs/stronger-odd-20261102/host-transfer.tex",
+      "bytes": 34917,
+      "sha256": "55c18e75bbbf264bb9e0152f272199623317e8af417e45cddec038186ec6bd1e"
     },
     {
-      "sha256": "4aaf169d5d1fdcc4819b2fb218593972f761df910ccf70fda0a982012b2b0549",
-      "bytes": 8935,
-      "source_identifier": "sha256/4aaf169d5d1fdcc4819b2fb218593972f761df910ccf70fda0a982012b2b0549/PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt"
+      "path": "proofs/stronger-odd-20261102/native-source.tex.txt",
+      "bytes": 306077,
+      "sha256": "97f498a394943db3fa69e9984ed11f3e59efca24dfd6f03c3d4ab3ff7b392f72"
     },
     {
-      "sha256": "a658d2a21d701576845e048a280074cc062f030459c83e89e707ccbfaf1b9ad8",
-      "bytes": 4842,
-      "source_identifier": "sha256/a658d2a21d701576845e048a280074cc062f030459c83e89e707ccbfaf1b9ad8/odd_cyclotomic_completion_audit_20261030.json"
+      "path": "proofs/stronger-odd-20261102/SOURCE_SELECTION.json",
+      "bytes": 11230,
+      "sha256": "b51574eada23656e2fe0ad184b18f0861bfcc5609878326aa79e9f118f15ff8e"
     },
     {
-      "path": "papers/02-simple-binary/main.tex",
-      "sha256": "a66ddeec1ba3c362b3b1a80645b8f693c923ab137b8f660bb05c4cf11656607c",
-      "bytes": 3423
-    },
-    {
-      "path": "papers/02-simple-binary/model.tex",
-      "sha256": "43c6cb572097344205179d5d286ccdb808a982abf9b99d44a5ef409611c41b71",
-      "bytes": 5047
-    },
-    {
-      "path": "papers/02-simple-binary/tensor.tex",
-      "sha256": "680bcc3e78b6363203bd434d29657e465f805b4ee9b5bccf96ee37ba8083eb2f",
-      "bytes": 32666
-    },
-    {
-      "path": "papers/03-best-binary/main.tex",
-      "sha256": "0613daa098a3abd337aed7a4bf08a667a6c4368f2e8facff76c17a1bb7f341e5",
-      "bytes": 11529
-    },
-    {
-      "sha256": "36bcdb370f347b0e4123ab2592042b712448c6af4946a607e9c19289ccc38f4a",
-      "bytes": 15408,
-      "source_identifier": "sha256/36bcdb370f347b0e4123ab2592042b712448c6af4946a607e9c19289ccc38f4a/native_transform_and_radix.tex"
-    },
-    {
-      "sha256": "0bde02a60aaa296718f9d11470882748c889011ddd9d8a9bcb893fe82b353b3f",
-      "bytes": 56010,
-      "source_identifier": "sha256/0bde02a60aaa296718f9d11470882748c889011ddd9d8a9bcb893fe82b353b3f/e8_order3_and_orthogonal_trees.tex"
-    },
-    {
-      "sha256": "82432c925a91ba50a2be15cd11490e7ef82dce16cd365f6e60f8e3b7bc6d57ce",
-      "bytes": 8679,
-      "source_identifier": "sha256/82432c925a91ba50a2be15cd11490e7ef82dce16cd365f6e60f8e3b7bc6d57ce/LAYER_COMPILER_AUDIT.md"
-    },
-    {
-      "sha256": "30d0853351d698fc5a83bc3abbdcc643852d97f3756958354f9cfa10f03b5d50",
-      "bytes": 11848,
-      "source_identifier": "sha256/30d0853351d698fc5a83bc3abbdcc643852d97f3756958354f9cfa10f03b5d50/native_chart_source.md"
-    },
-    {
-      "sha256": "6066e0d95399a433b3ab6bb2a502f339419eb1179f57bd6c9dd6e5dc935ff638",
-      "bytes": 24317,
-      "source_identifier": "sha256/6066e0d95399a433b3ab6bb2a502f339419eb1179f57bd6c9dd6e5dc935ff638/ORDER3_MOVEMENT_FULL_BIT_CLOSURE.txt"
-    },
-    {
-      "sha256": "4343a76ed11a62c0372215a25849f1ead807c3b5568b4cf3d31048d6f8d78090",
-      "bytes": 6615,
-      "source_identifier": "sha256/4343a76ed11a62c0372215a25849f1ead807c3b5568b4cf3d31048d6f8d78090/POSITIVE_WORD_AUDIT.md"
-    },
-    {
-      "sha256": "5be67501a0622ed009f112a6ade6b3efd076d5944cb8a0dd23f5216357c17c22",
-      "bytes": 14518,
-      "source_identifier": "sha256/5be67501a0622ed009f112a6ade6b3efd076d5944cb8a0dd23f5216357c17c22/BALANCED_RADIX_CONSTANT_WORD.txt"
+      "path": "proofs/stronger-odd-20261102/ASSETS.json",
+      "bytes": 32375,
+      "sha256": "dd360d4888a75cf4e96af0ddebf9a2fbcfaf87a0df806f0c44a9694609963403"
     }
   ],
-  "copiedSourceRecords": [
-    {
-      "originalSha256": "f5d5e43aed3f29515c76a85aa9ba3eb7f85f6f29e1e1c25f48b6802de6fc29ac",
-      "originalBytes": 8804,
-      "destination": "proofs/odd_cyclotomic_host_transfer.tex",
-      "destinationSha256": "1c6046d44f20d7e5350b87289c89b1ae20f0f8e505d3438a517d45e7ff612828",
-      "destinationBytes": 8819,
-      "editScope": "Copied full local proposition proof; links redirected to included files and prose made independent of omitted preceding theorem.",
-      "original_source_identifier": "sha256/f5d5e43aed3f29515c76a85aa9ba3eb7f85f6f29e1e1c25f48b6802de6fc29ac/odd_cyclotomic_host_transfer.tex"
-    },
-    {
-      "originalSha256": "65df48c3a1191a1dde02e331f3a47e287cb80e0d576eb74c13ea09320be9914e",
-      "originalBytes": 26311,
-      "destination": "proofs/odd_grouped_native_transfer.tex",
-      "destinationSha256": "17adda4e972d04fdcec2efe71fba955b020e63fc5dca16d48fce40e50f27b48c",
-      "destinationBytes": 12116,
-      "editScope": "Copied proof source through end of thm:oddgroupedkernel; omitted later unused power-log section; links redirected to included files.",
-      "original_source_identifier": "sha256/65df48c3a1191a1dde02e331f3a47e287cb80e0d576eb74c13ea09320be9914e/odd_grouped_native_transfer.tex"
-    },
-    {
-      "originalSha256": "3ea8ddde648a7cccfa01f25f97c673b3f546ca5d83e98d8f913ed3e93d2c73ee",
-      "originalBytes": 380818,
-      "destination": "proofs/native_odd_source_snapshot.tex.txt",
-      "destinationSha256": "25d01aad610d4d2c521d3824dd7df534f491b6fdd30d404b149bded4b0159041",
-      "destinationBytes": 380858,
-      "editScope": "Current monolithic native-source snapshot copied without edits.",
-      "original_source_identifier": "sha256/3ea8ddde648a7cccfa01f25f97c673b3f546ca5d83e98d8f913ed3e93d2c73ee/main.tex",
-      "editorial_update": "31 October 2026: neutral research wording and provenance labels; mathematical content unchanged."
-    },
-    {
-      "originalSha256": "7f192f822c0d54ddd024fa7d58f156366abfc1b4b7c1c1c13af29cc0f9e2d02c",
-      "originalBytes": 24175,
-      "destination": "proofs/ODD_CYCLOTOMIC_HOST_TRANSFER_20261030.txt",
-      "destinationSha256": "325380f4bc35b5d0786adcf9cffe6d901a3aa0f9004baac2ac0f46cc8754cfec",
-      "destinationBytes": 24265,
-      "editScope": "Source-path references replaced with bundled transfer and native proof filenames; source dependency scope clarified.",
-      "original_source_identifier": "sha256/7f192f822c0d54ddd024fa7d58f156366abfc1b4b7c1c1c13af29cc0f9e2d02c/ODD_CYCLOTOMIC_HOST_TRANSFER_20261030.txt",
-      "editorial_update": "31 October 2026: neutral research wording and provenance labels; mathematical content unchanged."
-    },
-    {
-      "originalSha256": "4e31978dd40ac5a83469231059fa3608fc4abd4b51a8dfbb8beb8b9c3eec2d0c",
-      "originalBytes": 23323,
-      "destination": "proofs/ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt",
-      "destinationSha256": "71dab44dd031833191058228f398a22a671f213f5a65257e5f830bb8dec653a3",
-      "destinationBytes": 22963,
-      "editScope": "Proof-source list updated to the bundled proof snapshot; older audit is not claimed to bind current bytes.",
-      "original_source_identifier": "sha256/4e31978dd40ac5a83469231059fa3608fc4abd4b51a8dfbb8beb8b9c3eec2d0c/ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt",
-      "editorial_update": "31 October 2026: neutral research wording and provenance labels; mathematical content unchanged."
-    },
-    {
-      "originalSha256": "4aaf169d5d1fdcc4819b2fb218593972f761df910ccf70fda0a982012b2b0549",
-      "originalBytes": 8935,
-      "destination": "proofs/PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt",
-      "destinationSha256": "5a52a7db6be54e550072c5be021a35f4350a3048f71531e8c62c9012caccb43b",
-      "destinationBytes": 8959,
-      "editScope": "Removed reference to an unbundled local audit; immutable upstream theorem, commit, adapter details, and hash retained.",
-      "original_source_identifier": "sha256/4aaf169d5d1fdcc4819b2fb218593972f761df910ccf70fda0a982012b2b0549/PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt",
-      "editorial_update": "31 October 2026: neutral research wording and provenance labels; mathematical content unchanged."
+  "finite_evidence": {
+    "asset_manifest": "proofs/stronger-odd-20261102/ASSETS.json",
+    "owned_assets": 54,
+    "reused_assets": 4,
+    "new_math_jobs_run": false,
+    "historical_reports_relabelled_as_fresh": false
+  },
+  "review": {
+    "scope": "Internal AI-assisted mathematical source review, semantic source-selection review and professional/privacy review",
+    "verdict": "No blocking mathematical defect found in the selected path under the named imports",
+    "clarifications": [
+      "well-defined cyclotomic homomorphism",
+      "common tensor schedule padding",
+      "explicit pointwise B-product scan",
+      "retain complete native adapter and compiler proof dependencies"
+    ],
+    "full_lean_verification": false,
+    "independent_human_review": false,
+    "novelty_certified": false,
+    "reviewed_proof_sources": {
+      "host_sha256": "33e06f8552ea1af04b285eee97905aaf5ecbf2a21a3069744c1dea7fc6404c5b",
+      "native_sha256": "d2ec5e957b441a1b2142f33bc45b685e4de4aa18b863b18ca625b55138eb2794",
+      "main_before_final_citation_edits_sha256": "8a9cb9cefd414b80a61dbd3454a0e62b3aff4e5b65c8fcff32259226e58d539b",
+      "post_review_edit_scope": "Subsequent revisions standardize the preprint presentation, identify earlier manuscript and companion sources by immutable Git revisions, and use cited-source terminology. Mathematical statements and arguments are unchanged."
     }
+  },
+  "edit_scope": [
+    "explicit root transport and pointwise invoice",
+    "professional native/source-note selection with distinct hashes",
+    "author/contact and evidence-scope consistency",
+    "immutable previous-source and companion citations"
   ],
-  "externalDependencies": [
-    {
-      "name": "Harvey and van der Hoeven cyclotomic host",
-      "url": "https://www.texmacs.org/joris/cyclomult/cyclomult.pdf",
-      "scope": "Fixed-prime host and root construction"
-    },
-    {
-      "name": "IntegerMultBounds.MathlibTM2.M8.Stage2Machine.Bound.uniform_bound",
-      "url": "https://github.com/platypii/integer-mult-bounds-lean/blob/fefd699f9389af961046997796261333539e5909/IntegerMultBounds/MathlibTM2/M8/Stage2Machine/Bound.lean",
-      "commit": "fefd699f9389af961046997796261333539e5909",
-      "sourceSha256": "97bb4fb5a883e0c90c53173355cf310ac56e2d28860679a13b2854f91cd2ad2a",
-      "scope": "Named fixed-tape ordinary-bit interchange supplier only"
-    }
+  "exclusions": [
+    "No new integer or growing-field theorem claim",
+    "No binary exponent change"
   ],
-  "destinationFiles": [
-    {
-      "path": "papers/01-general/main.tex",
-      "sha256": "53f7081776790aaf99aaaef44a5eb2fa75ec7682b4c77b8ddcc62cdd70685be0",
-      "bytes": 20139
-    },
-    {
-      "path": "papers/01-general/STATUS.md",
-      "sha256": "33716401cd3dabff263dc38e31210e7afbbd6b370d769c4767567680603f9ab0",
-      "bytes": 6687,
-      "editorial_update": "31 October 2026: neutral research wording and provenance labels; mathematical content unchanged."
-    },
-    {
-      "path": "papers/01-general/proofs/PROOF_SOURCES.md",
-      "sha256": "8112c8ec1189478ff0ed67f1594cd9b0eb12ef6a6249ec8f7bdfb19e58e8dc0b",
-      "bytes": 5184,
-      "editorial_update": "31 October 2026: neutral research wording and provenance labels; mathematical content unchanged."
-    },
-    {
-      "path": "papers/01-general/proofs/odd_cyclotomic_host_transfer.tex",
-      "sha256": "1c6046d44f20d7e5350b87289c89b1ae20f0f8e505d3438a517d45e7ff612828",
-      "bytes": 8819
-    },
-    {
-      "path": "papers/01-general/proofs/odd_grouped_native_transfer.tex",
-      "sha256": "17adda4e972d04fdcec2efe71fba955b020e63fc5dca16d48fce40e50f27b48c",
-      "bytes": 12116
-    },
-    {
-      "path": "papers/01-general/proofs/native_odd_source_snapshot.tex.txt",
-      "sha256": "25d01aad610d4d2c521d3824dd7df534f491b6fdd30d404b149bded4b0159041",
-      "bytes": 380858,
-      "editorial_update": "31 October 2026: neutral research wording and provenance labels; mathematical content unchanged."
-    },
-    {
-      "path": "papers/01-general/proofs/ODD_CYCLOTOMIC_HOST_TRANSFER_20261030.txt",
-      "sha256": "325380f4bc35b5d0786adcf9cffe6d901a3aa0f9004baac2ac0f46cc8754cfec",
-      "bytes": 24265,
-      "editorial_update": "31 October 2026: neutral research wording and provenance labels; mathematical content unchanged."
-    },
-    {
-      "path": "papers/01-general/proofs/ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt",
-      "sha256": "71dab44dd031833191058228f398a22a671f213f5a65257e5f830bb8dec653a3",
-      "bytes": 22963,
-      "editorial_update": "31 October 2026: neutral research wording and provenance labels; mathematical content unchanged."
-    },
-    {
-      "path": "papers/01-general/proofs/PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt",
-      "sha256": "5a52a7db6be54e550072c5be021a35f4350a3048f71531e8c62c9012caccb43b",
-      "bytes": 8959,
-      "editorial_update": "31 October 2026: neutral research wording and provenance labels; mathematical content unchanged."
-    }
-  ],
-  "sourceIntegrityCaveat": "Current native_odd_source_snapshot.tex.txt hash differs from the older completion-audit binding; the current source copy is frozen and the old audit is not presented as hash-matched to the current source.",
-  "hashNote": "audit.json does not include its own hash to avoid self-reference.",
-  "final_packaging": "Author/contact, date/version/Apache-2.0 footer, PDF metadata and theorem-environment typography finalized by root; source claim boundary unchanged. Privacy/claims review: replaced guaranteed Lean delivery with a plan, clarified broader-project partial Lean scope and historical witness availability, and labelled the preprint open for mathematical review; theorem bounds unchanged.",
-  "documentation_review": "2026-10-31: clarified AI-assisted inspection attribution and earlier-copy versus final-PDF scope; mathematical source and PDF bytes unchanged.",
-  "citation_review": "2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
-  "finite_unit_evidence": {
-    "added": "2026-10-31",
-    "artifact_manifest": "papers/01-general/proofs/finite-unit/ARTIFACTS.json",
-    "artifact_manifest_sha256": "c3c0510f1a2e59d0c3668761e32c84d701b626206ed785c8eb53a7eb2324383d",
-    "fresh_replay": "verification/finite-unit-replay.json",
-    "fresh_replay_sha256": "af2be14d99c602a5e744eff1ad280dff334fc3cd1d1c57275e1c71b324608c72",
-    "scope": "Fixed native scalar endpoint, Laurent controller, direct geometry and exact profile/moment checks; not full native frame lowering, asymptotic multiplier or Lean proof",
-    "original_sources_note": "originalSources and copiedSourceRecords retain historical source hashes; destinationFiles and the finite-unit manifest identify the current release copies"
-  }
+  "document": {
+    "pdf": "paper.pdf",
+    "sha256": "a33e1f1b26a59467f45387a1574c5f347ccd0f19254d84894aa05e0d0446371e",
+    "pages": 16,
+    "build_receipt": "verification/paper-builds.json",
+    "layout_receipt": "verification/pdf-layout.json",
+    "source_qa": "verification/odd-field-update-review.md"
+  },
+  "research_status": "research preprint"
 }

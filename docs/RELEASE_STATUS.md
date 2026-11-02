@@ -1,6 +1,8 @@
 # Release status
 
-**Version:** 0.1.0-preprint, first published on 31 October 2026.
+**Published version:** 0.1.0-preprint, first published on 31 October 2026.
+**Research preprint revision:** 0.2.1, 2 November 2026.  
+**Publication state:** unpublished revision.
 
 This is a focused four-paper research-preprint selection. Author/contact
 information and Apache-2.0 licensing for original material are supplied,
@@ -35,3 +37,5 @@ The initial paper snapshot is
 Corrections and later formalization work are recorded in
 [the version history](VERSION_HISTORY.md). No arXiv identifier or journal
 publication is claimed.
+
+The revised general preprint improves its odd-field exponent to 319/320 while retaining the common all-field exponent 1-2^-38. Its complete [proof package](../papers/01-general/proofs/stronger-odd-20261102/README.md) and document records accompany the update. The previous general sources and PDF remain at the [immutable prior revision](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/01-general). The Pascal/Taylor, selected controlled-CRT and baseline manuscripts retain their existing versions. The separate paired-phase binary version 0.2.1 keeps its own unpublished claim metadata and does not replace the selected general-paper dependency.

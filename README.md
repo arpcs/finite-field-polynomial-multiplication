@@ -13,6 +13,18 @@ The papers are research preprints open for mathematical review. Independent
 human proof review and complete theorem-level Lean verification remain
 outstanding; [VERIFICATION.md](VERIFICATION.md) describes the checks so far.
 
+## Revised odd-field bound
+
+The general research preprint, version 0.2.1, improves the fixed odd-field
+exponent from 9999/10000 to **319/320**. Its
+[proof package](papers/01-general/proofs/stronger-odd-20261102/README.md)
+contains the native services, complete host transfer, finite premises and
+source provenance. The selected common all-field exponent remains 1-2^-38;
+the separate paired-phase binary revision is not substituted into it.
+Earlier sources and PDFs remain at the
+[immutable prior revision](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/01-general).
+The Pascal/Taylor and baseline companions retain their stated bounds and sources.
+
 ## Problem and previous benchmark
 
 Multiply two ordinary degree-less-than-n polynomials over an individually
@@ -44,11 +56,11 @@ fixed-tape costs, built on the prior results credited below.
 | Paper | Role and stated result | Read |
 |---|---|---|
 | General n log n | Baseline companion: O_q(n log(n+2)) for each fixed finite field, using the accessible binary construction, the odd-field proposition and an explicit fixed-basis reduction | [PDF](papers/04-general-nlogn/paper.pdf), [source](papers/04-general-nlogn/main.tex), [status](papers/04-general-nlogn/STATUS.md) |
-| Stronger general result | O_q(n (log(n+2))^(1-2^-38)) over each fixed finite field; the odd-field branch has the sharper exponent 0.9999 | [PDF](papers/01-general/paper.pdf), [source](papers/01-general/main.tex), [status](papers/01-general/STATUS.md) |
+| Stronger general result | O_q(n (log(n+2))^(1-2^-38)) over each fixed finite field; the odd-field bound has exponent 319/320 | [PDF](papers/01-general/paper.pdf), [source](papers/01-general/main.tex), [status](papers/01-general/STATUS.md) |
 | Fast Pascal transforms | Accessible binary companion: ordinary F2 multiplication in O(n log(n+2)), with a fixed characteristic-two extension corollary | [PDF](papers/02-simple-binary/paper.pdf), [source](papers/02-simple-binary/main.tex), [status](papers/02-simple-binary/STATUS.md) |
 | Ordinary binary multiplication below n log n | Principal characteristic-two paper: controlled CRT/routing construction with exponent 1-2^-38 on fixed finite tapes | [PDF](papers/03-best-binary/paper.pdf), [source](papers/03-best-binary/main.tex), [status](papers/03-best-binary/STATUS.md) |
 
-A separate unpublished [binary revision 0.2.1](papers/03-best-binary/versions/0.2.1/README.txt),
+A separate [binary preprint, version 0.2.1](papers/03-best-binary/versions/0.2.1/README.txt),
 prepared on 2 November 2026, claims ordinary F2 multiplication in
 $O(n(\log(n+2))^{1301/1302})$, with saving $\kappa=1/1302$.
 Its [PDF](papers/03-best-binary/versions/0.2.1/paper.pdf), sources and
@@ -60,7 +72,7 @@ selected 0.1 binary paper and the common all-field bound above are retained.
 For a bound $O(n(\log n)^{1-\kappa})$, a larger saving $\kappa$ is stronger
 for the same problem and model. Here the selected binary saving is
 $\kappa=2^{-38}\approx3.64\times10^{-12}$; the odd-field saving is
-$\kappa=10^{-4}$, which is not asserted in characteristic two.
+$\kappa=1/320$ for the odd-field bound, which is not asserted in characteristic two.
 The exponent saving is asymptotic; no practical speedup is claimed.
 
 The general baseline uses the accessible binary result and only the odd

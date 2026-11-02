@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-30",
+  "scope": "Finite-word exact dyadic coefficients, norm and width ledger; no integer bit-time theorem",
+  "inputs": [
+    {
+      "name": "WORD.json",
+      "sha256": "BDB99BDE29DE80E90BACBFB516BD37F636B36B52D870794851D07A3ECF639C01"
+    },
+    {
+      "name": "raw_cu_recipe.json",
+      "sha256": "9C98C43332D8BAFE5D59E197AC3090CB1FA71BBFCD8CCFB0F8AD90116DCB78D6"
+    },
+    {
+      "name": "raw_cu_dyadic_ledger.cpp",
+      "sha256": "179A8C0968763FDED35DD424AD9CC8732BD0C622085B5E34ED99CF843115A48D"
+    }
+  ]
+}

@@ -50,3 +50,9 @@ Read the paper STATUS files and [REVIEWING.md](REVIEWING.md). Source and copy
 hashes identify exact versions; a historical audit of a different hash does
 not certify a newer file. The simple binary witness reports are historical
 receipts, not fresh checks performed for this publication pass.
+
+## General preprint, version 0.2.1 — 2 November 2026
+
+The general 0.2.1 revision states exponent 319/320 for each fixed odd field and retains the selected all-field exponent 1-2^-38. Its [technical review](verification/odd-field-update-review.md) records the named imports, root-map and schedule clarifications, pointwise-product invoice, and evidence limits. All 16 pages of the revised PDF were visually inspected. This revision reuses the dated finite evidence and supplies no new finite-probe or Lean execution. Internal AI-assisted review, document compilation and integrity checks do not establish independent human certification or complete formal verification.
+
+The Pascal/Taylor and baseline manuscripts retain their selected versions. The separate paired-phase binary 0.2.1 package remains outside the general theorem's selected binary dependency.

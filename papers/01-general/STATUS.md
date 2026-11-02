@@ -1,59 +1,63 @@
-# Status: general fixed-field first-release paper
+# General fixed-field polynomial multiplication
 
-**Revision:** 0.1.0-preprint, 31 October 2026  
-**Main source:** `main.tex`  
+**Revision:** 0.2.1, 2 November 2026  
+**Status:** research preprint  
 **Author:** Árpád Csizmadia, arpad.csizmadia.public@gmail.com
 
-## Claims
+## Statements
 
-- All fixed finite fields: for every fixed \(q\), ordinary multiplication takes \(O_q(n(\log(n+2))^{1-2^{-38}})\) deterministic bit time on the fixed finite-tape model. The binary case is imported from the accompanying *Ordinary Binary Polynomial Multiplication below \(n\log n\)* preprint (`../03-best-binary/main.tex`), including its proved fixed-extension corollary. The odd case is stronger and proved in the odd proposition below; the common all-field exponent is the binary exponent.
-- Odd characteristic: for each fixed odd prime \(p\) and fixed \(e\), ordinary fixed-basis multiplication over \(\mathbb F_{p^e}\) takes \(O_{p,e}(n(\log(n+2))^{9999/10000})\) bit time. Its host-transfer and grouped-native proof sources are bundled under `proofs/`, with the current native source snapshot and named movement adapter.
-- The fixed-extension reduction is proved explicitly in `main.tex`: expand in a fixed basis, use \(s^2\) prime-field products, then combine with the fixed structure constants and linear basis codecs.
+For each fixed odd prime p and fixed e>=1, the written construction gives
+ordinary degree-<n polynomial multiplication over F_(p^e) in
+O_(p,e)(n log(n+2)^(319/320)) deterministic bit operations on a fixed
+finite-tape machine. It returns all 2n-1 ordinary coefficients in a fixed
+basis. The more precise bound has leading exponent 0.996874195 and a
+fixed secondary power of loglog n. The positive margin 805/10^9 absorbs
+that power in the stated bound.
 
-The characteristic-two theorem is cited with its accompanying preprint scope; its all-field use is only through the proved fixed-extension corollary. No combined workspace claim, practical speedup, publication priority, or completed end-to-end Lean formalization is asserted. Full Lean formalization remains unfinished.
+The common all-fixed-field exponent remains 1-2^-38, using the accompanying
+characteristic-two theorem and its fixed-extension corollary. The sharper
+odd-field exponent is not asserted in characteristic two. Constants may
+depend on the fixed field and basis. Growing-field uniformity and a combined
+workspace bound are outside the statements.
 
-## Odd-branch proof audit
+## Proof dependencies
 
-An internal AI-assisted source-inspection pass read the current host-transfer proof and the cited native proof sections directly. This does not record a personal proof check by the named human author. The transfer keeps the ordinary endpoint: it starts from \(2n<N<4n\), reconstructs both coefficient CRT components, inverts the affine top map, and uses \(2n-1<N\) to rule out aliasing. It enlarges the coefficient host only after freezing the public generator degree, obtains \(m'D'=\Theta(N)\), and uses the stronger complement density \(O(a^2/L_0^3)\) to pay the complement component. The old-root lift and new-input coefficient map remain distinct.
+The PDF contains the [host-transfer appendix](proofs/stronger-odd-20261102/host-transfer.tex).
+The [native supplement](proofs/stronger-odd-20261102/README.md) supplies the
+interchange and odd-ring phase proofs, their supporting arguments and the
+distinct PR589 BIT and raw-CU finite premises. Its source-selection record
+distinguishes the edited publication supplement from the original research
+source. The [dependency map](proofs/PROOF_SOURCES.md) identifies the named
+external results and their exact interfaces.
 
-The odd compiler covers commutative \(\mathbb F_p\)-algebras, including nonreduced algebras. It uses radix 3 for \(p\ne3\) and radix 5 for \(p=3\), proves root differences are units by Bezout identities, retains inverse normalization and subtracts the final cyclotomic block. Its recurrence gives quasilinear circuit size \(O_p(v\log^{16}(2v))\), not linear size. The dirty replay subtracts the second \(FUz\) term to restore arbitrary dirty state; exact-width Toeplitz chunks charge six fixed-kernel convolutions and fit every source, target, and gate port in the original parent.
+The external movement input is the pinned
+`IntegerMultBounds.MathlibTM2.M8.Stage2Machine.Bound.uniform_bound` theorem.
+Harvey and van der Hoeven supply the unconditional cyclotomic host and roots;
+classical Schönhage–Strassen arithmetic supplies small-ring and complementary
+products. These operations do not use the new multiplier recursively.
 
-The same AI-assisted inspection also read the current bundled native snapshot at `proofs/native_odd_source_snapshot.tex.txt`, including `lem:nativedock`, `prop:nativephase`, `lem:nativeselector`, `prop:nativecontrolled`, `prop:nativeCRT`, `lem:CRTphase`, `thm:stage2phase`, and the proof of `lem:nativeparameter`. The larger \(R=2^{O((\log L)^2)}\) host shape follows from the transfer's explicit extension of that proof and the wider dock/phase hypotheses; it is not obtained by citing the narrower polynomial-radix statement alone. The record-width allowance is paid by the opaque suffix. Coupled CRT levels are synchronized over the whole grid, dummy patterns are preserved at completed boundaries, and inverse Fourier normalization includes \((m')^{-1}\).
+The transfer accounts for the actual quotient selector and unit witnesses,
+three-C shear, Fourier factorization, exact-width printer, complete-rectangle
+routing, both coefficient-CRT components, diagonal preparation and application,
+pointwise ring products, inverse normalization, ordinary reconstruction, and
+serial fixed-basis reduction.
 
-The named external movement theorem is linked in `proofs/PROOF_SOURCES.md`, with its immutable commit and source hash. The current full odd-native source differs by hash from the version bound in the older completion-audit JSON; this package freezes the current source and does not portray the older audit as hash-matched to these bytes. The saved audit and finite witness are corroborating records, not substitutes for the bundled proofs.
+## Evidence and limitations
 
-## Fresh fixed finite-unit replay
+Internal AI-assisted source review identified no blocking defect under the
+named imports. Revision 0.2.1 makes the cyclotomic root map's well-definedness,
+identity schedule padding and pointwise-product invoice explicit. Complete
+Lean verification and independent human mathematical review remain outstanding.
 
-The [finite-unit bundle](proofs/finite-unit/README.md) includes the exact
-22,803-event native word, p16/a7/rank145 controller and published profile
-result, all tied to immutable CrocSwap paths and hashes at commit
-`2485805a6d47f36ea83ddde6327d453ac82d44dc`. It retains the upstream
-contributors' notices and separates historical expected outputs from fresh
-execution evidence.
+Saved finite-check outputs establish only their stated finite premises. They
+are historical records, not fresh runs or tests of the complete asymptotic
+algorithm. Document-build and layout receipts associate the PDF with its
+sources and record presentation checks; they do not certify the mathematics.
 
-Three bounded C++ checks passed on 31 October 2026 at 01:48:05 UTC:
-the native scalar endpoint on all 770 public input columns and 799 outputs;
-the base/forward 32-column Laurent identities and 104-port direct geometry;
-and the exact composition/rational moment calculation, including all 16 paid
-bins and 18 target bins of the public result (66,834 paid jobs and 13,444
-productive roles). Source/input hashes, relative commands, compiler
-identification and fresh stdout/stderr are published in
-[verification/finite-unit-replay.json](../../verification/finite-unit-replay.json)
-and [verification/finite-unit/](../../verification/finite-unit/).
-Compilation was serialized under a bounded Windows launcher; every checker
-installed its 64 MiB/10 CPU-second limits and had a 30-second wall limit.
+The PR589-specific LICENSE, NOTICE and README are archived from their pinned
+GitHub source views as normalized UTF-8 text. The retrieval record identifies
+the source URLs, archived hashes and normalization; original network-byte
+identity was not verified. The older sibling notice remains a separate source.
 
-This internal AI-assisted replay establishes the stated fixed scalar,
-controller, geometry and numerical premises. Native frame operators and
-all-column lowering, chronological tensor construction, uniform fixed-tape
-costs, rounding and the complete asymptotic theorem still require the written
-proof and its cited results. No full multiplier execution, independent human
-proof review or theorem-level Lean certification is implied.
-
-## Packaging and verification
-
-`proofs/PROOF_SOURCES.md` maps each local source and the external dependency. `audit.json` records historical source identifiers and hashes, destination-copy hashes, and copy edits. The earlier copy/source-inspection stage did not compile the paper or execute the supporting proofs. The final PDF was compiled later, as recorded below. The later fresh finite replay is separately recorded above; its ARTIFACTS.json and public replay receipt identify the exact additional source/data closure. No Lean check or full asymptotic multiplier execution was run for this release. External human proof review remains open.
-
-## Final document packaging
-
-The final PDF uses version 0.1.0-preprint, the supplied public contact, and Apache-2.0 for original project material. The compiler/reference checks and selected-page visual inspection are recorded in verification/paper-builds.json and verification/pdf-layout.json at the repository root. No independent mathematical or full Lean verification is implied.
+The published 0.1 sources and PDF remain preserved at the
+[immutable earlier revision](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/01-general).

@@ -1,0 +1,4 @@
+frames=636 distinct_nested_transports=2386 root_ports=111 owned_copy_episodes=9
+forward arbitrary_columns=661 streamed_scalar_output_comparisons=436921 ADDs=24305 COPYs=9 dirty_helper_columns=439
+reverse arbitrary_columns=661 streamed_scalar_output_comparisons=436921 ADDs=24305 COPYs=9 dirty_helper_columns=439
+PASS assertions=1680942 exact rational8D frames,one scalar column at a time,27234 records; no full tensor,GL cover or dense661x661 matrix

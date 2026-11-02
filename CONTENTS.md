@@ -19,14 +19,14 @@
    [TeX](papers/03-best-binary/main.tex), [status](papers/03-best-binary/STATUS.md).
    A separate controlled-CRT construction with the stated exponent 1-2^-38.
 
-An unpublished [binary version 0.2.1](papers/03-best-binary/versions/0.2.1/README.txt)
-is available separately, with its [PDF](papers/03-best-binary/versions/0.2.1/paper.pdf)
+The [binary preprint, version 0.2.1](papers/03-best-binary/versions/0.2.1/README.txt)
+is available with its [PDF](papers/03-best-binary/versions/0.2.1/paper.pdf)
 and [exact claim metadata](papers/03-best-binary/versions/0.2.1/CLAIM.json).
 It claims ordinary F2 multiplication on fixed finite tapes with saving
 1/1302, or logarithmic exponent 1301/1302. Independent mathematical review
-and complete formal verification remain outstanding. The selected four
-paper targets retain their existing sources and dependencies; the common
-all-field exponent remains 1-2^-38.
+and complete formal verification remain outstanding. This separate binary
+package does not replace the general paper's selected controlled-CRT binary
+dependency; the common all-field exponent remains 1-2^-38.
 
 The baseline general paper uses the accessible binary theorem and only the
 odd-field proposition of the stronger general paper. The stronger general
@@ -41,3 +41,5 @@ receipts bind each PDF to its exact sources. Conditional orthogonal-tree
 transfers and integer/complex-DFT investigations are outside the selected
 claims. Complete Lean formalization remains unfinished; Lean source files
 and theorem-verification receipts are not included in this release.
+
+The general research preprint, version 0.2.1, states odd-field exponent 319/320. Its [native proof package](papers/01-general/proofs/stronger-odd-20261102/README.md) supplies the selected argument. Earlier manuscript versions remain at the [immutable prior revision](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/01-general).

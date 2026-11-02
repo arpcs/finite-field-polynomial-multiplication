@@ -54,3 +54,7 @@ deliberate edits; a new hash records the file state rather than validating a
 new mathematical conclusion. The root `.gitattributes` disables Git's
 automatic line-ending conversion, so checkouts preserve the exact source
 bytes bound by these records. Text files remain available for normal diffs.
+
+## Odd-field preprint, version 0.2.1
+
+The revision has separate odd-field-update-20261102.json and [technical review](odd-field-update-review.md) records. The selected native supplement has its own asset manifest and current source/PDF audit. Previous manuscript identities refer to immutable Git revision 14532be8e044c0f6588b9787a842a96da695769f; no duplicate historical manuscript files are required. PR589-specific legal texts are normalized UTF-8 transcriptions with source URLs and explicit original-byte limitations.

@@ -1,0 +1,106 @@
+{
+  "schema": "odd-field-update-preparation/1",
+  "prepared_utc": "2026-11-02T05:07:38.2774774Z",
+  "version": "0.2.1",
+  "publication": "unpublished",
+  "paper": "papers/01-general",
+  "pdf_sha256": "a33e1f1b26a59467f45387a1574c5f347ccd0f19254d84894aa05e0d0446371e",
+  "pages": 16,
+  "proof_audit_sha256": "38ce50c1185cb079e5606aaefb030d9072172ef1626c3fd3965c4b5154227413",
+  "asset_manifest_sha256": "dd360d4888a75cf4e96af0ddebf9a2fbcfaf87a0df806f0c44a9694609963403",
+  "document_build": {
+    "command": "scripts/build-papers.ps1 -OnlyCached -TargetDirectories papers/01-general with configured Tectonic/cache/guard paths",
+    "compiler": "Tectonic 0.17.0",
+    "untrusted_mode": true,
+    "guard_sha256": "ab0849d6cd7a7d485df6fbef06314b3d2ebbe91b7798bcc17ac52d68c208035cf",
+    "guard_source_sha256": "c1348e66b139ed8a7aa5a2c857c49b7ddaf0fc8d332112ea4f98d94476a5b231",
+    "memory_cap_bytes": 536870912,
+    "cpu_seconds": 60,
+    "wall_seconds": 120,
+    "final_exit": 0,
+    "final_peak_job_bytes": 317808640
+  },
+  "layout": {
+    "renderer": "Poppler pdftoppm",
+    "all_pages_inspected": true,
+    "overfull_boxes": 0,
+    "undefined_references": 0,
+    "rendered_images_kept_in_ignored_build_directory": true,
+    "page_images": [
+      {
+        "name": "page-01.png",
+        "sha256": "da470f5c84ca7c173c5e99b11d7013eb2728faaeb9e2275d874eff635bf5a722"
+      },
+      {
+        "name": "page-02.png",
+        "sha256": "6336b1db7b389daadece6cf4550b694f934a1f9316926ff2ed7cc2c8693dfcd5"
+      },
+      {
+        "name": "page-03.png",
+        "sha256": "4cd73d2e67d6ee43d108e0c13585b8df15321ff9e40af4188b8ce620edb4c80f"
+      },
+      {
+        "name": "page-04.png",
+        "sha256": "4815b41f0fef833cae2777aaf0483bd10b15c75c50ef877c24a2c258ec94365e"
+      },
+      {
+        "name": "page-05.png",
+        "sha256": "f2e45e74696f8db41975e98cc223423f4243ae55255c2e66e12a03e83970b7e0"
+      },
+      {
+        "name": "page-06.png",
+        "sha256": "dbdd187038e213b61b11f0bcf91fde08fd8567e3cbe9495118fcfe0f0b4cf939"
+      },
+      {
+        "name": "page-07.png",
+        "sha256": "f43d7faebccc8b7e2933da8524809bdb2ce6415527320b66f34dc3147fff805c"
+      },
+      {
+        "name": "page-08.png",
+        "sha256": "2d5290c3ff7db9fb228dd304b4e8e9846d969a04f65122aecbec3ac8a3486b9e"
+      },
+      {
+        "name": "page-09.png",
+        "sha256": "1697e9ef85df5c739042f6661487823366b18e94fd45eb96a8ab2d7e929fa897"
+      },
+      {
+        "name": "page-10.png",
+        "sha256": "08a8d49787e27c13bb8da00535dd0c21b379e3c6f98d6f647c6f079ad2975bf9"
+      },
+      {
+        "name": "page-11.png",
+        "sha256": "6caa1c1e0314bca9be87a3e16cc4665b3ca13b5d1885cb5b3846b190a8be7bf0"
+      },
+      {
+        "name": "page-12.png",
+        "sha256": "67b7b47141d8e4d0aec8c01702004491a3cf107793e1009c966ff4e074ea612f"
+      },
+      {
+        "name": "page-13.png",
+        "sha256": "d6f3b7fed97009680954bcb32f2f820cdceb0f08ca76d3d22fb98b94d21f6f0d"
+      },
+      {
+        "name": "page-14.png",
+        "sha256": "b0e426c3d867cb1c3357a44fde52d2217d2f41ec6a5d5b1113caa6e78c80b308"
+      },
+      {
+        "name": "page-15.png",
+        "sha256": "b64b49cc6e23881f39ee4ddadafac8b6d393b2869e2c969d1ac794dd51743164"
+      },
+      {
+        "name": "page-16.png",
+        "sha256": "ddbfe05097947f3bc017d6132b39dadfcc1c867e737f6b1390d1c6a5f5a4c666"
+      }
+    ],
+    "scale_to_pixels": 1100
+  },
+  "mathematical_jobs_run": false,
+  "lean_build_run": false,
+  "new_finite_replays_run": false,
+  "independent_human_review": false,
+  "source_qa": {
+    "path": "verification/odd-field-update-review.md",
+    "sha256": "597aea0747bfba33d1911512e91e8d4dc08599a5b172e38920ae0fba9899628f",
+    "scope": "Technical revision summary; internal source review is not independent human certification"
+  }
+}

@@ -26,10 +26,10 @@
     "author": "Árpád Csizmadia",
     "author_tex": "\\'Arp\\'ad Csizmadia",
     "email": "arpad.csizmadia.public@gmail.com",
-    "version": "0.1.0-preprint",
+    "version": "0.2.1",
     "status": "research preprint open for mathematical review",
-    "abstract_tex": "We combine ordinary polynomial multiplication constructions over individually fixed finite fields. The common deterministic bit-time bound is $O_q(n(\\log(n+2))^{1-2^{-38}})$ on a fixed finite-tape machine. The characteristic-two input is the accompanying controlled-CRT construction, with a fixed-extension reduction. The odd-field cyclotomic-host argument gives the sharper exponent $0.9999$ for each fixed odd field, using named host, native-routing and stage-two interchange results. Field-dependent constants, ordinary coefficient input/output, and all representation and movement costs are explicit. No uniform growing-field or combined workspace claim is made.",
-    "comments": "General companion research preprint. Substantial generative AI assistance. Full Lean formalization is unfinished and planned for later.",
+    "abstract_tex": "For each individually fixed finite field, ordinary polynomial multiplication has deterministic bit complexity $O_q(n(\\log(n+2))^{1-2^{-38}})$ on fixed finite tapes. For each fixed odd prime $p$ and fixed $e$, the sharper bound is $O_{p,e}(n(\\log(n+2))^{319/320})$. The odd-field proof combines the unconditional cyclotomic host with stronger mixed-BIT interchange and odd-ring phase constructions, an explicit quotient selector, a three-call local word and charged routing. It retains both coefficient CRT components and returns all $2n-1$ ordinary coefficients. The characteristic-two branch is supplied by the accompanying controlled-CRT construction. Complete Lean formalization remains unfinished; no growing-field uniformity or practical speedup is claimed.",
+    "comments": "Research preprint, version 0.2.1, revised 2 November 2026. The odd-field exponent improves from 9999/10000 to 319/320. Complete Lean formalization and independent human mathematical review remain outstanding.",
     "proposed_primary_category": "cs.CC",
     "proposed_cross_lists": [
       "cs.SC"
@@ -39,7 +39,10 @@
     "public_repository_url": "https://github.com/arpcs/finite-field-polynomial-multiplication",
     "arxiv_id": null,
     "doi": null,
-    "public_source_snapshot": "https://github.com/arpcs/finite-field-polynomial-multiplication/tree/fb94421e3e6d9f8348a6e5b963b5a62d9c525e95/papers/01-general"
+    "public_source_snapshot": null,
+    "previous_public_source_snapshot": "https://github.com/arpcs/finite-field-polynomial-multiplication/tree/fb94421e3e6d9f8348a6e5b963b5a62d9c525e95/papers/01-general",
+    "local_source": "papers/01-general/main.tex",
+    "publication_state": "unpublished"
   },
   {
     "directory": "papers/02-simple-binary",

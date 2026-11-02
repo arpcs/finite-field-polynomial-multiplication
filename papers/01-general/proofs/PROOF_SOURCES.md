@@ -1,48 +1,80 @@
-# Proof source and dependency map
+# Odd field proof sources and dependencies
 
-This folder contains the actual sources needed to inspect the odd-field proof. The paper is not advertised as an isolated self-contained derivation of every machine service: the current odd finite-ring source and the named upstream interchange theorem are explicit dependencies, and both are supplied or linked here.
+The research preprint is version 0.2.1, dated 2 November 2026.
+Its odd-field exponent is 319/320. The complete host-transfer appendix is
+compiled into the PDF; the supporting native source and finite premises
+are included for review. These written proofs use named external results;
+they are not inferred from finite test counts or a Lean component total.
 
-## Local proof sources
+## Current proof path
 
-- `odd_cyclotomic_host_transfer.tex` contains the full odd-field cyclotomic-host proposition and proof: host enlargement and density, fixed odd-characteristic compiler, arbitrary-dirty replay, exact-width Toeplitz chunking, signed Newton factorization, growing-ring shear implementation, coupled CRT transforms, both coefficient components, ordinary reconstruction, and the final cost inequality.
-- `odd_grouped_native_transfer.tex` contains the grouped native service proof used by that transfer: odd-field matching service, five-call generator, grouped padding and wide-record argument, and the fixed-kernel tensor theorem. It is excerpted through the end of `thm:oddgroupedkernel`; later power-log results that the cyclotomic proof does not use are not included.
-- `native_odd_source_snapshot.tex.txt` is the complete current monolithic finite-ring proof source. It includes the named native dock, phase, selector, controlled permutation, coupled CRT, CRT Fourier identity, Stage2 phase transfer, parameter proof, and the lower-level router, interchange, phase, and recovery lemmas they reference. It is a separate source snapshot, not included into the general paper as an appendix.
-- `PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt` states exactly how the upstream interchange theorem is adapted to arbitrary-width records. The upstream theorem is linked at its immutable commit and its source hash is given in that bridge.
-- The two `ODD_CYCLOTOMIC_*.txt` files are dated derivation/audit records. They support navigation and record bounded evidence; neither is substituted for the TeX proofs above.
-- [`finite-unit/README.md`](finite-unit/README.md) maps the fixed finite word, controller and profile checks used by the native phase construction. It supplies the checkers, exact inputs, historical reports, upstream notices and a bounded reproduction command. [`ARTIFACTS.json`](finite-unit/ARTIFACTS.json) records the local hashes and immutable upstream source paths.
+1. [host-transfer.tex](stronger-odd-20261102/host-transfer.tex) proves the
+   stronger ordinary fixed-field transfer: exact quotient selector and
+   units, local Fourier words, physical native calls, full cost invoice,
+   both coefficient-CRT components, ordinary output and fixed extensions.
+2. [The stronger proof package](stronger-odd-20261102/README.md) contains
+   the edited `native-source.tex.txt` and a `SOURCE_SELECTION.json` record.
+   The latter identifies the original research source, retained proof blocks,
+   editorial changes and the distinct hash of the publication supplement.
+   Its used path runs through `lem:pr589nativebit`,
+   `lem:bitwordstrictification`, `lem:finitebitflow`,
+   `thm:finitebitcompiler`, `prop:delayedbitcover`,
+   `thm:mixedbitswap`, `lem:strongerphasemoment`,
+   `prop:stripedcompiler` and the phase-only statement
+   `thm:mixedbitinteger`. The native dock/shuffle/controlled/CRT proofs are
+   repriced by the explicit lossless binary-transpose argument. The older
+   shuffle exponent alone is not sufficient for this improvement.
+3. The same package supplies the ring-valid Fourier factorization,
+   exact-width dyadic/DAG printer, short top-map proof, three-C word and
+   service contracts. Its supporting arguments fix one moment
+   exponent, define zero-rank complements and give the general reserve
+   calculation. Its asset manifest records exact source and copy hashes.
+4. The PR589 BIT inputs at CrocSwap commit
+   `322e0ec764aa7ef7801383feb1f656e460dd8bed` are separate from the raw-CU
+   phase family. The package maps both, retaining contributor notices and
+   distinguishing written all-column proofs from finite replay results.
+   Where exact phase files already occur in [finite-unit](finite-unit/README.md),
+   those byte-identical copies can be reused with explicit hashes.
 
-## Finite proof premises and how to inspect them
+## Named external results
 
-The selected odd-field phase argument reaches the finite unit through
-`thm:stage2phase`, `thm:endpointphase`, `thm:mixedphase` and
-`prop:recordunit` in the native snapshot. Its scalar endpoint and profile
-equalities are proof premises, rather than optional timing examples.
-The corresponding artifact bundle separates three checks:
+The non-elementary movement input is
+[Stage2Machine.Bound.uniform_bound](https://github.com/platypii/integer-mult-bounds-lean/blob/fefd699f9389af961046997796261333539e5909/IntegerMultBounds/MathlibTM2/M8/Stage2Machine/Bound.lean),
+at immutable commit `fefd699f9389af961046997796261333539e5909`.
+Canonical source SHA256:
+`97bb4fb5a883e0c90c53173355cf310ac56e2d28860679a13b2854f91cd2ad2a`.
+[The preserved adapter](PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt)
+explains its headers, encodings, q-power pads, complete spectators and
+cleanup. It is an existing cited theorem, not an open mathematical
+hypothesis because its Lean closure was not rebuilt locally.
 
-| Checker | Finite premise |
-|---|---|
-| `native_scalar_record_probe.cpp` | Exact rational basis-column replay of the saved native word, including the main endpoint, independent helpers and cleared owned roles |
-| `controller_record_probe.cpp` | The fixed controller and boundary identities, all-forward wrapper geometry and negative controls used to assemble the productive unit |
-| `record_rate_probe.cpp` | Every paid/target profile bin and the rational moment inequalities for the stated conservative rate |
+The unconditional host/root inputs are HvdH Propositions 3.4 and 3.8:
+[author manuscript](https://www.texmacs.org/joris/cyclomult/cyclomult.pdf).
+Classical Schönhage–Strassen multiplication and standard monic polynomial
+arithmetic pay setup, pointwise coefficient products and the complement.
+The new multiplier does not call itself to supply those operations.
 
-The fixture paths, hashes, expected results and contributor credits are in
-the artifact manifest and bundle README. The controller input is the exact
-historical p16/a7, rank-145 fixture; the differently parameterized p17
-controller is not substituted for it. The mathematical content of the native snapshot remains
-unchanged, with these records providing the missing artifact map.
+## Historical 0.1 sources
 
-The written frame-lifting, lowering and compiler arguments connect these
-finite identities to arbitrary column counts and the asymptotic algorithm.
-Replaying the checks does not itself prove those general arguments or the
-complete multiplication theorem.
+The following files remain unchanged and support the older odd exponent
+9999/10000: `odd_cyclotomic_host_transfer.tex`,
+`odd_grouped_native_transfer.tex`, `native_odd_source_snapshot.tex.txt`,
+and the dated `ODD_CYCLOTOMIC_*.txt` derivation/audit records. The old native
+snapshot is 380,858 bytes with SHA256
+`25d01aad610d4d2c521d3824dd7df534f491b6fdd30d404b149bdedd4b0159041`.
+It is not the stronger source used by this draft. The old audit record
+is preserved at the [pinned 0.1 source revision](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/01-general).
 
-## Dependency boundary
+The [phase finite-unit bundle](finite-unit/README.md) and its
+[31 October replay receipt](../../../verification/finite-unit-replay.json)
+remain exact historical evidence for the stated finite premises. Their
+fresh-at-that-time outputs are not relabeled as new runs for this update.
 
-The non-elementary external machine input is
-[`IntegerMultBounds.MathlibTM2.M8.Stage2Machine.Bound.uniform_bound`](https://github.com/platypii/integer-mult-bounds-lean/blob/fefd699f9389af961046997796261333539e5909/IntegerMultBounds/MathlibTM2/M8/Stage2Machine/Bound.lean), at commit `fefd699f9389af961046997796261333539e5909`. The bundled adapter note records the exact source SHA-256: `97bb4fb5a883e0c90c53173355cf310ac56e2d28860679a13b2854f91cd2ad2a`.
+## Verification status
 
-The host/roots are from Harvey and van der Hoeven's primary cyclotomic paper: [author PDF](https://www.texmacs.org/joris/cyclomult/cyclomult.pdf). The proof uses the unconditional fixed-prime host result and does not use their separately conditional finite-field theorem.
-
-## Source-version note
-
-The copied `native_odd_source_snapshot.tex.txt` is the current source byte-for-byte at the time of packaging. Its hash differs from the older completion-audit source binding. Therefore that older 26-item audit is not treated as a hash-matched audit of the current native source. The current cited proof sections were read directly, and the exact current source hash is frozen in `../audit.json`. This bundle does not claim external human proof review, a Lean proof of the complete algorithm, or publication priority.
+The current argument has internal AI-assisted source review. Complete
+Lean verification and independent human mathematical review remain open;
+the package asserts neither publication priority nor a practical speedup.
+Document builds and hashes establish source association and integrity,
+not mathematical acceptance. The separate integer consequence of the
+native compendium is outside this paper's selected claim.

@@ -1,0 +1,66 @@
+[
+  {
+    "name": "BASE.json.gz",
+    "path": "research/kappa-rebuild/bit/sources/pr589-regenerated/BASE.json.gz",
+    "sha": "bdbb95aa970647bd52895c120b494f0f591f3f87",
+    "size": 42345,
+    "url": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/contents/research/kappa-rebuild/bit/sources/pr589-regenerated/BASE.json.gz?ref=322e0ec764aa7ef7801383feb1f656e460dd8bed",
+    "html_url": "https://github.com/CrocSwap/integer-mult-bounds/blob/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/kappa-rebuild/bit/sources/pr589-regenerated/BASE.json.gz",
+    "git_url": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/git/blobs/bdbb95aa970647bd52895c120b494f0f591f3f87",
+    "download_url": "https://raw.githubusercontent.com/CrocSwap/integer-mult-bounds/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/kappa-rebuild/bit/sources/pr589-regenerated/BASE.json.gz",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/contents/research/kappa-rebuild/bit/sources/pr589-regenerated/BASE.json.gz?ref=322e0ec764aa7ef7801383feb1f656e460dd8bed",
+      "git": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/git/blobs/bdbb95aa970647bd52895c120b494f0f591f3f87",
+      "html": "https://github.com/CrocSwap/integer-mult-bounds/blob/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/kappa-rebuild/bit/sources/pr589-regenerated/BASE.json.gz"
+    }
+  },
+  {
+    "name": "WORD.json.gz",
+    "path": "research/kappa-rebuild/bit/sources/pr589-regenerated/WORD.json.gz",
+    "sha": "85a4499bf9e4911a705d50567a2c2ef6cf23739a",
+    "size": 42353,
+    "url": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/contents/research/kappa-rebuild/bit/sources/pr589-regenerated/WORD.json.gz?ref=322e0ec764aa7ef7801383feb1f656e460dd8bed",
+    "html_url": "https://github.com/CrocSwap/integer-mult-bounds/blob/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/kappa-rebuild/bit/sources/pr589-regenerated/WORD.json.gz",
+    "git_url": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/git/blobs/85a4499bf9e4911a705d50567a2c2ef6cf23739a",
+    "download_url": "https://raw.githubusercontent.com/CrocSwap/integer-mult-bounds/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/kappa-rebuild/bit/sources/pr589-regenerated/WORD.json.gz",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/contents/research/kappa-rebuild/bit/sources/pr589-regenerated/WORD.json.gz?ref=322e0ec764aa7ef7801383feb1f656e460dd8bed",
+      "git": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/git/blobs/85a4499bf9e4911a705d50567a2c2ef6cf23739a",
+      "html": "https://github.com/CrocSwap/integer-mult-bounds/blob/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/kappa-rebuild/bit/sources/pr589-regenerated/WORD.json.gz"
+    }
+  },
+  {
+    "name": "XCHECK.json",
+    "path": "research/kappa-rebuild/bit/sources/pr589-regenerated/XCHECK.json",
+    "sha": "8d324bde35059e7ff1f1a4f496c9a7b3e2064033",
+    "size": 1292,
+    "url": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/contents/research/kappa-rebuild/bit/sources/pr589-regenerated/XCHECK.json?ref=322e0ec764aa7ef7801383feb1f656e460dd8bed",
+    "html_url": "https://github.com/CrocSwap/integer-mult-bounds/blob/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/kappa-rebuild/bit/sources/pr589-regenerated/XCHECK.json",
+    "git_url": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/git/blobs/8d324bde35059e7ff1f1a4f496c9a7b3e2064033",
+    "download_url": "https://raw.githubusercontent.com/CrocSwap/integer-mult-bounds/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/kappa-rebuild/bit/sources/pr589-regenerated/XCHECK.json",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/contents/research/kappa-rebuild/bit/sources/pr589-regenerated/XCHECK.json?ref=322e0ec764aa7ef7801383feb1f656e460dd8bed",
+      "git": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/git/blobs/8d324bde35059e7ff1f1a4f496c9a7b3e2064033",
+      "html": "https://github.com/CrocSwap/integer-mult-bounds/blob/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/kappa-rebuild/bit/sources/pr589-regenerated/XCHECK.json"
+    }
+  },
+  {
+    "name": "records",
+    "path": "research/kappa-rebuild/bit/sources/pr589-regenerated/records",
+    "sha": "9655371359b2bbf52c34aaba9abdf08c48110e0a",
+    "size": 0,
+    "url": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/contents/research/kappa-rebuild/bit/sources/pr589-regenerated/records?ref=322e0ec764aa7ef7801383feb1f656e460dd8bed",
+    "html_url": "https://github.com/CrocSwap/integer-mult-bounds/tree/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/kappa-rebuild/bit/sources/pr589-regenerated/records",
+    "git_url": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/git/trees/9655371359b2bbf52c34aaba9abdf08c48110e0a",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/contents/research/kappa-rebuild/bit/sources/pr589-regenerated/records?ref=322e0ec764aa7ef7801383feb1f656e460dd8bed",
+      "git": "https://api.github.com/repos/CrocSwap/integer-mult-bounds/git/trees/9655371359b2bbf52c34aaba9abdf08c48110e0a",
+      "html": "https://github.com/CrocSwap/integer-mult-bounds/tree/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/kappa-rebuild/bit/sources/pr589-regenerated/records"
+    }
+  }
+]

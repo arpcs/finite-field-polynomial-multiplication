@@ -16,7 +16,7 @@
   \large A strict logarithmic saving on fixed tapes}
 \author{\'Arp\'ad Csizmadia\\
   \small\href{mailto:arpad.csizmadia.public@gmail.com}{\texttt{arpad.csizmadia.public@gmail.com}}}
-\date{31 October 2026\\ \small Version 0.1.0-preprint. Apache-2.0.}
+\date{2 November 2026\\ \small Research preprint, version 0.2.1. Apache-2.0.}
 \hypersetup{pdfauthor={\'Arp\'ad Csizmadia},pdftitle={Ordinary Polynomial Multiplication over Every Fixed Finite Field}}
 \begin{document}
 \maketitle
@@ -25,25 +25,23 @@
 For each fixed finite field $\F_q$, ordinary polynomial multiplication
 has deterministic bit complexity $O_q(n(\log(n+2))^{1-2^{-38}})$ on
 a fixed finite-tape machine. For each fixed odd field $\F_{p^e}$, the
-stronger bound $O_{p,e}(n(\log(n+2))^{9999/10000})$ follows from the
+stronger bound $O_{p,e}(n(\log(n+2))^{319/320})$ follows from the
 cyclotomic-host reduction proved here. The characteristic-two branch
 and its fixed-extension corollary are supplied by the accompanying
 controlled-tensor preprint~\cite{ControlledCRT}. The all-field bound
 uses the larger of the two exponents and does not assert the sharper
-odd-field exponent in characteristic two. Lean formalization remains
-unfinished; full formalization is planned for a later update.
+odd-field exponent in characteristic two.
 \end{abstract}
 \paragraph{AI assistance and formal verification.}
-This work was developed with substantial generative AI assistance in
+Substantial generative AI assistance, including OpenAI Codex~\cite{CodexTool26}, supported
 mathematical exploration, algorithm and proof development, writing,
-coding, and literature review. OpenAI Codex~\cite{CodexTool26}
-assisted release preparation and source inspection. Historical
-model versions were not consistently recorded; no complete
-model-level attribution is claimed. Full Lean formalization is unfinished
-and planned for a later update. Partial Lean work in the broader project
-is not included here and does not verify these complete theorems.
-Finite computational checks cover only their stated scopes. This
-manuscript is a working preprint open for mathematical review.
+coding, literature review, and source inspection. Historical model
+versions were not consistently recorded. The named author directs the
+project and makes publication decisions. The results are supported by
+the written arguments and named imports; complete Lean formalization
+and independent human mathematical review remain outstanding.
+Finite computational evidence is identified at its stated scope in
+the supplementary material.
 
 \section{Prior work and source lineage}
 For each fixed prime $p$, Harvey, van der Hoeven and Lecerf obtained
@@ -72,7 +70,8 @@ The source lineage is explicit. OpenAI's finite-network and tape
 interchange method~\cite{OpenAI26} is an antecedent. The selected odd
 transfer imports the precise stage-two machine theorem
 \cite{Stage2Machine26}, not an end-to-end integer multiplier.
-The native supplement retains community chart and contributor
+The native supplement retains community chart, PR6030 phase-word
+invoice~\cite{CommunityPhase26}, and contributor
 attributions~\cite{Community26}; related mixed-recursion and
 exact-complex RAM work is credited separately~\cite{Sussman26}.
 General fixed-matrix tensor acceleration in Alman's lookup-table
@@ -84,12 +83,34 @@ community-derived coordinate constructions retain their own credit.
 These classical and community developments provide essential
 antecedents to the construction.
 
+The stronger interchange construction uses the distinct PR589 BIT record
+family at the pinned revision in~\cite{CommunityBIT26}; it is not the
+raw-CU phase word. OpenAI's exact-complex DFT construction~\cite{ExactDFT26}
+is also a method-level antecedent for local kernel networks and Fourier
+layers. Its stated exact-complex arithmetic model is distinct from the
+finite-field bit model considered here. The present source comparison
+does not establish priority against every possible finite-characteristic
+adaptation.
+
 The contribution recorded here is the odd-field host transfer and
 its combination with the accompanying binary construction, under the
 stated field and machine quantifiers. The companion baseline note
 \cite{GeneralBaseline} instead combines the accessible binary route
 with the odd proposition below to obtain $O_q(n\log(n+2))$.
 These are related results with shared foundations.
+
+The odd proposition does not use either binary companion or the combined
+all-field theorem, so the baseline note's use of that proposition is not
+circular.
+
+This revision improves the odd-field exponent from $9999/10000$ to
+$319/320$, using the stronger mixed-BIT and odd-ring phase constructions
+in the newly bundled native source. It includes a direct quotient
+selector, a three-call local word, and the explicit replacement for the
+older native relocation tariff. The all-field exponent is still determined
+by the accompanying characteristic-two result. The earlier source and PDF
+remain available in the
+\href{https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/01-general}{pinned 31 October 2026 revision}.
 
 \section{Model and scope}
 The input consists of the ordinary coefficient lists of two polynomials
@@ -114,90 +135,54 @@ For each fixed odd prime $p$ and positive integer $e$, ordinary
 degree-$<n$ polynomial multiplication over $\F_{p^e}$ is deterministic
 and takes
 \[
-  O_{p,e}\!\left(n(\log(n+2))^{9999/10000}\right)
+  O_{p,e}\!\left(n(\log(n+2))^{319/320}\right)
 \]
 bit operations on a fixed finite-tape machine.
 \end{proposition}
-\begin{proof}[Proof source and dependency closure]
-The detailed source proof is bundled at
-\path{proofs/odd_grouped_native_transfer.tex} and
-\path{proofs/odd_cyclotomic_host_transfer.tex}; exact source hashes
-and copy edits are recorded in \path{audit.json}. The complete current
-native construction, with the cited proof labels, is preserved in
-\path{proofs/native_odd_source_snapshot.tex.txt}. A dependency map and the
-remaining external import are documented in
-\path{proofs/PROOF_SOURCES.md}. The proposition is not inferred from
-an audit label or from a finite experiment.
+\begin{proof}[Construction and dependency closure]
+Appendix~\ref{upd:transfer} gives the current complete transfer. Its
+native inputs are the equal-field interchange and odd-ring phase
+theorems in \path{proofs/stronger-odd-20261102/native-source.tex.txt}.
+The relevant labels are \path{thm:mixedbitswap} and
+\path{thm:mixedbitinteger}.
+The supplement states the phase conclusion separately from the original
+integer application. The named external machine input is the stage-two
+interchange theorem at the pinned source in~\cite{Stage2Machine26}.
+The new source supplies its additional finite-word, integer-flow,
+precompilation and delayed-cover arguments. These are written proof
+dependencies, not inferences from finite test counts.
 
-The host is the unconditional fixed-prime cyclotomic construction of
-Harvey and van der Hoeven~\cite{HVH19Cyclo}: it supplies $2n<N<4n$, admissible host
-primes, a divisor, and a principal root in $N^{o(1)}$ setup time. The
-coefficient host is enlarged by appending $O(\log\log N)$ unused host
-primes only after the public generator degrees are frozen. With
-$L_0=\lceil\log_2N\rceil$, $a=\lceil\log_2L_0\rceil$, and
-$R_0=2^{a^2}$, the enlargement yields
+For fixed $p$, the unconditional cyclotomic host~\cite{HVH19Cyclo}
+gives $N=\Theta(n)$ with $N>2n-1$. Enlarge the conductor only after
+fixing the generator degrees. With $L=\lceil\log_2N\rceil$ and
+$D=\varphi(\alpha)$, the literal coefficient algebra
 \[
- \log\alpha'=O(a^4),\qquad m'D'=\Theta(N),\qquad
- 1-D'/\alpha'=O(a^2/L_0^3),\quad m'=N/\alpha',\quad
- D'=\varphi(\alpha').
+ B=\F_p[I,U]/(I^2+1,\Phi_\alpha(U))
 \]
-The root lift $Y_{\rm old}\mapsto U^{\alpha'/\alpha}$ transports
-the old root identities; new input coefficients instead use
-$Y_{\rm new}\mapsto U$. This distinction preserves the ordinary
-coefficient interpretation. Both coefficient CRT components are
-reconstructed, the affine top map is inverted, and $2n-1<N$ rules out
-cyclic aliasing.
+has $D$ Gaussian lanes. Its $p^D$-power Frobenius fixes both generators;
+thus $f=\mu^{p^D-1}$ is an exact idempotent with $(1-f)\mu=0$ for
+every local coefficient $\mu$. Explicit canonical-$U$ unit witnesses
+give a three-$C$ word for every required shear, including zero divisors.
+The Fourier factorization and arbitrary-dirty exact-width printer
+retain every port and dummy until their completed boundaries.
 
-The odd-characteristic formal compiler works over every commutative
-$\F_p$-algebra, including nonreduced algebras. It chooses radix three
-for $p\ne3$ and radix five for $p=3$, proves the root differences are
-units by polynomial Bezout identities, and explicitly normalizes the
-inverse by $t^{-1}$. Its recurrence gives a uniform quasilinear-size
-$O_p(v\log^{16}(2v))$ circuit of depth $O_p(\log^2(2v))$ after counted
-copy trees. The arbitrary-dirty replay uses a subtractive second read
-to cancel $FUz$; it does not assume clean scratch. Six fixed-kernel
-convolutions implement each exact-width Toeplitz chunk, with source,
-target, and gate ports all inside the parent volume. The resulting
-native schedule has $O_p(\log^{35}(2R))$ layers.
-
-For the Newton factorization the sign
-$\beta_j=(-1)^ju^{j(j-1)/2}$ is retained. On the growing coefficient
-algebra, split-component unit selectors express each required shear as
-two unit shears. A fixed five-call word supplies the unit shear over a
-fixed quadratic field; its diagonal conjugations are explicitly priced
-as growing-ring operations. No fixed-kernel theorem is applied to the
-growing algebra. CRT characters are normalized by both inverse roots
-and $(m')^{-1}$, and the complement component is charged separately.
-Classical packed arithmetic is used independently for small
-coefficient-ring products, so there is no recursive call to the target
-multiplier.
-
-The native supplier is the retained odd-ring phase/matching/CRT
-construction bundled in \path{proofs/native_odd_source_snapshot.tex.txt}
-(including the native dock, phase, selector, controlled operation,
-CRT, and stage-two phase results), with the native parameter proof
-used at the broader shape derived in the host transfer. The named
-non-elementary movement dependency is
-\path{IntegerMultBounds/MathlibTM2/M8/Stage2Machine/Bound.lean},
-declaration \texttt{IntegerMultBounds.MathlibTM2.M8.Stage2Machine.Bound.uniform\_bound}
-at commit \texttt{fefd699f9389af961046997796261333539e5909}~\cite{Stage2Machine26}; its
-precise source is linked in the bundled
-\path{proofs/PINNED_STAGE2_BINARY_MOVEMENT_BRIDGE_20261030.txt}.
-The bridge derives the arbitrary-width adapter and records the exact
-source hash. This is a named prior theorem, not a new unproved hypothesis. The final
-cost is
+Native aggregate relocations are repriced with the proved lossless
+binary-transpose corollary, rather than the older shuffle exponent.
+Diagonal table construction and application, both coefficient CRT
+components, the normalized inverse and ordinary reconstruction are
+separately charged. Small ring products use independent classical
+arithmetic~\cite{SS71,BrentZimmermann10}. The resulting prime-field cost is
 \[
- O_p\!\left(NL_0^{\gamma_0}(\log L_0)^C\right)
-   +N\operatorname{polylog}L_0+N^{o(1)},\qquad
- \gamma_0=1-\frac{619}{5000000}<\frac{9999}{10000};
+ O_p\!\left(n(\log(n+2))^\gamma
+                    (\log\log(n+4))^K\right),\qquad
+ \gamma=1-\frac{3125805}{10^9}=0.996874195.
 \]
-the strict exponent gap absorbs all fixed secondary logarithms.
-Fixed extensions use a constant number of prime-field products and
-fixed basis maps. The complete itemized audit is
-\path{proofs/ODD_CYCLOTOMIC_FULL_ADVERSARIAL_AUDIT_20261030.txt}.
-Its finite C++ witness checks bounded identities and examples only;
-the asymptotic conclusion follows from the derivation and cited
-interfaces, not from those samples.
+Since $319/320-\gamma=805/10^9>0$, the fixed secondary power is
+absorbed. A fixed basis uses $e^2$ serial prime-field products and
+$O_{p,e}(n)$ conversion and recombination work, returning all $2n-1$
+coefficients. The proof and source map are in
+\path{proofs/stronger-odd-20261102/}; the older transfer sources remain
+historical support for version 0.1.
 \end{proof}
 
 \begin{lemma}[Fixed binary-basis extension reduction]
@@ -233,8 +218,8 @@ deterministic bit operations on a fixed finite-tape machine.
 Write $q=p^e$. If $p=2$, the controlled-tensor theorem and its fixed
 extension corollary in \cite{ControlledCRT} give the stated bound.
 If $p$ is odd, Proposition~\ref{prop:odd} gives the stronger exponent
-$9999/10000$. Since
-$9999/10000<1-2^{-38}$, its logarithmic factor is bounded by the one
+$319/320$. Since
+$319/320<1-2^{-38}$, its logarithmic factor is bounded by the one
 displayed here for $n\ge2$; finitely many smaller lengths are absorbed
 in the field-dependent constant. Both branches use ordinary
 coefficient representations and the fixed finite-tape bit-time model.
@@ -253,25 +238,27 @@ route for characteristic two is also recorded in
 \cite{SimpleBinary}. The odd fields follow from Proposition~\ref{prop:odd}.
 \end{proof}
 \section{Verification and limitations}
-The bundled historical 26-item adversarial derivation audit records
-a bounded whole-host witness (24 products and 1,920 assertions over
-$\F_3$ and $\F_5$); its implementation is not included here.
-The recorded witness checks finite map boundaries; it does
-not establish the growing tape algorithms or asymptotic bound. The
+The supplementary material supplies the native finite compiler,
+its recurrence, the cover-reserve calculation, and the finite native
+records. Saved finite-check reports support their stated finite
+identities; the asymptotic claims use the written proofs. The
 characteristic-two claim is imported from the accompanying
 controlled-tensor preprint, whose result is stated with its own proof
 scope. The general bound combines that result with the odd proposition.
 
-Neither the odd proposition nor the combined theorem has an end-to-end
-Lean proof in this package. Full Lean formalization is unfinished and
-planned for a later update. The package records no independent
-human review, publication acceptance, novelty certification, or
-practical speedup.
+Complete Lean proofs of the odd proposition and the combined theorem
+remain unfinished. The finite evidence and checked supporting components
+do not establish the complete asymptotic algorithms.
+
+\appendix
+\input{proofs/stronger-odd-20261102/host-transfer.tex}
 
 \begingroup
 \small
 \raggedright
 \begin{thebibliography}{99}
+\setlength{\itemsep}{1.5pt}
+\setlength{\parsep}{0pt}
 \bibitem{HVH19Cyclo}
 David Harvey and Joris van der Hoeven.
 \newblock Faster polynomial multiplication over finite fields using
@@ -292,14 +279,17 @@ commit \texttt{fefd699f9389af961046997796261333539e5909}.
 \bibitem{SimpleBinary}
 \'Arp\'ad Csizmadia.
 \newblock \emph{Exact Binary Polynomial Multiplication from Fast Pascal Transforms}.
-\newblock Accompanying preprint in this collection; source:
-\href{../02-simple-binary/main.tex}{\texttt{papers/02-simple-binary/main.tex}}.
+\newblock Research preprint, version 0.1.0-preprint, 31 October 2026.
+Source revision \texttt{14532be8e044c0f6588b9787a842a96da695769f}.
+\newblock \href{https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/02-simple-binary}{Pinned companion source}.
 
 \bibitem{ControlledCRT}
 \'Arp\'ad Csizmadia.
 \newblock \emph{Ordinary Binary Polynomial Multiplication below $n\log n$}.
 \newblock Subtitle: Controlled tensor routing on fixed tapes.
-\newblock Accompanying preprint in this collection; source:
+\newblock Research preprint, version 0.1.0-preprint, 31 October 2026.
+Source revision \texttt{14532be8e044c0f6588b9787a842a96da695769f}.
+\newblock Selected controlled-CRT source:
 \href{../03-best-binary/main.tex}{\texttt{papers/03-best-binary/main.tex}}.
 \bibitem{HVHL17}
 David Harvey, Joris van der Hoeven, and Gr\'egoire Lecerf.
@@ -346,6 +336,33 @@ J.~A.~Sussman.
 Related exact-complex RAM constructions and recursion ideas; its
 end-to-end bounds are not premises of the selected fixed-field theorem.
 \newblock \url{https://github.com/jacobalansussman/wht-power-saving-lean}.
+
+\bibitem{CommunityPhase26}
+Contributors to \texttt{CrocSwap/integer-mult-bounds}.
+\newblock Helper-470 finite phase word and rank invoice, PR6030.
+\newblock Source word revision
+\texttt{2485805a6d47f36ea83ddde6327d453ac82d44dc};
+exact input files and contributor notices are retained in the finite-unit bundle.
+\newblock \url{https://github.com/CrocSwap/integer-mult-bounds/pull/6030}.
+
+\bibitem{CommunityBIT26}
+Douglas Colkitt and the contributors to \texttt{CrocSwap/integer-mult-bounds}.
+\newblock PR589 record-form native BIT word and query-thinned controller.
+\newblock Immutable source revision
+\texttt{322e0ec764aa7ef7801383feb1f656e460dd8bed}.
+The asset map records contributor credits and legal-material status.
+The pinned source-specific notices are archived with their retrieval and
+text-normalization record in the finite-data bundle.
+\newblock \url{https://github.com/CrocSwap/integer-mult-bounds/tree/322e0ec764aa7ef7801383feb1f656e460dd8bed}.
+
+\bibitem{ExactDFT26}
+OpenAI.
+\newblock \emph{An explicit power saving for the exact discrete Fourier transform}.
+\newblock Research preprint, 25 September 2026, at source revision
+\texttt{4eaee87548250b2682affda7d05d947c05554bae}.
+The exact-complex arithmetic theorem is credited as methodological prior work;
+it is not imported as a finite-field bit theorem.
+\newblock \url{https://github.com/openai/math/tree/4eaee87548250b2682affda7d05d947c05554bae/preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026}.
 
 \bibitem{Alman23}
 Josh Alman.

@@ -16,19 +16,32 @@
   },
   {
     "paper": "papers/01-general",
-    "pages": 5,
+    "pages": 16,
     "rendered_pages": [
       1,
       2,
       3,
       4,
-      5
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
     ],
-    "pdf_sha256": "98ea67b81eba969f8df4f18d792518804ad40f755d100169cd501c0593069ba2",
-    "status": "Listed pages visually inspected after final prior-work and citation edits; no clipping or text overlap observed",
+    "pdf_sha256": "a33e1f1b26a59467f45387a1574c5f347ccd0f19254d84894aa05e0d0446371e",
+    "status": "Title page visually inspected after preprint-version wording revision; all remaining page images match the previously inspected PDF. No clipping, overlap or unresolved references.",
     "overfull_boxes": 0,
     "undefined_references": 0,
-    "review_scope": "Listed pages only; document and citation checks do not certify mathematics"
+    "review_scope": "Full document layout inspection and source review; no independent human mathematical certification or complete formal verification.",
+    "revision": "0.2.1",
+    "unchanged_page_images_matched_previous_review": 15
   },
   {
     "paper": "papers/02-simple-binary",

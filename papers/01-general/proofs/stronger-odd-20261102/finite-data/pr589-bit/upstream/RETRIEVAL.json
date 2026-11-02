@@ -1,0 +1,37 @@
+{
+  "schema": "normalized-pinned-source-retrieval/1",
+  "retrieved_on": "2026-11-02",
+  "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+  "commit": "322e0ec764aa7ef7801383feb1f656e460dd8bed",
+  "method": "Read-only browser view of pinned raw GitHub source",
+  "normalization": "Displayed text transcribed as UTF-8, LF line endings and one final LF",
+  "original_network_bytes_archived": false,
+  "original_byte_identity_verified": false,
+  "content_scope": "Complete displayed LICENSE, NOTICE and README; original response bytes were not downloaded",
+  "files": [
+    {
+      "archive_name": "LICENSE.normalized.txt",
+      "source_path": "research/e8-bit-p111/LICENSE",
+      "source_url": "https://raw.githubusercontent.com/CrocSwap/integer-mult-bounds/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/e8-bit-p111/LICENSE",
+      "archive_bytes": 11357,
+      "archive_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "original_http_bytes_sha256": null
+    },
+    {
+      "archive_name": "NOTICE.normalized.md",
+      "source_path": "research/e8-bit-p111/NOTICE.md",
+      "source_url": "https://raw.githubusercontent.com/CrocSwap/integer-mult-bounds/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/e8-bit-p111/NOTICE.md",
+      "archive_bytes": 4722,
+      "archive_sha256": "5b88eb2b7de76aa2a3288ee3c7a08d18a5eadfa82f5e7a99e207d232aed71221",
+      "original_http_bytes_sha256": null
+    },
+    {
+      "archive_name": "README.normalized.md",
+      "source_path": "research/e8-bit-p111/README.md",
+      "source_url": "https://raw.githubusercontent.com/CrocSwap/integer-mult-bounds/322e0ec764aa7ef7801383feb1f656e460dd8bed/research/e8-bit-p111/README.md",
+      "archive_bytes": 12497,
+      "archive_sha256": "481431e35bd831ec3d0bb8edc01abdfa49d5caeabebab67ac839a35053e9ef85",
+      "original_http_bytes_sha256": null
+    }
+  ]
+}

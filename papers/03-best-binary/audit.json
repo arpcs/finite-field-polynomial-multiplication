@@ -155,7 +155,8 @@
     "source_path": "New release status written 2026-10-31",
     "destination_path": "STATUS.md",
     "original_sha256": null,
-    "edits_scope": "Created release scope, dependency status, verification limits and no-build status. 2026-10-31: clarified that the internal source-inspection pass was AI-assisted; no personal human proof check inferred. Aligned status version with 0.1.0-preprint and clarified open-for-review wording. Privacy/claims review: clarified unfinished Lean plans and open-review status; finite-witness scope made explicit where relevant; theorem bounds unchanged.",
-    "staged_sha256": "a072fbac013abd8d24b65dcfb95d220b9b8599a3435c2cdd1c79e46bcb47d9ad"
+    "edits_scope": "Created release scope, dependency status, verification limits and no-build status. 2026-10-31: clarified that the internal source-inspection pass was AI-assisted; no personal human proof check inferred. Aligned status version with 0.1.0-preprint and clarified open-for-review wording. Privacy/claims review: clarified unfinished Lean plans and open-review status; finite-witness scope made explicit where relevant; theorem bounds unchanged. 2 November 2026: bind the selected status after the separate-version note introduced at e85bc1f; selected theorem, source and PDF unchanged.",
+    "staged_sha256": "285725c036741c15007d495a8adc5d52bbf191d86990b3dee62365e80d3b7ec0",
+    "before_20261102_status_sha256": "a072fbac013abd8d24b65dcfb95d220b9b8599a3435c2cdd1c79e46bcb47d9ad"
   }
 ]

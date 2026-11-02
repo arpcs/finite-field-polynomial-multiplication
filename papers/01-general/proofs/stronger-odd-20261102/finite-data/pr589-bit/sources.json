@@ -1,0 +1,107 @@
+{
+  "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+  "commit": "322e0ec764aa7ef7801383feb1f656e460dd8bed",
+  "date": "2026-10-31",
+  "scope": "Native BIT record/frames and exact query-thinned controller;all successful downloads bounded,source scripts read only",
+  "primary_Git_blobs_verified": 7,
+  "files": [
+    {
+      "snapshot": "record_sources/mixed_bit/WORD.json.gz",
+      "bytes": 42353,
+      "sha256": "E3E301E62BC2B41DBF1CEAC0ACF3D35824EBEAB1848C5A2142D4577B109DA52F",
+      "repository_path": "research/kappa-rebuild/bit/sources/pr589-regenerated/WORD.json.gz",
+      "git_blob": "85a4499bf9e4911a705d50567a2c2ef6cf23739a",
+      "blob_verified": true
+    },
+    {
+      "snapshot": "record_sources/mixed_bit/XCHECK.json",
+      "bytes": 1292,
+      "sha256": "86EAB972E14F7660242B20DAABE2DB2AC6C0D7986FCE824D2D4791C112CD78BA",
+      "repository_path": "research/kappa-rebuild/bit/sources/pr589-regenerated/XCHECK.json",
+      "git_blob": "8d324bde35059e7ff1f1a4f496c9a7b3e2064033",
+      "blob_verified": true
+    },
+    {
+      "snapshot": "record_sources/mixed_bit/frames.json",
+      "bytes": 112648,
+      "sha256": "D006B3BFE0C04AFECFEA7AECFA59DFE4298B99501C70DA3938E40289BC2F5010",
+      "repository_path": "research/kappa-rebuild/bit/sources/pr589-regenerated/records/frames.json",
+      "git_blob": "a9a932b9268da28af9ba4bccdab205c5bcd50ad3",
+      "blob_verified": true
+    },
+    {
+      "snapshot": "record_sources/mixed_bit/249-records.bin",
+      "bytes": 653616,
+      "sha256": "EA44AA047A2A9CF034DE8B56B2166C49CF2DBDF9CD9ED6A20299A4F2B05EF09A",
+      "repository_path": "research/kappa-rebuild/bit/sources/pr589-regenerated/records/249-records.bin",
+      "git_blob": "bdf9ab4ca0fd74cde6837f95f5f4e88133704e0e",
+      "blob_verified": true
+    },
+    {
+      "snapshot": "record_sources/mixed_bit/249-states.json",
+      "bytes": 10846,
+      "sha256": "701CA802279B23BA23FFD502935AE9F34A33FC81FDFD266042F3208A2CB16265",
+      "repository_path": "research/kappa-rebuild/bit/sources/pr589-regenerated/records/249-states.json",
+      "git_blob": "00aca549e1958d10dab9bbb9263448802489aa6d",
+      "blob_verified": true
+    },
+    {
+      "snapshot": "record_sources/mixed_bit/bit_native_binding_source.py",
+      "bytes": 8380,
+      "sha256": "BF6374225F388E7531FA6475CC255BD430100FF62C38D582C41601F0739DE7B7",
+      "repository_path": "research/kappa-rebuild/bit/bit_native_binding.py",
+      "git_blob": "f4c4082d89969ea311219d9af8013082d599f6f1",
+      "blob_verified": true
+    },
+    {
+      "snapshot": "../ntt_base_five/croc_comparison_20261030/bit_controller_322e0ec_source.json",
+      "bytes": 23753,
+      "sha256": "39AC84FB848B908F7BA051FAE4556D507900C421DC5D23501A9C0CB1D61FD08D",
+      "repository_path": "research/query-thinned-controllers/BIT-CONTROLLER.json",
+      "git_blob": "89c400d5970024b3debe870c36ce43889beed001",
+      "blob_verified": true
+    },
+    {
+      "snapshot": "record_sources/mixed_bit/WORD.json",
+      "bytes": 200852,
+      "sha256": "5642FD0E35A1ACC11ACFF8D0C08350C1617E95F310D4D35AD63A651F9EEEBA0B",
+      "derived_from": "record_sources/mixed_bit/WORD.json.gz",
+      "scope": "Bounded <=2MiB GZip decoding;actual200852bytes;not source code execution"
+    },
+    {
+      "snapshot": "record_sources/mixed_bit/pr589_listing.json",
+      "bytes": 5477,
+      "sha256": "06C7768995C115872C9FF1D6FAB0A2F10CC0643DC4C36756921B246F1F952A1A",
+      "scope": "Frozen GitHub primary directory metadata"
+    },
+    {
+      "snapshot": "record_sources/mixed_bit/pr589_records_listing.json",
+      "bytes": 4447,
+      "sha256": "C5A322416A6EADE80CA523DC14AC5774D325FE8B2A557E255363AED6F9415644",
+      "scope": "Frozen GitHub primary directory metadata"
+    }
+  ],
+  "read_only_context": [
+    {
+      "snapshot": "../croc_mixed_compiler_finite_precompilation_pinned_20261030.txt",
+      "bytes": 15898,
+      "sha256": "4CB32F6B8E388ECF6ED41B5BBDEEB4539CB40C8424F194974AFEA58F7E0921E8"
+    },
+    {
+      "snapshot": "../croc_delayed_cover_primary_pinned_20261030.txt",
+      "bytes": 16874,
+      "sha256": "9731B93026717F5FA15851E3633CBB4BDC76EBA2BFFB9D6B4A3B69F7DD502443"
+    },
+    {
+      "snapshot": "../ntt_base_five/croc_comparison_20261030/mixed_productive_bit_322e0ec_source.py",
+      "bytes": 28173,
+      "sha256": "B32291B0DB7FC0D332EC444C70746AB0FB03351D2E50546F8BCB64060E3FF95E"
+    }
+  ],
+  "attribution": "PR589 native word and PR555/PR543 lineage,query-thinned p16/a7 controller,Sussman mixed flow,community finite-precompilation/delayed-cover notes",
+  "largest_primary_file_bytes": 653616,
+  "Python_executed": false,
+  "full_address_tensor_executed": false,
+  "full_cover_executed": false,
+  "winning_uniform_template_materialized": false
+}

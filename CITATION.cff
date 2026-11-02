@@ -2,14 +2,14 @@ cff-version: 1.2.0
 message: "Cite the individual paper using its citation.bib and identify the exact revision. These are research preprints."
 type: software
 title: "Polynomial multiplication over fixed finite fields"
-version: "0.1.0-preprint"
+version: "0.2.1"
 url: "https://github.com/arpcs/finite-field-polynomial-multiplication"
 authors:
   - family-names: "Csizmadia"
     given-names: "Árpád"
     email: "arpad.csizmadia.public@gmail.com"
 license: Apache-2.0
-abstract: "Four related research preprints: a general finite-field O(n log n) baseline, a stronger general finite-field bound, an accessible binary construction, and a stronger controlled-CRT binary construction. Complete Lean formalization is unfinished."
+abstract: "Four related research preprints, with a revised odd-field bound with exponent 319/320. The common all-field exponent remains 1-2^-38. Cite the exact individual paper revision; complete Lean formalization is unfinished."
 keywords:
   - polynomial multiplication
   - finite fields

@@ -1,5 +1,20 @@
 # Version history
 
+## General research preprint, version 0.2.1 — 2 November 2026
+
+- Improved the fixed odd-field bound from exponent 9999/10000 to 319/320,
+  with the selected native proof, complete host transfer and finite inputs.
+  The common all-field exponent remains 1-2^-38; the separate paired-phase
+  binary revision is not substituted into that dependency.
+- Made the quotient map, tensor padding, pointwise-product invoice and
+  companion dependency directions explicit. Preserved source-selection
+  provenance and source-specific notices. Earlier manuscript bytes remain
+  at immutable Git revision 14532be8e044c0f6588b9787a842a96da695769f.
+- Kept the selected Pascal/Taylor and baseline manuscripts unchanged.
+  Independent human mathematical review and complete formal verification
+  remain outstanding.
+
+
 ## Unpublished binary version 0.2.1 — 2 November 2026
 
 - Added a separate [versioned binary package](../papers/03-best-binary/versions/0.2.1/README.txt)

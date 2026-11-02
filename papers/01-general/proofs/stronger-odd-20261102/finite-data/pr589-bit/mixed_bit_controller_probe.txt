@@ -1,0 +1,4 @@
+formal_columns=32 native_thick_calls=18 thin_query_shears=15 helper_families=18x439 events=154 idles=15 boundary_point_ops=100
+paid_queries=57555 independent_productive_fields=11454 paid_rank_mass=216753 target_rank_mass=217506 surplus=753 raw_separation=FAIL_requires_strictification
+negative_controls omitted_query=1 omitted_idle=1 omitted_bridge=1
+PASS assertions=15663 sparse monomial support<=64,scalar wires32,stages33; no address tensor or GL cover

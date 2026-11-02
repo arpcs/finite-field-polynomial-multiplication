@@ -1,0 +1,204 @@
+{
+  "schema": "supporting-note-selection/1",
+  "revision": "0.2.1",
+  "theorem_exponents_changed": false,
+  "scope": "Selected supporting arguments; original note copies remain historical research sources, distinct from edited publication bytes.",
+  "notes": [
+    {
+      "original": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CANONICAL_HOST_REDUCTION.md",
+        "bytes": 7086,
+        "sha256": "48F97F3AB828F43DD94BF9048EAF6A26DDB828DC85A4E1703DD8F598C3728DD9"
+      },
+      "previous_package_path": "notes/CANONICAL_HOST_REDUCTION.md",
+      "derived": {
+        "path": "notes/CANONICAL_HOST_REDUCTION.md",
+        "bytes": 6730,
+        "sha256": "e50702442e3095174a5f8c7785f85b591280b4ae53de9d134175edd4d2f88184"
+      },
+      "changes": [
+        "Professional exposition and precise original/derived source identity; current local links.",
+        "Make the host rank and canonical reduction normalization explicit."
+      ]
+    },
+    {
+      "original": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/DYADIC_TO_EXACT_WIDTH_PRINTER_PROOF.md",
+        "bytes": 11350,
+        "sha256": "4C7FD77F164908AD2CAD455DFBC70B29FB7F6CCA13E632943028379D32E6B1BD"
+      },
+      "previous_package_path": "notes/DYADIC_TO_EXACT_WIDTH_PRINTER_PROOF.md",
+      "derived": {
+        "path": "notes/DYADIC_TO_EXACT_WIDTH_PRINTER_PROOF.md",
+        "bytes": 15098,
+        "sha256": "b723352c4589f6f6f98679f69c2f7e2604ae02a9bb03692c9354c2feec73f301"
+      },
+      "changes": [
+        "Professional exposition and precise original/derived source identity; current local links.",
+        "Include the dyadic root, aliasing, convolution recurrence proof and classical attribution instead of referring to an excluded note."
+      ]
+    },
+    {
+      "original": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/REVIEW_20261102_PROOF_CLARIFICATIONS.md",
+        "bytes": 6710,
+        "sha256": "21D5D7F1E9830678DB1368FCD6B86A3506592856A210D85CF2D90531272A8437"
+      },
+      "previous_package_path": "notes/REVIEW_20261102_PROOF_CLARIFICATIONS.md",
+      "derived": {
+        "path": "notes/FINITE_COMPILER_AND_RESERVE.md",
+        "bytes": 6384,
+        "sha256": "968ae599cf564a748aeabf3221f4409dd6fb086f4bf1c3706390f24c9abdaaaf"
+      },
+      "changes": [
+        "Professional exposition and precise original/derived source identity; current local links."
+      ]
+    },
+    {
+      "original": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CONT_20261102_NATIVE_FINITE_PREMISES.md",
+        "bytes": 16981,
+        "sha256": "38298F79689C81CD246A9865D6A93EFEF50BDCADC5AFCB41C9F536A706F3D2E7"
+      },
+      "previous_package_path": "notes/CONT_20261102_NATIVE_FINITE_PREMISES.md",
+      "derived": {
+        "path": "notes/FINITE_NATIVE_PREMISES.md",
+        "bytes": 14488,
+        "sha256": "4369cdb9bc69ca223974eb82f0a7fd4e99bd42a8c3a90075e076b22cb396e088"
+      },
+      "changes": [
+        "Professional exposition and precise original/derived source identity; current local links."
+      ]
+    },
+    {
+      "original": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CONT_20261102_FIXED_FIELD_REDUCTION.md",
+        "bytes": 13622,
+        "sha256": "4C4249D79EAA5D8842E3537F4A75E0A4C332E1297E3432F81F02B9FD9B1D3D37"
+      },
+      "previous_package_path": "notes/CONT_20261102_FIXED_FIELD_REDUCTION.md",
+      "derived": {
+        "path": "notes/FIXED_FIELD_REDUCTION.md",
+        "bytes": 13276,
+        "sha256": "f5259b0b1c0187570dc963924a18e6c5c716fe5a994cc1c510c34184295e5c10"
+      },
+      "changes": [
+        "Professional exposition and precise original/derived source identity; current local links.",
+        "Add the explicit M pointwise B-product scan and its lower-order cost."
+      ]
+    },
+    {
+      "original": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CONT_20261102_SERVICE_CONTRACTS.md",
+        "bytes": 9174,
+        "sha256": "1499EB3F6C1D9E95082B82BF0694D17B2557CE3FDECFA98F54B16FAA5ACF4792"
+      },
+      "previous_package_path": "notes/CONT_20261102_SERVICE_CONTRACTS.md",
+      "derived": {
+        "path": "notes/NATIVE_SERVICE_CONTRACTS.md",
+        "bytes": 8760,
+        "sha256": "08624321b7fd48183f0645af31de38bcb8a16982d2cc341b45787bbe2fc694b0"
+      },
+      "changes": [
+        "Professional exposition and precise original/derived source identity; current local links."
+      ]
+    },
+    {
+      "original": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/OPTIMAL_THREE_C_FINITE_ALGEBRA_THEOREM.md",
+        "bytes": 9722,
+        "sha256": "E406859A8DAA22A6CA384454A2D7A1E9C2BEB02A91073C5D93904C2C13A3D9EC"
+      },
+      "previous_package_path": "notes/OPTIMAL_THREE_C_FINITE_ALGEBRA_THEOREM.md",
+      "derived": {
+        "path": "notes/OPTIMAL_THREE_C_FINITE_ALGEBRA_THEOREM.md",
+        "bytes": 9244,
+        "sha256": "778df0b3a2571eab77df17b73060daa051ff51f364b6d770317d8c89357a8b38"
+      },
+      "changes": [
+        "Professional exposition and precise original/derived source identity; current local links.",
+        "Correct the explicit F_p rank of the Gaussian cyclotomic host to d=2D."
+      ]
+    },
+    {
+      "original": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CONT_20261102_PRINCIPAL_ROOT_INTERFACE.md",
+        "bytes": 2595,
+        "sha256": "C5BF6A357A47BE79ADAB3AE9460533DBD2C60DD98FD8E07B0E7719075503596C"
+      },
+      "previous_package_path": "notes/CONT_20261102_PRINCIPAL_ROOT_INTERFACE.md",
+      "derived": {
+        "path": "notes/PRINCIPAL_ROOT_INTERFACE.md",
+        "bytes": 2552,
+        "sha256": "5e790829e60bfb93d018224231325536d5d927b084083ead00b9344cedf06573"
+      },
+      "changes": [
+        "Professional exposition and precise original/derived source identity; current local links."
+      ]
+    },
+    {
+      "original": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CONT_20261102_QUOTIENT_INSTANTIATION.md",
+        "bytes": 14241,
+        "sha256": "D7122DBCE926836EE8B6B58808974798C05389CE37BF6411A45648987F6C99FA"
+      },
+      "previous_package_path": "notes/CONT_20261102_QUOTIENT_INSTANTIATION.md",
+      "derived": {
+        "path": "notes/QUOTIENT_INSTANTIATION.md",
+        "bytes": 14136,
+        "sha256": "13fbcf7cc1903ffa68de3cf40a3ee804818b9f45b910cf7e39bb0220770f33d1"
+      },
+      "changes": [
+        "Professional exposition and precise original/derived source identity; current local links."
+      ]
+    },
+    {
+      "original": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/RING_VALID_FOURIER_TOEPLITZ_PROOF.md",
+        "bytes": 4304,
+        "sha256": "4A56C1DD577B17FDB4BC717558C8A93FB217D9ECAB49D6B136A75E780016E7C3"
+      },
+      "previous_package_path": "notes/RING_VALID_FOURIER_TOEPLITZ_PROOF.md",
+      "derived": {
+        "path": "notes/RING_VALID_FOURIER_TOEPLITZ_PROOF.md",
+        "bytes": 4249,
+        "sha256": "c6d8f8e63c654b96b02c4faa8b8c7d291de71897a462e0677c4a20d9e20791e6"
+      },
+      "changes": [
+        "Professional exposition and precise original/derived source identity; current local links."
+      ]
+    },
+    {
+      "original": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/SHORT_DIMENSION_TOP_MAP_PROOF.md",
+        "bytes": 5023,
+        "sha256": "9FCDE0D2D8CED13302F73201FAF19DB545F38CEDA431AAC0AFC8D4CB097F3E18"
+      },
+      "previous_package_path": "notes/SHORT_DIMENSION_TOP_MAP_PROOF.md",
+      "derived": {
+        "path": "notes/SHORT_DIMENSION_TOP_MAP_PROOF.md",
+        "bytes": 5001,
+        "sha256": "b7c809e5b513898dfcee4a4169dac903451088170e0939bd7c8c15016e3a68b8"
+      },
+      "changes": [
+        "Professional exposition and precise original/derived source identity; current local links."
+      ]
+    },
+    {
+      "original": {
+        "path": "investigation/odd_prime_gapclosure_20261031_0410/CONT_20261102_UNIFORM_RING_ADDENDUM.md",
+        "bytes": 4280,
+        "sha256": "DCF2F84911A325F87EDDE6B9E14AE48B547E6DD02AECBD3E7F0927E1F33A386B"
+      },
+      "previous_package_path": "notes/CONT_20261102_UNIFORM_RING_ADDENDUM.md",
+      "derived": {
+        "path": "notes/UNIFORM_RING_OPERATIONS.md",
+        "bytes": 4152,
+        "sha256": "225d6291cebe80270286c56f062269f37cd83e2de6f2cee7edceff07a1dfb5c7"
+      },
+      "changes": [
+        "Professional exposition and precise original/derived source identity; current local links."
+      ]
+    }
+  ]
+}
