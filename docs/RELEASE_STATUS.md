@@ -1,7 +1,9 @@
 # Release status
 
 **General research preprint:** version 0.2.2, 2 November 2026.  
-**Status:** research preprint open for mathematical review.
+**Status:** public research preprint open for mathematical review.
+
+[PDF](https://github.com/arpcs/finite-field-polynomial-multiplication/blob/ecde0c52f2b3957b28fd7b52cad1bb06abb965f6/papers/01-general/paper.pdf), [source](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/ecde0c52f2b3957b28fd7b52cad1bb06abb965f6/papers/01-general).
 
 The general paper states ordinary multiplication over every individually
 fixed finite field with logarithmic exponent 1301/1302. Its

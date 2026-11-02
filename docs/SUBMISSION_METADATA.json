@@ -39,10 +39,11 @@
     "public_repository_url": "https://github.com/arpcs/finite-field-polynomial-multiplication",
     "arxiv_id": null,
     "doi": null,
-    "public_source_snapshot": null,
+    "public_source_snapshot": "https://github.com/arpcs/finite-field-polynomial-multiplication/tree/ecde0c52f2b3957b28fd7b52cad1bb06abb965f6/papers/01-general",
     "previous_public_source_snapshot": "https://github.com/arpcs/finite-field-polynomial-multiplication/tree/f44b12431591a3d66a0acd70a460d9fbaa9e8793/papers/01-general",
     "local_source": "papers/01-general/main.tex",
-    "publication_state": "unpublished"
+    "publication_state": "public research preprint",
+    "publication_observed_utc": "2026-11-02T06:09:26Z"
   },
   {
     "directory": "papers/02-simple-binary",
