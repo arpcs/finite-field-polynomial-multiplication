@@ -1,0 +1,38 @@
+Exact finite certificates
+
+The files in checks/ concern only the fixed statements used in the finite
+word appendix. They establish no growing-size running-time bound.
+
+finite_certificate.cpp checks the 120 root representatives, the integral
+Gram-factor construction over F2, all intermediate five-transvection bank
+matrices in Z[a]/(a^3-1), and outward rational bounds for the strict moment
+at s0=1-1/1300. The expected output contains the per-rank intervals and the
+intermediate polynomial matrices. It records 30,230 fixed checks.
+
+frozen_rectangles.cpp imports the finite geometry builder, uses the fixed
+flag choices, and verifies the complete rectangle partition and literal
+partial-bank invoice. Its expected output lists all 3,782 rectangles and
+records 105,260 fixed checks. It does not execute the search routine.
+The displayed invoice is normalized per cover row; the common fixed
+cover multiplicity used by the integer compiler is stated in the article.
+
+Both probes are C++17 programs for Windows. Their in-process guard must
+install a 64 MiB memory limit and a 10 CPU-second limit before algebra;
+otherwise they refuse to run. The rectangle probe installs its guard
+before imported dynamic table initialization. They are single-threaded
+and have fixed arrays and explicit finite instance bounds. The recorded
+runs additionally used a five-second wall timeout. The receipts bind each
+source to its expected output by SHA-256. No new probe run is asserted for
+this revision.
+
+Reproduce one probe at a time with a C++17 GCC toolchain supporting
+unsigned __int128. Compile checks/probes/finite_certificate.cpp or
+checks/probes/frozen_rectangles.cpp with
+
+    -std=c++17 -O2 -Wall -Wextra -Werror
+
+Keep executables and fresh outputs in build/, outside the distribution
+file list. Enforce the same five-second wall timeout in addition to the
+in-process limits. Compare the output to the corresponding JSON under
+checks/expected/. Compilation and finite-certificate checking are separate
+from building the article and from checking the asymptotic proof.

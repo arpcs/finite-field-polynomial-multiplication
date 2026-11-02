@@ -4,6 +4,18 @@
 **Scope:** ordinary dense degree-`<n` polynomial multiplication over fixed `F2`; deterministic fixed finite-tape bit model; output is the complete `2n-1` ordinary coefficients.  
 **Claim:** `O(n (max{1, ceil(log2 n)})^(1-2^-38))`; author Árpád Csizmadia (`arpad.csizmadia.public@gmail.com`). Fixed extensions `F_(2^s)` follow for each fixed `s`, with machine and constants depending on `s`.
 
+## Separate unpublished revision
+
+[Version 0.2.1](versions/0.2.1/README.txt), prepared on 2 November 2026,
+claims ordinary F2 multiplication with saving 1/1302, or logarithmic
+exponent 1301/1302, in the same complete-coefficient fixed-tape problem.
+Its [PDF](versions/0.2.1/paper.pdf), sources and
+[claim metadata](versions/0.2.1/CLAIM.json) are packaged separately.
+Independent mathematical review and complete formal verification remain
+outstanding. Its publication fields are unset. The 0.1 source and PDF in
+this directory remain the selected controlled-CRT version used by the
+general paper; the remaining sections describe that version.
+
 ## Proof and dependency status
 
 This release copy uses the integrated controlled-CRT construction in `main.tex` and its four proof appendices. The written proof provides the ordinary input/output reduction, host initialization, coefficient split, balanced controlled CRT tree, literal Fourier convention, local Fourier word and arithmetic, arbitrary-payload native endpoint transform, equal-chunk interchange construction, and fixed-tape/cost composition. Selected supporting derivation records and the machine-composition root are included under `supporting/`.

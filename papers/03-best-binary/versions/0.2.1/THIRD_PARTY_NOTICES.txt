@@ -1,0 +1,63 @@
+THIRD-PARTY ATTRIBUTION AND SOURCE NOTES
+
+The paper adapts exposition and proof organization from the author's prior
+binary-polynomial-multiplication release. Its source is pinned at:
+https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/03-best-binary
+The prior release and this revision are the author's work; the current
+revision changes and extends that material. The prior source is available
+under Apache-2.0. A copy of the license is supplied as LICENSE for the
+project material in this package.
+
+The equal-chunk interchange construction is adapted from the mathematical
+construction in OpenAI, “Integer multiplication below n log n,” Sections
+3-4, including Lemma 12, at source revision
+4eaee87548250b2682affda7d05d947c05554bae:
+https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/preprints/Integer-multiplication-below-n-log-n-September-23-2026/build/sections/04-swap.tex
+
+The local Fourier compiler is based on OpenAI, “An explicit power saving
+for the exact discrete Fourier transform,” local compiler section, at the
+same source revision:
+https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026/build/sections/local.tex
+
+The OpenAI mathematical sources are in the openai/math repository. Its
+LICENSE at the cited revision is Apache-2.0:
+https://github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/LICENSE
+The paper uses the cited constructions as mathematical antecedents and
+supplies its own stated reconstruction and tape-cost argument; it does not
+import the entire integer-multiplication algorithm or claim an OpenAI
+endorsement.
+
+The finite E8 incidence and orthogonal-cover ideas have antecedents in
+CrocSwap/integer-mult-bounds. The finite precompilation and five-stage
+bank constructions are cited at these pinned source revisions:
+https://github.com/CrocSwap/integer-mult-bounds/blob/da637c87c89482bc4c86be36bd0071b3d400dbed/research/kappa-rebuild/architecture/FINITE-PRECOMPILATION.md
+https://github.com/CrocSwap/integer-mult-bounds/blob/2485805a6d47f36ea83ddde6327d453ac82d44dc/research/five-stage-gen4-banks/PROOF.md
+The repository's source-specific notice at that revision is:
+https://github.com/CrocSwap/integer-mult-bounds/blob/2485805a6d47f36ea83ddde6327d453ac82d44dc/NOTICE
+The present paper's finite incidence factorization and its application to
+the stated binary multiplication proof are its own written derivation.
+The cited CrocSwap constructions are antecedent mathematics; the CrocSwap
+integer-multiplication result is not used as the theorem proved here.
+
+The mixed-job construction also has a mathematical antecedent in Jacob
+Alan Sussman, Theorem 1G, at the pinned source:
+https://github.com/jacobalansussman/wht-power-saving-lean/blob/563b4e6e913625637f36ba7869bf5fcd0dd4975a/research/record-track/proofs/theorem-1g.md
+The paper credits Sussman's predecessor construction and states the
+adaptation it uses. No Lean source or compiled proof-assistant artifact from
+that repository is included in this package.
+
+CrocSwap/integer-mult-bounds maintains source-specific contributor notices.
+The research source trail credits the five-stage-bank antecedent to hcg890
+and Jacob Alan Sussman (architecture), Evan McKinney (completed banks),
+Rohan Arun (application), and eumemic (source-word contributions). These
+credits identify antecedent contributions; they do not assign those
+contributors authorship of the present derivation. This package contains
+mathematical citations and adaptations, not copied CrocSwap or Sussman
+source files. The bundled software consists of project C++ sources and
+PowerShell build and package-checking scripts.
+
+Classical mathematical results are credited in the article bibliography,
+including work of Cantor and Kaltofen; Harvey, van der Hoeven and Lecerf;
+van der Hoeven and Larrieu; Schönhage and Strassen; and Zhang and Zhang.
+These are citations to mathematical results,
+not statements that their papers or source files are included here.

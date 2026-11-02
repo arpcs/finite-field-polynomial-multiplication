@@ -1,0 +1,40 @@
+Version history
+
+0.1.0 - public source snapshot, 31 October 2026, 02:05:42 UTC
+  Ordinary F2 polynomial multiplication on a fixed finite-tape machine,
+  with kappa=2^-38=1/274877906944 in O(n log(n)^(1-kappa)).
+  Source commit: fb94421e3e6d9f8348a6e5b963b5a62d9c525e95
+  This is the original claim currently linked by Big O Speedrun. The
+  site records that timestamp as first-stated. This reports the site's
+  provenance; it is not an independent priority determination and is not
+  the date or source of the present revision.
+
+0.2.1 - prepared 2 November 2026; unpublished
+  Ordinary F2 polynomial multiplication in O(n log(n+2)^(1-1/1302)),
+  so kappa=1/1302 and the logarithmic exponent is exactly 1301/1302.
+  The field, coefficient input/output and deterministic fixed-tape model
+  agree with the original claim. The finite paired-phase construction,
+  integer mixed-rank composition and movement bootstrap replace the
+  earlier kernel parameters. Seven technical appendices supply the
+  machine interfaces and ordinary-output cost reduction.
+  The finite-cover multiplicity, inherited gates and complete-fiber
+  metadata accounting are explicit, including independence of fresh row
+  stock conditional on earlier chart choices. The accompanying finite
+  certificates concern finite identities and the rank moment, not the asymptotic
+  theorem. External human mathematical review remains outstanding.
+  The article includes an expanded AI-assistance disclosure, a background
+  discussion crediting prior work, and an explanation of the revision's
+  contribution and relationship to the companion papers. These editorial
+  additions leave the mathematical argument and technical appendices unchanged.
+  The disclosure follows the abstract under AI assistance and formal
+  verification. Internal links are visibly styled, and
+  table-of-contents titles and page numbers both link to their sections.
+
+The preparation date is not a public first-statement timestamp. A future
+public version must identify its actual source commit, immutable source
+and PDF URLs, and the first public statement of the improved bound.
+CLAIM.json leaves these publication fields unset until that occurs.
+
+This revision updates the binary statement only. The earlier fixed
+odd-characteristic results and the separate integer-multiplication
+problem retain their own statements, sources and evidence.

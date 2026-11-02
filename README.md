@@ -48,6 +48,15 @@ fixed-tape costs, built on the prior results credited below.
 | Fast Pascal transforms | Accessible binary companion: ordinary F2 multiplication in O(n log(n+2)), with a fixed characteristic-two extension corollary | [PDF](papers/02-simple-binary/paper.pdf), [source](papers/02-simple-binary/main.tex), [status](papers/02-simple-binary/STATUS.md) |
 | Ordinary binary multiplication below n log n | Principal characteristic-two paper: controlled CRT/routing construction with exponent 1-2^-38 on fixed finite tapes | [PDF](papers/03-best-binary/paper.pdf), [source](papers/03-best-binary/main.tex), [status](papers/03-best-binary/STATUS.md) |
 
+A separate unpublished [binary revision 0.2.1](papers/03-best-binary/versions/0.2.1/README.txt),
+prepared on 2 November 2026, claims ordinary F2 multiplication in
+$O(n(\log(n+2))^{1301/1302})$, with saving $\kappa=1/1302$.
+Its [PDF](papers/03-best-binary/versions/0.2.1/paper.pdf), sources and
+[claim metadata](papers/03-best-binary/versions/0.2.1/CLAIM.json) form a
+separate versioned package. This is a written research claim awaiting
+independent mathematical review and complete formal verification. The
+selected 0.1 binary paper and the common all-field bound above are retained.
+
 For a bound $O(n(\log n)^{1-\kappa})$, a larger saving $\kappa$ is stronger
 for the same problem and model. Here the selected binary saving is
 $\kappa=2^{-38}\approx3.64\times10^{-12}$; the odd-field saving is

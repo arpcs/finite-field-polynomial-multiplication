@@ -16,6 +16,13 @@ $required=@('README.md','CONTENTS.md','AUTHORS.md','AI_USE.md','VERIFICATION.md'
  'papers/01-general/proofs/finite-unit/verify-finite-unit.ps1',
  'verification/finite-unit-replay.json')
 foreach($name in $required){Require (Test-Path -LiteralPath (Join-Path $root $name) -PathType Leaf) ('Missing '+$name)}
+# Check the separate binary capsule offline, without refreshing its manifest
+# or executing its finite probes, document compiler or any Lean workload.
+$binaryVersionChecked=$false
+try {
+ & (Join-Path $root 'papers/03-best-binary/versions/0.2.1/scripts/check-candidate.ps1') | Out-Host
+ $binaryVersionChecked=$true
+} catch { $failures.Add('Binary version 0.2.1 integrity: '+$_.Exception.Message) }
 $targets=@(Get-Content -LiteralPath (Join-Path $root 'verification/paper-targets.json') -Raw|ConvertFrom-Json)
 Require ($targets.Count -eq 4) 'This focused release must contain exactly four paper targets'
 $builds=@(Get-Content -LiteralPath (Join-Path $root 'verification/paper-builds.json') -Raw|ConvertFrom-Json)
@@ -138,6 +145,7 @@ $report=[pscustomobject]@{
  prepared_date='2026-10-31';check='Focused first-release packaging/source-integrity check'
  passed=($failures.Count -eq 0);payload_files=$payload.Count;total_release_files=$files.Count
  papers=$targets.Count;tex_closure_files=$closureCount;finite_unit_artifacts=$unitCount
+ binary_version_0_2_1_checked=$binaryVersionChecked
  mathematical_correctness_assessed=$false;lean_executed=$false;network_used=$false;publishes_or_submits=$false
  failures=@($failures)
 }

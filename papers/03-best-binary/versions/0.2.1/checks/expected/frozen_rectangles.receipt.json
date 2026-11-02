@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_ms": 553,
+  "source_sha256": "68CA67C58237D6F693384119E5D2CE3F3893D08BE6D3B384449BE4E68F1CBB0D",
+  "output_sha256": "6035A33FEAE49E4888C351C7722FD2F1B3CA3ADE2B1C0E84837ACA06CBC9E8F6",
+  "limits": "64MiB / 10 CPU seconds before imported dynamic tables; 5 seconds wall; single thread"
+}

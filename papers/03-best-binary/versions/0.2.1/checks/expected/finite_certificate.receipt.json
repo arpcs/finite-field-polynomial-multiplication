@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_ms": 800,
+  "source_sha256": "106100BA8A7400058262138A236C69E42A8B0201A6864661D564C4B240373518",
+  "output_sha256": "1C63E57712EBDBD09086A2E15B2C9CE30DBF6D21A9EDE7D464E41B43402DCB59",
+  "limits": "64MiB / 10 CPU seconds before algebra; 5 seconds wall; single thread"
+}

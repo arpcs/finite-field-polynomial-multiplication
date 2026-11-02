@@ -1,0 +1,55 @@
+{
+  "version": "0.2.1",
+  "date": "2026-11-02",
+  "exit": 0,
+  "compiler": "Tectonic 0.17.0",
+  "source_files": [
+    {
+      "path": "appendices/finite-unit.tex",
+      "sha256": "6A83D2D0547966C251796BDA06289660F2BD1DADE8B8ACFFEA7DF842BF3D929A"
+    },
+    {
+      "path": "appendices/local-algebra.tex",
+      "sha256": "9EE57D1F3D1EBBA2C726A1F1F3CE5F0802B52D13C70AFD44BCF78D3C077889B8"
+    },
+    {
+      "path": "appendices/mixed-compiler.tex",
+      "sha256": "9E9B6E6CCC9E725B0833817DEFEB52CB875B1A954C71503B65217616E7BA7500"
+    },
+    {
+      "path": "appendices/movement.tex",
+      "sha256": "DEF836FF3A64A8A0B47A0F2E00486B2833E001A85744C6A91A30390EDE56ADDA"
+    },
+    {
+      "path": "appendices/native-endpoint.tex",
+      "sha256": "20050787A970F56CE97341DB579F08C6C6E7FA90264463343E9025B1D535AAD4"
+    },
+    {
+      "path": "appendices/outer.tex",
+      "sha256": "2E78A01CE8ACDA1739980A73B0A2D7298B69D84F51AAC81C41471591C43945D8"
+    },
+    {
+      "path": "appendices/positive-word.tex",
+      "sha256": "32569C862C66444A32F538F753213CB02B373EE7744EF24BD57CDB645E4E0A42"
+    },
+    {
+      "path": "main.tex",
+      "sha256": "011F1197D240581E510F23B72AE468434DE7E32C7BCAD18E9A161F277A9BD2A8"
+    }
+  ],
+  "pdf": "paper.pdf",
+  "pdf_sha256": "38A52AF41F363673ACC24BCE2D1B0C19207BEA28012604832E2DF63F3CDFDAC5",
+  "engine_sha256": "99FFCFDBF1EBF8BDDA9E791942E3D06AEDB12463FDDC33F07DE6F5211C8BF08D",
+  "guard_sha256": "AB0849D6CD7A7D485DF6FBEF06314B3D2EBE91B7798BCC17AC52D68C208035CF",
+  "untrusted": true,
+  "offline_only_cached": true,
+  "threads": 1,
+  "memory_mib": 512,
+  "cpu_seconds": 60,
+  "wall_seconds": 120,
+  "peak_job_bytes": 318488576,
+  "guard_attempts": 11,
+  "overfull_boxes": 0,
+  "undefined_references": 0,
+  "mathematical_correctness_certified": false
+}

@@ -1,0 +1,137 @@
+\section{Integer composition of different-rank jobs}
+\label{app:mixed-compiler}
+We prove the column-template claim used by Lemma~\ref{lem:body}.
+The argument is a specialization of the mixed-job and finite
+precompilation mechanisms of~\cite{sussman,mixed-precompile}.
+All jobs here have the exact all-input word of
+Appendix~\ref{app:finite-unit}.
+
+\subsection{Interfaces and whole-job matching}
+A rank-$r$ paired job is $K_{I_r}$ on $2r$ selected trits and identity
+on every spectator. Its $f$-column version is $K_{I_r\otimes I_f}$.
+Disjoint completed jobs split by
+$K_{I_{a+b}}=K_{I_a\oplus0}K_{0\oplus I_b}$.
+An equal-rank idempotent is matched by bases of its image and kernel:
+the coordinate permutation $\operatorname{diag}(G,G^{-T})$ conjugates
+it to the required canonical job and preserves $K_I$. Every such
+normalizer is a fixed finite slot map lifted by $I_f$.
+
+For the rational address interpretation, replace the phase by
+$I+(R_3-I)\otimes P$. Equal-rank completed jobs are similar by
+rational bases. Inverse $R_3$ modules are rationally similar to
+$R_3$, and spectators are matched as whole fixed spaces. There is
+no assumption that the rational matcher group is finite. The finite
+constructor records its finitely many right-route symbols for the
+later residue cover.
+
+\subsection{A finite integer flow}
+Let $T_k$ and $P_r$ in this appendix denote the actual integer profiles
+$C T_k^{\rm norm},C P_r^{\rm norm}$ from Lemma~\ref{lem:unit}, so
+$r\le7<8\le k\le36$. For a target-type multi-index $a$ put
+\[
+ c(a)=\prod_k k^{a_k},\qquad
+ u(a)=\binom{|a|}{a}\prod_k T_k^{a_k}.
+\]
+Regard its $u(a)$ copies as colored words of composition $a$; the
+letter of type $k$ has $T_k$ possible colors. Removing the last
+letter gives the bijection
+\begin{equation}
+ u(b)=\sum_{k:b_k>0}T_k u(b-e_k).
+ \label{eq:colored-flow}
+\end{equation}
+
+For top rank $n\ge36$, take $G$ maximal with $36\,8^G\le n$.
+At depth $d\le G$, retain each ordered paid-round path and its
+multiplier $\rho$, the product of its preceding paid ranks. The
+class of composition $a$, $|a|=G-d$, contains $u(a)$ units at column
+multiplicity $\rho c(a)$ whenever $36\rho c(a)\le n$.
+For a pending rank-$r$ request at parent composition $b$, the
+child of type $k$ has column multiplier $\rho r c(b-e_k)$ and
+productive rank
+\[
+ k\rho r c(b-e_k)=\rho r c(b).
+\]
+Its ambient fits because $r/k<1$. Equation~\eqref{eq:colored-flow}
+matches every request to a distinct whole child output, including its
+color. Missing parent slots become new independent source arrays.
+
+Every such source has rank $n/36<s\le n$. Indeed a missing parent
+fit gives $36\rho_{\rm parent}c(b)>n$ and hence
+$s>rn/36\ge n/36$; the child's fit supplies the upper bound.
+At depth zero maximality of $G$ gives the same lower bound.
+Only depth-$G$ requests remain unmatched. Their rank is at most
+\begin{equation}
+ E(n)=7^{G+1}\le7(n/36)^{\log_8 7}=o(n).
+ \label{eq:mixed-exits}
+\end{equation}
+An ordered path is not merged with another path merely because
+their multipliers coincide.
+
+The schedule is chronological and acyclic. Suspend a class at its
+next paid round, execute the entire matching child class, restore
+its routes and resume the parent. A pending owned increment is a
+child input of its actual current value; it is not counted again as
+an independent source. Each suspended owner has a distinct tag, and
+its erase occurs only after return.
+
+\subsection{Clearing denominators and paying complements}
+Inductively suppose a rank-$e<n$ template uses $B_e$ independent
+inputs and $P_e$ rank-one queries. A direct template has $B_e=1$,
+$P_e=e$; set $B_0=1,P_0=0$. Let $S_s$ be the source counts in the
+finite flow and $t_e$ its terminal exit counts. Replicate the entire
+flow by a common positive multiple of every $B_{n-s}$ and $B_e$
+that it uses. All smaller-template batch counts are now integers.
+Complete each source's disjoint rank-$(n-s)$ complement before its
+rank-$s$ flow endpoint, and complete each exit by the smaller
+rank-$e$ template. These are actual paid source and exit jobs.
+Every original source then receives the full rank-$n$ endpoint.
+
+Writing $S=\sum_sS_s$, $w_s=S_s/S$, $x_e=t_e/S$ and
+$L(n)=P_n/B_n$, this construction gives
+\begin{equation}
+ L(n)\le\sum_s w_sL(n-s)+\sum_e x_eL(e),\qquad
+ \sum_s w_s=1.
+ \label{eq:mixed-recurrence}
+\end{equation}
+The strict unit moment, multiplied by each unit's column multiplier
+to the power $s_0$, is preserved under repetition. Matched internal
+requests cancel against their productive endpoints, leaving
+\begin{equation}
+ \sum_e x_e e^{s_0}\le\sum_s w_s s^{s_0}.
+ \label{eq:mixed-boundary-moment}
+\end{equation}
+This is an inequality on the finite constructed flow, including all
+owned requests; it does not promote a smaller helper to a full output.
+
+Choose $s_0<z_0<z<1$ and put $\delta=z_0-s_0$. By
+\eqref{eq:mixed-exits} and $s>n/36$,
+\[
+ \sum_e x_ee^{z_0}
+ \le(36E(n)/n)^\delta\sum_s w_ss^{z_0}.
+\]
+For $v=s/n\ge1/36$, concavity gives
+$1-(1-v)^{z_0}\ge z_0v\ge z_0 36^{z_0-1}v^{z_0}$.
+Consequently
+\[
+ n^{z_0}-\sum_s w_s(n-s)^{z_0}
+ \ge z_0 36^{z_0-1}\sum_s w_ss^{z_0}.
+\]
+The first coefficient tends effectively to zero. Choose an effective
+cutoff where it is smaller than the second coefficient, and enlarge
+$A$ so that $L(n)\le A n^{z_0}$ on the finite direct range. Strong
+induction in \eqref{eq:mixed-recurrence} proves the same bound for
+every $n$. Each complement and exit rank is strictly smaller than
+$n$. For any prescribed fixed positive rational $\varepsilon$, take
+$N$ with $AN^{z_0-z}<\varepsilon$. Then
+$P_N/B_N<\varepsilon N^z$.
+
+The common cover multiplicity changes the integer color counts and
+the effective constants $A,N,B_N,P_N$. It leaves the strict unit
+moment, source-rank thresholds and exit exponent unchanged.
+All replication factors, slot maps and word lengths are fixed finite
+integers once $N$ is fixed. Induction through the constructor applies
+at every column multiplicity $f$, because the unit, splitting and
+whole-job matching were proved at every $f$. Its setup can therefore
+be encoded in one fixed machine, or generated at a fixed charged
+cost absorbed by the finite direct cutoff. No advice depending on
+the eventual ordinary input is used.

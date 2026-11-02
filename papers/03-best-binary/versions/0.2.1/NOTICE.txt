@@ -1,0 +1,16 @@
+Paired-Phase Binary Polynomial Multiplication, version 0.2.1
+Copyright 2026 Árpád Csizmadia
+
+Project material is distributed under the Apache License, Version 2.0;
+see LICENSE. That license applies only to rights the author can grant.
+Third-party mathematical sources and any material derived from them retain
+their applicable attribution and terms, as identified in
+THIRD_PARTY_NOTICES.txt and SOURCES.tsv. No endorsement by cited authors or
+organizations is implied.
+
+Generative AI tools assisted mathematical exploration, proof development,
+coding, and writing.
+The preparation harness was OpenAI Codex; recorded scoped reviews used
+gpt-6-luna and gpt-6.1-sol. Exact primary model snapshots and the complete earlier model
+inventory were not recorded. This assistance is distinct from independent
+human review or an end-to-end formal proof.

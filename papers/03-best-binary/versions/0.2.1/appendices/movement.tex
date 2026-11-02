@@ -1,0 +1,391 @@
+\section{Full-cover movement and its ordinary boundary}
+\label{app:movement}
+\label{app:swap}
+The finite-cover and affine-routing method develops the constructions
+of~\cite{swap,mixed-precompile}; the full-weight normalization and
+ordinary boundary below are proved for the present rational body.
+
+This appendix proves the movement interface of Lemma~\ref{lem:movement}
+from the finite template of Lemma~\ref{lem:body}. An \emph{atom} is an
+address field of $w$ base-$q$ digits, of range $q^w$. A coarse field
+consists of several such atoms; the payload and every other coordinate
+remain spectators during an ordinary interchange. If a call has active input array length $V$, all costs below
+are divided by this actual $V$. In particular $V$ includes retained pads
+and opaque payloads in the current call. Cells in a parked ancestor frame
+are not part of the active call and are not traversed by its descendants;
+the parent's scans that park, restore, and erase such a frame are charged
+to the parent's own $O_N(V)$ node toll.
+
+\subsection{The rational address body and its full-cover endpoint}
+
+Fix the finite body supplied by Lemma~\ref{lem:body}, with rank $N\ge2$,
+$B$ independent productive arrays, and $P$ paid rank-one queries. Put
+\[
+ a=P/B.
+\]
+This is a real number: cover rows and role multiplicities may give
+fractional normalized coefficients. A rank-one query sees the whole
+current record array divided by $B$, hence has volume exactly $V/B$;
+this includes owned queries. Let $z_0,z$ be fixed rationals with
+\[
+ s_0=1-\frac1{1300}<z_0<z<1.
+\]
+The body lemma allows $N$ to be chosen so that $a<\varepsilon N^z$
+for any prescribed fixed $\varepsilon>0$.
+
+The address action is over a rational vector space; the payload action is
+over $\mathbb F_2$. These are separate rings. Write $R$ for the fixed
+two-dimensional rational matrix of order three used in the address
+representation. The frozen native body realizes a full address operator
+$M_g$ on every cover row $g$, with
+\begin{equation}
+ M_g^2+M_g+I=0,\qquad M_g^3=I.                 \label{eq:movement-1}
+\end{equation}
+The equality is an identity of address matrices and is used only for
+composition of address maps. The corresponding permutation of payload
+arrays is not asserted to satisfy an additive polynomial identity.
+All adapters and native jobs are executed on complete role arrays, with
+arbitrary independent initial contents.
+
+After freezing the finite body and its finite rational matcher list,
+choose a prime $q\ge5$ avoiding every denominator and every nonzero
+witness coefficient occurring below. For $w\ge1$, let
+\[
+ Q=q^w,\qquad \mathcal G_w=\mathrm{GL}_{2N}(\mathbb Z/q^w\mathbb Z),
+ \qquad d=2N.
+\]
+Each cover row is indexed by $g\in\mathcal G_w$ and carries its own
+$M_g=gTg^{-1}$, where $T$ is the frozen full order-three address matrix.
+The cover is the full group, not a subgroup presumed to contain the
+rational matchers. Every fixed matcher acts by a permutation of this
+cover.
+
+For a paid leaf, the matrix $M-I$ has split rank two over $\mathbb Q$.
+On a good chart, unit-lower row and column operations normalize its
+selected cross block to $ED F^{\mathsf T}$, where $E,F$ select two
+coordinates and $D$ is diagonal with unit entries. Write
+\[
+ M-I=UV,\quad U=\binom{E}{B_0},\quad V=(A_0,DF^{\mathsf T}),
+ \quad H=VU=A_0E+DF^{\mathsf T}B_0,
+\]
+and set
+\[
+ K=(-B_0+FD^{-1}H)E^{\mathsf T}
+       +FD^{-1}A_0(I-EE^{\mathsf T}).
+\]
+The selector identities $E^{\mathsf T}E=F^{\mathsf T}F=I_2$ give,
+by direct multiplication,
+\[
+ KE=-B_0+FD^{-1}H,\qquad DF^{\mathsf T}K=A_0,
+\]
+and therefore, with $L(K)=\left(\begin{smallmatrix}I&0\\K&I\end{smallmatrix}\right)$,
+\begin{equation}
+ L(K)ML(-K)=I+
+ \binom{E}{FD^{-1}H}(0,DF^{\mathsf T}).             \label{eq:movement-2}
+\end{equation}
+The residual in \eqref{eq:movement-2} is supported on four coarse fields, regardless
+of $N$. Only the selected unit pivots are inverted; $H$ is not inverted.
+Thus four-field Gaussian lowering applies over the local ring
+$\mathbb Z/q^w\mathbb Z$.
+
+We record the chart count. For each leaf, require its selected northeast
+one-by-one and two-by-two minors to be units. A witness for their
+simultaneous nonvanishing is obtained by taking $E$ to be the first two
+head columns, $F$ the last two tail columns in reverse order, and
+$H_0=R-I_2$; with $U=(E^{\mathsf T},(FH_0)^{\mathsf T})^{\mathsf T}$ and
+$V=(0,F^{\mathsf T})$, one has $VU=H_0$, $\det H_0=3$, and
+$I+UV$ is rationally similar to $R\oplus I$. The selected minors are
+nonzero (indeed units after the fixed conjugacy denominators are avoided).
+For the full output require the entire $N$-by-$N$ upper-right block to
+be invertible; the witness $R\otimes I_N$ has upper-right block
+$-I_N$.
+
+After clearing the fixed conjugacy denominators, each entry of
+$gT\operatorname{adj}(g)$ has degree at most $d$. The product of the
+two selected leaf-minor polynomials has degree at most $3d=6N$; the
+full-output determinant has degree at most $Nd=2N^2$. The number of
+invertible matrices in $\mathrm{GL}_d(\mathbb F_q)$ is at least
+$3/4$ of all matrices, since
+\[
+ \prod_{i\ge1}(1-q^{-i})\ge1-\sum_{i\ge1}q^{-i}\ge3/4.
+\]
+The polynomial zero bound, followed by conditioning on invertibility,
+therefore gives bad fractions at most $12N/q$ for a leaf and $4N^2/q$
+for the full output. We use the common bound
+\begin{equation}
+ \delta_{\rm bad}=16N^2/q.                           \label{eq:movement-3}
+\end{equation}
+Every low matrix $g_0\in\mathrm{GL}_d(\mathbb F_q)$ has exactly
+$q^{d^2(w-1)}$ lifts, so these same fractions apply at every $w$.
+The average is taken separately for each leaf type and for the root
+output type; no union bound over occurrences in the finite word is used.
+
+On a good leaf, unit-pivot Gaussian elimination on four fields costs at
+most
+\[
+ 4+2\cdot4\cdot3+5\cdot3=43< G:=64
+\]
+ordinary interchanges. Here an upper addition is one lower addition
+conjugated by two swaps. A paired unit scaling uses five swaps by
+\[
+ J_a=\operatorname{NegLast}\,U(a)L(-a^{-1})U(a),\qquad
+U(a)=J_1L(a)J_1,
+\]
+followed by $J_1$; fixed signs and lower additions are streamed.
+On a bad leaf or bad root row, Gaussian elimination on all $2N$ fields
+uses at most $F_N:=32N^2$ ordinary interchanges. No nonunit is inverted.
+These interchanges are the only recursive calls; all other row/column
+operations in the fixed normalizers are streamed affine updates.
+
+\subsection{Removing the full matrix weight}
+
+The good-root adapters must remove the variable matrix weight of the full
+cover, not merely a canonical representative. Write
+\[
+ M=\begin{pmatrix}X&B_0\\C&D_0\end{pmatrix},
+ \qquad M^2+M+I=0,
+\]
+and assume $B_0$ is invertible. The block identities imply
+$D_0=-I-B_0^{-1}XB_0$ and direct multiplication yields
+\[
+ L(B_0^{-1}X)M L(-B_0^{-1}X)
+   =\begin{pmatrix}0&B_0\\-B_0^{-1}&-I\end{pmatrix}.
+\]
+After a lower adapter and a head negation this is
+\[
+ J_A=\begin{pmatrix}0&A\\A^{-1}&0\end{pmatrix},\qquad A=-B_0.
+\]
+For this full, possibly variable $A$, block multiplication gives
+\begin{equation}
+ J_A L(-A^{-2})J_A=U(-I),\qquad
+ J_I=\operatorname{NegHead}L(I)U(-I)L(I).             \label{eq:movement-4}
+\end{equation}
+Consequently two completed calls to the same body, with the lower
+adapters in \eqref{eq:movement-4}, cancel the full weight and leave the prescribed
+canonical endpoint. The body restores all cover and role fields before
+returning, so the second call sees the same $g$ and the same $A(g)$.
+No variable unpaired scaling is delegated to a child.
+
+On bad root rows, set every wrapper adapter to the identity, but still
+execute both complete bodies on every row. Their endpoint there is
+$M_g^2$. After the completed calls, apply the fixed correction $J_IM_g$
+by the $F_N$-interchange fallback; since $M_g^3=I$, this gives $J_I$.
+This branch is taken only at completed endpoints, because intermediate
+right routes can mix row labels.
+
+The normalized child coefficient is therefore bounded by
+\begin{equation}
+ \mu_z\le {2Ga+\delta_{\rm bad}F_N(2a+1)\over N^z}.       \label{eq:movement-5}
+\end{equation}
+The $2Ga$ term counts the two bodies on every row; the bad-leaf fallback
+budgets are included in the two $a$ contributions, and the final
+$\delta_{\rm bad}F_N$ is the one completed-root correction. The extra
+factor in $(2a+1)$ is a conservative allowance for the full bad-row
+branches while preserving the same volume normalization. More precisely,
+coefficients in \eqref{eq:movement-5} are real normalized totals: the fraction of rows
+in a chart class multiplies its number of child calls, while each query
+volume is $V/B$. This is not an integer number of calls per individual
+row. Owned queries are included in $P$ and therefore in $a$.
+
+Choose $N$ using Lemma~\ref{lem:body} with $\varepsilon=1/512$, so
+$a<N^z/512$. Then $2Ga/N^z<1/4$. Choose $q$ after the finite body and
+all witnesses are frozen, large enough for \eqref{eq:movement-3}, prime avoidance, and
+\[
+ q>2048N^4(2P+B).
+\]
+Using $N^z\ge1$, $B\ge1$, and $a=P/B$, this implies
+$\delta_{\rm bad}F_N(2a+1)/N^z<1/4$. Thus $\mu_z<1/2$; in particular
+$\mu_z<3/4$. Since $N>1$ and $z<1$, $\mu_1\le\mu_z<1$.
+
+\subsection{Fixed rational routes and batched descriptors}
+
+For every fixed rational matcher $S$ in the frozen word, all denominators
+are units modulo $q^w$. Write a cover index as
+\[
+ g=g_0+qG_1,\qquad g_0\in\mathrm{GL}_{d}(\mathbb F_q),
+ \quad G_1\in(\mathbb Z/q^{w-1}\mathbb Z)^{d^2}.
+\]
+The low type $g_0$ ranges over a fixed finite set. On each such type,
+right multiplication by $S$ induces a fixed affine bijection
+\begin{equation}
+ G_1\longmapsto G_1S+c(g_0)\pmod {q^{w-1}}.             \label{eq:movement-6}
+\end{equation}
+The fixed linear part in \eqref{eq:movement-6} factors into a fixed number (depending
+only on $N,q,S$) of coordinate swaps, shears and fixed-unit scalings.
+Lower shears are rotations of complete target fibers. Upper shears use
+the previously compiled ordinary interchange on fields of width $O(w)$.
+Fixed scalings use a fixed number of residue lanes. These route operations
+are independent of input data and of the cover index except through its
+streamed descriptor; variable Gaussian pivots are still charged by the
+child calls counted in \eqref{eq:movement-5}. No finite subgroup of $\mathrm{GL}_d(\mathbb Q)$
+is assumed.
+
+Here is the array shape that supplies the target fibers. At recursion
+depth $j$, split the unused numeric row stock as
+\[
+ [R_j]\times[B]\times[|\mathrm{GL}_d(\F_q)|]
+ \times\prod_{i=1}^{d^2}[q^{w-1}].
+\]
+After this row factor the array contains two complete $n$-atom address
+fields, an arbitrary intervening range, spectator coordinates and an
+opaque bit payload. These are
+Cartesian factors of its lexicographic index, not headers appended to
+each payload record. The $B$ factor selects independent source streams;
+the next factors index $g_0$ and the $d^2$ entries of $G_1$. Thus fixing
+a chart, a role, every spectator and all but any one target atom leaves
+the complete target fiber $[q^w]$. Good and bad chart conditions depend
+only on $g_0$, not on that target coordinate. Owned arrays have the same
+index set even when their initialized values are zero.
+
+Right routing permutes only the chart factors and preserves this product
+shape at completion. A normalizer updates a target atom by a bijection
+depending on the other factors, so its completed array again has every
+target position. At a recursive call the consumed $B$ and chart factors
+are fixed while the independent next row factor and all smaller target
+atoms remain complete. Induction proves the target-fiber property at
+every depth; it is independent of the payload values.
+
+Restriction to a good or bad chart class fixes only the current low type
+$g_0$. Packing those rows in their inherited order preserves $R_j$ as an
+independent complete Cartesian factor. Right routing acts on the current
+$g$ factor alone. Hence the next $W(w)$ factor extracted from $R_j$ remains
+uniform conditional on every ancestor chart choice. Current cover labels
+remain spectators and are not divided from query volume a second time.
+The scans extracting and restoring a chart class cost $O_N(V)$ at its
+parent and are included in that parent's node toll.
+
+An odometer enumerates the chart indices. Hold one current fiber header
+on work tapes and generate its offsets before scanning that fiber; do
+not copy chart digit strings into each record. The finite $g_0$ table,
+fixed-size rational matrices and low-type pivot choices are fixed data.
+Matrix arithmetic modulo $q^w$ uses schoolbook operations and unit
+inversion with polynomial bit cost in $w$. Ancestor headers are stack
+entries on a fixed tape set. Their depth is $O_N(\log(s+2))$; on the
+chosen root families $s=O(w^{1/\delta_0})$, so even redundant sequential
+scans and recomputation cost $C_N(w+1)^r$ for a fixed integer $r$.
+This also bounds normalizer coefficients and offset endpoints. They
+are generated once per complete target fiber, not once per payload bit.
+There is one batched recursive invocation, not a separately allocated
+program per high matrix. Since each fiber has $q^w$ positions, for every
+fixed integer $r$, there is an effective $C_{q,r}$ with
+\begin{equation}
+ (w+1)^r\le C_{q,r}q^w\qquad(w\ge1),                \label{eq:movement-7}
+\end{equation}
+so fixed-degree descriptor work is absorbed by that fiber's record scan.
+All counters use fixed-width digit lanes with ripple carries; resets and
+head returns are charged to the full fiber scan. The stack depth is at
+most $D=O_N(\log(s+2))$, and its descriptor volume is
+$O_N(w\log(s+2))$ digits. This is the only growing stack dimension and
+it is represented on a fixed number of tapes with separators; no tape is
+allocated per chart, axis, or recursion depth.
+
+For completeness, multiplication by a fixed integer unit also has an
+explicit streaming implementation. Let $Q=q^w$ and let $a>0$ be fixed
+with $(a,q)=1$. Partition $x\in[0,Q)$ into the at most $a$ intervals on
+which $j=\lfloor ax/Q\rfloor$ is constant. On the $j$th interval the
+image $y=ax-jQ$ is increasing and satisfies $y\equiv-jQ\pmod a$.
+Since $(Q,a)=1$, these residues are distinct. A fixed $a$-lane merge
+therefore emits the records in increasing $y$ order, implementing
+$x\mapsto ax\pmod Q$ in $O_a(Q)$ record moves. For the inverse, partition
+the input $y$ by the residue
+$r_j=-jQ\pmod a$; in that lane set $x=(y+jQ)/a$. Its image interval is
+$[jQ/a,(j+1)Q/a)$, so concatenating the $a$ lanes in order emits every
+$x\in[0,Q)$ once, again in $O_a(Q)$ moves. Numerator, denominator and
+sign lanes compose to implement any fixed rational unit route. The lane
+count depends only on the frozen rational coefficient. This construction
+does not implement a variable unit for free.
+
+\subsection{The stopped recurrence and actual row stock}
+
+Let $b\le1$ be the exponent of a previously compiled ordinary
+interchange supplier. Fix an admissible root width $s$ and atom width
+$w=\lceil s^{\delta_0}\rceil$, with $0<\delta_0<1$. Let $T(n,w)$ be
+the total bit time divided by the actual active volume for the covered
+body on $n$ atoms per field, averaged with the real row weights described
+after \eqref{eq:movement-5}. At a node, put $f=\lfloor n/N\rfloor$. The recursive children
+are calls to this same covered-body construction on strictly smaller
+$n$; the predecessor supplier is used only for fixed routes, base cases,
+and the fewer than $N$ remainder atoms. There are finitely many fixed
+tape families: input/output, current roles, owned work, repair/padding,
+and descriptor/parking stacks. Before a child, the parent parks only its
+current sibling records and copies the child's active stream into an
+adjacent frame. The child cannot scan parked ancestors. On return, the
+parent restores that sibling and erases the frame. With fixed $N$ and a
+fixed number of child types, all such parent operations cost $C_Nn$ per
+node, not an additional multiplier on the descendant time.
+
+The number of fresh cover/role labels per depth is
+\[
+ W(w)=B\,|\mathrm{GL}_{2N}(\mathbb F_q)|q^{4N^2(w-1)}.
+\]
+Take $D=\lceil\log_N(s+1)\rceil+1$ and choose $k$ with
+$q^k\ge W(w)^D$. Reserve $k$ high q-adic digits in the head row field.
+Pad that row field once to a multiple of $W(w)^D$; the expansion factor
+is less than two. Every descent consumes one fresh $W(w)$ factor and
+restores its labels only at the completed endpoint. The factor is divided
+from the parent stock, not recreated in a child. Since $N,q,B$ are fixed,
+\[
+ k=O_N(w\log(s+2))=o(s),\qquad
+ n=\left\lfloor {s-k\over w}\right\rfloor.
+\]
+The tail high field and all non-head fields remain spectators during the
+body. After the complete body fixes the reserved head row, crop artificial
+row padding. Use the predecessor supplier on the high head/tail pieces
+(width $k$) and the low remainder pieces (width less than $w$); only after
+these whole-field interchanges crop the original binary box. The initial
+ordinal padding of each full binary address range to the least $q^s\ge2^e$
+has factor less than $q^2$, a fixed constant.
+
+The completed-call recurrence is
+\begin{equation}
+ T(n,w)\le \sum_{j}c_j T(\lfloor n/N\rfloor,w)
+             +C_Nn+C_N(w+1)^b\quad(n\ge N),       \label{eq:movement-8}
+\end{equation}
+\begin{equation}
+T(n,w)\le C_N(w+1)^b\quad(1\le n<N).             \label{eq:movement-9}
+\end{equation}
+The $c_j\ge0$ are real normalized multiplicities, not integer call
+counts; their sum at exponent $z$ is bounded by \eqref{eq:movement-5}. Writing
+$\mu_1=\sum_jc_j/N$ and $\mu_z=\sum_jc_j/N^z$, we have
+$\mu_1,\mu_z<1$. Strong induction on $n$ proves
+\begin{equation}
+ T(n,w)=O_N\bigl(n+n^z(w+1)^b\bigr).               \label{eq:movement-10}
+\end{equation}
+Indeed, if $T(m,w)\le A m+B_0m^z(w+1)^b$ for smaller $m$, the child
+sum in \eqref{eq:movement-8} is at most
+$A\mu_1 n+B_0\mu_z n^z(w+1)^b$. Choose
+$A\ge C_N/(1-\mu_1)$ and $B_0\ge C_N/(1-\mu_z)$, enlarging both to
+cover \eqref{eq:movement-9}. The same induction applies to the real weighted sum because
+all coefficients are nonnegative.
+
+Substituting $n=O(e^{1-\delta_0})$ and $w=O(e^{\delta_0})$ into
+\eqref{eq:movement-10}, and charging the high/low cleanup with the predecessor, gives
+\begin{equation}
+ O\!\left(V\left[e^{1-\delta_0}
+ +e^{(1-\delta_0)z+\delta_0b}
+ +e^{\delta_0}\log(e+2)+1\right]\right).          \label{eq:movement-11}
+\end{equation}
+The exponents in \eqref{eq:movement-11} are kept separately: no absorption is asserted
+without comparing them. Set $\delta_0=1-z$. For $b>z$, the middle
+exponent is
+\[
+ (1-\delta_0)z+\delta_0b
+   =z^2+(1-z)b=z+(1-z)(b-z)>z,
+\]
+whereas the first exponent is $z$ and the reserve exponent is $1-z<z$.
+The logarithm in the reserve term is absorbed in the positive gap
+between $1-z$ and $z$. Thus the exact successor exponent is
+\[
+ b'=z+(1-z)(b-z),\qquad b_0=1,
+\]
+It follows that $b_j=z+(1-z)^{j+1}$. For any fixed $t>z$, a finite $j$ has
+$b_j<t$. Compile stages in order. Stage $j$ uses stage $j-1$ only for
+fixed routes, base/remainder work, and ordinary interchanges inside a
+covered node. The covered children themselves use the same stage-$j$
+construction at strictly smaller $n$, as in \eqref{eq:movement-8}; well-founded
+induction on $n$ defines that recursion. There is no call to stage $j$ at
+the atom-width parameter $w$. Therefore
+the number of stages, tapes and all constants are fixed before the input
+width varies, and this is a noncircular finite bootstrap. A zero-width
+interchange is the identity and has a direct constant-per-input-bit
+implementation, outside the positive-$n$ recurrence.

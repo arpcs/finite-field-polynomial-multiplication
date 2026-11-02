@@ -45,7 +45,11 @@ foreach ($target in $targets) {
   }
   $builtPdf=Join-Path $build 'main.pdf'
   Copy-Item -LiteralPath $builtPdf -Destination (Join-Path $paper 'paper.pdf') -Force
-  $sourceFiles=@(Get-ChildItem -LiteralPath $paper -Recurse -File | Where-Object Extension -in @('.tex','.bib','.sty','.cls'))
+  # Separately packaged versions are not dependencies of the selected paper.
+  $sourceFiles=@(Get-ChildItem -LiteralPath $paper -Recurse -File | Where-Object {
+    $_.Extension -in @('.tex','.bib','.sty','.cls') -and
+    $_.FullName.Substring($paper.Length+1) -notmatch '^versions[\\/]'
+  })
   $extraFiles=@(foreach ($tex in @($sourceFiles | Where-Object Extension -eq '.tex')) {
     $body=[IO.File]::ReadAllText($tex.FullName)
     foreach ($match in [regex]::Matches($body,'\\VerbatimInput(?:\[[^\]]*\])?\{([^}]+)\}')) {

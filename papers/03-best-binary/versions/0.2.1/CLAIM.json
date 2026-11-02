@@ -1,0 +1,88 @@
+{
+  "schema": "fastmul-research-claim/1",
+  "version": "0.2.1",
+  "prepared_on": "2026-11-02",
+  "title": "A Paired-Phase Construction for Ordinary Binary Polynomial Multiplication",
+  "author": "Árpád Csizmadia",
+  "problem": {
+    "field": "F2",
+    "variables": 1,
+    "product": "ordinary univariate polynomial product",
+    "input": "two ascending coefficient-bit lists of length n, representing degree-less-than-n polynomials",
+    "output": "all 2n-1 ascending product coefficient bits, including zeros",
+    "size_parameter": "n is the number of coefficient bits in each operand",
+    "randomization": "none",
+    "uniformity": "one deterministic machine for every n; constants and cutoff independent of n",
+    "model": "fixed finite alphabet and fixed finite number of one-dimensional sequential tapes",
+    "cost": "worst-case machine transitions, including input/output, setup, arithmetic, conversions, tape movement and workspace cleanup"
+  },
+  "bound": {
+    "notation": "O(n log(n+2)^(1-1/1302))",
+    "kappa_exact": "1/1302",
+    "logarithmic_exponent_exact": "1301/1302",
+    "comparison_direction": "higher kappa is stronger",
+    "theorem_label": "thm:main",
+    "theorem_number": 1
+  },
+  "publication": {
+    "state": "unpublished",
+    "first_public_statement_utc": null,
+    "public_commit": null,
+    "public_paper_url": null,
+    "public_source_url": null
+  },
+  "evidence": {
+    "basis": "written all-size proof with technical appendices",
+    "independent_human_review": false,
+    "end_to_end_formal_proof_supplied": false,
+    "finite_certificates_scope": "fixed root geometry, binary fitting, five-stage bank identity, orthogonal rectangle partition and strict rank moment only",
+    "asymptotic_theorem_certified_by_finite_tests": false,
+    "requested_site_evidence_after_publication": "claimed"
+  },
+  "artifacts": {
+    "paper": {
+      "path": "paper.pdf",
+      "sha256": "38A52AF41F363673ACC24BCE2D1B0C19207BEA28012604832E2DF63F3CDFDAC5",
+      "pages": 46
+    },
+    "root_source": "main.tex",
+    "technical_appendices": "appendices/",
+    "dependency_map": "DEPENDENCIES.tsv",
+    "cost_ledger": "COST_LEDGER.txt",
+    "finite_certificates": "CERTIFICATES.txt",
+    "source_pins_and_credits": "SOURCES.tsv",
+    "source_pdf_binding": "verification/build.json",
+    "integrity_command": "pwsh -File scripts/check-candidate.ps1",
+    "integrity_expected": "passed=true; mathematical_correctness_certified=false",
+    "integrity_command_scope": "offline package, source/PDF binding and recorded finite-certificate hash checks; does not verify the all-size theorem"
+  },
+  "predecessor": {
+    "site_problem_url": "https://bigospeedrun.com/other/binary-polynomial-multiplication",
+    "observed_on": "2026-11-02",
+    "kappa_exact": "1/274877906944",
+    "bound": "O(n log(n)^(1-2^-38))",
+    "evidence": "claimed",
+    "first_stated_utc": "2026-10-31T02:05:42Z",
+    "source_commit": "fb94421e3e6d9f8348a6e5b963b5a62d9c525e95",
+    "paper_url": "https://github.com/arpcs/finite-field-polynomial-multiplication/blob/fb94421e3e6d9f8348a6e5b963b5a62d9c525e95/papers/03-best-binary/paper.pdf"
+  },
+  "scope": {
+    "included": "ordinary F2 multiplication and explicit fixed-operand transpose",
+    "other_fixed_fields_updated": false,
+    "integer_multiplication_bound_claimed": false,
+    "practical_speedup_claimed": false,
+    "external_inputs": "Harvey-van der Hoeven deterministic cyclotomic host/root construction and classical fixed-tape Schonhage-Strassen multiplication for auxiliary products",
+    "local_interfaces": "finite construction, integer composition, rational movement, native endpoint tensors, local algebra and ordinary reduction in Appendices A-G"
+  },
+  "ai_assistance": {
+    "substantial": true,
+    "harness": "OpenAI Codex",
+    "recorded_review_models": [
+      "gpt-6-luna",
+      "gpt-6.1-sol"
+    ],
+    "primary_model_snapshot": "unrecorded",
+    "earlier_development_model_inventory": "not fully recorded",
+    "scope": "mathematical development, source inspection, finite-certificate code, writing and internal review; internal AI review is not external human verification"
+  }
+}

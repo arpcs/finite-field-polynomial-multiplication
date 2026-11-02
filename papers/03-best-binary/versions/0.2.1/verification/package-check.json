@@ -1,0 +1,15 @@
+{
+  "schema": "reader-package-check/1",
+  "version": "0.2.1",
+  "passed": true,
+  "payload_files": 35,
+  "explicit_allowlist": true,
+  "portable_paths_checked": true,
+  "source_closure_checked": true,
+  "claim_scope_and_exact_score_checked": true,
+  "publication_url_reachability_checked": false,
+  "mathematical_correctness_certified": false,
+  "mathematical_program_executed": false,
+  "network_used": false,
+  "failures": []
+}

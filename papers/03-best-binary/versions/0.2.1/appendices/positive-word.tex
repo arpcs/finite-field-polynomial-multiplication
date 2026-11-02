@@ -1,0 +1,163 @@
+\section{A positive finite-field word for the binary endpoint tensor}
+\label{app:positive-word}
+
+The address field $\mathbb F_3$ above is not the phase field. For the
+constant word use
+\[
+ E=\mathbb F_2[t]/(t^4+t+1),\qquad \eta=t^5=t^2+t.
+\]
+The quartic has no root in $\mathbb F_2$ and remainder $1$ modulo the
+only irreducible quadratic $t^2+t+1$, so it is irreducible. Thus
+$E=\mathbb F_{16}$, it contains $\mathbb F_4=\mathbb F_2(\eta)$, and
+$\eta^2+\eta+1=0$. The four-state phase letter is
+\[
+ A=(\eta I_3+\eta^2J_3)\oplus[1]=C\oplus[1].
+\]
+It acts separately on the two $\mathbb F_4$ coefficient planes in
+$E=\mathbb F_4\oplus t\mathbb F_4$. Its inverse is $A^2$.
+The inverse-phase wrapper on these planes is
+\begin{equation}
+ \widehat\sigma(a+tb)=a^2+t b^2\quad(a,b\in\mathbb F_4),       \label{eq:positive-17}
+\end{equation}
+which applies the $\mathbb F_4$ Frobenius to each plane and fixes the
+codec basis element $t$. It is $\mathbb F_2$-linear and is not ordinary
+$\mathbb F_{16}$ squaring.
+In the polynomial basis $(1,t,t^2,t^3)$ it is the explicit map
+\[
+ (c_0,c_1,c_2,c_3)\longmapsto
+ (c_0+c_2+c_3,\ c_1+c_3,\ c_2,\ c_3).
+\]
+Indeed $a_0=c_0$, $a_1=c_2+c_3$, $b_0=c_1+c_2+c_3$ and
+$b_1=c_3$ in $a=a_0+a_1\eta$, $b=b_0+b_1\eta$.
+Three in-place XORs implement it, and repeating them gives the identity.
+For $\lambda\in\F_4$,
+$\widehat\sigma(\lambda z)=\lambda^2\widehat\sigma(z)$.
+Consequently coefficientwise conjugation gives
+\[
+ \widehat\sigma C\widehat\sigma
+   =\eta^2I_3+\eta J_3=C^2=C^{-1},
+ \qquad
+ \widehat\sigma(C^{\otimes f})\widehat\sigma
+   =(C^{-1})^{\otimes f}.
+\]
+This holds on arbitrary $E$-valued inputs. The two passes cancel on
+idle or ineligible coordinates; either pass alone can change their
+coefficient values. Both passes act within the existing four-bit lanes,
+in $O(V)$ time around one child. Ordinary $E$ squaring used on both
+sides would fail even on an idle value $t$, sending it to
+$t^4=t+1$ instead of $t$. The semilinearity assertion is only for
+$\F_4$ scalars, not arbitrary $E$ scalars.
+
+Here is the explicit word construction. Put $a=\eta^2$ and $b=\eta$;
+use column vectors and rightmost-first composition. Then
+\[
+ A^3=I,\quad A^{-1}=A^2,\quad
+ u=(1,a,a,0)^T,\quad v=(1,b,b,0)^T,\quad
+ P=AE_{11}A^{-1}=uv^T,
+\]
+with $v^Tu=1$, hence $P^2=P$. Let
+\[
+ D=\operatorname{diag}(t,1,t+1,1),\quad Q=DPD^{-1}=x_0y_0^T,
+\]
+where $x_0=(t,a,a(t+1),0)^T$ and
+$y_0=(t^{-1},b,b/(t+1),0)^T$. Direct products give
+\begin{equation}
+ v^Tx_0=0,\qquad y_0^Tu=\kappa
+ =\frac{t^2+t+1}{t(t+1)}\ne0,
+ \qquad PQ=0,\quad QP=\kappa x_0v^T.                 \label{eq:positive-18}
+\end{equation}
+For idempotents $P,Q$ with $PQ=0$,
+\begin{equation}
+ [I+cP,I+dQ]=I+\frac{cd}{1+c}QP.                    \label{eq:positive-19}
+\end{equation}
+This follows by using $(I+cP)^{-1}=I+c(1+c)^{-1}P$ and
+$QPQ=0$. With $c=d=\eta^2$, $cd/(1+c)=1$. Thus
+\begin{equation}
+\begin{aligned}
+ G&=A\operatorname{diag}(\eta,1,1,1)A^{-1}=I+\eta^2P,\\
+ H&=DGD^{-1}=I+\eta^2Q,\\
+ T_0&=GHG^{-1}H^{-1}=I+\kappa x_0v^T.
+\end{aligned}\label{eq:positive-20}
+\end{equation}
+Each of $G,H,G^{-1},H^{-1}$ uses three forward $A$ letters after
+replacing inverse $A$ by $A^2$, so $T_0$ uses 12.
+
+The remaining conjugations isolate an elementary matrix. Set
+\[
+ B=\operatorname{diag}(1,\eta,\eta,1),\quad
+ x=(t,1,t+1,0)^T,\quad w=(1,1,1,0)^T.
+\]
+Then $T_1=BT_0B^{-1}=I+\kappa xw^T$ (12 $A$ letters). Let $P_{12}$
+swap coordinates 1 and 2. Since $w$ is fixed and $w^TP_{12}x=0$,
+\begin{equation}
+ T_2=T_1P_{12}T_1P_{12}^{-1}
+   =I+\kappa(t+1)(e_1+e_2)w^T                       \label{eq:positive-21}
+\end{equation}
+uses 24 $A$ letters. With $D_3=\operatorname{diag}(1,1,\eta,1)$,
+\begin{equation}
+ T_3=T_2D_3T_2D_3^{-1}
+   =I+\kappa(t+1)\eta(e_1+e_2)e_3^T                \label{eq:positive-22}
+\end{equation}
+uses 48; the two cross pairings vanish and the row sum is
+$(1+\eta^{-1})e_3^T=\eta e_3^T$. With
+$D_1=\operatorname{diag}(\eta,1,1,1)$,
+\begin{equation}
+ T_4=T_3D_1T_3D_1^{-1}
+   =I+\kappa(t+1)E_{13}                             \label{eq:positive-23}
+\end{equation}
+uses 96; the cross pairings vanish and the column factor is
+$1+\eta=\eta^2$. Put $\mu=\kappa(t+1)\ne0$; then
+\begin{equation}
+ T_5=\operatorname{diag}(\mu^{-1},1,1,1)
+       T_4\operatorname{diag}(\mu,1,1,1)=I+E_{13}.  \label{eq:positive-24}
+\end{equation}
+All conjugating factors are invertible monomial matrices. Coordinate
+permutations produce every $U_{ij}=I+E_{ij}$ with the same 96 forward
+$A$ letters. This is an explicit formula, not an uncomputed word search.
+
+Finally write $H_2=US$, with $U=I+E_{12}$ and $S$ the two-coordinate
+swap. In ordered coordinates $(00,01,10,11)$, put
+\[
+ P_{\rm first}=(1\ 3)(2\ 4),\qquad
+ P_{\rm second}=(1\ 2)(3\ 4).
+\]
+Then, using the four explicit elementary-matrix words,
+\begin{equation}
+ H_2\otimes H_2
+ =U_{13}U_{24}P_{\rm first}U_{12}U_{34}P_{\rm second}.       \label{eq:positive-25}
+\end{equation}
+There are four $U_{ij}$ factors, hence $4\cdot96=384$ forward $A$
+letters; the remaining factors expand to 392 invertible monomial
+letters, for 776 total. The completed matrix has entries in $\mathbb F_2$.
+As an $\mathbb F_2$-linear map on the four binary coordinates of an
+$E$-symbol, it applies $H_2\otimes H_2$ independently to each coordinate
+plane. Thus a binary $0/1$ embedding returns to $0/1$, and any zero lane
+used for padding returns to zero at the completed word. An arbitrary
+$E$-valued input need not return to the scalar subfield. Intermediate
+$E$ lanes must not be cropped.
+When four arbitrary payload bits are packed into one $E$ symbol,
+all four coefficient planes remain data; only extra zero bits from
+the final partial group are removed. No projection $E\to\F_2$
+is applied to such a packed symbol.
+
+Pairing $2h$ identical native endpoint axes and tensoring this fixed word
+reduces their algebraic action to $A^{\otimes h}$ letters and fixed
+monomial letters. The permutation part of each monomial is in
+$\mathrm{AGL}(2,\mathbb F_2)=S_4$: its NOT/CNOT address shears and the
+product of its $h$ diagonal $E$ scalars are charged by the separately
+supplied native mask/routing and record-scan interfaces. The active-sector
+role construction reduces the $A^{\otimes h}$ letters. The native
+large-even-radix endpoint appendix supplies their tape price. No binary
+$2^k$-axis H2 bound is asserted here; that requires a distinct binary
+mask-routing argument and is not needed for the manuscript's native
+endpoint interface.
+For precision, write a monomial as $M_{\pi(d),d}=m_d$, with
+$m_d\in E^*$. Apply the coefficient $\prod_i m_{d_i}$ at its current
+\emph{source} address, then route by $\pi^{\otimes h}$. Equivalently
+an output-address scan would use $\prod_i m_{\pi^{-1}(e_i)}$.
+Using the source-indexed list unchanged after routing is generally
+incorrect. Tensoring the fixed word is letterwise:
+$(L_1\cdots L_{776})^{\otimes h}
+ =L_1^{\otimes h}\cdots L_{776}^{\otimes h}$.
+Thus there are 384 tensor phase calls, not 384 separate calls per axis.
+

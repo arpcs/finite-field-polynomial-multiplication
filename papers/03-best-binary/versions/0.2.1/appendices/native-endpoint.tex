@@ -1,0 +1,491 @@
+\section{Native endpoint tensors on ordinary tape addresses}
+\label{app:native-endpoint}
+Let $\Omega=\prod_{i=1}^{a}[n_i]$, $M=\prod_i n_i$,
+$L=\lceil\log_2(2M)\rceil$, and $V=MD$, where $D\ge1$ is the
+number of payload bits per record. The radices are even and satisfy
+$L^3\le n_i\le R$, $\log R=\operatorname{polylog}L$.
+Write $\tau=t$ for the supplied interchange exponent and
+$\gamma=1/(2-\tau)$ for the aggregate rectangle exponent.
+All coordinates below are address indices, rather than fields appended
+to every record. The tape volume counts their complete Cartesian array.
+\subsection{Weighted two-bank tile mask}
+\label{sec:weighted-native-mask}
+
+For an integer pair $(x,w)$, define the four-update word $P(a,b,s)$ by
+the chronological operations
+\[
+\begin{aligned}
+ x&\mathrel{+}= [w\equiv b\pmod2], &
+ w&\mathrel{+}=s[x\equiv a\pmod2],\\
+ x&\mathrel{-}= [w\equiv b\pmod2], &
+ w&\mathrel{-}=s[x\equiv a\pmod2].
+\end{aligned}
+\]
+The parity tests are evaluated at that step.  Set
+$p=P(1,1,+1)$ and $q=P(1,0,-1)$.  A direct check on the four parity
+tiles gives $p=(B\ C\ D)$ and $q=(A\ B\ D)$, with
+$A=(0,0),B=(1,0),C=(0,1),D=(1,1)$.  Thus the chronological word
+$p^{-1}$ followed by $q$ is
+\[
+ (x,w)\longmapsto
+ \bigl(2\lfloor x/2\rfloor+(1-(x\bmod2)),w\bigr).
+\]
+For a frozen control bit $g$, mask every one of these eight elementary
+updates by $g$.  The resulting word is identity for $g=0$ and the displayed
+bit flip for $g=1$.  In particular it restores the whole integer $w$,
+not merely its parity.  Each of the eight increments is an ordinary integer update.
+
+Now take $u$ digit pairs with even radices $n_i,m_i$, all at least $L^3$,
+and ordinary numeric orders
+\[
+ X=\sum_{i=0}^{u-1}x_iA_i,\quad A_i=\prod_{j<i}n_j;
+ \qquad
+ W=\sum_{i=0}^{u-1}w_iB_i,\quad B_i=\prod_{j<i}m_j.
+\]
+Each $g_i$ is computed solely from frozen address controls disjoint from
+$X,W$ and the dock below; it cannot depend on a bank while that bank is
+being updated.  In one $X$-update of the eight-step word, let
+$\delta_i\in\{-1,0,1\}$ be its local signed increment, determined only
+by $w_i\bmod2$, $g_i$, and the public word position.  Execute the bank
+update by the single weighted integer increment
+\[
+                 \Delta_X=\sum_i A_i\delta_i.
+\]
+For a $W$-update, define $\epsilon_i$ from $x_i\bmod2$ and set
+\[
+                 \Delta_W=\sum_i B_i\epsilon_i.
+\]
+The first offset is independent of $X$ on each fixed $(W,\text{controls})$
+fiber; the second is independent of $W$ on each fixed
+$(X,\text{controls})$ fiber.  Hence each update is a cyclic line rotation
+of its target numeric bank, not a gather of its component digits.
+
+To implement it in the fixed-tape model, reserve a separate binary dock
+$Z$ of width $c_0=\max(a,b)$, where
+$a=\lceil\log_2\prod_i n_i\rceil$ and
+$b=\lceil\log_2\prod_i m_i\rceil$.  Pad each target range once to
+$2^a$ or $2^b$ (factor below two), retaining its true validity predicate.
+For a selected native prefix, its numerical range is a genuine Cartesian
+factor, not low binary bits of the flattened whole bank. If it is the
+high factor $[N_u][N_{\rm rest}]$, append entire opposite-factor rows;
+if it is the low factor $[N_{\rm rest}][N_u]$, append the invalid values
+in every low-factor block. In both cases the pad is below twice the
+original volume and costs one sequential scan with amortized counters.
+All other coordinates are opaque spectators. Only this selected factor
+is exchanged through the actual gap. For an $X$-update, interchange its $a$-bit field with an $a$-bit slice of
+$Z$ using the supplied equal-chunk theorem.  On the valid prefix
+$0\le X<\prod n_i$, rotate modulo the true range by $\Delta_X$; copy the
+invalid tail pointwise.  If $W$ is invalid, use offset zero on the valid
+$X$ prefix.  Interchange back.  The $W$-update is symmetric, forcing zero
+offset when $X$ is invalid.  Every exchange restores arbitrary dirty dock
+contents.  Consequently every privately padded state is fixed pointwise
+by each elementary update and may be cropped only after the completed
+word.  No unequal-side transpose across an arbitrary gap is presumed.
+Validity follows the \emph{logical target}: after docking $X$, test
+its value in the dock, not the old physical $X$ position, which now
+contains arbitrary dock data. The other bank remains in place.
+The internal numerical pads of each SWAP call have already been
+cropped when that call returns, before this valid-prefix rotation.
+
+Put $N_X=\prod n_i$, $N_W=\prod m_i$. Suppressing Cartesian
+spectators, the original native domain is
+$\Omega_0=[N_X]\times[N_W]$ and the privately padded domain is
+$\widetilde\Omega=[2^a]\times[2^b]$.
+Every complete docked update fixes
+$\mathcal I=\widetilde\Omega\setminus\Omega_0$ pointwise.
+For the concrete schedule below keep these private pads through
+the repair, then crop them after the exact mask is complete.
+
+On $\Omega_0$, define the good set $G_0$ by quotient margins
+\[
+ 10\le\lfloor x_i/2\rfloor\le n_i/2-11,\qquad
+ 10\le\lfloor w_i/2\rfloor\le m_i/2-11\quad\text{for all }i.
+\]
+Each local integer moves by at most four during the eight updates, so on
+this set no digit overflows and the weighted updates equal the independent
+tile words.  The ideal completed map toggles only $x_i$'s endpoint bit;
+it preserves every quotient label and fixes $W$.  It therefore preserves
+$G_0$ and $\mathcal B=\Omega_0\setminus G_0$ separately.
+Extend the ideal map as identity on $\mathcal I$. The packed word
+$P$ agrees with that extension on $G_0\cup\mathcal I$, and both
+are permutations of $\widetilde\Omega$. Hence
+\[
+P(\mathcal B)=\widetilde\Omega\setminus P(G_0\cup\mathcal I)
+=\widetilde\Omega\setminus T(G_0\cup\mathcal I)=T(\mathcal B)=\mathcal B.
+\]
+The union bound gives density on the \emph{original native domain}
+\[
+ \delta=\frac{|\mathcal B|}{|\Omega_0|}
+ \le40\sum_i(n_i^{-1}+m_i^{-1})=O(u/L^3).
+\]
+The repair marker is explicitly
+\[
+ [X<N_X]\wedge[W<N_W]\wedge[\text{a quotient margin fails}].
+\]
+It is false on $\mathcal I$, even if private padding occupies a
+constant fraction of $\widetilde\Omega$. Do not decode an invalid
+numeric bank as a wrapped native digit tuple.
+Extract only marked records at their current padded output addresses $y$. Recover
+their sources $x=P^{-1}(y)$ by reversing the eight packed updates, then
+compute the ideal endpoint destination $T(x)$. These are public address
+calculations with frozen controls; no old key is assumed to accompany
+the payload. Keys are destination ordinals in the same current padded
+layout. Stably sort these destination keys and refill the same bad
+slots.  This corrects every exceptional address and discards no payload.
+The repair costs $O(\delta VL+M_{\rm rec}L^C)$ for a fixed $C$, where
+$M_{\rm rec}$ is the native record count before these private bank
+pads. The padded record count and bit volume are each below four
+times their native values, so full marking/refill scans cost $O(V)$.
+For clarity, with $K\le\delta M_{\rm rec}$ bad records, use stable
+binary radix sorting on the $b=O(L)$ key bits. In each pass copy one
+fixed-width key/payload item to a staging tape, remember the selected
+bit, rewind, and copy to the appropriate zero/one bucket. Concatenate
+the buckets and rewind for the next pass. A fixed number of tapes
+and $O(K(R_{\rm op}+b))$ steps suffice per pass, including all item
+and file returns. Counter updates are amortized over the scanned
+length, and resetting a counter costs at most the following item
+or block length. The bound is therefore
+$O(KL(R_{\rm op}+L))$, plus explicitly charged polynomial address
+work and full-array marking/refill scans. At refill, consume the next
+sorted item exactly at a marked bad slot;
+$P(\mathcal B)=T(\mathcal B)=\mathcal B$ proves the
+order without a full-key comparison at every good record. The
+validity-and-margin predicate above marks $\mathcal B$ directly, so no extra mask lane is added
+to the retained field codec. The exponential opaque width
+below absorbs the key-only and metadata terms. The tile word uses
+a constant number of dock interchanges and rotations, hence costs
+$O(V(u\log R)^\tau+V)$.  In the application below, the bundled opaque
+record width is exponential in $L$, so it absorbs $M_{\rm rec}L^C$; also
+$\delta L=O(u/L^2)=O(1)$.  The resulting mask and its inverse cost
+\[
+                       O(V(u\log R)^\tau+V).
+\]
+After refill the padded map is exactly $T$ on $\Omega_0$ and identity
+on $\mathcal I$, with the dock restored. Crop only the private $X,W$
+numeric tails now, returning the original native ranges before any
+enclosing phase child. A caller's Fourier dummy $p_i$ in a native
+range $n_i=p_i+1$ is \emph{inside} that range and is not such a tail;
+it remains part of the native kernel. Role-row, suffix and coefficient
+bit pads also retain their separate outer crop boundaries below.
+
+\subsection{Disjoint banks and available opaque lanes}
+Write $x_i=2q_i+b_i$. The desired local matrix is $H$ on
+$\{2q_i,2q_i+1\}$ for every $q_i$; hence it is $H^{\otimes a}$
+on the endpoint bits at fixed quotient labels. This is an identity
+on fibers of the existing native array, not an uncharged regrouping.
+
+Put $\ell_R=\lceil\log_2R\rceil$ and
+\[
+ h=\min\{\lfloor a/16\rfloor,\lfloor L/(40\ell_R)\rfloor\}.
+\]
+For each selected block of at most $2h$ axes, one aggregate rectangle
+move places its native interval first. Take the selected endpoint
+planes as $X,Y$, and three disjoint $h$-axis banks from the other
+axes as $Q,Z_0,W$. The remaining axes form a spectator suffix.
+The $j$th digit is $2X_j+Y_j$; the two banks need not be physically
+interleaved. The banks $Q,Z_0$ are dirty selectors, and $W$ is the
+separate tile auxiliary. In a shear updating any of these banks,
+its controls exclude the target, $W$ and the binary dock. In particular
+the source-value toggle of $Q$ reads $X,Y$, the toggle of $Z_0$
+reads $X,Y,Q$, and a target transposition reads the other endpoint
+plane and $Z_0$. Each completed echo restores both dirty selectors.
+
+Pad the whole spectator suffix once to its next binary range, with
+factor below two. Its index width $s$ satisfies $s\ge7L/8-O(1)$,
+because $5h\log_2R\le L/8$. For the fixed final body of
+Lemma~\ref{lem:body}, including its full finite phase cover, reserve
+\[
+ r=\left\lceil\log_2 B^{\lceil\log_N(h+2)\rceil}\right\rceil
+       =O_N(\log(h+2))
+\]
+high suffix bits for independent numeric rows. Pad that row range
+once to a multiple of $B^{\lceil\log_N(h+2)\rceil}$; the factor is
+below two. Reserve the next
+$c_0=\max_G\lceil\log_2|G|\rceil\le h\log_2R+1$
+bits as a dock for $G\in\{X,Y,Q,Z_0,W\}$. The low suffix and
+original payload together have opaque width
+\[
+ R_{\rm op}=2^{s-r-c_0}D\ge2^{4L/5}D
+\]
+above an effective fixed cutoff. Move only the $r$ high row bits to
+the front, at $O(Vr)$ cost, once per completed block. After the row
+pad the numeric range need not be binary; its $r+1$-bit counter is
+metadata, not a further borrowed coordinate. Crop the numeric row
+pad before undoing these digit moves, then crop the whole suffix
+only after the completed block has fixed it.
+
+Here and below an aggregate rectangle is padded as a whole, exchanged
+by Lemma~\ref{lem:movement}, and cropped after its full endpoint.
+The volume factor is below four. No individual native axis is padded
+to a power of two. For a short selected block use the same available
+banks at its smaller width. Since $h\le a/16$, its required auxiliary
+axes are disjoint from the selected ones.
+
+\subsection{Address generation and exact sparse repair}
+The instruction descriptors consist of fixed body-slot numbers, active
+rank lists, disjoint matchings, group placements, and a list of
+$O_N(\log h)$ inherited mask predicates. Decode the five bank indices
+by schoolbook division on $O(L)$-bit integers. Store rank lists in
+$O(L)$ records of $O(L)$ bits; a lookup is a sequential scan, not
+unit-cost indexing. A fixed-slot row operation pairs ranks
+$(i-1)f+j$ and $(k-1)f+j$ for $1\le j\le f$. Interval placements
+are obtained by tracing their cycles and using two cycle reflections.
+The loops have bounds $O_N(L)$ or $O_N(L^2)$ and use binary arithmetic
+of polynomial cost. Thus one fixed polynomial $C_NL^c$ bounds the
+generation of any current key, selector, inverse packed update and
+source scalar. No expanding Boolean expression is substituted for
+the list of inherited predicates.
+
+The width $R_{\rm op}$ dominates this polynomial beyond an effective
+fixed cutoff, even when $D=1$. With $K$ exceptional opaque records
+and $b=O(L)$ key bits, a staged stable radix sort costs
+$O(Kb(R_{\rm op}+b))$, plus $O(V)$ full marking/refill scans and
+$M_{\rm rec}C_NL^c$ metadata. The tile bad fraction is $O(u/L^3)$,
+so its payload repair is $O(Vu/L^2)=O(V)$. The active-prefix bad
+fraction below is at most $(L+2)^{-128}$ by increasing its fixed
+prefix constant. Its full-payload repair is also $O(V)$. Counter
+resets, bucket rewinds, erasure and head returns are included in
+these scans. Repair keys are computed from output addresses by
+the inverse packed map, never by an unrecorded input pointer.
+
+\subsection{Restored selectors and active-rank permutations}An $A$-digit has states $0,1,2$ active and state $3$ idle. Represent
+$d_i=2X_i+Y_i$. For any active mask $S$, $A^{\otimes h}$ restricts to
+$C^{\otimes |S|}$ on the active coordinates and identity on idle
+coordinates. All $4^h$ addresses remain in the stream; no sector is
+gathered out.
+
+The mask-routing identities use dirty address fields. Let $T_Z$ apply
+one fixed transposition of active symbols where dirty selector bit
+$Z_i=1$. It preserves the active mask $S$, but arbitrary dirty $Z$
+can make it change paired sources as well as targets. Source-value
+predicates are recomputed only after the completed $T_{J\wedge Q}$
+word below, which changes matched targets only. For a mask-only selector
+$J(S)$ the chronological word
+\begin{equation}
+ Z\mathrel{\oplus}=J(S),\quad T_Z,\quad
+ Z\mathrel{\oplus}=J(S),\quad T_Z                         \label{eq:router-11}
+\end{equation}
+restores arbitrary initial $Z$ and equals $T_J$. With a second dirty
+field $Q$, use $J(S)\wedge Q$ in \eqref{eq:router-11}. If $F_a(d)_i$ says the paired
+source of target $i$ currently has trit $a$, then the completed
+$T_{J\wedge Q}$ changes targets only and preserves all paired sources.
+Consequently
+\begin{equation}
+ Q\mathrel{\oplus}=F_a(d),\quad T_{J\wedge Q},\quad
+ Q\mathrel{\oplus}=F_a(d),\quad T_{J\wedge Q}              \label{eq:router-12}
+\end{equation}
+restores arbitrary $Q,Z$ and implements the target transposition
+conditioned on source value $a$. The source/target matching must be
+disjoint; this is what makes the second $F_a$ equal to the first at the
+completed inner-operation boundary. A third dirty field is reserved for
+the weighted tile auxiliary. The supplied weighted-mask lemma implements
+each frozen XOR in \eqref{eq:router-11}--\eqref{eq:router-12} with its separate auxiliary restored;
+its exact sparse boundary repair and interchange cost are not reproved
+here.
+
+The two active transpositions have explicit bit circuits
+\begin{equation}
+ (0\ 1):\ Y\mathrel{\oplus}=Z\wedge\neg X,
+ \qquad
+ (1\ 2):\ X\mathrel{\oplus}=Z\wedge Y;\quad
+ Y\mathrel{\oplus}=Z\wedge X;\quad
+ X\mathrel{\oplus}=Z\wedge Y.                           \label{eq:router-13}
+\end{equation}
+They are constant sequences of frozen-control XOR shears. Applying the
+two transpositions in chronological order $(1\ 2)$ then $(0\ 1)$ adds
+one to an active trit; reverse order subtracts one. Conditioning on
+source trit and composing these shears realizes a matching SUM
+\begin{equation}
+ \text{target}_i\gets\text{target}_i+\text{source}_i\pmod3.
+                                                               \label{eq:router-14}
+\end{equation}
+Three SUMs plus a negation implement a coordinate swap. All dirty
+selectors and the tile auxiliary return to their arbitrary incoming
+values after each completed operation.
+
+For a node acting on the first $e$ active ranks, restrict controls and
+endpoints to the first
+\[
+ u=\min\{h,\lceil C_0(e+\log(L+2))\rceil\}
+\]
+physical positions, where $L\ge h$ is the ambient address-width bound
+in the native implementation. If fewer than $e$ active positions occur there,
+define the operation to be identity; otherwise all required ranks are
+present. Restrict every raw $T_Z$ transposition and both selector-bank
+toggles to this prefix, not just the completed selector $J$. Insert
+inherited eligibility into $J(S)$; it is not a frozen control on an
+inner bit shear whose target can change $S$ temporarily. Individual
+inner shears still read only the other bit plane and the selector bank.
+Their completed transposition preserves $S$. The comparison with the
+full intended route is made only after a \emph{complete logical}
+mask-selected transposition, source-conditioned operation \eqref{eq:router-12}, SUM
+or recursive basis placement on the first $e$ active ranks, with all
+its dirty selectors restored. Write this
+prefix implementation as $P_u$ and its intended permutation as $T$.
+On a good eligible prefix all intended endpoints are inside it, so
+$P_u=T$. On a bad or ineligible prefix the selector $J$ is zero:
+the two raw transpositions in \eqref{eq:router-11} cancel, each inner operation is
+identity, and the two source-predicate toggles in \eqref{eq:router-12} cancel too.
+Thus the completed $P_u$ is identity there. These statements do not
+require raw dirty $T_Z$ to preserve paired sources.
+
+One must not repair an internal truncated $T_Z$ to its full-$h$
+version: with $h=2,u=e=1$, $d=(0,0)$ and $Z=(0,1)$, the prefix is
+good but full $T_Z$ for $(0\ 1)$ changes the second digit and truncated
+$T_Z$ does not. This toy example embeds for any actual $u<h$ by
+putting the dirty selector immediately after the prefix and
+using active digits throughout the prefix.
+That off-prefix action is intended to cancel in the
+outer word. Nor is the prefix bad set invariant after an inner bit
+shear: the first shear of $(1\ 2)$ sends idle $(X,Y)=(1,1)$ to active
+$(0,1)$. Its tile repair uses a different invariant, as proved in the tile construction above.
+The separate top-level digit-group placement can reach ranks beyond
+$e$; it retains its full-$h$ root-level charge and is not justified
+by this width-$e$ prefix argument.
+In the uniform $[4]^h$
+address space the prefix active count is
+binomial with mean $3u/4$. For $u\ge2e$ and $u<h$, a Chernoff bound gives
+\begin{equation}
+ \Pr\{B_u<e\}\le e^{-u/24}.                            \label{eq:router-15}
+\end{equation}
+For $u=h$, eligibility $|S|\ge e$ leaves no exceptional eligible mask.
+Both $T$ and the completed logical $P_u$ preserve $S$, so the
+exceptional set
+$E_{\rm inherited}(S)\wedge[|S|\ge e]\wedge[B_u<e]$ is invariant.
+Its whole-universe fraction is bounded by the unconditional binomial
+estimate; no conditional distribution given eligibility is assumed.
+At that completed boundary, sorting the exceptional records by
+$T(P_u^{-1}(y))$ and refilling their slots repairs it exactly;
+the maps agree everywhere else. No sector is dropped. The full role recursion always
+stores the complete $[4]^h$ address universe, and its row split depends
+only on the independent role field, never on $S$. Thus every child
+retains the same mask distribution and off-eligibility maps are identity.
+Consequently, on every sector $S$, the role program applies
+$C^{\otimes |S|}$ to its active digits and identity to its idle digits;
+the direct sum over all masks is exactly $A^{\otimes h}$.
+
+The prefix correction above belongs to the completed logical routing
+permutation, including $T$ and $T^{-1}$ below, after all its source
+conditioning and before a linear combination forms a phase. An
+internal $T_{J\wedge Q}$ is not separately corrected when its surrounding
+source predicate was prefix-truncated too. It never sorts the output
+of the non-permutation matrix $C$.
+
+At selected width one, let $T$ cyclically permute that eligible active
+trit and be identity on ineligible masks. The mask-only transpositions
+above implement $T$ and $T^{-1}$. Three temporary array copies and a
+pointwise linear combination compute
+$I+\eta^2(T+T^{-1})$, which is $C$ on the selected trit. Off eligibility
+the two identical terms cancel, leaving the identity. The copies,
+returns and cleanup add $O(V)$ at this base call. Norm two uses its
+inverse via the fixed coefficient wrapper described below.
+
+\subsection{The paired phase on the full address universe}
+For $e$ paired coordinates, keep the first $2e$ active trits in
+two ordered halves. Every child inherits its parent's mask predicate;
+its domain test $|S|\ge2e$ is conjoined with that predicate. A
+prefix failure is repaired at the completed logical routing boundary
+as above, rather than permanently disabling the ideal phase.
+
+The rank-one kernel has an explicit nine-term formula. Summing the
+inverse Fourier expression first over one frequency gives
+\[
+ K_{I_1}=\sum_{a,b\in\F_3}\eta^{-ab}T_{(a,b)},\qquad
+ (T_{(a,b)}f)(x,y)=f(x+a,y+b).
+\]
+Indeed $\sum_{\zeta}\eta^{\zeta(\xi-y)}$ is one for $\xi=y$ and
+zero otherwise in characteristic two. The coefficients sum to one.
+Use nine owned copies, the completed selected translations and a
+pointwise linear combination. Off the inherited gate every
+translation is identity, so the same formula is identity there.
+The copies, returns and erasure cost $O(V)$.
+
+Freeze the final body with $a_*=P/B<N^z$ for a fixed $z<\tau$.
+Its charts are finite products of ternary row additions, negations
+and swaps, lifted by the column identity. The restored selector
+permutations above implement these exact disjoint-slot matchings.
+For $e=Nf+r$, $0\le r<N$, first align the $Nf$ coordinates in
+each half, keeping both $r$-coordinate remainders together. This is
+a permutation of the original first $2e$ active ranks, implemented
+by two reflections of its cycles. Execute the body on the $Nf$
+pairs, place and process the $r$ remaining pairs by bounded direct
+kernels, and undo the alignment.
+
+The independent row stock was prepared once. Each child consumes
+one factor $B$ and receives exactly $V/B$ bits, including every
+mask, spectator, codec lane and retained root pad. Each of the $P$
+queries, including owned queries, is charged on that volume. Owned
+initialization, scalar maps and cleanup add $O_N(V)$ at the node.
+Before a child, push only the other current sibling streams onto a
+parking stack and copy its active stream. On return pop those
+siblings from right to left into their saved intervals. The parent
+boundary is marked; no descendant head crosses into a parked
+ancestor. A fixed set of input/output, role, owned, padding/repair
+and stack tapes suffices. Each of the fixed $P$ push/pop operations
+costs $O_N(V)$ at its parent, not a multiplier on descendant time.
+
+Consequently the time per active input bit satisfies, for one fixed
+polynomial $Q$ in $\log(L+2)$,
+\[
+ F(e;L)\le a_*F(\lfloor e/N\rfloor;L)
+       +Q(L)((e+\log(L+2))^\tau+Q(L)).
+\]
+At fixed bounded $e$ use the direct kernels. Unrolling the $e$-dependent
+toll has ratio $a_*/N^\tau<1$. Width-independent tolls total
+$O((e+1)^z\operatorname{polylog}L)$, with an extra logarithm if
+$a_*=1$. Thus
+\[
+ F(e;L)=O((e+1)^\tau\operatorname{polylog}L).
+\]
+No child repeats root layout, padding or lane encoding, and each
+temporary selected-factor pad is cropped before entering a child.
+
+On four active trits, the chart $J$ in Lemma~\ref{lem:endpoint}
+gives
+$U_{J^T}C^{\otimes4}U_{J^T}^{-1}=K_{I_2}$.
+For each mask with $b$ active trits, write $\lfloor b/4\rfloor$ in
+base $N$. Its digits specify at most $N-1$ consecutive groups of
+$4N^j$ active ranks per level. A group placement is two cycle
+reflections; it costs $O(V(h\log R)^\tau\operatorname{polylog}L)$.
+Apply the chart, one paired rank-$2N^j$ job, its inverse chart and
+the inverse placement. Process the at most three remaining trits
+by direct $C$ kernels. There are $O_N(\log(h+2))$ levels and the
+geometric sum of paired costs is $O(V(h+1)^\tau\operatorname{polylog}L)$.
+All grouping predicates depend only on the mask, so their description
+does not enumerate its exponentially many values. The completed map
+on every mask is $C^{\otimes b}$ on its active trits and identity on
+its idle trits. The direct sum is exactly $(C\oplus[1])^{\otimes h}$.
+
+\subsection{Completion of the binary endpoint tensor}
+Appendix~\ref{app:positive-word} gives a fixed word of $384$ forward
+phase letters and $392$ monomial letters over $\F_{16}$ whose matrix
+is $H\otimes H$. Tensor its letters across the selected $h$ pairs,
+rather than running a separate word per axis. Every monomial
+permutation on four states is affine on two binary bits and uses
+the weighted masks. If $M_{\pi(d),d}=m_d$, generate
+$\prod_jm_{d_j}$ at the source address, apply it and then route by
+$\pi$; the source-indexed scalar list is not reused at the output
+address. Its generator has the polynomial cost paid above.
+
+Encode the $D$ payload bits once into groups of four binary coefficient
+planes, with at most three zero bits of codec padding per record. The
+volume factor is at most four and is paid only at block entry.
+The four actual coefficient planes and all borrowed rows, docks and
+opaque lanes survive the complete word. The completed matrix is
+binary and fixes the borrowed coordinates, so zero codec padding
+returns to zero and may then be cropped. The high row pad crops
+before undoing its bit moves; the suffix pad crops afterwards.
+Private mask pads cropped at their earlier completed boundaries do
+not propagate into the phase recurrence. All crops and returns have
+their charged scans.
+
+Since $a\le L/(3\log_2 L)$, blocks of at most $2h$ cover the axes
+in $\operatorname{polylog}L$ passes: either $h\ge a/32$ or
+$h\ge L/(80\ell_R)$. The finite remaining range has a direct
+branch. Aggregate layouts cost $O(VL^\gamma)$ per block; phase and
+monomial work costs $O(VL^\tau\operatorname{polylog}L)$. Because
+$\gamma>\tau$, the total is
+$O(VL^\gamma\operatorname{polylog}L)$, and in particular the bound
+stated in Lemma~\ref{lem:endpoint}. The completed ordinary bit
+operator is symmetric. The same procedure computes its literal bit
+transpose; two applications compute its inverse because $H^3=I$.

@@ -1,0 +1,36 @@
+id	claim	parents	location
+01	ordinary coefficient encoding and all 2n-1 outputs	34	Article, Ordinary transfer and explicit exponent; Appendix G
+02	deterministic admissible host and principal root	-	Appendix G, host initialization and controlled CRT; Harvey-van der Hoeven 2019, Propositions 3.4,3.8
+03	classical fixed-tape integer multiplication	-	Appendices F-G, independent word arithmetic and fixed monic reduction; Schonhage-Strassen 1971
+04	short binary product via spaced integer digits	03	Appendices F-G, independent word arithmetic and fixed monic reduction; Schonhage-Strassen 1971
+05	fixed monic reduction, B arithmetic and units	04	Appendices F-G, independent word arithmetic and fixed monic reduction; Schonhage-Strassen 1971
+06	E8 roots and width-nine RG factor	-	Appendix A; checks/expected/ finite certificates
+07	frozen orthogonal rectangle partition	06	Appendix A; checks/expected/ finite certificates
+08	all-input common-frame raw word at every f	06,07	Appendix A; checks/expected/ finite certificates
+09	universal five-transvection identity	-	Appendix A; checks/expected/ finite certificates
+10	two large and two partial main endpoints	08,09	Appendix A; checks/expected/ finite certificates
+11	strict moment at 1-1/1300	07,10	Appendix A; checks/expected/ finite certificates
+12	integer mixed compiler and column lift	08,10,11	Appendix B, integer mixed-job compiler
+13	rational order-three finite body	06,08,09,10,12	Appendix C, full-cover movement; article movement lemma for aggregate rectangles
+14	four-field generic leaf, no H inverse	13	Appendix C, full-cover movement; article movement lemma for aggregate rectangles
+15	bad-chart fraction and equal lifts	13,14	Appendix C, full-cover movement; article movement lemma for aggregate rectangles
+16	remove full variable output weight	13,14,15	Appendix C, full-cover movement; article movement lemma for aggregate rectangles
+17	fixed rational right routes on high cover	13	Appendix C, full-cover movement; article movement lemma for aggregate rectangles
+18	one q-adic role stock and ordinary box crop	14,15,16,17	Appendix C, full-cover movement; article movement lemma for aggregate rectangles
+19	linear seed and finite movement bootstrap	18	Appendix C, full-cover movement; article movement lemma for aggregate rectangles
+20	aggregate rectangle tariff	19	Appendix C, full-cover movement; article movement lemma for aggregate rectangles
+21	weighted eight-update native endpoint flip	19	Appendix D, native masks, restored selectors and paired phase
+22	sparse full-payload stable sorting and refill	21	Appendix D, native masks, restored selectors and paired phase
+23	dirty active-rank selector and matched SUM	21,22	Appendix D, native masks, restored selectors and paired phase
+24	selected native factor and prefix repair	21,22,23	Appendix D, native masks, restored selectors and paired phase
+25	paired K rank-one base and recursive body	12,23,24	Appendix D, native masks, restored selectors and paired phase
+26	J Fourier chart and all-mask grouping	25	Appendix D, native masks, restored selectors and paired phase
+27	fixed positive F16 word equals H tensor H	-	Appendix E, explicit positive finite-field word
+28	five banks, exponential opaque lanes, stack ABI	24,25	Appendix D, row stock, opaque lanes and completed binary endpoint
+29	completed native H, inverse and bit transpose	20,26,27,28	Appendix D, row stock, opaque lanes and completed binary endpoint
+30	shuffle, ragged local permutations, control gauge	20,21,22,29	Appendices F-G, local words and controlled tensor compiler
+31	formal triadic DAG, dirty replay, exact-width Toeplitz	-	Appendix F, formal convolution and exact-width replay
+32	local Fourier/shear word and scalar lists	05,29,30,31	Appendices F-G, local words and controlled tensor compiler
+33	host enlargement and balanced controlled CRT	02,05,30	Appendix G, host initialization and controlled CRT; Harvey-van der Hoeven 2019, Propositions 3.4,3.8
+34	component products, inverse maps and ordinary output	04,05,32,33	Article, Ordinary transfer and explicit exponent; Appendix G
+35	two-pass 1-1/1302 choice and fixed-operand transpose	19,20,25,29,34	Article, Ordinary transfer and explicit exponent; Appendix G

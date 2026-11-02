@@ -19,6 +19,15 @@
    [TeX](papers/03-best-binary/main.tex), [status](papers/03-best-binary/STATUS.md).
    A separate controlled-CRT construction with the stated exponent 1-2^-38.
 
+An unpublished [binary version 0.2.1](papers/03-best-binary/versions/0.2.1/README.txt)
+is available separately, with its [PDF](papers/03-best-binary/versions/0.2.1/paper.pdf)
+and [exact claim metadata](papers/03-best-binary/versions/0.2.1/CLAIM.json).
+It claims ordinary F2 multiplication on fixed finite tapes with saving
+1/1302, or logarithmic exponent 1301/1302. Independent mathematical review
+and complete formal verification remain outstanding. The selected four
+paper targets retain their existing sources and dependencies; the common
+all-field exponent remains 1-2^-38.
+
 The baseline general paper uses the accessible binary theorem and only the
 odd-field proposition of the stronger general paper. The stronger general
 bound instead uses the principal binary theorem for its common strict

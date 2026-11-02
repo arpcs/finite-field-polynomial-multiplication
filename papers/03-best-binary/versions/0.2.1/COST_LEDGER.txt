@@ -1,0 +1,63 @@
+COST BOUNDS AND PARAMETERS - VERSION 0.2.1
+
+Fixed parameters
+s0=1-1/1300, u0=1300/1301, z=(s0+u0)/2, d=1-z.
+The two fixed movement bootstraps give t=z+d^3<u0.
+Set g=1/(2-t) and choose any fixed rational t<ell<g.
+The native endpoint and enclosing compiler exponent is eta=g, with
+g<1301/1302. All remaining fixed secondary logarithms fit this gap.
+
+Volumes
+V is the full active array, including address spectators, opaque lanes,
+codec and retained root pads. Parent stack traversal is charged at its
+parent. It is not an extra multiplier on each descendant's input volume.
+D is bits per native record; M is its record count; V=MD at that boundary.
+All constants below are fixed before input n varies.
+The finite profiles are normalized per cover row. The actual integer
+compiler uses their common fixed cover multiplicity; final B_N and P_N
+include this multiplicity and every subsequent integer replication.
+For a native grid M=product n_i, L=ceil(log2(2M)), with coefficient
+bits D treated as opaque payload. At the outer caller L<=L0 and
+L=Theta(L0), so host primes p_i>L0^3 meet the native radix condition.
+The body may be chosen with P_N/B_N<epsilon*N^z for any fixed positive
+epsilon, paying all fixed normalizer factors before q is selected.
+Every recursive mask gate includes its parent's enable predicate.
+
+Call                                          Complete charged cost
+Equal separated u-bit fields                   O(V(u+1)^t)
+Aggregate adjacent rectangle, width <=L        O(V L^g)
+Selected u-axis weighted mask                 O(V(u log R+1)^t)+O(V)
+Sparse repair, K items and b=O(L) key bits     O(K b(R_op+b)+V+M_rec L^C)
+Paired K recursion at selected rank e         O(V(e+1)^t polylog L)
+Whole A4 tensor on h physical digits          O(V(h+log L)^ell polylog L)
+Completed native H tensor                     O(V L^g polylog L)
+Native H inverse / actual bit transpose       Same complete tariff
+Flat/endpoint shuffles and ragged permutations O(V L^g polylog L)
+Controlled tensor with generator G            O((MD L^g+M G(R,L)) polylog L)
+Controlled CRT, one balanced level            Same controlled tariff
+Fixed public B coefficient arithmetic         O(M_old(D')) per symbol
+Local Fourier matching word                   O(V L^g polylog^C L)
+Top host/root/table setup                      Nhost^o(1)
+Top coefficient maps and cyclic shifts        Nhost polylog L0
+Small complementary component                 O(Nhost (log L0)^3/L0)=o(Nhost)
+Full three-transform ordinary product         O(Nhost L0^g polylog^C L0)
+All ordinary output, crop, erasure, returns    O(Nhost) or already in call tariff
+
+G(R,L) is the COMPLETE bit cost to generate a controlled coefficient at
+one current record address. Its scalar bill is M G, with no extra D
+factor. The printed CRT generator has polynomial degree bounded by 12,
+and the enlarged word width D'>=(R0+L0+5)^64 pays it. Axis-local growing
+B scalar lists are a different bill: <2M growing-ring products per slot,
+each using the independent classical short-product backend.
+
+No coefficient operation over a growing ring is assigned unit bit cost.
+No native axis is padded separately in the outer product. Selected-factor
+private pads are cropped before a phase child. The role reserve is padded
+once and split by the actual final B_N, so the recursive query coefficient
+is P_N/B_N, including owned queries. All masks remain present.
+
+The two classical cited algorithmic inputs are the deterministic fixed-p
+cyclotomic host/root construction and classical fixed-tape integer
+multiplication for short auxiliary products. No proof-assistant result,
+whole integer exponent transfer, generic reversible-layer compiler or
+unproved fast Pascal/U_k service appears as a cost premise.

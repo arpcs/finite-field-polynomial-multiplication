@@ -1,0 +1,216 @@
+\section{The finite all-input word}
+\label{app:finite-unit}
+
+\subsection{Root lines, projectors and binary incidence}
+Take one representative of each of the $120$ lines
+$2e_i\pm2e_j$ ($i<j$) and $(1,\pm1,\ldots,\pm1)$ with even
+sign parity. Each vector $v_s$ has squared norm eight. Distinct
+representatives have inner products $0,\pm4$. Put
+$P_s=v_sv_s^T/8$ over $\mathbb Q$, or reduce the same expression over
+$\F_3$. Thus $P_s$ is a rank-one idempotent; orthogonal root lines
+give mutually annihilating idempotents in both interpretations.
+
+Let $A_{st}=1$ for distinct orthogonal lines and zero otherwise.
+Over $\F_2$ put $B=A+I$. At scale $\alpha_s=v_s/2$ choose
+\[
+\begin{split}
+\beta_1&=(1,-1,-1,-1,-1,-1,-1,1)/2,\qquad\beta_2=e_1+e_2,\\
+\beta_3&=-e_1+e_2,\quad\beta_4=-e_2+e_3,\quad
+\beta_5=-e_3+e_4,\\
+\beta_6&=-e_4+e_5,\quad\beta_7=-e_5+e_6,\quad
+\beta_8=-e_6+e_7.
+\end{split}
+\]
+Their Gram matrix $S$ is the E8 tree matrix with diagonal two and
+three arms of lengths $1,2,4$. A length-$l$ arm has determinant
+$l+1$ and inverse endpoint entry $l/(l+1)$. Taking its Schur
+complement gives
+\[
+ \det S=30(2-1/2-2/3-4/5)=1.
+\]
+The vectors $d_s=(\alpha_s\cdot\beta_i)_i$ are integral: two half
+roots have even Hamming distance, and integer/half-root products are
+integral. Since the $\beta_i$ form a basis,
+$\alpha_s\cdot\alpha_t=d_s^TS^{-1}d_t$. The integral matrix
+$S^{-1}$ therefore gives the explicit binary factors
+\[
+ R_s=(1,d_s^T),\qquad G_t=(1,S^{-1}d_t)^T,\qquad RG=B.
+\]
+The equality follows entrywise: the root inner product is even on
+the diagonal and on orthogonal pairs, and odd on every other pair.
+
+\subsection{Fifteen bases and the rectangle list}
+Index the eight coordinates by $x\in\F_2^3$. For each nonzero $a$,
+the four pairs $\{x,x+a\}$ give the eight orthogonal roots
+$2e_x\pm2e_{x+a}$. These seven bases partition the $56$ sparse roots.
+The binary simplex code $(a\cdot x)_{x\ne0}$ has eight words; its
+nonzero words have weight four. Its eight cosets in the even-weight
+length-seven code therefore give eight orthogonal bases of sign
+vectors with coordinate zero fixed positive. Take the least unused
+integer word as each coset representative. This partitions the
+remaining $64$ root lines.
+
+Give each basis a balanced tree on eight positions. Enumerate the
+$21$ flags by choosing $a,b\in\{1,\ldots,7\}$ with $b\ne a$ and
+$b<(b\mathbin{\mathrm{xor}}a)$, and then the least $c$ outside their
+span. Relabel position $x$ by
+$4(a\cdot x)+2(b\cdot x)+(c\cdot x)$. In the base order above use
+the following zero-based source and target flag indices:
+\[
+\begin{split}
+ f_X&=(9,0,0,4,0,16,1,9,15,9,9,1,13,1,15),\\
+ f_Y&=(10,2,0,10,4,15,0,10,16,11,14,0,14,10,15).
+\end{split}
+\]
+The accompanying file \path{checks/expected/frozen_rectangles.json}
+lists the $3782$ rectangles. Each source and target set is a node
+of the corresponding tree. The verification algorithm checks that
+each rectangle consists entirely of orthogonal pairs and that its
+directed pairs are disjoint from all earlier rectangles; finally it
+checks that every directed orthogonal pair has been covered. All
+sets have at most eight elements, so this is a finite exact
+certificate with no asymptotic premise. Its histogram is the one in
+Lemma~\ref{lem:unit}; $\sum abS_{a,b}=7560$.
+
+Let $V_{e,t}=1$ when $t$ is in rectangle $e$'s source set and
+$J_{s,e}=1$ when $s$ is in its target set. Then $JV=A$ and
+\begin{equation}
+ RG+JV=I\quad\text{over }\F_2.\label{eq:binary-incidence}
+\end{equation}
+This binary identity concerns payload additions. It is not reduced
+from a rational identity.
+
+\subsection{The common-frame program}
+Write $\mathcal K_U$ for the paired phase associated with a projector
+$P_U$. A field in frame $F$ holds $F$ times its logical value.
+Initially assign data field $X_t$ frame $\mathcal K_{P_t}$ and
+fields $Y_s,Z_e$ frame $I$. This assignment is notation: its logical
+$X_t$ value is $\mathcal K_{P_t}^{-1}X_t$, and it requires no unpaid
+initial query. The following chronological program uses independent
+arbitrary $Y$ and side inputs $Z$.
+
+\begin{enumerate}
+\item Subtract $JZ$ from $Y$, all in frame $I$.
+\item Visit source-tree nodes from leaves to root. Grow participating
+$X_t$ fields to the node frame $\mathcal K_U$, advance every contacting
+side to that same frame, and add its $V$-row sum of $X_t$. Each contact
+therefore takes place in a common frame. At the root all $X$ fields
+are in frame $\mathcal K_I$.
+\item Form the nine $G$-row increments as owned fields. On each apply
+$\mathcal K_I^{-1}$, implemented on disjoint rank-seven and rank-one
+pieces, scatter it by $R$ to the still unadvanced $Y$, and erase it.
+All inverse queries are paid.
+\item Visit target-tree nodes from root to leaves. At a node of span
+$W$, advance its $Y_s$ fields and contacting sides to
+$\mathcal K_{I-P_W}$, then add the side through $J$. At a leaf the
+$Y_s$ frame is $D_s=\mathcal K_{I-P_s}$.
+\item Advance every side to $\mathcal K_I$ and subtract its $V$-row
+sum of the full-frame $X$. Its endpoint is $\mathcal K_I Z_e$.
+\end{enumerate}
+
+To verify the word, denote the incoming logical $X$ values by $x$.
+After the source sweep side $e$ holds
+$\mathcal K_U(Z_e+(Vx)_e)$. Its contribution to a target $s$ after
+the target sweep is $D_s(Z_e+(Vx)_e)$. The first subtraction cancels
+its arbitrary incoming value. The remaining logical target increment
+is $(RG+JV)x=x$ by \eqref{eq:binary-incidence}. Thus the raw main
+endpoint is
+\[
+ \operatorname{diag}(D,D)
+ \begin{pmatrix}I&0\\Q^{-1}&I\end{pmatrix},
+ \qquad Q_s=\mathcal K_{P_s},\quad D_s=\mathcal K_{I-P_s}.
+\]
+Every side has its own full rank-eight endpoint. A side of dimensions
+$(a,b)$ pays jumps $a,8-a-b,b$; rank zero is the identity. Each main
+tree path pays $1,2,4$. This verifies arbitrary side inputs, not just
+zero-initialized side fields.
+
+The same chronology applies to the rational address permutations
+$I+(R_3-I)\otimes P_U$, where
+$R_3=\left(\begin{smallmatrix}0&-1\\1&-1\end{smallmatrix}\right)$.
+Payload additions are still binary, so \eqref{eq:binary-incidence}
+is unchanged. In inverse stages all frames, including complementary
+and helper frames, are inverted. Replacing every coordinate slot by
+$f$ columns preserves the projector relations and each common-frame
+contact; it does not distribute a tensor power over a sum.
+
+\subsection{Five stages and the partial endpoints}
+For $a^3=1$, set $T_i=I+\lambda_i u_i\phi_i$ in the ring
+$\mathbb Z[a]/(a^3-1)$, with chronological order
+\[
+\begin{array}{c|c|c|c}
+i&u_i^T&\phi_i&\lambda_i\\\hline
+1&(0,0,1,1)&(1,1,0,0)&a-1\\
+2&(0,1,-1,-1)&(-1,-1,0,-1)&a^2-1\\
+3&(0,1,-1,0)&(-1,0,0,-1)&a-1\\
+4&(1,0,-1,0)&(-1,0,-1,0)&a^2-1\\
+5&(1,0,0,0)&(0,0,-1,0)&a-1.
+\end{array}
+\]
+Each $\phi_i u_i=0$, and coefficientwise multiplication gives
+\begin{equation}
+ T_5T_4T_3T_2T_1=\operatorname{diag}(a,a,a^2,a^2).
+ \label{eq:five-bank-word}
+\end{equation}
+The three coefficients of every entry at each intermediate product
+are supplied by \path{checks/expected/finite_certificate.json}.
+They give an exact integer polynomial identity, rather than a test
+on sampled eigenvalues.
+
+Set $a=Q^{-1}$. A fixed bank basis turns the raw shear into each
+listed direction; the free constant part of the shear is subtracted
+by a binary bank update. Use five windows sharing the rank-one
+projector $P$ and having disjoint rank-seven complements. Initially
+apply each complement $D_i$ on all four banks. For stages four and
+five instead use the unimodular bases
+\[
+ S_4=[-e_0,e_0-e_2,e_1,e_3],\qquad
+ S_5=[-e_2,e_0,e_1,e_3]
+\]
+and apply $D_i$ on their two active banks only. Both transvections
+preserve $E=\operatorname{diag}(1,0,1,0)$, so the endpoint is
+\[
+ D_1D_2D_3(I-E+ED_4D_5)\operatorname{diag}(a,a,a^2,a^2).
+\]
+The partial projector reflection on banks zero and one changes their
+$a$ to $a^{-1}=Q$ and fixes every complement. Banks two and three
+already have $a^2=Q$. Thus banks zero and two receive rank $36$
+and banks one and three rank $22$; the other slots are identity.
+The bank bases and the five window placements are fixed slot maps.
+To match equal-rank phase jobs, index copies by the full finite
+$\mathrm{GL}_{36}(\F_3)$ cover and use right multiplication for these
+placements. This permutes copies and multiplies productive and paid
+counts by the common fixed integer $C=|\mathrm{GL}_{36}(\F_3)|$.
+For rational addresses take $C$ schematic copies with fixed right-route
+symbols; their full residue cover is constructed after precompilation
+in Appendix~\ref{app:movement}, without a finite rational matcher group.
+
+There are five independent sides per rectangle, hence $18910$
+rank-eight outputs, and $240$ main outputs at each of ranks $22,36$.
+Sides contribute five jumps at each of $a,8-a-b,b$ per rectangle;
+main flag paths contribute $1200$ calls at each of ranks $1,2,4$.
+The partial-bank schedule leaves $720$ inactive rank-seven calls.
+The $45$ owned increments contribute one call each at ranks one and
+seven. These give the normalized profiles $T,P$ of Lemma~\ref{lem:unit}.
+The actual covered program has the integer profiles $CT,CP$.
+Multiplication by $C$ preserves the strict moment and rank thresholds;
+it is included in the compiler's integer colors and finite constants.
+
+\subsection{The strict moment certificate}
+For a rational $x\in[1,2]$, put $y=(x-1)/(x+1)\le1/3$. Then
+\[
+ \log x=2\sum_{j=0}^{47}\frac{y^{2j+1}}{2j+1}+E,
+ \qquad 0\le E\le\frac{18y^{97}}{8\cdot97}.
+\]
+Normalize each $36/r$ by powers of two and use these directed
+bounds with binary scale $2^{48}$. For
+$h=\log(36/r)/1300$ use
+\[
+ 1+h+h^2/2\le e^h\le1+h+\frac{h^2}{2(1-h/3)}.
+\]
+Since $(r/36)^{s_0}=(r/36)e^h$, outward integer rounding gives the
+two rational endpoints displayed in Lemma~\ref{lem:unit}. Their
+numerator difference is $48274644696285>0$. The fixed checker prints
+all per-rank intervals, so the strict moment is independently
+reproducible with exact arithmetic. No growing-size running time is
+inferred from this finite calculation.

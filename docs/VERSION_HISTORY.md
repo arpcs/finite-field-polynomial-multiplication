@@ -1,5 +1,22 @@
 # Version history
 
+## Unpublished binary version 0.2.1 — 2 November 2026
+
+- Added a separate [versioned binary package](../papers/03-best-binary/versions/0.2.1/README.txt)
+  claiming ordinary F2 multiplication in O(n log(n+2)^(1301/1302)) on
+  fixed finite tapes, with exact saving 1/1302.
+- Retained the selected 0.1 binary source, PDF and its role in the general
+  paper. The common all-field exponent remains 1-2^-38; the concurrent
+  odd-field revision keeps its own statement and evidence.
+- Included the complete written appendices, portable source/PDF receipts,
+  finite-certificate records and explicit claim metadata. These are not
+  independent human review or complete formal verification of the theorem.
+- Kept the new claim unpublished, with its public commit, URLs and first
+  public statement unset. The older public source and date remain separate
+  provenance. No publication or external submission accompanies this addition.
+- Added offline capsule integrity checking to the release check and excluded
+  version folders from the selected paper's document-source inventory.
+
 ## Editorial publication cleanup — 31 October 2026
 
 - Removed repository-creation and launch instructions from the reader-facing
