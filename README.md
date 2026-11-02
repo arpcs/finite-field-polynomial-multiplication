@@ -1,10 +1,11 @@
 # Polynomial multiplication over fixed finite fields
 
-This project explores polynomial multiplication over fixed finite fields,
-building on the work of Harvey, van der Hoeven, Lecerf and many other
-researchers, alongside recent OpenAI mathematical manuscripts and community
-follow-ups. It brings together four related AI-assisted papers and companion
-notes, covering n log n baselines and stronger claimed bounds.
+This repository contains research preprints on polynomial multiplication
+over fixed finite fields, building on the work of Harvey, van der Hoeven,
+Lecerf and many other researchers, alongside recent OpenAI mathematical
+manuscripts and community follow-ups. The AI-assisted manuscripts and
+companion notes cover
+n log n baselines and stronger claimed bounds.
 
 Questions, corrections and contributions are welcome, whether you are
 exploring the ideas, checking a proof or improving the documentation.
@@ -12,18 +13,6 @@ exploring the ideas, checking a proof or improving the documentation.
 The papers are research preprints open for mathematical review. Independent
 human proof review and complete theorem-level Lean verification remain
 outstanding; [VERIFICATION.md](VERIFICATION.md) describes the checks so far.
-
-## Revised odd-field bound
-
-The general research preprint, version 0.2.1, improves the fixed odd-field
-exponent from 9999/10000 to **319/320**. Its
-[proof package](papers/01-general/proofs/stronger-odd-20261102/README.md)
-contains the native services, complete host transfer, finite premises and
-source provenance. The selected common all-field exponent remains 1-2^-38;
-the separate paired-phase binary revision is not substituted into it.
-Earlier sources and PDFs remain at the
-[immutable prior revision](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/01-general).
-The Pascal/Taylor and baseline companions retain their stated bounds and sources.
 
 ## Problem and previous benchmark
 
@@ -51,48 +40,47 @@ the stronger companions claim a strict logarithmic saving. Their proposed
 advance is the complete transfer to ordinary polynomial input/output and
 fixed-tape costs, built on the prior results credited below.
 
-## Selected claims and the four papers
+## Preprints and stated bounds
 
 | Paper | Role and stated result | Read |
 |---|---|---|
-| General n log n | Baseline companion: O_q(n log(n+2)) for each fixed finite field, using the accessible binary construction, the odd-field proposition and an explicit fixed-basis reduction | [PDF](papers/04-general-nlogn/paper.pdf), [source](papers/04-general-nlogn/main.tex), [status](papers/04-general-nlogn/STATUS.md) |
-| Stronger general result | O_q(n (log(n+2))^(1-2^-38)) over each fixed finite field; the odd-field bound has exponent 319/320 | [PDF](papers/01-general/paper.pdf), [source](papers/01-general/main.tex), [status](papers/01-general/STATUS.md) |
-| Fast Pascal transforms | Accessible binary companion: ordinary F2 multiplication in O(n log(n+2)), with a fixed characteristic-two extension corollary | [PDF](papers/02-simple-binary/paper.pdf), [source](papers/02-simple-binary/main.tex), [status](papers/02-simple-binary/STATUS.md) |
-| Ordinary binary multiplication below n log n | Principal characteristic-two paper: controlled CRT/routing construction with exponent 1-2^-38 on fixed finite tapes | [PDF](papers/03-best-binary/paper.pdf), [source](papers/03-best-binary/main.tex), [status](papers/03-best-binary/STATUS.md) |
+| Paired-phase binary multiplication | Ordinary F2 multiplication in $O(n(\log(n+2))^{1301/1302})$, with saving $\kappa=1/1302$ | [PDF](papers/03-best-binary/versions/0.2.1/paper.pdf), [source](papers/03-best-binary/versions/0.2.1/main.tex), [proof scope](papers/03-best-binary/versions/0.2.1/README.txt) |
+| General fixed-field multiplication | $O_q(n(\log(n+2))^{1301/1302})$ for each fixed finite field; $O_q(n(\log(n+2))^{319/320})$ for each fixed field of odd characteristic | [PDF](papers/01-general/paper.pdf), [source](papers/01-general/main.tex), [status](papers/01-general/STATUS.md) |
+| Fast Pascal transforms | Ordinary F2 multiplication in $O(n\log(n+2))$, with a corollary for each fixed characteristic-two extension | [PDF](papers/02-simple-binary/paper.pdf), [source](papers/02-simple-binary/main.tex), [status](papers/02-simple-binary/STATUS.md) |
+| General n log n baseline | Ordinary multiplication over each fixed finite field in $O_q(n\log(n+2))$ | [PDF](papers/04-general-nlogn/paper.pdf), [source](papers/04-general-nlogn/main.tex), [status](papers/04-general-nlogn/STATUS.md) |
 
-A separate [binary preprint, version 0.2.1](papers/03-best-binary/versions/0.2.1/README.txt),
-prepared on 2 November 2026, claims ordinary F2 multiplication in
-$O(n(\log(n+2))^{1301/1302})$, with saving $\kappa=1/1302$.
-Its [PDF](papers/03-best-binary/versions/0.2.1/paper.pdf), sources and
-[claim metadata](papers/03-best-binary/versions/0.2.1/CLAIM.json) form a
-separate versioned package. This is a written research claim awaiting
-independent mathematical review and complete formal verification. The
-selected 0.1 binary paper and the common all-field bound above are retained.
+The characteristic-two branch of the general paper uses the paired-phase
+binary theorem through its fixed-basis reduction. The
+[controlled-CRT binary construction](papers/03-best-binary/paper.pdf),
+with exponent $1-2^{-38}$, remains a separate construction with its own
+[source](papers/03-best-binary/main.tex) and
+[status](papers/03-best-binary/STATUS.md).
+The paired-phase construction has its own proof and
+[exact claim specification](papers/03-best-binary/versions/0.2.1/CLAIM.json).
 
 For a bound $O(n(\log n)^{1-\kappa})$, a larger saving $\kappa$ is stronger
-for the same problem and model. Here the selected binary saving is
-$\kappa=2^{-38}\approx3.64\times10^{-12}$; the odd-field saving is
-$\kappa=1/320$ for the odd-field bound, which is not asserted in characteristic two.
-The exponent saving is asymptotic; no practical speedup is claimed.
+for the same problem and model. The paired-phase binary saving is
+$\kappa=1/1302$; the general paper's odd-field saving is $\kappa=1/320$.
+The common all-field saving is also $\kappa=1/1302$; the stronger
+odd-field exponent is specific to odd characteristic.
+These are asymptotic bounds; no practical speedup is claimed.
 
-The general baseline uses the accessible binary result and only the odd
-proposition from the stronger general paper. The stronger general theorem
-instead uses the principal binary result. The odd proposition is independent
-of that binary theorem, so this dependency direction is not circular.
-These four documents present related constructions and consequences.
+The general baseline uses the Pascal/Taylor binary theorem, the general
+paper's odd-field proposition and a fixed-basis reduction. The odd-field
+proposition is independent of the binary theorems. The general paper's
+common strict saving combines the paired-phase binary theorem with that
+independent odd-field proposition.
 See [CONTENTS.md](CONTENTS.md) and the
 [claim map](docs/CLAIM_SELECTION.md).
 
-Each paper records its proof dependencies and current status. The
-[claim map](docs/CLAIM_SELECTION.md) explains the selection, including
-research branches left out while their proof interfaces remain open.
-Questions about any step in the written arguments are welcome.
+Each paper records its proof dependencies and evidence scope. Research
+branches with open proof interfaces are identified in the claim map.
 
 Substantial generative AI assisted mathematical exploration, proof and
-algorithm development, writing, coding and review. Full Lean formalization
-is unfinished and planned for a later update. Read
-[AI_USE.md](AI_USE.md), [VERIFICATION.md](VERIFICATION.md), and each paper's
-STATUS.md for the actual evidence scope.
+algorithm development, writing, coding and review. Complete formal
+verification of the fast multiplication theorems remains outstanding.
+[AI_USE.md](AI_USE.md), [VERIFICATION.md](VERIFICATION.md) and each paper's
+STATUS.md describe the evidence scope.
 
 ## Prior work and credits
 

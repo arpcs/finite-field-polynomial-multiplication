@@ -1,12 +1,28 @@
 # Odd field proof sources and dependencies
 
-The research preprint is version 0.2.1, dated 2 November 2026.
-Its odd-field exponent is 319/320. The complete host-transfer appendix is
+The general research preprint is version 0.2.2, dated 2 November 2026.
+Its common all-fixed-field exponent is 1301/1302, and its odd-field exponent
+is 319/320. The complete host-transfer appendix is
 compiled into the PDF; the supporting native source and finite premises
 are included for review. These written proofs use named external results;
 they are not inferred from finite test counts or a Lean component total.
 
-## Current proof path
+## Characteristic-two input and field combination
+
+The [paired-phase binary preprint](../../03-best-binary/versions/0.2.1/README.txt),
+version 0.2.1, Theorem 1, supplies ordinary F2 multiplication in
+O(n log(n+2)^(1301/1302)) on fixed finite tapes. Its immutable source is
+Git revision `e85bc1f6ca0ec9c13281c94b6a3e88ec2cdb4fc5`.
+The general paper's fixed-basis lemma performs s^2 serial binary calls
+over each fixed F_(2^s), plus O_s(n) coefficient/stream work; any binary
+scratch normalization is charged in O_s(T(n)+n). The corollary therefore
+preserves the exponent. For odd fields, 319/320 < 1301/1302.
+Both component statements are independent of the combined conclusion.
+The [combination review](../../../verification/all-fixed-field-combination-0.2.2.md)
+records the exact scope and costs. The older controlled-CRT theorem is
+retained as a separate construction, outside this composition's premises.
+
+## Odd-field proof path
 
 1. [host-transfer.tex](stronger-odd-20261102/host-transfer.tex) proves the
    stronger ordinary fixed-field transfer: exact quotient selector and

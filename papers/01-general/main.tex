@@ -7,6 +7,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}{Proposition}
 \newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
 \theoremstyle{definition}
 \newtheorem{assumption}{Assumption}
 \newtheorem{remark}{Remark}
@@ -16,21 +17,24 @@
   \large A strict logarithmic saving on fixed tapes}
 \author{\'Arp\'ad Csizmadia\\
   \small\href{mailto:arpad.csizmadia.public@gmail.com}{\texttt{arpad.csizmadia.public@gmail.com}}}
-\date{2 November 2026\\ \small Research preprint, version 0.2.1. Apache-2.0.}
+\date{2 November 2026\\ \small Research preprint, version 0.2.2. Apache-2.0.}
 \hypersetup{pdfauthor={\'Arp\'ad Csizmadia},pdftitle={Ordinary Polynomial Multiplication over Every Fixed Finite Field}}
 \begin{document}
 \maketitle
 
 \begin{abstract}
 For each fixed finite field $\F_q$, ordinary polynomial multiplication
-has deterministic bit complexity $O_q(n(\log(n+2))^{1-2^{-38}})$ on
+has deterministic bit complexity $O_q(n(\log(n+2))^{1301/1302})$ on
 a fixed finite-tape machine. For each fixed odd field $\F_{p^e}$, the
 stronger bound $O_{p,e}(n(\log(n+2))^{319/320})$ follows from the
 cyclotomic-host reduction proved here. The characteristic-two branch
-and its fixed-extension corollary are supplied by the accompanying
-controlled-tensor preprint~\cite{ControlledCRT}. The all-field bound
-uses the larger of the two exponents and does not assert the sharper
-odd-field exponent in characteristic two.
+uses the paired-phase binary theorem~\cite{PairedPhase} and an explicit
+fixed-basis reduction costing a constant number of binary products
+plus linear coefficient conversion and recombination. Both branches
+return all $2n-1$ ordinary coefficients and charge setup, arithmetic,
+tape movement, output and cleanup. The common exponent is the larger
+of the two field-specific exponents; the sharper odd-field exponent
+is not asserted in characteristic two.
 \end{abstract}
 \paragraph{AI assistance and formal verification.}
 Substantial generative AI assistance, including OpenAI Codex~\cite{CodexTool26}, supported
@@ -99,18 +103,19 @@ stated field and machine quantifiers. The companion baseline note
 with the odd proposition below to obtain $O_q(n\log(n+2))$.
 These are related results with shared foundations.
 
-The odd proposition does not use either binary companion or the combined
-all-field theorem, so the baseline note's use of that proposition is not
-circular.
+The odd proposition does not use the binary multiplication theorems or
+the combined all-field theorem. The paired-phase binary proof likewise
+does not invoke the combined conclusion. The composition below is
+therefore independent of that conclusion.
 
-This revision improves the odd-field exponent from $9999/10000$ to
-$319/320$, using the stronger mixed-BIT and odd-ring phase constructions
-in the newly bundled native source. It includes a direct quotient
-selector, a three-call local word, and the explicit replacement for the
-older native relocation tariff. The all-field exponent is still determined
-by the accompanying characteristic-two result. The earlier source and PDF
-remain available in the
-\href{https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/01-general}{pinned 31 October 2026 revision}.
+The odd-field construction uses the mixed-BIT and odd-ring phase
+arguments in the native supplement. Its direct quotient selector,
+three-call local word and charged native relocations provide the
+exponent $319/320$. The characteristic-two construction supplies
+exponent $1301/1302$ through Theorem~1 of~\cite{PairedPhase}.
+The earlier controlled-CRT construction~\cite{ControlledCRT} remains
+a separate binary result; it is not a premise of the all-field
+composition in this paper.
 
 \section{Model and scope}
 The input consists of the ordinary coefficient lists of two polynomials
@@ -193,16 +198,54 @@ over $\F_{2^s}$ in a fixed polynomial basis has bit cost
 $O_s(T(n)+n)$ on the same fixed-tape model.
 \end{lemma}
 \begin{proof}
-Fix an $\F_2$-basis $\omega_1,\ldots,\omega_s$ of $\F_{2^s}$.
+Fix an $\F_2$-basis $\omega_1,\ldots,\omega_s$ of $\F_{2^s}$ and its
+structure constants before $n$ varies.
 Write the input coefficient sequences as
 $f=\sum_{i=1}^s\omega_i f_i$ and $g=\sum_{j=1}^s\omega_jg_j$,
-where $f_i,g_j\in\F_2[X]$ have degree less than $n$. Compute the
-$s^2$ ordinary binary products $f_i g_j$. For each basis coordinate
-$k$, combine their coefficients using the fixed structure constants
-$\omega_i\omega_j=\sum_k c_{ijk}\omega_k$. The fixed basis encoding,
-the $O(s^3n)$ additions/scalar maps, and the final coefficient
-decoding cost $O_s(n)$. Since $s$ is fixed, the $s^2$ binary calls
-cost $O_s(T(n)+n)$, proving the claim.
+where $f_i,g_j\in\F_2[X]$ have degree less than $n$. A sequential
+scan of the fixed-width coefficient encodings produces these $2s$
+binary streams in $O_s(n)$ time. All basis indices and constants
+$c_{ijk}\in\F_2$, defined by
+$\omega_i\omega_j=\sum_k c_{ijk}\omega_k$, are fixed finite-control
+data. Initializing any working copies of their tables has constant
+field-dependent cost.
+
+Execute the binary multiplier serially on fresh operand copies for
+each of the $s^2$ pairs $(f_i,g_j)$. Each call returns all $2n-1$
+ordinary product bits, including zeros. Scan that product into the
+$s$ coordinate accumulator streams, adding it to coordinate $k$
+exactly when $c_{ijk}=1$. Fixed-width encoding and decoding,
+operand copying, accumulator initialization, the $O(s^3n)$ additions,
+temporary-stream erasure and head returns together cost $O_s(n)$.
+The accumulator streams are scanned coefficient by coefficient to
+write all $2n-1$ output coefficients in the prescribed basis and
+return the output head to its first symbol.
+
+The binary calls charge their own arithmetic and tape movement. If
+a supplier does not already restore its private work tapes, mark
+their visited intervals on a fixed number of auxiliary tracks.
+Updating the endpoint marks has constant simulation overhead;
+clearing and resetting the intervals after a call takes
+$O(T(n)+n)$ time, since only that many cells can have been visited.
+This normalization does not assume linear-size binary scratch.
+The paired-phase supplier~\cite{PairedPhase} already includes its
+workspace cleanup in its stated bound. The number of streams,
+tracks, tapes and serial calls is fixed once $s$ and the supplier
+machine are fixed. The total cost is therefore $O_s(T(n)+n)$ on
+one fixed finite-alphabet, fixed finite-tape machine, as claimed.
+\end{proof}
+
+\begin{corollary}[Fixed characteristic-two fields]
+\label{cor:paired-phase-extension}
+For each fixed $s\ge1$, ordinary degree-$<n$ polynomial multiplication
+over $\F_{2^s}$ in a fixed basis takes
+$O_s(n(\log(n+2))^{1301/1302})$ deterministic bit operations on a
+fixed finite-tape machine, returning all $2n-1$ coefficients.
+\end{corollary}
+\begin{proof}
+Apply Lemma~\ref{lem:binary-extension} to Theorem~1
+of~\cite{PairedPhase}. Since $1301/1302>0$, the linear wrapper cost
+is absorbed in the displayed bound.
 \end{proof}
 
 \begin{theorem}[All-fixed-field bound]
@@ -210,20 +253,23 @@ cost $O_s(T(n)+n)$, proving the claim.
 For every fixed finite field $\F_q$, ordinary degree-$<n$
 multiplication in a fixed polynomial basis takes
 \[
- O_q\!\left(n(\log(n+2))^{1-2^{-38}}\right)
+ O_q\!\left(n(\log(n+2))^{1301/1302}\right)
 \]
 deterministic bit operations on a fixed finite-tape machine.
 \end{theorem}
 \begin{proof}
-Write $q=p^e$. If $p=2$, the controlled-tensor theorem and its fixed
-extension corollary in \cite{ControlledCRT} give the stated bound.
+Write $q=p^e$. If $p=2$, Corollary~\ref{cor:paired-phase-extension}
+gives the stated bound using the paired-phase binary theorem and
+the fixed-basis reduction.
 If $p$ is odd, Proposition~\ref{prop:odd} gives the stronger exponent
 $319/320$. Since
-$319/320<1-2^{-38}$, its logarithmic factor is bounded by the one
+$1301/1302-319/320=491/208320>0$, its logarithmic factor is bounded by the one
 displayed here for $n\ge2$; finitely many smaller lengths are absorbed
 in the field-dependent constant. Both branches use ordinary
 coefficient representations and the fixed finite-tape bit-time model.
-All field and basis constants are independent of $n$.
+The field and basis are fixed before $n$ varies. The machine, tape
+count and constants may depend on them but are independent of $n$.
+Neither branch invokes the combined all-field conclusion.
 \end{proof}
 
 \begin{theorem}[Unconditional fixed-field baseline]
@@ -233,7 +279,7 @@ algorithm in $O_q(n\log(n+2))$ bit operations on the stated machine.
 \end{theorem}
 \begin{proof}
 This follows immediately from Theorem~\ref{thm:all-fields}, because
-$(\log(n+2))^{1-2^{-38}}=O(\log(n+2))$. The independent Pascal-transform
+$(\log(n+2))^{1301/1302}=O(\log(n+2))$. The independent Pascal-transform
 route for characteristic two is also recorded in
 \cite{SimpleBinary}. The odd fields follow from Proposition~\ref{prop:odd}.
 \end{proof}
@@ -242,9 +288,12 @@ The supplementary material supplies the native finite compiler,
 its recurrence, the cover-reserve calculation, and the finite native
 records. Saved finite-check reports support their stated finite
 identities; the asymptotic claims use the written proofs. The
-characteristic-two claim is imported from the accompanying
-controlled-tensor preprint, whose result is stated with its own proof
-scope. The general bound combines that result with the odd proposition.
+characteristic-two claim is imported from the paired-phase binary
+preprint~\cite{PairedPhase}, whose result retains its own proof scope.
+Lemma~\ref{lem:binary-extension} charges its fixed-extension wrapper;
+the all-field theorem combines that corollary with the odd proposition.
+This composition is a consequence of the two written component
+theorems, not a new inference from finite computations.
 
 Complete Lean proofs of the odd proposition and the combined theorem
 remain unfinished. The finite evidence and checked supporting components
@@ -282,6 +331,15 @@ commit \texttt{fefd699f9389af961046997796261333539e5909}.
 \newblock Research preprint, version 0.1.0-preprint, 31 October 2026.
 Source revision \texttt{14532be8e044c0f6588b9787a842a96da695769f}.
 \newblock \href{https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/02-simple-binary}{Pinned companion source}.
+
+\bibitem{PairedPhase}
+\'Arp\'ad Csizmadia.
+\newblock \emph{A Paired-Phase Construction for Ordinary Binary Polynomial Multiplication}.
+\newblock Research preprint, version 0.2.1, 2 November 2026, Theorem~1.
+\newblock Immutable source revision
+\texttt{e85bc1f6ca0ec9c13281c94b6a3e88ec2cdb4fc5}.
+\newblock \href{https://github.com/arpcs/finite-field-polynomial-multiplication/tree/e85bc1f6ca0ec9c13281c94b6a3e88ec2cdb4fc5/papers/03-best-binary/versions/0.2.1}{Source and proof package};
+\href{https://github.com/arpcs/finite-field-polynomial-multiplication/blob/e85bc1f6ca0ec9c13281c94b6a3e88ec2cdb4fc5/papers/03-best-binary/versions/0.2.1/paper.pdf}{article and appendices}.
 
 \bibitem{ControlledCRT}
 \'Arp\'ad Csizmadia.

@@ -24,7 +24,7 @@ if($selection.original.sha256.ToLowerInvariant() -ne '6cd806c6e52a4883270da6002a
 if((AssetHash (Join-Path $proofRoot 'native-source.tex.txt')) -ne $selection.derived.sha256.ToLowerInvariant()){throw 'Edited native supplement selection binding mismatch'}
 if($selection.derived.byte_identical -ne $false){throw 'Edited supplement must not be represented as byte-identical research source'}
 $main=[IO.File]::ReadAllText((Join-Path $paperRoot 'main.tex'))
-if(-not $main.Contains('^{319/320}') -or -not $main.Contains('2^{-38}') -or -not $main.Contains('3125805')){throw 'Missing selected odd/all-field tariff statement'}
+if(-not $main.Contains('^{319/320}') -or -not $main.Contains('^{1301/1302}') -or -not $main.Contains('3125805') -or -not $main.Contains('\cite{PairedPhase}') -or -not $main.Contains('\label{cor:paired-phase-extension}')){throw 'Missing odd/all-field tariff or paired-phase dependency statement'}
 if(-not $main.Contains('\input{proofs/stronger-odd-20261102/host-transfer.tex}')){throw 'Stronger host proof is not included in the manuscript'}
 $audit=Get-Content -LiteralPath (Join-Path $paperRoot 'audit.json') -Raw | ConvertFrom-Json
 $previous=$audit.previous_revision
@@ -49,4 +49,13 @@ $layout=@(Get-Content -LiteralPath (Join-Path $root 'verification/pdf-layout.jso
 if($build.Count -ne 1 -or $build[0].exit -ne 0 -or $build[0].pdf_sha256 -ne $pdfHash -or $audit.document.sha256 -ne $pdfHash){throw 'Stale stronger-odd PDF/build association'}
 foreach($source in $build[0].source_files){if((AssetHash (Join-Path $root $source.path)) -ne $source.sha256){throw ('Stronger-odd build source changed: '+$source.path)}}
 if($layout.Count -ne 1 -or $layout[0].pdf_sha256 -ne $pdfHash -or $layout[0].overfull_boxes -ne 0 -or $layout[0].undefined_references -ne 0){throw 'Stale stronger-odd layout/reference record'}
+if($audit.version -eq '0.2.2'){
+ $combination=Get-Content -LiteralPath (Join-Path $root 'verification/all-fixed-field-combination-0.2.2.json') -Raw | ConvertFrom-Json
+ if($combination.schema -ne 'all-fixed-field-combination-review/1' -or $combination.version -ne '0.2.2'){throw 'Missing current combination record'}
+ if($combination.review.path -ne 'verification/all-fixed-field-combination-0.2.2.md' -or (AssetHash (Join-Path $root $combination.review.path)) -ne $combination.review.sha256){throw 'Stale combination review binding'}
+ if($combination.main.path -ne 'papers/01-general/main.tex' -or (AssetHash (Join-Path $root $combination.main.path)) -ne $combination.main.sha256 -or $audit.review.main_sha256 -ne $combination.main.sha256){throw 'Stale combination source binding'}
+ if($combination.document.sha256 -ne $pdfHash -or $combination.document.pages -ne $layout[0].pages){throw 'Stale combination document binding'}
+ if($combination.binary_input.path -ne 'papers/03-best-binary/versions/0.2.1/main.tex' -or $combination.binary_input.commit -ne 'e85bc1f6ca0ec9c13281c94b6a3e88ec2cdb4fc5' -or (AssetHash (Join-Path $root $combination.binary_input.path)) -ne $combination.binary_input.sha256){throw 'Incorrect paired-phase input binding'}
+ if($combination.independent_human_review -or $combination.complete_formal_verification -or $combination.lean_run -or $combination.new_finite_replay_run){throw 'Unsupported combination evidence status'}
+}
 Write-Output ('PASS stronger-odd update: PDF/build/layout, dated source audit, '+$manifest.files.Count+' assets, '+$manifest.reused_assets.Count+' reuses and previous-source pins; no math/build/network job')

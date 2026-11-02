@@ -1,13 +1,12 @@
 {
-  "schema": "odd-field-local-update/1",
+  "schema": "fixed-field-preprint-audit/1",
   "revision": "2026-11-02",
-  "version": "0.2.1",
-  "publication_status": "unpublished",
-  "scope": "Written ordinary odd-field proof, selected native supplement, source provenance and document/package checks. No complete formal proof is asserted.",
+  "version": "0.2.2",
+  "scope": "Written all-fixed-field composition, charged fixed-basis reduction and unchanged odd-field proof package. No complete formal proof or independent human review is asserted.",
   "claimDecision": {
     "oddClaim": "O_(p,e)(n log(n+2)^(319/320)) for every fixed odd p,e",
     "leading_gamma": "1-3125805/10^9=0.996874195, retaining a fixed secondary logarithm",
-    "allFieldsBound": "O_q(n log(n+2)^(1-2^-38)); characteristic-two input retains accompanying paper scope",
+    "allFieldsBound": "O_q(n log(n+2)^(1301/1302)) for every individually fixed finite field; paired-phase binary Theorem 1 plus fixed-basis extension and independent odd-field proposition",
     "ordinary_output": "All 2*n-1 canonical fixed-basis coefficients",
     "native_imports": "Written mixedbitswap and odd-ring phase conclusion of mixedbitinteger, plus explicit lossless-transpose native routing reprice",
     "external_machine": "Stage2Machine.Bound.uniform_bound at fefd699f9389af961046997796261333539e5909"
@@ -55,23 +54,23 @@
   "current_sources": [
     {
       "path": "main.tex",
-      "bytes": 21080,
-      "sha256": "b1a1bc3e7ac1d6e0744f665ccdc56e9c3eb316f052b3cf7cf5e4c3870ba8f0d6"
+      "bytes": 24300,
+      "sha256": "ac1bc6d10d198bd6142ba45ddce57cf419ed1e2c372749c8d270fac66a7999d4"
     },
     {
       "path": "citation.bib",
-      "bytes": 330,
-      "sha256": "2fb1939914f8618bd7728ea56de937dc4c5a9e83fc305937e8643e4fa8d888d6"
+      "bytes": 366,
+      "sha256": "455bb40d81c5e241873d4179fdfde0d633714a26d07afe8fc56274e7e46887f1"
     },
     {
       "path": "STATUS.md",
-      "bytes": 3396,
-      "sha256": "55a68df7961431197d42e615702628c4a9920dbbf91418c30e97db54ce2e8227"
+      "bytes": 4035,
+      "sha256": "6195d1e3a3ac33b89d8a35630656b352fa74fd46d699e59ed1685d56af790e3b"
     },
     {
       "path": "proofs/PROOF_SOURCES.md",
-      "bytes": 4692,
-      "sha256": "bce484ee71880954a8e9dca6c6a16dbab5752f9ecb67fdc048c7786a1e0ef85f"
+      "bytes": 5665,
+      "sha256": "055e2c0f51e939d53fe77d2e0542545a0c465f77bb10fcddd96eedc7e90d5e77"
     },
     {
       "path": "proofs/stronger-odd-20261102/host-transfer.tex",
@@ -102,6 +101,38 @@
     "historical_reports_relabelled_as_fresh": false
   },
   "review": {
+    "scope": "Internal AI-assisted review of the field split, fixed-basis cost and dependency interfaces",
+    "verdict": "No blocking issue identified in the composition under the two written component statements",
+    "full_lean_verification": false,
+    "independent_human_review": false,
+    "novelty_certified": false,
+    "source_qa": "verification/all-fixed-field-combination-0.2.2.md",
+    "source_qa_sha256": "e68f1f1cbbd977167a6a05a18215f20b5369aa881df1a4820f01fe9b10750238",
+    "main_sha256": "ac1bc6d10d198bd6142ba45ddce57cf419ed1e2c372749c8d270fac66a7999d4"
+  },
+  "edit_scope": [
+    "explicit root transport and pointwise invoice",
+    "professional native/source-note selection with distinct hashes",
+    "author/contact and evidence-scope consistency",
+    "immutable previous-source and companion citations",
+    "all-fixed-field consequence of the paired-phase and odd-field theorems",
+    "charged sequential fixed-basis wrapper and generic binary scratch normalization"
+  ],
+  "exclusions": [
+    "No new integer or growing-field theorem claim",
+    "No change to either component theorem exponent or native proof package",
+    "No independent human review or complete formal verification claimed"
+  ],
+  "document": {
+    "pdf": "paper.pdf",
+    "sha256": "2890d7bda36aeb9d24a1b917c5f4fff69af31050f9bb5177b65b70aba632fba5",
+    "pages": 16,
+    "build_receipt": "verification/paper-builds.json",
+    "layout_receipt": "verification/pdf-layout.json",
+    "source_qa": "verification/all-fixed-field-combination-0.2.2.md"
+  },
+  "research_status": "research preprint",
+  "prior_odd_field_review": {
     "scope": "Internal AI-assisted mathematical source review, semantic source-selection review and professional/privacy review",
     "verdict": "No blocking mathematical defect found in the selected path under the named imports",
     "clarifications": [
@@ -120,23 +151,43 @@
       "post_review_edit_scope": "Subsequent revisions standardize the preprint presentation, identify earlier manuscript and companion sources by immutable Git revisions, and use cited-source terminology. Mathematical statements and arguments are unchanged."
     }
   },
-  "edit_scope": [
-    "explicit root transport and pointwise invoice",
-    "professional native/source-note selection with distinct hashes",
-    "author/contact and evidence-scope consistency",
-    "immutable previous-source and companion citations"
-  ],
-  "exclusions": [
-    "No new integer or growing-field theorem claim",
-    "No binary exponent change"
-  ],
-  "document": {
-    "pdf": "paper.pdf",
-    "sha256": "a33e1f1b26a59467f45387a1574c5f347ccd0f19254d84894aa05e0d0446371e",
-    "pages": 16,
-    "build_receipt": "verification/paper-builds.json",
-    "layout_receipt": "verification/pdf-layout.json",
-    "source_qa": "verification/odd-field-update-review.md"
+  "preceding_revision": {
+    "version": "0.2.1",
+    "git_commit": "f44b12431591a3d66a0acd70a460d9fbaa9e8793",
+    "directory": "papers/01-general",
+    "files": [
+      {
+        "path": "main.tex",
+        "bytes": 21080,
+        "sha256": "b1a1bc3e7ac1d6e0744f665ccdc56e9c3eb316f052b3cf7cf5e4c3870ba8f0d6",
+        "git_blob_sha1": "eb9c5b86c8e3154bc2a203a3057225e125c36704"
+      },
+      {
+        "path": "paper.pdf",
+        "bytes": 155708,
+        "sha256": "a33e1f1b26a59467f45387a1574c5f347ccd0f19254d84894aa05e0d0446371e",
+        "git_blob_sha1": "8702174567d4dda006d9660569eebf24a20a306a"
+      },
+      {
+        "path": "STATUS.md",
+        "bytes": 3396,
+        "sha256": "55a68df7961431197d42e615702628c4a9920dbbf91418c30e97db54ce2e8227",
+        "git_blob_sha1": "cc3fff998e4108fb80871f38db839d74f0cc22c2"
+      },
+      {
+        "path": "audit.json",
+        "bytes": 6237,
+        "sha256": "38ce50c1185cb079e5606aaefb030d9072172ef1626c3fd3965c4b5154227413",
+        "git_blob_sha1": "cd62033e81d2643bf906d0d41bcd0baf7781f567"
+      },
+      {
+        "path": "citation.bib",
+        "bytes": 330,
+        "sha256": "2fb1939914f8618bd7728ea56de937dc4c5a9e83fc305937e8643e4fa8d888d6",
+        "git_blob_sha1": "5c6f3721773b26baee14e9a08280665a9c7c9f46"
+      }
+    ],
+    "scope": "Immutable preceding source and PDF identities; no duplicate manuscript files are published."
   },
-  "research_status": "research preprint"
+  "publication_status_at_preparation": "unpublished"
 }

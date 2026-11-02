@@ -35,13 +35,12 @@
       15,
       16
     ],
-    "pdf_sha256": "a33e1f1b26a59467f45387a1574c5f347ccd0f19254d84894aa05e0d0446371e",
-    "status": "Title page visually inspected after preprint-version wording revision; all remaining page images match the previously inspected PDF. No clipping, overlap or unresolved references.",
+    "pdf_sha256": "2890d7bda36aeb9d24a1b917c5f4fff69af31050f9bb5177b65b70aba632fba5",
+    "status": "All 16 pages of the exact version 0.2.2 PDF visually inspected; no clipping, overlap or layout defects identified.",
     "overfull_boxes": 0,
     "undefined_references": 0,
     "review_scope": "Full document layout inspection and source review; no independent human mathematical certification or complete formal verification.",
-    "revision": "0.2.1",
-    "unchanged_page_images_matched_previous_review": 15
+    "revision": "0.2.2"
   },
   {
     "paper": "papers/02-simple-binary",

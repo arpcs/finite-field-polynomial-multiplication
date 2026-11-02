@@ -1,41 +1,26 @@
 # Release status
 
-**Published version:** 0.1.0-preprint, first published on 31 October 2026.
-**Research preprint revision:** 0.2.1, 2 November 2026.  
-**Publication state:** unpublished revision.
+**General research preprint:** version 0.2.2, 2 November 2026.  
+**Status:** research preprint open for mathematical review.
 
-This is a focused four-paper research-preprint selection. Author/contact
-information and Apache-2.0 licensing for original material are supplied,
-with source-specific notices retained. The broader collection is excluded.
+The general paper states ordinary multiplication over every individually
+fixed finite field with logarithmic exponent 1301/1302. Its
+characteristic-two branch uses the paired-phase binary theorem and the
+charged fixed-basis corollary; its independent odd-field branch retains
+exponent 319/320. [The combination review](../verification/all-fixed-field-combination-0.2.2.md)
+records the proof interfaces and cost scope.
 
-The reading order is the general O_q(n log(n+2)) baseline, the stronger
-general finite-field result, the accessible binary O(n log(n+2)) route,
-and the principal controlled-CRT binary result with saving 2^-38.
-The general baseline combines the accessible binary theorem with the
-stronger general paper's odd-field proposition, weakened to O(n log n),
-and a fixed-basis extension reduction. It does not use the principal binary
-saving. The stronger general paper combines that principal binary
-fixed-extension corollary and the sharper odd-field argument. These are
-related baseline and stronger claims, not four independent discoveries. Research
-branches that still require unproved uniform supplier interfaces are
-withheld rather than presented without their necessary hypotheses.
+The paired-phase binary preprint retains version 0.2.1. The Pascal/Taylor,
+controlled-CRT and general baseline manuscripts retain their own versions
+and proof dependencies. Their statements and evidence are identified in
+the [catalogue](../CONTENTS.md) and [claim map](CLAIM_SELECTION.md).
 
-No independent human review, completed Lean proof of the fast multiplier, external acceptance,
-race record or worldwide priority is asserted. Substantial generative AI
-assistance is disclosed. The selected papers' written proof claims remain
-open to mathematical review.
+The written claims have substantial generative-AI assistance. Independent
+human mathematical review and complete formal verification remain
+outstanding. No arXiv identifier, journal publication, independent
+acceptance, worldwide priority or practical speedup is asserted.
 
-Build receipts associate the PDFs with exact source hashes. The layout
-record lists the selected pages inspected. The package checker reports
-source closure and integrity. Those checks do not establish mathematics.
-Historical finite witnesses are not called fresh runs for this revision.
-
-The papers and companion artifacts are public in
-[arpcs/finite-field-polynomial-multiplication](https://github.com/arpcs/finite-field-polynomial-multiplication).
-The initial paper snapshot is
-[`fb94421`](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/fb94421e3e6d9f8348a6e5b963b5a62d9c525e95).
-Corrections and later formalization work are recorded in
-[the version history](VERSION_HISTORY.md). No arXiv identifier or journal
-publication is claimed.
-
-The revised general preprint improves its odd-field exponent to 319/320 while retaining the common all-field exponent 1-2^-38. Its complete [proof package](../papers/01-general/proofs/stronger-odd-20261102/README.md) and document records accompany the update. The previous general sources and PDF remain at the [immutable prior revision](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/01-general). The Pascal/Taylor, selected controlled-CRT and baseline manuscripts retain their existing versions. The separate paired-phase binary version 0.2.1 keeps its own unpublished claim metadata and does not replace the selected general-paper dependency.
+Document builds, visual inspection and package checks associate the PDF
+with its exact sources and check presentation and integrity. They do not
+certify the mathematical theorems. Historical finite evidence retains its
+original scope and dates.

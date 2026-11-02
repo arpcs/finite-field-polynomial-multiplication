@@ -1,0 +1,113 @@
+{
+  "schema": "all-fixed-field-combination-review/1",
+  "prepared_on": "2026-11-02",
+  "version": "0.2.2",
+  "statement": "Every individually fixed finite field: O_q(n log(n+2)^(1301/1302)); fixed odd fields: O_q(n log(n+2)^(319/320))",
+  "review": {
+    "path": "verification/all-fixed-field-combination-0.2.2.md",
+    "sha256": "e68f1f1cbbd977167a6a05a18215f20b5369aa881df1a4820f01fe9b10750238",
+    "scope": "Internal AI-assisted review of composition interfaces, not certification of component theorems"
+  },
+  "binary_input": {
+    "version": "0.2.1",
+    "theorem": "Theorem 1",
+    "commit": "e85bc1f6ca0ec9c13281c94b6a3e88ec2cdb4fc5",
+    "path": "papers/03-best-binary/versions/0.2.1/main.tex",
+    "sha256": "011f1197d240581e510f23b72ae468434de7e32c7bcad18e9a161f277a9bd2a8"
+  },
+  "main": {
+    "path": "papers/01-general/main.tex",
+    "sha256": "ac1bc6d10d198bd6142ba45ddce57cf419ed1e2c372749c8d270fac66a7999d4"
+  },
+  "document": {
+    "path": "papers/01-general/paper.pdf",
+    "sha256": "2890d7bda36aeb9d24a1b917c5f4fff69af31050f9bb5177b65b70aba632fba5",
+    "pages": 16,
+    "build_exit": 0,
+    "offline_only_cached": true,
+    "memory_cap_bytes": 536870912,
+    "cpu_seconds": 60,
+    "wall_seconds": 120,
+    "threads": 1,
+    "peak_job_bytes": 317882368,
+    "overfull_boxes": 0,
+    "undefined_references": 0
+  },
+  "layout": {
+    "all_pages_visually_reviewed": true,
+    "renderer": "Poppler pdftoppm",
+    "scale_to_pixels": 1300,
+    "images": [
+      {
+        "name": "page-01.png",
+        "sha256": "0b68866e3ce516286878a48ee9e18d78186224933ba80af9db82021d9e527fa6"
+      },
+      {
+        "name": "page-02.png",
+        "sha256": "23e2f2cc7e0f4bd078bfee440861d7f7e8cb170fc279c03cc6ee09ac705313d3"
+      },
+      {
+        "name": "page-03.png",
+        "sha256": "66258d0cac27d466cd79e90e2ab4b1b991317c3a78f7a8fbf2b6d3eca4e404c3"
+      },
+      {
+        "name": "page-04.png",
+        "sha256": "07551f77c18413176bfae00f13a23a808982fbcd78dc5b161518260d40ebd913"
+      },
+      {
+        "name": "page-05.png",
+        "sha256": "081c9f6232ebcad1c2893a130d63546a79674540bf0f611c0335a6325e4bff98"
+      },
+      {
+        "name": "page-06.png",
+        "sha256": "e9b3e11c414f3d150cbea11cb648ea359d0ddf0553555da023e97eb46e706b7e"
+      },
+      {
+        "name": "page-07.png",
+        "sha256": "8d76e369d087ba9377b15935d1f099d56823e6f6db729b3d2984d1726de6016c"
+      },
+      {
+        "name": "page-08.png",
+        "sha256": "0f71d4d5f9d37740b0ac33e5c4509737dd4c0bae71602a85e71e804b54678cb6"
+      },
+      {
+        "name": "page-09.png",
+        "sha256": "b7f0169f0fd019a5adc251997cc41e39ff64df7b60e10b0b6dfd9721a2835cb4"
+      },
+      {
+        "name": "page-10.png",
+        "sha256": "83aa2f7690139727ac44e160bf076c9731b32758a2c066997631c932623f1c91"
+      },
+      {
+        "name": "page-11.png",
+        "sha256": "c0975d7f6632624b60548c8b9b2c8f0532b5a971bef8960d7038940202174a64"
+      },
+      {
+        "name": "page-12.png",
+        "sha256": "db9a2925e745c856bb7ee74f533012cf173c30b135a765a8ed231559c16a71a0"
+      },
+      {
+        "name": "page-13.png",
+        "sha256": "bb59b4a403699423b184dbf99377bb468cf151650ac8a83193b8cb438db9a4e9"
+      },
+      {
+        "name": "page-14.png",
+        "sha256": "768f79619a8d1285d76f2cc51534ce6987c29bfcc19770824f7ee98d3d47bc4d"
+      },
+      {
+        "name": "page-15.png",
+        "sha256": "869aa90088e70fd2d0aa7f5f78e8cc631308516199fa61bbdb0009e5ea6ffad1"
+      },
+      {
+        "name": "page-16.png",
+        "sha256": "cd2ba9ae6f1f0de33ee7a1f89aaaf068f77aacef4f0c72cf6ff7872a553c2450"
+      }
+    ]
+  },
+  "mathematical_executable_run": false,
+  "new_finite_replay_run": false,
+  "lean_run": false,
+  "independent_human_review": false,
+  "complete_formal_verification": false,
+  "publication_state_at_preparation": "unpublished"
+}

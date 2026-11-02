@@ -1,5 +1,18 @@
 # Version history
 
+## General research preprint, version 0.2.2 - 2 November 2026
+
+- Combined the paired-phase binary theorem with the independent odd-field
+  proposition to state common all-fixed-field exponent 1301/1302.
+- Expanded the fixed-basis lemma's sequential tape implementation and
+  scratch normalization, and added the characteristic-two extension
+  corollary. The fixed odd-field exponent remains 319/320.
+- Pinned the binary theorem to immutable revision e85bc1f. The preceding
+  general source and PDF remain at immutable revision f44b124.
+- Rebuilt and visually reviewed the general PDF; updated its source,
+  citation, dependency and integrity records. Component mathematical
+  proofs and their existing verification status are unchanged.
+
 ## General research preprint, version 0.2.1 — 2 November 2026
 
 - Improved the fixed odd-field bound from exponent 9999/10000 to 319/320,

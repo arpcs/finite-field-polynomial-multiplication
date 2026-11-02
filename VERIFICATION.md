@@ -1,5 +1,14 @@
 # Verification scope
 
+The general preprint, version 0.2.2, combines the paired-phase binary
+theorem with the independent odd-field proposition to state common
+all-fixed-field exponent 1301/1302. The
+[combination review](verification/all-fixed-field-combination-0.2.2.md)
+checks the fixed-basis wrapper, charged scratch restoration, exponent
+comparison and dependency direction. The component theorems retain their
+written-proof evidence scope; this interface review is internal and
+AI-assisted, with no new finite computation or Lean proof claimed.
+
 These are written research preprints open for mathematical review. No independent human
 mathematical review, peer review, complete theorem-level Lean proof, accepted
 race record or exhaustive novelty clearance is claimed.

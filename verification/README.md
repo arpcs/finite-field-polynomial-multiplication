@@ -1,8 +1,23 @@
 # Evidence and provenance
 
+The general preprint's all-fixed-field composition has a
+[proof-interface review](all-fixed-field-combination-0.2.2.md) and a
+[source/document record](all-fixed-field-combination-0.2.2.json).
+They identify the binary input, the fixed-basis wrapper, the unchanged
+odd-field input and the exact exponent comparison.
+
 `paper-builds.json` binds each compiled PDF to hashes of the paper's TeX and
 required text inputs. `pdf-layout.json` records selected rendered pages and
 the final reference/layout warning scan. Neither certifies mathematics.
+
+The general preprint's odd-field proof has a
+[preparation record](odd-field-update-20261102.json) and a
+[technical review](odd-field-update-review.md). Its
+[native supplement](../papers/01-general/proofs/stronger-odd-20261102/README.md)
+has a separate asset manifest checked by `scripts/check-release.ps1`.
+The pinned PR589-specific legal texts are retained as normalized UTF-8
+transcriptions; the retrieval record gives their source URLs, hashes and
+the limitation that original network-byte identity was not verified.
 
 `release-check.json` reports the package check's actual scope and outcome.
 It checks the presence of the declared author, AI and unfinished-Lean
@@ -16,10 +31,8 @@ content hashes and source filenames; they are provenance labels, not paths
 to files a reader must obtain elsewhere. Supporting proof records needed for
 review are included in the corresponding paper directory.
 
-The simple paper's bounded C++ reports are historical evidence, not new runs
-for this release. Lean sources and completed theorem receipts are not
-included in this release. See [VERIFICATION.md](../VERIFICATION.md) for the
-exact evidence scope.
+The simple paper's bounded C++ reports are historical evidence.
+See [VERIFICATION.md](../VERIFICATION.md) for the exact evidence scope.
 
 The general paper's finite-unit bundle under
 `papers/01-general/proofs/finite-unit/` supplies separately identified native
@@ -54,7 +67,3 @@ deliberate edits; a new hash records the file state rather than validating a
 new mathematical conclusion. The root `.gitattributes` disables Git's
 automatic line-ending conversion, so checkouts preserve the exact source
 bytes bound by these records. Text files remain available for normal diffs.
-
-## Odd-field preprint, version 0.2.1
-
-The revision has separate odd-field-update-20261102.json and [technical review](odd-field-update-review.md) records. The selected native supplement has its own asset manifest and current source/PDF audit. Previous manuscript identities refer to immutable Git revision 14532be8e044c0f6588b9787a842a96da695769f; no duplicate historical manuscript files are required. PR589-specific legal texts are normalized UTF-8 transcriptions with source URLs and explicit original-byte limitations.

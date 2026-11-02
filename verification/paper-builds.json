@@ -20,38 +20,6 @@
     "note": "Document compilation only; no mathematical proof certification"
   },
   {
-    "paper": "papers/01-general",
-    "source": "main.tex",
-    "pdf": "paper.pdf",
-    "exit": 0,
-    "pdf_sha256": "a33e1f1b26a59467f45387a1574c5f347ccd0f19254d84894aa05e0d0446371e",
-    "source_files": [
-      {
-        "path": "papers/01-general/citation.bib",
-        "sha256": "2fb1939914f8618bd7728ea56de937dc4c5a9e83fc305937e8643e4fa8d888d6"
-      },
-      {
-        "path": "papers/01-general/main.tex",
-        "sha256": "b1a1bc3e7ac1d6e0744f665ccdc56e9c3eb316f052b3cf7cf5e4c3870ba8f0d6"
-      },
-      {
-        "path": "papers/01-general/proofs/odd_cyclotomic_host_transfer.tex",
-        "sha256": "1c6046d44f20d7e5350b87289c89b1ae20f0f8e505d3438a517d45e7ff612828"
-      },
-      {
-        "path": "papers/01-general/proofs/odd_grouped_native_transfer.tex",
-        "sha256": "17adda4e972d04fdcec2efe71fba955b020e63fc5dca16d48fce40e50f27b48c"
-      },
-      {
-        "path": "papers/01-general/proofs/stronger-odd-20261102/host-transfer.tex",
-        "sha256": "55c18e75bbbf264bb9e0152f272199623317e8af417e45cddec038186ec6bd1e"
-      }
-    ],
-    "compiler": "Tectonic",
-    "untrusted_mode": true,
-    "note": "Document compilation only; no mathematical proof certification"
-  },
-  {
     "paper": "papers/03-best-binary",
     "source": "main.tex",
     "pdf": "paper.pdf",
@@ -145,6 +113,38 @@
       {
         "path": "papers/02-simple-binary/tensor.tex",
         "sha256": "d7cd619a6cef4b3aa85707ee943f8be8aabdd7cd150d3b7285f30769e29d25c6"
+      }
+    ],
+    "compiler": "Tectonic",
+    "untrusted_mode": true,
+    "note": "Document compilation only; no mathematical proof certification"
+  },
+  {
+    "paper": "papers/01-general",
+    "source": "main.tex",
+    "pdf": "paper.pdf",
+    "exit": 0,
+    "pdf_sha256": "2890d7bda36aeb9d24a1b917c5f4fff69af31050f9bb5177b65b70aba632fba5",
+    "source_files": [
+      {
+        "path": "papers/01-general/citation.bib",
+        "sha256": "455bb40d81c5e241873d4179fdfde0d633714a26d07afe8fc56274e7e46887f1"
+      },
+      {
+        "path": "papers/01-general/main.tex",
+        "sha256": "ac1bc6d10d198bd6142ba45ddce57cf419ed1e2c372749c8d270fac66a7999d4"
+      },
+      {
+        "path": "papers/01-general/proofs/odd_cyclotomic_host_transfer.tex",
+        "sha256": "1c6046d44f20d7e5350b87289c89b1ae20f0f8e505d3438a517d45e7ff612828"
+      },
+      {
+        "path": "papers/01-general/proofs/odd_grouped_native_transfer.tex",
+        "sha256": "17adda4e972d04fdcec2efe71fba955b020e63fc5dca16d48fce40e50f27b48c"
+      },
+      {
+        "path": "papers/01-general/proofs/stronger-odd-20261102/host-transfer.tex",
+        "sha256": "55c18e75bbbf264bb9e0152f272199623317e8af417e45cddec038186ec6bd1e"
       }
     ],
     "compiler": "Tectonic",

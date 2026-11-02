@@ -73,7 +73,7 @@
     "destination_path": "papers/02-simple-binary/README.md",
     "original_sha256": "db4da46e54f76f317266aae1e1eac19764485626429895e20c736c7c505fcbe7",
     "edits_scope": "rewritten as release-local README; source TeX untouched 2026-10-31 citation review: verified primary reference metadata and fixed-field comparison, added identified antecedents and known Codex software attribution, and clarified four related document roles; selected theorem bounds unchanged.",
-    "staged_sha256": "0e3705c6955de479b59ad11e21785382ddc56be14f24649dd313079eebc581aa",
+    "staged_sha256": "456d5d878ea488dec44c1d84bd4be65b6384d52a255dedb6f8d3d271c5106f71",
     "source_identifier": "sha256/db4da46e54f76f317266aae1e1eac19764485626429895e20c736c7c505fcbe7/README.md"
   },
   {
@@ -143,7 +143,7 @@
     "source_path": null,
     "destination_path": "papers/02-simple-binary/witnesses/README.md",
     "original_sha256": null,
-    "staged_sha256": "8b64a581af94762db5998e4fbc60c10bd52c484724f619247284180283779e0d",
+    "staged_sha256": "120af397eeeb3f5e7747649def7012b9c0cb08604681b3e60dae90e614c76334",
     "edits_scope": "new documentation for included bounded witness bundle"
   }
 ]

@@ -131,8 +131,8 @@
   },
   {
     "path": "README.txt",
-    "bytes": 3688,
-    "sha256": "04ae8264d97cca9affe7f668c986f8d0e363641879ea58121404372c6761478d"
+    "bytes": 3530,
+    "sha256": "93ad6c42917d895496286522fcbcdc17f8ea4d1d474a466e5fbb15409f396266"
   },
   {
     "path": "scripts/build-local.ps1",

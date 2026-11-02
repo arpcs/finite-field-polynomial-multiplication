@@ -26,10 +26,10 @@
     "author": "Árpád Csizmadia",
     "author_tex": "\\'Arp\\'ad Csizmadia",
     "email": "arpad.csizmadia.public@gmail.com",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "status": "research preprint open for mathematical review",
-    "abstract_tex": "For each individually fixed finite field, ordinary polynomial multiplication has deterministic bit complexity $O_q(n(\\log(n+2))^{1-2^{-38}})$ on fixed finite tapes. For each fixed odd prime $p$ and fixed $e$, the sharper bound is $O_{p,e}(n(\\log(n+2))^{319/320})$. The odd-field proof combines the unconditional cyclotomic host with stronger mixed-BIT interchange and odd-ring phase constructions, an explicit quotient selector, a three-call local word and charged routing. It retains both coefficient CRT components and returns all $2n-1$ ordinary coefficients. The characteristic-two branch is supplied by the accompanying controlled-CRT construction. Complete Lean formalization remains unfinished; no growing-field uniformity or practical speedup is claimed.",
-    "comments": "Research preprint, version 0.2.1, revised 2 November 2026. The odd-field exponent improves from 9999/10000 to 319/320. Complete Lean formalization and independent human mathematical review remain outstanding.",
+    "abstract_tex": "For each individually fixed finite field, ordinary polynomial multiplication has deterministic bit complexity $O_q(n(\\log(n+2))^{1301/1302})$ on a fixed finite-tape machine. The characteristic-two branch applies the paired-phase binary theorem through a fixed-basis reduction using a constant number of binary products and linear coefficient conversion and recombination. For each fixed odd prime $p$ and fixed $e$, the sharper bound is $O_{p,e}(n(\\log(n+2))^{319/320})$. Both branches return all $2n-1$ ordinary coefficients, with setup, arithmetic, conversions, tape movement, output and cleanup charged. The odd-field construction retains its cyclotomic host and native proof dependencies. Complete formal verification and independent human mathematical review remain outstanding; no growing-field uniformity or practical speedup is claimed.",
+    "comments": "Research preprint, version 0.2.2, 2 November 2026. Common all-fixed-field exponent 1301/1302; fixed odd-field exponent 319/320. Substantial generative AI assistance; independent human mathematical review and complete formal verification remain outstanding.",
     "proposed_primary_category": "cs.CC",
     "proposed_cross_lists": [
       "cs.SC"
@@ -40,7 +40,7 @@
     "arxiv_id": null,
     "doi": null,
     "public_source_snapshot": null,
-    "previous_public_source_snapshot": "https://github.com/arpcs/finite-field-polynomial-multiplication/tree/fb94421e3e6d9f8348a6e5b963b5a62d9c525e95/papers/01-general",
+    "previous_public_source_snapshot": "https://github.com/arpcs/finite-field-polynomial-multiplication/tree/f44b12431591a3d66a0acd70a460d9fbaa9e8793/papers/01-general",
     "local_source": "papers/01-general/main.tex",
     "publication_state": "unpublished"
   },

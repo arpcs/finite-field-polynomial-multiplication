@@ -1,45 +1,46 @@
-# The selected four papers
+# Manuscript catalogue
 
-1. **General finite-field baseline:** [PDF](papers/04-general-nlogn/paper.pdf),
+1. **Paired-phase binary multiplication:**
+   [PDF](papers/03-best-binary/versions/0.2.1/paper.pdf),
+   [TeX](papers/03-best-binary/versions/0.2.1/main.tex),
+   [proof scope](papers/03-best-binary/versions/0.2.1/README.txt),
+   [exact claim](papers/03-best-binary/versions/0.2.1/CLAIM.json).
+   States ordinary F2 multiplication in O(n log(n+2)^(1301/1302))
+   deterministic bit time on fixed finite tapes, with all 2n-1 output bits.
+2. **General fixed-field multiplication:** [PDF](papers/01-general/paper.pdf),
+   [TeX](papers/01-general/main.tex), [status](papers/01-general/STATUS.md).
+   States O_q(n log(n+2)^(1301/1302)) over each fixed finite field and
+   O_q(n log(n+2)^(319/320)) over each fixed field of odd characteristic.
+   Its characteristic-two branch uses the paired-phase theorem through a fixed-basis reduction.
+   The [native supplement](papers/01-general/proofs/stronger-odd-20261102/README.md)
+   supplies the odd-field host transfer, native services and finite premises.
+   Constants depend on the individually fixed field; growing-field
+   uniformity and a combined workspace bound are outside the statements.
+3. **Fast Pascal transforms:** [PDF](papers/02-simple-binary/paper.pdf),
+   [TeX](papers/02-simple-binary/main.tex), [status](papers/02-simple-binary/STATUS.md).
+   States ordinary F2 multiplication in O(n log(n+2)), with an explicit
+   evaluator, decoder and tensor proof, and a fixed characteristic-two
+   extension corollary.
+4. **General n log n baseline:** [PDF](papers/04-general-nlogn/paper.pdf),
    [TeX](papers/04-general-nlogn/main.tex), [status](papers/04-general-nlogn/STATUS.md).
    States ordinary multiplication over each fixed finite field in
-   O_q(n log(n+2)) bit time. It combines the accessible binary construction
-   with the odd-field proposition in the stronger general paper and a
-   fixed-basis reduction. It does not use the principal binary saving.
-2. **Stronger general finite fields:** [PDF](papers/01-general/paper.pdf),
-   [TeX](papers/01-general/main.tex), [status](papers/01-general/STATUS.md).
-   Combines the controlled-CRT characteristic-two bound with the sharper
-   fixed odd-field construction. Constants depend on the individually fixed
-   field; no growing-field uniformity or combined workspace bound is claimed.
-3. **Accessible characteristic two:** [PDF](papers/02-simple-binary/paper.pdf),
-   [TeX](papers/02-simple-binary/main.tex), [status](papers/02-simple-binary/STATUS.md).
-   Corrected Pascal/Taylor ordinary binary O(n log(n+2)) construction, with
-   explicit evaluator, decoder and tensor proof.
-4. **Principal characteristic-two result:** [PDF](papers/03-best-binary/paper.pdf),
+   O_q(n log(n+2)) bit time. It combines the Pascal/Taylor binary theorem,
+   the general paper's odd-field proposition and a fixed-basis reduction.
+5. **Controlled-CRT binary multiplication:** [PDF](papers/03-best-binary/paper.pdf),
    [TeX](papers/03-best-binary/main.tex), [status](papers/03-best-binary/STATUS.md).
-   A separate controlled-CRT construction with the stated exponent 1-2^-38.
+   States exponent 1-2^-38 as a separate binary construction. The general
+   paper uses the paired-phase theorem for its common exponent.
 
-The [binary preprint, version 0.2.1](papers/03-best-binary/versions/0.2.1/README.txt)
-is available with its [PDF](papers/03-best-binary/versions/0.2.1/paper.pdf)
-and [exact claim metadata](papers/03-best-binary/versions/0.2.1/CLAIM.json).
-It claims ordinary F2 multiplication on fixed finite tapes with saving
-1/1302, or logarithmic exponent 1301/1302. Independent mathematical review
-and complete formal verification remain outstanding. This separate binary
-package does not replace the general paper's selected controlled-CRT binary
-dependency; the common all-field exponent remains 1-2^-38.
+The odd-field proposition is independent of the binary theorems. The
+manuscripts share finite-network and interchange antecedents; their
+dependency relationships are detailed in the
+[claim map](docs/CLAIM_SELECTION.md).
 
-The baseline general paper uses the accessible binary theorem and only the
-odd-field proposition of the stronger general paper. The stronger general
-bound instead uses the principal binary theorem for its common strict
-saving. The binary papers supply distinct routes, with shared finite-network
-and interchange antecedents. These are related baseline and stronger claims,
-not four independent discoveries.
+Each manuscript supplies author/contact information, substantial-AI
+disclosure, references and evidence records. Independent human mathematical
+review and complete formal verification remain outstanding. Build receipts
+bind each PDF to its exact sources. Conditional orthogonal-tree
+transfers and integer/complex-DFT investigations are outside these statements.
 
-Each paper includes author/contact information, substantial-AI disclosure,
-unfinished Lean status, references, source audit and citation.bib. Build
-receipts bind each PDF to its exact sources. Conditional orthogonal-tree
-transfers and integer/complex-DFT investigations are outside the selected
-claims. Complete Lean formalization remains unfinished; Lean source files
-and theorem-verification receipts are not included in this release.
-
-The general research preprint, version 0.2.1, states odd-field exponent 319/320. Its [native proof package](papers/01-general/proofs/stronger-odd-20261102/README.md) supplies the selected argument. Earlier manuscript versions remain at the [immutable prior revision](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/01-general).
+See [VERIFICATION.md](VERIFICATION.md) for the evidence scope and
+[version history](docs/VERSION_HISTORY.md) for manuscript provenance.

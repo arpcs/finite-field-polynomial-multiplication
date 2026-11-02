@@ -1,6 +1,6 @@
 # General fixed-field polynomial multiplication
 
-**Revision:** 0.2.1, 2 November 2026  
+**Revision:** 0.2.2, 2 November 2026
 **Status:** research preprint  
 **Author:** Árpád Csizmadia, arpad.csizmadia.public@gmail.com
 
@@ -14,8 +14,14 @@ basis. The more precise bound has leading exponent 0.996874195 and a
 fixed secondary power of loglog n. The positive margin 805/10^9 absorbs
 that power in the stated bound.
 
-The common all-fixed-field exponent remains 1-2^-38, using the accompanying
-characteristic-two theorem and its fixed-extension corollary. The sharper
+The common all-fixed-field exponent is 1301/1302, using Theorem 1 of the
+[paired-phase binary preprint](../03-best-binary/versions/0.2.1/README.txt)
+and the fixed-basis extension lemma. For each fixed s, the wrapper performs
+s^2 serial binary products, with O_s(n) coefficient conversion,
+recombination, stream copying and head movement. Binary scratch cleanup
+is charged within O_s(T(n)+n), without assuming linear-size scratch.
+The odd-field inequality 319/320 < 1301/1302 completes the field split.
+The sharper
 odd-field exponent is not asserted in characteristic two. Constants may
 depend on the fixed field and basis. Growing-field uniformity and a combined
 workspace bound are outside the statements.
@@ -45,9 +51,11 @@ serial fixed-basis reduction.
 ## Evidence and limitations
 
 Internal AI-assisted source review identified no blocking defect under the
-named imports. Revision 0.2.1 makes the cyclotomic root map's well-definedness,
-identity schedule padding and pointwise-product invoice explicit. Complete
-Lean verification and independent human mathematical review remain outstanding.
+named imports. The common bound is a consequence of the two written
+component theorems and the charged fixed-basis reduction; neither component
+uses the combined conclusion. The [combination review](../../verification/all-fixed-field-combination-0.2.2.md)
+records that scope. Complete Lean verification and independent human
+mathematical review remain outstanding.
 
 Saved finite-check outputs establish only their stated finite premises. They
 are historical records, not fresh runs or tests of the complete asymptotic
@@ -59,5 +67,6 @@ GitHub source views as normalized UTF-8 text. The retrieval record identifies
 the source URLs, archived hashes and normalization; original network-byte
 identity was not verified. The older sibling notice remains a separate source.
 
-The published 0.1 sources and PDF remain preserved at the
-[immutable earlier revision](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/01-general).
+Earlier sources and PDFs remain preserved in the
+[version 0.2.1 revision](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/f44b12431591a3d66a0acd70a460d9fbaa9e8793/papers/01-general)
+and the [version 0.1 revision](https://github.com/arpcs/finite-field-polynomial-multiplication/tree/14532be8e044c0f6588b9787a842a96da695769f/papers/01-general).

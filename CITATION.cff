@@ -2,14 +2,14 @@ cff-version: 1.2.0
 message: "Cite the individual paper using its citation.bib and identify the exact revision. These are research preprints."
 type: software
 title: "Polynomial multiplication over fixed finite fields"
-version: "0.2.1"
+version: "0.2.2"
 url: "https://github.com/arpcs/finite-field-polynomial-multiplication"
 authors:
   - family-names: "Csizmadia"
     given-names: "Árpád"
     email: "arpad.csizmadia.public@gmail.com"
 license: Apache-2.0
-abstract: "Four related research preprints, with a revised odd-field bound with exponent 319/320. The common all-field exponent remains 1-2^-38. Cite the exact individual paper revision; complete Lean formalization is unfinished."
+abstract: "Research preprints on ordinary polynomial multiplication over fixed finite fields. The common all-fixed-field exponent is 1301/1302; the fixed odd-field exponent is 319/320. Cite the exact individual paper revision; complete formal verification and independent human mathematical review remain outstanding."
 keywords:
   - polynomial multiplication
   - finite fields
